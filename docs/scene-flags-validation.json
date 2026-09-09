@@ -1,0 +1,130 @@
+{
+  "schema": "ao_pc_scene_flags_v1",
+  "source_sha256": "8216f3dfd7ae8ca7fb8cee0129f7431de7f72939e75b22be1a74f030bf4535e9",
+  "code_sha256": "fa6596ad52b4980328a495f887b1aced6b9bc41ce48e47ebfd9081c9b48e1be6",
+  "snapshot_sha256": "615107b20f67b779d4d373a1cc79fce318f5f1a0093893dc7a963014ac80a7ab",
+  "block": {
+    "tag": 3,
+    "index": 1,
+    "header_offset": 177012,
+    "payload_offset": 177020,
+    "size": 3740,
+    "sha256": "56374bdf6f7ecaa1c15a73a3556fb4bcf2a116231549dac5d49d5c4ab56866f0"
+  },
+  "reader_runtime": 101376846,
+  "block_reader_address": 638533632,
+  "buffer_writer_address": 539033600,
+  "reference_low_ram_offset": 65536,
+  "width": 256,
+  "height": 256,
+  "initial_value": 3,
+  "groups": [
+    {
+      "index": 0,
+      "offset": 0,
+      "count": 433,
+      "operation": "or",
+      "mask": 128,
+      "byte_writes": 33443
+    },
+    {
+      "index": 1,
+      "offset": 1734,
+      "count": 0,
+      "operation": "or",
+      "mask": 64,
+      "byte_writes": 0
+    },
+    {
+      "index": 2,
+      "offset": 1736,
+      "count": 20,
+      "operation": "or",
+      "mask": 32,
+      "byte_writes": 1042
+    },
+    {
+      "index": 3,
+      "offset": 1818,
+      "count": 0,
+      "operation": "or",
+      "mask": 16,
+      "byte_writes": 0
+    },
+    {
+      "index": 4,
+      "offset": 1820,
+      "count": 1,
+      "operation": "skip",
+      "mask": 8,
+      "byte_writes": 0
+    },
+    {
+      "index": 5,
+      "offset": 1826,
+      "count": 0,
+      "operation": "skip",
+      "mask": 4,
+      "byte_writes": 0
+    },
+    {
+      "index": 6,
+      "offset": 1828,
+      "count": 477,
+      "operation": "and",
+      "mask": 253,
+      "byte_writes": 2769
+    },
+    {
+      "index": 7,
+      "offset": 3738,
+      "count": 0,
+      "operation": "and",
+      "mask": 254,
+      "byte_writes": 0
+    }
+  ],
+  "code_ranges": [
+    {
+      "start": 123726,
+      "end_exclusive": 124204,
+      "sha256": "b5eb346378ffd583d89d7a64761ac5f272528da2cabd4552cfe102f98435e368"
+    },
+    {
+      "start": 124254,
+      "end_exclusive": 124260,
+      "sha256": "721ebe7873547b86eedcc68bba6247377acdaa0a7ec95f1eeb0b2400b5eeb79f"
+    },
+    {
+      "start": 7778,
+      "end_exclusive": 7786,
+      "sha256": "421ff6fa16b4931909aa6d665abd29329dfeb890a567ced7c97dc29bc40783c4"
+    },
+    {
+      "start": 8044,
+      "end_exclusive": 8052,
+      "sha256": "e8c078fa79a9e9ed599ad0a47f454b6ef1d658347bdc70636aba3465d038b7bd"
+    }
+  ],
+  "decoded_sha256": "78863dedbf02a07158821486a059af56f31a0b18d11a9eee6a7986dd10943e5b",
+  "reference_sha256": "78863dedbf02a07158821486a059af56f31a0b18d11a9eee6a7986dd10943e5b",
+  "exact_match_bytes": 65536,
+  "different_bytes": 0,
+  "value_counts": {
+    "1": 2211,
+    "3": 29246,
+    "33": 160,
+    "35": 630,
+    "129": 14,
+    "131": 33023,
+    "161": 38,
+    "163": 214
+  },
+  "collision_verified": false,
+  "player_coordinate_verified": false,
+  "limits": [
+    "Buffer construction verified against one snapshot only.",
+    "Flag meanings, movement consumers and world-coordinate scale remain unknown.",
+    "Groups 4 and 5 are skipped by this reader; other consumers are not excluded."
+  ]
+}
