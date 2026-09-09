@@ -1,0 +1,56 @@
+{
+  "date": "2026-09-09",
+  "stage_b_passed": false,
+  "snapshot_sha256": "615107b20f67b779d4d373a1cc79fce318f5f1a0093893dc7a963014ac80a7ab",
+  "layers": [
+    {
+      "parameters": {
+        "layer": 0,
+        "plane_offsets": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "scroll_x": 544,
+        "scroll_y": 1536,
+        "cram_base": 0,
+        "transparent_zero": true
+      },
+      "unique_tiles": 164,
+      "exact_source_tiles": 0
+    },
+    {
+      "parameters": {
+        "layer": 1,
+        "plane_offsets": [
+          8192,
+          8192,
+          8192,
+          8192
+        ],
+        "scroll_x": 544,
+        "scroll_y": 1536,
+        "cram_base": 0,
+        "transparent_zero": true
+      },
+      "unique_tiles": 176,
+      "exact_source_tiles": 0
+    }
+  ],
+  "png_sha256": {
+    "nbg0-page-00000.png": "f7f91207e40fd300a2c00b6e24e2df44b61c70b41e69be29192773ce900ccc51",
+    "nbg0-viewport.png": "ceb70865cdd302915043ee70c645cb78efe30d333d2c98de38198b8f712ca977",
+    "nbg1-page-02000.png": "48688ca4a43b50caac1c0aec18869d06b9614b71a4acae79c8163adba0478085",
+    "nbg1-viewport.png": "9c9dbba23b55bd3a8619d6379e606d4d6f72008dbb13a71a23f5d05940e5321d"
+  },
+  "reference_sha256": {
+    "vdp1_defs.hpp": "0014fb9b826a18f11f4aea2fc34ebc263b556b0d7a655c1524a9aef592db4789",
+    "vdp2_defs.hpp": "bf5ff04e75573a632dd87a6775e9974c4f1432f0281e22c094c95591f98d1fb8",
+    "vdp_common_defs.hpp": "b830330e0f187b199136dfc9f3afd7828adc429b9b1052f16e061bd5c06af2a9",
+    "vdp_renderer_defs.hpp": "fa87ac78f4cdbc40cbb8d5d4c592d306b8d3adeccc5390dacb6d4e68dab3f5c4"
+  },
+  "python_tests": 28,
+  "new_emulator_run": false,
+  "final_screen_verified": false
+}
