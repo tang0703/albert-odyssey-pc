@@ -1,0 +1,38 @@
+{
+  "date": "2026-09-09",
+  "stage_b_passed": false,
+  "playable": false,
+  "scope": "offline_capture_command_trace",
+  "reference_sha256": "9f0f7685f0e86aa1032a42dda1656ab841084432a0a765ac926f25e4cf74088e",
+  "trace": {
+    "visited_commands": 31,
+    "skipped_commands": 3,
+    "texture_commands": 25,
+    "bound_texture_commands": 9,
+    "unambiguous_bound_commands": 4,
+    "ambiguous_bound_commands": 5,
+    "distinct_source_candidates": 18,
+    "color_modes": {
+      "2": 2,
+      "0": 23
+    },
+    "end_offset": null,
+    "list_status": "rejected_incomplete"
+  },
+  "trace_failure": {
+    "offset": 11872,
+    "reason": "Prohibited command 15 at 0x2e60"
+  },
+  "capture_audit": {
+    "rejected_incomplete": 8,
+    "inventory_only": 3
+  },
+  "tests": {
+    "python_tests": 17,
+    "python_failures": 0,
+    "godot_contract_checks": 14,
+    "godot_workbench_checks": 9
+  },
+  "new_emulator_run": false,
+  "new_render_or_performance_validation": false
+}

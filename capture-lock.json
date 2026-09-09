@@ -1,0 +1,17 @@
+{
+  "schema": "ao_pc_capture_lock_v1",
+  "note": "Existing local snapshots; hashes fix input identity, not synchronization or completed-frame validity.",
+  "sources": {
+    "work/bizhawk/dialogue_capture/memory_page_01_VDP1_Ram.bin": "13f75591113be1003c8dc8d06f2e72bc990ca2d225c7189cf3dd6103d2f2328c",
+    "work/bizhawk/dialogue_capture/memory_page_02_VDP1_Ram.bin": "57f5818c8173cf9807fe6c0fdefd94680b3f60791369f17082f526e5d9344f49",
+    "work/bizhawk/dialogue_state_dumps/ascii_proof_page_01/VDP1_Ram.bin": "9f0f7685f0e86aa1032a42dda1656ab841084432a0a765ac926f25e4cf74088e",
+    "work/bizhawk/dialogue_vdp1_glyph_probe_aey/VDP1_Ram.bin": "fbfea6bf628121eb4b0869de0960213abafaf4ff8e215a2e234987ec086c4d25",
+    "work/bizhawk/dialogue_vdp1_glyph_probe_baseline/VDP1_Ram.bin": "6995ed117a16f8c9fd2d6a6edf4577166df87dd0ade8dd219295da9ca26634fe",
+    "work/ymir/dialogue-trace/dumps/target-25c7f308-glyph-writer-060b1402/vdp1-vram.bin": "bfe8a26495c5c48278f7132804d4c809e63eb700c88287ee63faa000b2f42549",
+    "work/ymir/dialogue-trace/dumps/target-25c7f308-post-write-060b1404/vdp1-vram.bin": "b272a11db32ee5ea8d3407f83f9ce57fc33cb195861f043af9a34a9dc0aebd2e",
+    "work/ymir/dialogue-trace/dumps/vdp1-vram.bin": "c4f064b273c0615a5318a672f72af2947f87bb7e06347e7e83f4a71c3c47e0aa",
+    "work/ymir/dialogue-trace/dumps/vdp1-fbs.bin": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541",
+    "work/ymir/dialogue-trace/dumps/vdp2-cram.bin": "8e9c49483612991d3fdb0955fa9c0b1d5eda920f4dc906b2458c1137ae6ce289",
+    "work/ymir/dialogue-trace/dumps/vdp2-vram.bin": "65f3f2587c3fd63f302792ac7e554e10680247759780dbe03ffdfc03683e5a8a"
+  }
+}

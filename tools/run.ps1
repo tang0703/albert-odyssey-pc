@@ -24,6 +24,7 @@ Run-Checked $Godot @('--headless','--path',$PcRoot,'--log-file',(Join-Path $Repo
 if ($Action -eq 'test') {
     Run-Checked $Python @('-m','unittest','discover','-s',(Join-Path $PcRoot 'tests'),'-v') (Join-Path $Reports 'python-tests.log')
     Run-Checked $Python @((Join-Path $PSScriptRoot 'probe_v1n.py')) (Join-Path $Reports 'v1n-probe.log')
+    Run-Checked $Python @((Join-Path $PSScriptRoot 'trace_vdp1.py')) (Join-Path $Reports 'vdp1-trace.log')
     Run-Checked $Godot @('--headless','--path',$PcRoot,'--log-file',(Join-Path $Reports 'runtime-engine.log'),'--script','res://tests/test_runtime.gd') (Join-Path $Reports 'runtime-run.log')
     Run-Checked $Godot @('--headless','--path',$PcRoot,'--log-file',(Join-Path $Reports 'workbench-test-engine.log'),'--script','res://tests/test_workbench.gd') (Join-Path $Reports 'workbench-test-run.log')
     Write-Output 'Python source tests and Godot contract tests passed.'
