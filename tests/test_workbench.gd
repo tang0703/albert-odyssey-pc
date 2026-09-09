@@ -11,6 +11,8 @@ func run_test() -> void:
 	var checks: Dictionary = {}
 	checks["real_records_loaded"] = ui.records.size() == 137
 	checks["real_textures_loaded"] = ui.package.get("textures", []).size() == 253
+	var preview: TextureRect = ui.find_child("IndexPreview", true, false) as TextureRect
+	checks["preview_resource_imported"] = preview != null and preview.texture != null
 	checks["playability_gate_closed"] = ui.package.get("playable", true) == false
 	var before: String = ui.text_view.text
 	ui.advance_page(1)

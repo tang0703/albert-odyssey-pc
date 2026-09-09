@@ -22,6 +22,7 @@
       "page_lower_bound": true,
       "page_upper_bound": true,
       "playability_gate_closed": true,
+      "preview_resource_imported": true,
       "previous_page_restores_text": true,
       "real_records_loaded": true,
       "real_textures_loaded": true
@@ -123,7 +124,7 @@
     },
     {
       "path": "reports/python-tests.log",
-      "sha256": "1e5326710d341c698411681f73e88b35bd8861c1cd1daf28dab035c3622386ad"
+      "sha256": "af936f18a662eb4832b6c3e0a3827cc6b672b54021d4e20759f3141c32ca1649"
     },
     {
       "path": "reports/standalone-4k/render.json",

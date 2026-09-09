@@ -104,6 +104,7 @@ func build_ui() -> void:
 	right.add_child(label_for("原始角色紋理・索引檢視", 32))
 	right.add_child(label_for("灰階僅顯示索引；原色、角色綁定與動畫時序尚未確認。", 22))
 	var image := TextureRect.new()
+	image.name = "IndexPreview"
 	if ResourceLoader.exists("res://generated/v1n-index-contact.png"):
 		image.texture = load("res://generated/v1n-index-contact.png")
 	image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE

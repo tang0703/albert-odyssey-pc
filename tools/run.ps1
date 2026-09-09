@@ -20,6 +20,7 @@ function Run-Checked([string]$Executable,[string[]]$Arguments,[string]$Log) {
 if (-not (Test-Path $Godot) -or -not (Test-Path $Python)) { throw 'Run bootstrap.ps1 and install the isolated Python requirements first.' }
 Run-Checked $Python @((Join-Path $PSScriptRoot 'pipeline.py'),'build') (Join-Path $Reports 'pipeline-run.log')
 if ($Action -eq 'build') { Get-Content (Join-Path $Reports 'pipeline-run.log'); exit }
+Run-Checked $Godot @('--headless','--path',$PcRoot,'--log-file',(Join-Path $Reports 'import-engine.log'),'--editor','--import','--quit') (Join-Path $Reports 'import-run.log')
 if ($Action -eq 'test') {
     Run-Checked $Python @('-m','unittest','discover','-s',(Join-Path $PcRoot 'tests'),'-v') (Join-Path $Reports 'python-tests.log')
     Run-Checked $Python @((Join-Path $PSScriptRoot 'probe_v1n.py')) (Join-Path $Reports 'v1n-probe.log')
@@ -28,7 +29,6 @@ if ($Action -eq 'test') {
     Write-Output 'Python source tests and Godot contract tests passed.'
     exit
 }
-Run-Checked $Godot @('--headless','--path',$PcRoot,'--log-file',(Join-Path $Reports 'import-engine.log'),'--editor','--import','--quit') (Join-Path $Reports 'import-run.log')
 if ($Action -eq 'export') {
     New-Item -ItemType Directory -Force (Join-Path $PcRoot 'build\windows') | Out-Null
     Run-Checked $Godot @('--headless','--path',$PcRoot,'--log-file',(Join-Path $Reports 'export-engine.log'),'--export-release','Windows Desktop') (Join-Path $Reports 'export-run.log')
