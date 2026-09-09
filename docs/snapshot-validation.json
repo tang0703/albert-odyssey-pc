@@ -1,0 +1,50 @@
+{
+  "date": "2026-09-09",
+  "stage_b_passed": false,
+  "snapshot_sha256": "615107b20f67b779d4d373a1cc79fce318f5f1a0093893dc7a963014ac80a7ab",
+  "summary": {
+    "bound_commands": 6,
+    "palette_samples": 6,
+    "drawing": true,
+    "next_command_address": 1024
+  },
+  "trace_failure": {
+    "offset": 11776,
+    "reason": "Prohibited command 15 at 0x2e00"
+  },
+  "spans": {
+    "vram1": {
+      "offset": 2110801,
+      "size": 524288,
+      "sha256": "9efb69c2a95799eabb6bbb60aec363901c49d0dc6712cc6084ead04aa99b8332"
+    },
+    "vram2": {
+      "offset": 2635089,
+      "size": 524288,
+      "sha256": "9488cfb247f615594a32226572f4d4fec9b59f02c9aa2b6c9055891c3930ea02"
+    },
+    "cram": {
+      "offset": 3159377,
+      "size": 4096,
+      "sha256": "542684e34761feac1be3c4655815aecd2afec6567518e426089d83c999703d05"
+    },
+    "framebuffers": {
+      "offset": 3163473,
+      "size": 524288,
+      "sha256": "07854d2fef297a06ba81685e660c332de36d5d18d546927d30daad6d7fda1541"
+    }
+  },
+  "sample_rgba_sha256": {
+    "command-02b40.png": "46c1babd786bb43b7d79de31fff90d78e1f157c5756619c0b60aa8ca0a209299",
+    "command-02b60.png": "2e5633043cb259010dbcdb78d2904c28eeef01d215fa86c24b67914807b3a78e",
+    "command-02b80.png": "2e5633043cb259010dbcdb78d2904c28eeef01d215fa86c24b67914807b3a78e",
+    "command-02ba0.png": "31860fd10e0716098b9cc74d77efd233644e64fd5f034fd3a72d55a73bb35280",
+    "command-02bc0.png": "a13b4f87a8eba96fd103f44c7e96ffec650353f62e76f119e29f3af8ee1d8e24",
+    "command-02be0.png": "5f35b6f923f7ad0aa7eea6e808730918bb76237204e4d239ca0d09945272b030"
+  },
+  "python_tests": 23,
+  "godot_contract_checks": 14,
+  "godot_workbench_checks": 9,
+  "new_emulator_run": false,
+  "final_screen_verified": false
+}
