@@ -1,0 +1,64 @@
+{
+  "date": "2026-09-09",
+  "source_sha256": "8216f3dfd7ae8ca7fb8cee0129f7431de7f72939e75b22be1a74f030bf4535e9",
+  "snapshot_sha256": "615107b20f67b779d4d373a1cc79fce318f5f1a0093893dc7a963014ac80a7ab",
+  "block": {
+    "tag": 3,
+    "index": 1,
+    "header_offset": 177012,
+    "payload_offset": 177020,
+    "size": 3740,
+    "sha256": "56374bdf6f7ecaa1c15a73a3556fb4bcf2a116231549dac5d49d5c4ab56866f0"
+  },
+  "block_runtime": 101662720,
+  "block_exact_match_bytes": 3740,
+  "run_counts": [
+    433,
+    0,
+    20,
+    0,
+    1,
+    0,
+    477,
+    0
+  ],
+  "palette_queue": {
+    "code_sha256": "fa6596ad52b4980328a495f887b1aced6b9bc41ce48e47ebfd9081c9b48e1be6",
+    "module_runtime_base": 101253120,
+    "code_range": [
+      44094,
+      44318
+    ],
+    "queue_runtime": 101532068,
+    "queue_count_runtime": 101532116,
+    "color_ram_runtime": 636485632,
+    "record_bytes": 6,
+    "record_words": [
+      "operation",
+      "word_count",
+      "color_word_offset"
+    ],
+    "verified_opcodes": {
+      "0ac3e": "d42a",
+      "0ac40": "d82a",
+      "0ac42": "d92b",
+      "0ac44": "da2b",
+      "0ac46": "db2c",
+      "0ac4c": "8542",
+      "0ac50": "6041",
+      "0ac52": "4700",
+      "0ac56": "35bc",
+      "0ac78": "6365",
+      "0ac7c": "2531",
+      "0ad0e": "7406",
+      "0ad1c": "2ae1"
+    },
+    "scope": "static queue reader; no dynamic trace or collision claim",
+    "captured_active_count": 0
+  },
+  "python_tests": 42,
+  "collision_verified": false,
+  "player_coordinate_verified": false,
+  "stage_b_passed": false,
+  "new_emulator_run": false
+}
