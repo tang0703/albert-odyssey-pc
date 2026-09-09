@@ -1,0 +1,85 @@
+{
+  "schema": "ao_pc_actor_flag_probe_v1",
+  "source_sha256": "8216f3dfd7ae8ca7fb8cee0129f7431de7f72939e75b22be1a74f030bf4535e9",
+  "code_sha256": "fa6596ad52b4980328a495f887b1aced6b9bc41ce48e47ebfd9081c9b48e1be6",
+  "flags_sha256": "78863dedbf02a07158821486a059af56f31a0b18d11a9eee6a7986dd10943e5b",
+  "code_ranges": [
+    {
+      "start": 114456,
+      "end_exclusive": 114632,
+      "sha256": "1ad6cff303efdcca46bbf11d08daf79181b0e11ef8a07f81b91af6fc57b0cee3"
+    },
+    {
+      "start": 114772,
+      "end_exclusive": 114780,
+      "sha256": "f50ba9c38002d5ff06aea6c7bd03ca3fcca012edfc5dd1070f36ba2fe9a22690"
+    },
+    {
+      "start": 112154,
+      "end_exclusive": 112240,
+      "sha256": "330bc0dc78d4e39c2d0362f845d5b91b9921b97637d5fff4dec1615c1f272fd1"
+    },
+    {
+      "start": 112404,
+      "end_exclusive": 112512,
+      "sha256": "db04cfee55e85eb00fa6d12c9c955a0e3794d4c48e8de46b95adaec80ed0245a"
+    },
+    {
+      "start": 112550,
+      "end_exclusive": 112574,
+      "sha256": "661b8dc707c27ffe6d15551dada09d0b201768740bc9cf446bba4833414ca286"
+    },
+    {
+      "start": 58990,
+      "end_exclusive": 59002,
+      "sha256": "ceaf30703b48b6029ed9ec25c6fd11ea3f6207f272f6ebc4b2c696f23fb8e2e8"
+    },
+    {
+      "start": 59092,
+      "end_exclusive": 59100,
+      "sha256": "24131439e32b59f6f1b0d7da932a9f256810e4baa6179fda3ce075e943695b7a"
+    }
+  ],
+  "coordinate_fraction_bits": 4,
+  "pixel_index_mask": 2047,
+  "cell_pixel_shift": 3,
+  "coordinate_offsets": [
+    0,
+    2
+  ],
+  "delta_offsets": [
+    24,
+    26
+  ],
+  "source_flag_mask": 32,
+  "actor_flag_offset": 8,
+  "actor_flag_mask": 2,
+  "mode_offset": 22,
+  "mode_low_bytes": [
+    18,
+    19
+  ],
+  "synthetic_probe_count": 65536,
+  "synthetic_mode_counts": {
+    "18": 64494,
+    "19": 1042
+  },
+  "positive_x_correction_evidence": {
+    "routine": 112154,
+    "selector_offset": 10,
+    "zero_selector_mask": 128,
+    "nonzero_selector_mask": 64,
+    "contact_byte_offset": 75,
+    "contact_mask": 8,
+    "status_word_offset": 6,
+    "status_mask": 512
+  },
+  "collision_verified": false,
+  "player_identity_verified": false,
+  "limits": [
+    "Static reconstruction and synthetic inputs; no new emulator movement trace.",
+    "Positive-X correction path identified, not fully ported or tested.",
+    "Actor identity, selector meaning, shape offsets and full axis handling remain unknown.",
+    "Table bit 0x20 updates actor state; it is not a universal blocking flag."
+  ]
+}

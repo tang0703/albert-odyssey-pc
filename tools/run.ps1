@@ -31,6 +31,7 @@ if ($Action -eq 'test') {
     Run-Checked $Python @((Join-Path $PSScriptRoot 'decode_source_scene.py')) (Join-Path $Reports 'source-scene.log')
     Run-Checked $Python @((Join-Path $PSScriptRoot 'probe_scene_metadata.py')) (Join-Path $Reports 'scene-metadata.log')
     Run-Checked $Python @((Join-Path $PSScriptRoot 'decode_scene_flags.py')) (Join-Path $Reports 'scene-flags.log')
+    Run-Checked $Python @((Join-Path $PSScriptRoot 'probe_actor_flags.py')) (Join-Path $Reports 'actor-flags.log')
     Run-Checked $Godot @('--headless','--path',$PcRoot,'--log-file',(Join-Path $Reports 'runtime-engine.log'),'--script','res://tests/test_runtime.gd') (Join-Path $Reports 'runtime-run.log')
     Run-Checked $Godot @('--headless','--path',$PcRoot,'--log-file',(Join-Path $Reports 'workbench-test-engine.log'),'--script','res://tests/test_workbench.gd') (Join-Path $Reports 'workbench-test-run.log')
     Write-Output 'Python source tests and Godot contract tests passed.'
