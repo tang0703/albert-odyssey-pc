@@ -1,4 +1,4 @@
-"""MAP001 graphics block evidence; layout remains snapshot-dependent."""
+"""MAP001 graphics block evidence; scene context is verified separately."""
 import json
 import struct
 
@@ -85,14 +85,14 @@ def run() -> dict:
     output = PROJECT/'reports/source-background'
     output.mkdir(parents=True,exist_ok=True)
     (output/'tiles.bin').write_bytes(decoded[1])
-    (output/'block2-unassigned.bin').write_bytes(decoded[2])
+    (output/'layout.bin').write_bytes(decoded[2])
     report = {"schema":"ao_pc_map001_graphics_v1","source":path,"source_sha256":digest(raw),
               "snapshot_sha256":lock['sha256'],"blocks":blocks,"decoded_blocks":decoded_blocks,
               "transfer_evidence":{"vram_start":0x40000,"bytes":len(target),"exact_match":True,
                                    "sha256":digest(target),"runtime_upload_call_verified":False},
               "limits":["Mode-5 layout inferred and validated by complete bytes; CPU decompressor not traced yet.",
-                        "Block 2 decodes structurally; its semantics are not established.",
-                        "Background placement still uses snapshot pattern pages; no independent scene loader yet."]}
+                        "Block 2 compact layout and source palette validation are in decode_source_scene.py.",
+                        "No independent gameplay scene loader or source-derived camera rules yet."]}
     write_json(PROJECT/'reports/background-source.json',report)
     return report
 

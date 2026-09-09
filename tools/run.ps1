@@ -28,6 +28,7 @@ if ($Action -eq 'test') {
     Run-Checked $Python @((Join-Path $PSScriptRoot 'read_ymir_state.py')) (Join-Path $Reports 'ymir-state.log')
     Run-Checked $Python @((Join-Path $PSScriptRoot 'decode_map_graphics.py')) (Join-Path $Reports 'map-graphics.log')
     Run-Checked $Python @((Join-Path $PSScriptRoot 'decode_background.py')) (Join-Path $Reports 'background.log')
+    Run-Checked $Python @((Join-Path $PSScriptRoot 'decode_source_scene.py')) (Join-Path $Reports 'source-scene.log')
     Run-Checked $Godot @('--headless','--path',$PcRoot,'--log-file',(Join-Path $Reports 'runtime-engine.log'),'--script','res://tests/test_runtime.gd') (Join-Path $Reports 'runtime-run.log')
     Run-Checked $Godot @('--headless','--path',$PcRoot,'--log-file',(Join-Path $Reports 'workbench-test-engine.log'),'--script','res://tests/test_workbench.gd') (Join-Path $Reports 'workbench-test-run.log')
     Write-Output 'Python source tests and Godot contract tests passed.'

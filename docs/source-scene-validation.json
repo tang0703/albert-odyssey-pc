@@ -1,0 +1,42 @@
+{
+  "date": "2026-09-09",
+  "source_sha256": "8216f3dfd7ae8ca7fb8cee0129f7431de7f72939e75b22be1a74f030bf4535e9",
+  "snapshot_sha256": "615107b20f67b779d4d373a1cc79fce318f5f1a0093893dc7a963014ac80a7ab",
+  "camera_pixels": [
+    544,
+    1536
+  ],
+  "layout": {
+    "payload_offset": 158748,
+    "grid_size": [
+      128,
+      128
+    ],
+    "layers": 2,
+    "decoded_sha256": "318fcae9ccaa0e1ff52514b69402bb1e639354adc6544cd48f5d0f98ec36d685"
+  },
+  "palette": {
+    "source_offset": 181280,
+    "matched_nontransparent_bytes": 510,
+    "source_zero_entry": "41a9",
+    "reference_zero_entry": "0000",
+    "zero_entry_policy": "index zero is transparent; RGB difference does not affect these layers"
+  },
+  "layers": [
+    {
+      "layer": 0,
+      "matched_patterns": 280,
+      "png_sha256": "ceb70865cdd302915043ee70c645cb78efe30d333d2c98de38198b8f712ca977"
+    },
+    {
+      "layer": 1,
+      "matched_patterns": 280,
+      "png_sha256": "9c9dbba23b55bd3a8619d6379e606d4d6f72008dbb13a71a23f5d05940e5321d"
+    }
+  ],
+  "python_tests": 38,
+  "godot_contract_checks": 14,
+  "godot_workbench_checks": 9,
+  "stage_b_passed": false,
+  "new_emulator_run": false
+}
