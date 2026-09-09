@@ -6,6 +6,7 @@ from PIL import Image
 
 from pipeline import PROJECT, WORKSPACE, digest, read_json, verify_source, write_json
 from read_ymir_state import extract
+from decode_map_graphics import map001_blocks, decode_mode5
 
 
 def parameters(regs: dict, layer: int) -> dict:
@@ -94,6 +95,15 @@ def run() -> dict:
     source_lock = read_json(PROJECT / "source-lock.json")["sources"]
     sources = {p: verify_source(WORKSPACE, p, source_lock[p]) for p in
                ["work/extract/MAP001.SNF", "work/extract/MAP001.TWN", "work/extract/MAP001.V1N"]}
+    source_path = "work/extract/MAP001.TWN"
+    raw = sources[source_path]
+    block = map001_blocks(raw)[0]
+    begin = block["payload_offset"]
+    source_tiles, _ = decode_mode5(raw[begin:begin+block["size"]])
+    if source_tiles != vram[0x40000:0x80000]:
+        raise ValueError("Source-decoded tiles differ from reference snapshot")
+    # Placement remains snapshot-derived; pixel bytes now come from the source.
+    vram = vram[:0x40000] + source_tiles
     output = PROJECT / "reports/background"
     output.mkdir(parents=True, exist_ok=True)
     layers = []
@@ -119,12 +129,22 @@ def run() -> dict:
                         while start >= 0:
                             matches.append({"source": path, "offset": start})
                             start = raw.find(payload, start+1)
-                tiles[address] = {"offset": address, "sha256": digest(payload), "matches": matches}
+                decoded_offset = address - 0x40000
+                origin = None
+                if 0 <= decoded_offset <= len(source_tiles)-256:
+                    origin = {"source":source_path,"compressed_block_offset":begin,
+                              "decoded_offset":decoded_offset,"decoded_bytes":256,
+                              "asset_id":f"map001_bg_{decoded_offset:05x}"}
+                tiles[address] = {"offset": address, "sha256": digest(payload), "matches": matches,
+                                  "decoded_source":origin}
         layers.append({"parameters": params, "entries": {str(k): v for k,v in page_entries.items()},
                        "tiles": list(tiles.values()), "unique_tiles": len(tiles),
-                       "exact_source_tiles": sum(bool(t["matches"]) for t in tiles.values())})
+                       "exact_source_tiles": sum(bool(t["matches"]) for t in tiles.values()),
+                       "decoded_source_tiles":sum(t["decoded_source"] is not None for t in tiles.values())})
     result = {"schema": "ao_pc_background_pages_v1", "snapshot_sha256": lock["sha256"],
               "vram_sha256": digest(vram), "cram_sha256": digest(cram), "layers": layers,
+              "tile_source":{"path":source_path,"sha256":digest(raw),"payload_offset":begin,
+                             "decoded_sha256":digest(source_tiles)},
               "limits": ["Diagnostic static NBG0/1 pages, not final screen reconstruction.",
                          "No VRAM cycle pipeline, color offsets, windows, priority, special color calculation, sprites or NBG3.",
                          "No collision or map identity inferred; negative byte matches do not rule out compressed source."]}

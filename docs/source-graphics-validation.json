@@ -1,0 +1,61 @@
+{
+  "date": "2026-09-09",
+  "source_sha256": "8216f3dfd7ae8ca7fb8cee0129f7431de7f72939e75b22be1a74f030bf4535e9",
+  "decoded_blocks": [
+    {
+      "tag": 1,
+      "index": 1,
+      "header_offset": 62000,
+      "payload_offset": 62008,
+      "size": 96732,
+      "sha256": "0f0e80fb3dc55d2ce342d16e34aa3a3f3e4a454de2f0c1185c2a3ed39bdfcd8a",
+      "decoded_size": 262144,
+      "decoded_sha256": "1cd20cdec5fd885aae0f79bb583154c6b4c7165ac598455add8b686b77dfec7b",
+      "compressed_consumed": 96729,
+      "padding": 3,
+      "alignment_tail_hex": "010101"
+    },
+    {
+      "tag": 2,
+      "index": 1,
+      "header_offset": 158740,
+      "payload_offset": 158748,
+      "size": 18264,
+      "sha256": "ec0d6ad187646b384465677ea794cd894048d543356af66016f2f34ad07d60bc",
+      "decoded_size": 65536,
+      "decoded_sha256": "318fcae9ccaa0e1ff52514b69402bb1e639354adc6544cd48f5d0f98ec36d685",
+      "compressed_consumed": 18264,
+      "padding": 0,
+      "alignment_tail_hex": ""
+    }
+  ],
+  "transfer_evidence": {
+    "vram_start": 262144,
+    "bytes": 262144,
+    "exact_match": true,
+    "sha256": "1cd20cdec5fd885aae0f79bb583154c6b4c7165ac598455add8b686b77dfec7b",
+    "runtime_upload_call_verified": false
+  },
+  "layers": [
+    {
+      "layer": 0,
+      "tiles": 164,
+      "decoded_source_tiles": 164
+    },
+    {
+      "layer": 1,
+      "tiles": 176,
+      "decoded_source_tiles": 176
+    }
+  ],
+  "prior_png_match": {
+    "nbg0-page-00000.png": true,
+    "nbg0-viewport.png": true,
+    "nbg1-page-02000.png": true,
+    "nbg1-viewport.png": true
+  },
+  "python_tests": 33,
+  "godot_contract_checks": 14,
+  "godot_workbench_checks": 9,
+  "stage_b_passed": false
+}

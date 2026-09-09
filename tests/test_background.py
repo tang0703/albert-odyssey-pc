@@ -62,6 +62,7 @@ class BackgroundTests(unittest.TestCase):
         report=b.run()
         self.assertEqual([r["unique_tiles"] for r in report["layers"]],[164,176])
         self.assertEqual([r["exact_source_tiles"] for r in report["layers"]],[0,0])
+        self.assertEqual([r["decoded_source_tiles"] for r in report["layers"]],[164,176])
         self.assertEqual(len(report["layers"][0]["entries"]["0"]),1024)
 
 
