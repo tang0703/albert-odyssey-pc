@@ -1,0 +1,13 @@
+{
+  "schema": "ao_pc_source_lock_v1",
+  "sources": {
+    "work/extract/MAP001.TWN": "8216f3dfd7ae8ca7fb8cee0129f7431de7f72939e75b22be1a74f030bf4535e9",
+    "work/extract/MAP001.SNF": "ffc0d8653e82b29303f2ec4e48a738cb15c8ea5779ec1288ef73ed34f8365232",
+    "work/extract/MAP001.V1N": "dcad16cc0fe4f843fbb3eba134adf264c66352ab590e4ace14381cd0b6fbf9a4",
+    "work/extract/ACPAIK.AIF": "bd4579904cba2120922c34fd7fae387e109fa3037753b2d08ced9b8bb5448bb5",
+    "work/extract/BATTLE.BIN": "3940a6c699c655830c3c9d90aae0c0948d2fc108c32b73314d644c92c8069c1e",
+    "work/extract/TWN.BIN": "fa6596ad52b4980328a495f887b1aced6b9bc41ce48e47ebfd9081c9b48e1be6",
+    "work/analysis/dialogue_twn_all_descriptors.json": "0a4d6425e0394d0bc4090f04bf941dd1f34f508f444188fe654521a1c1a435d5",
+    "translation/zh-TW/dialogue_twn_all.tsv": "c3f8890884e131167697d260c38f97ead486158a85043d4f3a8e5923386c3fdd"
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Godot_v4.7.2-stable_win64.exe.zip",
+    "url": "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_win64.exe.zip",
+    "sha256": "731980F9608D61333E5BAF54A2EF17210ACC7A538446C0CB9969F002ACA1E953",
+    "bytes": 86013866
+  },
+  {
+    "name": "Godot_v4.7.2-stable_export_templates.tpz",
+    "url": "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz",
+    "sha256": "F298490B8D44D934BE425A5A65A51BF15F422428B229A06A6E11D9FFEA248011",
+    "bytes": 1281349702
+  },
+  {
+    "name": "SHA512-SUMS.txt",
+    "url": "https://github.com/godotengine/godot/releases/download/4.7.2-stable/SHA512-SUMS.txt",
+    "sha256": "B8BDFF6704F833E7A021DF16EC08E1478EDD5A285C1F894929B91A7F74A5C7C0",
+    "bytes": 5682
+  },
+  {
+    "name": "krita-x64-5.3.3.zip",
+    "url": "https://download.kde.org/stable/krita/5.3.3/krita-x64-5.3.3.zip",
+    "sha256": "87278594FAC0267680303280E410578388D606AEC5A290F2B0D009909F4254F0",
+    "bytes": 226801003
+  }
+]

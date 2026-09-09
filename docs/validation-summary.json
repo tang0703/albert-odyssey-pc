@@ -1,0 +1,139 @@
+{
+  "scope": "development foundation; Stage B not accepted; not a playable remake",
+  "toolchain": {
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "python": "3.13.5",
+    "pillow": "11.3.0",
+    "numpy": "2.3.2",
+    "krita": "5.3.3 extracted; GUI sample not accepted",
+    "ghidra": "TWN.BIN SH-2 headless import passed",
+    "tile_molester": "JAR exists; GUI sample not accepted"
+  },
+  "git_author": "MK <tang0703@gmail.com>",
+  "checks": {
+    "runtime-tests.json": {
+      "checks": 14,
+      "failures": [],
+      "scope": "synthetic_PC_contracts_not_original_gameplay"
+    },
+    "workbench-tests.json": {
+      "history_tracks_visited_pages": true,
+      "next_page_changes_text": true,
+      "page_lower_bound": true,
+      "page_upper_bound": true,
+      "playability_gate_closed": true,
+      "previous_page_restores_text": true,
+      "real_records_loaded": true,
+      "real_textures_loaded": true
+    },
+    "pipeline.json": {
+      "stage_a": "tool_verification_in_progress",
+      "stage_b": "blocked",
+      "stage_c": "not_started",
+      "stage_d": "not_started",
+      "stage_e": "not_started",
+      "playable": false,
+      "verified_dialogue_records": 137,
+      "verified_dialogue_pages": 241,
+      "structural_texture_records": 253,
+      "snf_chunks": 12,
+      "audio": {
+        "format": "AIFF PCM big-endian",
+        "channels": 1,
+        "frames": 36462,
+        "bits": 16,
+        "sample_rate": 22050.0,
+        "seconds": 1.6536054421768707,
+        "loop_status": "not_validated",
+        "role": "not_inferred_from_filename"
+      },
+      "blockers": [
+        {
+          "id": "map_layers",
+          "detail": "Background layers, tile placement and collision have not been decoded and compared with MAP001 gameplay."
+        },
+        {
+          "id": "sprite_binding",
+          "detail": "V1N palette, actor identity, anchor and animation timing are not yet bound to runtime evidence."
+        },
+        {
+          "id": "event_reachability",
+          "detail": "Verified text records are not a map event graph; NPC placement and event triggers are unresolved."
+        },
+        {
+          "id": "battle_rules",
+          "detail": "Original battle formulas, encounter and return-to-map state are not yet reconstructed."
+        }
+      ],
+      "package_sha256": "4f7bd3281f2944f9b69c6288fc3be42e22a834c18102b3aa2f7ea0fda4b9a94d"
+    }
+  },
+  "render_qa": [
+    {
+      "average_frame_ms": 16.6657555555556,
+      "engine_static_memory_bytes": 89927392,
+      "height": 1080,
+      "image_error": 0,
+      "p95_frame_ms": 16.765,
+      "playable": false,
+      "requested_height": 1080,
+      "requested_width": 1920,
+      "sample_frames": 180,
+      "scope": "asset_workbench_only_not_gameplay",
+      "video_memory_bytes": 26597966.0,
+      "width": 1920
+    },
+    {
+      "average_frame_ms": 16.6660444444445,
+      "engine_static_memory_bytes": 105216812,
+      "height": 1440,
+      "image_error": 0,
+      "p95_frame_ms": 16.771,
+      "playable": false,
+      "requested_height": 1440,
+      "requested_width": 2560,
+      "sample_frames": 180,
+      "scope": "asset_workbench_only_not_gameplay",
+      "video_memory_bytes": 40375546.0,
+      "width": 2560
+    },
+    {
+      "average_frame_ms": 16.6663444444444,
+      "engine_static_memory_bytes": 144440148,
+      "height": 2160,
+      "image_error": 0,
+      "p95_frame_ms": 16.772,
+      "playable": false,
+      "requested_height": 2160,
+      "requested_width": 3840,
+      "sample_frames": 180,
+      "scope": "asset_workbench_only_not_gameplay",
+      "video_memory_bytes": 79600542.0,
+      "width": 3840
+    }
+  ],
+  "evidence": [
+    {
+      "path": "reports/v1n-evidence.json",
+      "sha256": "3a644d09a6e288dfa8a43c97a9946b3ee61733d793274770c20e8737713e8c3c"
+    },
+    {
+      "path": "reports/ghidra-import.log",
+      "sha256": "3bfdcd708eb4a090c3b85d299a296d6b01634ca0f84c466c91d7c25d3761bf8f"
+    },
+    {
+      "path": "reports/python-tests.log",
+      "sha256": "1e5326710d341c698411681f73e88b35bd8861c1cd1daf28dab035c3622386ad"
+    },
+    {
+      "path": "reports/standalone-4k/render.json",
+      "sha256": "7603f9ff4300dbb73d174e5fe2708f1059f9a64c8a69685d9d81459cc14a45f9"
+    }
+  ],
+  "v1n": {
+    "map001_records": 253,
+    "exact_snapshot_matches": 242,
+    "survey_files": 76,
+    "complete_parses": 72
+  }
+}

@@ -1,0 +1,9 @@
+.godot/
+generated/
+reports/
+build/
+__pycache__/
+*.pyc
+.venv/
+data/local/
+art/local/
