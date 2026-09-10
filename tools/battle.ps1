@@ -17,7 +17,7 @@ function Checked([string[]]$Arguments,[string]$Name) {
 if ($Action -eq 'run') { & $Godot --path $Demo; exit $LASTEXITCODE }
 Checked @('--headless','--path',$Demo,'--editor','--import','--quit') 'battle-import'
 if ($Action -eq 'test') {
-    foreach ($Test in @('test_core','test_ui','timing')) {
+    foreach ($Test in @('test_core','test_ui','test_settings','timing')) {
         Checked @('--headless','--path',$Demo,'--script',("res://tests/"+$Test+'.gd')) ("battle-"+$Test)
     }
     Write-Output 'Battle core, UI and timing checks passed.'
@@ -26,6 +26,8 @@ if ($Action -eq 'test') {
 $Output=Join-Path $PcRoot 'build/battle-demo'
 New-Item -ItemType Directory -Force $Output | Out-Null
 Checked @('--headless','--path',$Demo,'--export-release','Windows Battle Demo') 'battle-export'
+& (Join-Path $Workspace 'tools/pc-remake/python/Scripts/python.exe') (Join-Path $PSScriptRoot 'audit_battle_package.py')
+if ($LASTEXITCODE -ne 0) { throw 'Battle package audit failed.' }
 Copy-Item -LiteralPath (Join-Path $Demo 'README.md') -Destination (Join-Path $Output 'README.md')
 Copy-Item -LiteralPath (Join-Path $PcRoot 'licenses/GODOT-LICENSE.txt') -Destination $Output
 Copy-Item -LiteralPath (Join-Path $PcRoot 'licenses/GODOT-COPYRIGHT.txt') -Destination $Output

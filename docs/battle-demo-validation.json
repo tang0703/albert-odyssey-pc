@@ -1,0 +1,93 @@
+{
+  "schema": "battle_demo_validation_v1",
+  "date": "2026-09-10",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "gpu": "NVIDIA GeForce RTX 4070 Ti SUPER",
+  "rules": "new deterministic demo rules, not original-game reconstruction",
+  "tests": {
+    "core_assertions": 173,
+    "ui_checks": 19,
+    "settings_checks": 5,
+    "fps_speed_combinations": 6,
+    "regression_python": 55,
+    "regression_godot": 23,
+    "package_negative_checks": 3
+  },
+  "resolutions": [
+    {
+      "size": [
+        1920,
+        1080
+      ],
+      "p95_ms": 16.845,
+      "screenshot_sha256": "6361744a057beaff8be46ff7500c4cd29b134843648bc1170e55c54865514088"
+    },
+    {
+      "size": [
+        2560,
+        1440
+      ],
+      "p95_ms": 16.937,
+      "screenshot_sha256": "ebf9a6bed835417a683cde8b2b82bd40b2083e6deb57192f3239152e6e972c8f"
+    },
+    {
+      "size": [
+        3840,
+        2160
+      ],
+      "p95_ms": 16.736,
+      "screenshot_sha256": "f8850fd8674c37b79362e46b79b2bb7b1b0ea9ae7cff86d7806bdd13feafc0a9"
+    }
+  ],
+  "soak": {
+    "actions": 688,
+    "battles": 36,
+    "frames": 35842,
+    "max_ms": 173.975,
+    "mean_ms": 16.6850886948274,
+    "p95_ms": 16.799,
+    "seconds": 600.012762,
+    "size": [
+      3840,
+      2160
+    ],
+    "speed": 1.0,
+    "average_fps": 59.9337539218484,
+    "renderer_video_peak_bytes": 84638137.0,
+    "node_count_range": [
+      72.0,
+      75.0
+    ],
+    "memory_static_available": false,
+    "working_set": {
+      "peak_bytes": 292724736,
+      "median_60_to_120_seconds": 288864256.0,
+      "median_last_minute": 286507008
+    },
+    "private_bytes": {
+      "peak_bytes": 370585600,
+      "median_60_to_120_seconds": 370388992.0,
+      "median_last_minute": 366702592
+    }
+  },
+  "package": {
+    "zip_bytes": 39314439,
+    "zip_sha256": "ead6cbd2e6a4f6b68c590a266a381b06735540cbf3adc07ea3cdfc7d125e5c36",
+    "files": [
+      "GODOT-COPYRIGHT.txt",
+      "GODOT-LICENSE.txt",
+      "README.md",
+      "Triad-Trial.exe",
+      "Triad-Trial.pck"
+    ],
+    "pck_sha256": "783d3222e5f9a64e139d1b5115ebb167bf18fb234a280c53d09f3fb8728cdf24",
+    "approved_pck_resources": 15
+  },
+  "limits": [
+    "Automated input and battle-loop testing; not an original-game behavior acceptance.",
+    "One 173.975 ms frame spike remains in the measurement; no zero-stutter claim.",
+    "A screenshot and background headless validation ran during the measurement; spike cause was not isolated.",
+    "Renderer video-memory counters are not total GPU memory use.",
+    "Original-game Stage B is unchanged."
+  ]
+}

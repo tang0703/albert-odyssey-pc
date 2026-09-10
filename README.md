@@ -3,6 +3,18 @@
 目前交付的是 **Godot 資源驗證台與可重跑的逆向／匯入工具**，不是已完成的可玩切片。
 Stage B 仍未通過，尚未實作原作地圖探索、碰撞、完整事件或戰鬥。
 
+2026-09-10 新增 **三曜試煉：獨立三對三戰鬥 demo**。這是採新規則與原創簡易角色的
+可玩原型，不依賴原作素材，與上面的原作還原關卡分開驗收。
+操作與規則見 [Demo 說明](battle-demo/README.md)，測試與交付見 [驗收紀錄](docs/BATTLE_DEMO.md)。
+
+```powershell
+.\tools\battle.ps1 -Action run
+.\tools\battle.ps1 -Action test
+.\tools\battle.ps1 -Action export
+```
+
+Windows 套件：`build/Triad-Trial-Windows-x64.zip`；完整解壓後執行 `Triad-Trial.exe`。
+
 ## 使用
 
 在此目錄使用 PowerShell：
