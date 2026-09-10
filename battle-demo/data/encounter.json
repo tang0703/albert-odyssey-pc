@@ -1,0 +1,20 @@
+{
+  "id": "trial_01",
+  "units": [
+    {"id":"guardian","name":"守衛","side":"party","hp":160,"mp":20,"attack":28,"defense":12,"magic":8,"speed":12,"skill":"heavy","appearance":"guardian"},
+    {"id":"mage","name":"術士","side":"party","hp":100,"mp":36,"attack":14,"defense":6,"magic":30,"speed":18,"skill":"wave","appearance":"mage"},
+    {"id":"healer","name":"醫者","side":"party","hp":120,"mp":30,"attack":18,"defense":8,"magic":24,"speed":15,"skill":"heal","appearance":"healer"},
+    {"id":"armor","name":"重甲兵","side":"enemy","hp":150,"mp":0,"attack":24,"defense":14,"magic":0,"speed":8,"skill":"attack","appearance":"armor"},
+    {"id":"scout","name":"斥候","side":"enemy","hp":90,"mp":0,"attack":20,"defense":6,"magic":0,"speed":22,"skill":"attack","appearance":"scout"},
+    {"id":"enemy_mage","name":"敵方法師","side":"enemy","hp":100,"mp":24,"attack":12,"defense":5,"magic":22,"speed":16,"skill":"fire","appearance":"enemy_mage"}
+  ],
+  "skills": {
+    "attack":{"name":"攻擊","kind":"physical","multiplier":1.0,"cost":0,"target":"foe","description":"單體物理傷害"},
+    "heavy":{"name":"重擊","kind":"physical","multiplier":1.8,"cost":5,"target":"foe","description":"1.8 倍攻擊力的單體重擊"},
+    "wave":{"name":"火焰波","kind":"magic","cost":8,"target":"all_foes","description":"攻擊所有存活敵人"},
+    "fire":{"name":"火球","kind":"magic","cost":6,"target":"foe","description":"單體魔法傷害"},
+    "heal":{"name":"治療","kind":"heal","cost":6,"target":"ally","description":"恢復魔力 × 2 HP；不能復活"},
+    "potion":{"name":"藥水","kind":"potion","cost":0,"target":"ally","description":"恢復 50 HP；全隊每場 3 瓶"},
+    "guard":{"name":"防禦","kind":"guard","cost":0,"target":"self","description":"減傷 50%，至自身下次行動開始"}
+  }
+}
