@@ -1,0 +1,8 @@
+{
+  "guardian":{"shape":"shield","color":"79cdd4","anchor":[0.5,1.0],"scale":1.0,"states":{"idle":[],"attack":[],"hurt":[],"down":[]}},
+  "mage":{"shape":"staff","color":"8f9dff","anchor":[0.5,1.0],"scale":1.0,"states":{"idle":[],"attack":[],"hurt":[],"down":[]}},
+  "healer":{"shape":"staff","color":"9bdebb","anchor":[0.5,1.0],"scale":1.0,"states":{"idle":[],"attack":[],"hurt":[],"down":[]}},
+  "armor":{"shape":"shield","color":"e19b79","anchor":[0.5,1.0],"scale":1.1,"states":{"idle":[],"attack":[],"hurt":[],"down":[]}},
+  "scout":{"shape":"blade","color":"e8be78","anchor":[0.5,1.0],"scale":0.9,"states":{"idle":[],"attack":[],"hurt":[],"down":[]}},
+  "enemy_mage":{"shape":"staff","color":"d996c9","anchor":[0.5,1.0],"scale":1.0,"states":{"idle":[],"attack":[],"hurt":[],"down":[]}}
+}
