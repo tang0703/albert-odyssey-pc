@@ -205,7 +205,7 @@ func build_ui() -> void:
 	for i: int in range(battle.units.size()):
 		var unit: Dictionary = battle.units[i]
 		var fighter := Fighter.new()
-		var load_error: String = fighter.configure(appearances.get(unit["appearance"], {}))
+		var load_error: String = fighter.configure(appearances.get(unit["appearance"], {"renderer":"missing appearance " + str(unit["appearance"])}))
 		if not appearances.has(unit["appearance"]): load_error = "Missing appearance: " + str(unit["appearance"])
 		if not load_error.is_empty(): startup_errors.append(str(unit["id"]) + ": " + load_error)
 		fighter.facing = 1.0 if unit["side"] == "party" else -1.0
@@ -278,7 +278,7 @@ func build_ui() -> void:
 	log_view.scroll_following = true
 	log_view.add_theme_font_size_override("normal_font_size",21)
 	column.add_child(log_view)
-	column.add_child(label("方向鍵 選擇  ·  Enter 確認  ·  Esc 返回 / 暫停     |     原創測試角色，非原作戰鬥還原",19,"7995a8"))
+	column.add_child(label("方向鍵 選擇  ·  Enter 確認  ·  Esc 返回 / 暫停     |     角色重繪版 · 新規則戰鬥 DEMO",19,"7995a8"))
 	audio_player = AudioStreamPlayer.new()
 	add_child(audio_player)
 	title_overlay = PanelContainer.new()
@@ -296,7 +296,7 @@ func build_ui() -> void:
 	welcome.add_child(label("掌握行動順序，分配魔力，在攻守之間做出選擇。",26,"a8bdcb"))
 	start_button = button("開始戰鬥  →",start_battle)
 	welcome.add_child(start_button)
-	welcome.add_child(label("獨立新規則 demo｜原創簡易 2D 角色｜三人對三敵",22,"7995a8"))
+	welcome.add_child(label("獨立新規則 demo｜派克與 WEREDOG 重繪版｜三人對三敵",22,"7995a8"))
 	modal = PanelContainer.new()
 	modal.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	modal.add_theme_stylebox_override("panel",panel_style("101f30"))
@@ -529,7 +529,8 @@ func finish_presentation() -> void:
 	clear_popups()
 	for unit: Dictionary in battle.units:
 		# Completed down animations retain their final authored frame.
-		if unit["hp"] > 0: fighters[unit["id"]].state = "idle"
+		# Bystanders already idling retain their place in the authored cycle.
+		if unit["hp"] > 0 and fighters[unit["id"]].state != "idle": fighters[unit["id"]].state = "idle"
 	if log_view.get_line_count() > 90:
 		var lines: PackedStringArray = log_view.text.split("\n")
 		log_view.text = "\n".join(lines.slice(maxi(0,lines.size()-55)))

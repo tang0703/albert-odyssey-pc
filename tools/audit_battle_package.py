@@ -80,6 +80,17 @@ def approved_art(root: Path) -> dict[str, dict]:
             if not match or match[1] != hashlib.md5(source).hexdigest():
                 raise ValueError(f'Stale imported source: {name}')
         approved[name] = {'entry': entry, 'paths': paths, 'remap': text.split('[deps]', 1)[0].strip()}
+    appearances = json.loads(local_bytes(root, 'data/appearances.json'))
+    referenced = set()
+    for appearance in appearances.values():
+        if appearance.get('renderer') != 'sprite':
+            continue
+        for state in appearance.get('states', {}).values():
+            if not isinstance(state, dict) or not isinstance(state.get('frames'), list):
+                raise ValueError('Sprite appearance has invalid frame definitions')
+            referenced.update(resource_path(path) for path in state['frames'])
+    if referenced != set(approved):
+        raise ValueError(f'Appearance/manifest asset mismatch; unapproved={sorted(referenced - set(approved))}, unused={sorted(set(approved) - referenced)}')
     return approved
 
 

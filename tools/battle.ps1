@@ -35,11 +35,14 @@ if ($LASTEXITCODE -ne 0) { throw 'Battle package audit failed.' }
 Copy-Item -LiteralPath (Join-Path $Demo 'README.md') -Destination (Join-Path $Output 'README.md')
 Copy-Item -LiteralPath (Join-Path $PcRoot 'licenses/GODOT-LICENSE.txt') -Destination $Output
 Copy-Item -LiteralPath (Join-Path $PcRoot 'licenses/GODOT-COPYRIGHT.txt') -Destination $Output
+Checked @('--headless','--path',$PcRoot,'--log-file',(Join-Path $Reports 'battle-preview-engine.log'),'--script','res://tools/preview_battle_animations.gd') 'battle-preview-build'
+Copy-Item -LiteralPath (Join-Path $Reports 'character-animation-preview.html') -Destination (Join-Path $Output 'Animation-Preview.html')
+Copy-Item -LiteralPath (Join-Path $PcRoot 'licenses/BATTLE-ART-NOTICE.txt') -Destination $Output
 $SourceCommit=(& git -c ('safe.directory='+$PcRoot.Replace('\','/')) -C $PcRoot rev-parse HEAD).Trim()
 if ($LASTEXITCODE -ne 0) { throw 'Cannot record source commit.' }
 $SourceDirty=[bool](& git -c ('safe.directory='+$PcRoot.Replace('\','/')) -C $PcRoot status --porcelain --untracked-files=normal)
 $BuildInfo=[ordered]@{schema='battle_demo_build_v1';source_commit=$SourceCommit;source_has_uncommitted_changes=$SourceDirty;godot='4.7.2';built_utc=(Get-Date).ToUniversalTime().ToString('o');files=@()}
-$Required=@('Triad-Trial.exe','Triad-Trial.pck','README.md','GODOT-LICENSE.txt','GODOT-COPYRIGHT.txt')
+$Required=@('Triad-Trial.exe','Triad-Trial.pck','README.md','GODOT-LICENSE.txt','GODOT-COPYRIGHT.txt','Animation-Preview.html','BATTLE-ART-NOTICE.txt')
 foreach ($Name in $Required) {
     if (-not (Test-Path -LiteralPath (Join-Path $Output $Name) -PathType Leaf)) { throw ('Missing delivery file: '+$Name) }
 }

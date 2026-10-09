@@ -204,14 +204,19 @@ func _draw() -> void:
 	draw_set_transform(origin)
 	paint_ellipse(Vector2.ZERO, Vector2(58, 12), Color(0.0, 0.0, 0.0, 0.3))
 	if selected or active:
-		draw_arc(Vector2(0,-2), 55, 0, TAU, 48, Color("f6d99b") if selected else color, 3, true)
+		var ring := PackedVector2Array()
+		for i: int in range(49):
+			var angle: float = i * TAU / 48.0
+			ring.append(Vector2(cos(angle) * 59.0,sin(angle) * 11.0 - 2.0))
+		draw_polyline(ring,Color("f6d99b") if selected else color,3.0,true)
 	if renderer == "sprite":
 		var frames: Array = animation_states[state]["frames"]
 		var texture: Texture2D = texture_cache[frames[frame_index]]
 		var extent: Vector2 = texture.get_size() * float(appearance.get("scale", 1.0))
 		var anchor: Array = appearance.get("anchor", [0.5, 1.0])
 		draw_set_transform(origin, 0.0, Vector2(facing_multiplier(), 1.0))
-		draw_texture_rect(texture, Rect2(-extent * Vector2(anchor[0], anchor[1]), extent), false)
+		var tint: Color = Color(1.5,1.5,1.5) if state == "hurt" and animation_elapsed < 0.07 else Color.WHITE
+		draw_texture_rect(texture, Rect2(-extent * Vector2(anchor[0], anchor[1]), extent), false,tint)
 		return
 	var lean: float = 12.0 if state == "attack" else 0.0
 	var bob: float = sin(clock * 2.5) * 2.5 if state == "idle" else 0.0

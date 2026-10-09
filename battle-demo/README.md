@@ -1,12 +1,16 @@
 # 三曜試煉 · 戰鬥 Demo
 
-這是採用新規則的三人對三敵回合制原型。角色與舞台為程式繪製的原創簡易素材，
-不是 Albert Odyssey 原作戰鬥還原；不含原作光碟、BIOS、抽取圖片、文字或存檔。
+這是採用新規則的三人對三敵回合制原型。第二輪加入派克與 WEREDOG 重繪外觀，
+其餘四名及舞台保留程式繪製素材。這些是新繪動畫，不是原作戰鬥還原；
+不含原作光碟、BIOS、抽取圖片、參考截圖或原作存檔。
 
 ## 開始
 
 Windows x64：完整解壓 ZIP，將 `Triad-Trial.exe` 與 `Triad-Trial.pck` 放在同一資料夾，
 雙擊 `Triad-Trial.exe`，按「開始戰鬥」。不需安裝 Godot。
+
+用瀏覽器開啟 `Animation-Preview.html` 可離線查看兩角八組動作、暫停、倍速、翻轉與透明邊緣。
+預覽中待機循環，其他動作停在末格；按「重新播放」再次檢視。
 
 ## 操作
 
@@ -36,6 +40,8 @@ Windows x64：完整解壓 ZIP，將 `Triad-Trial.exe` 與 `Triad-Trial.pck` 放
 
 在上一層專案使用 `tools/battle.ps1 -Action test`、`-Action export`、`-Action run`。
 這條建置流程不執行原作資源匯入。角色數值、技能、遭遇與外觀分開設定。
-外觀 states 可填入此專案內的影格路徑，空陣列使用程式繪製角色；錨點、比例只影響顯示。
+外觀使用明確的 `sprite` 或 `procedural` renderer。重繪角色每角 16 幀，統一 512×512；
+每動作保存影格、逐幀時長、循環方式及命中點，圖片在戰前預載。必要影格缺失會禁止開始。
+角色數值與外觀分開：派克沿用 guardian、WEREDOG 沿用 scout 的數值與技能。
 
-Godot MIT 授權與第三方聲明隨 ZIP 附上。
+Godot MIT 授權、第三方聲明及 `BATTLE-ART-NOTICE.txt` 隨 ZIP 附上。

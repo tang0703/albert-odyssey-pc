@@ -65,6 +65,10 @@ class PackageTests(unittest.TestCase):
         self.write(self.compiled[:-5] + '.md5', f'source_md5="{hashlib.md5(source).hexdigest()}"\n'.encode())
         self.files[self.name + '.import'] = self.remap.encode() + b'\0'
         self.files[self.compiled] = b'imported pixels'
+        self.appearances = {'guardian': {'renderer': 'sprite', 'states': {'idle': {'frames': ['res://' + self.name]}}}}
+        appearances_raw = json.dumps(self.appearances).encode()
+        self.write('data/appearances.json', appearances_raw)
+        self.files['data/appearances.json'] = appearances_raw
 
     def check(self):
         return package.audit(pck(self.files), self.root)
@@ -114,6 +118,17 @@ class PackageTests(unittest.TestCase):
         for name in ('../secret.png', 'assets/../secret.png', 'G:/secret.png', 'assets\\secret.png'):
             with self.subTest(name=name), self.assertRaises(ValueError):
                 package.resource_path(name)
+
+    def test_appearance_and_manifest_must_reference_exact_same_assets(self):
+        self.add_art()
+        self.appearances['guardian']['states']['idle']['frames'].append('res://assets/unapproved.png')
+        self.write('data/appearances.json', json.dumps(self.appearances).encode())
+        with self.assertRaisesRegex(ValueError, 'unapproved='):
+            self.check()
+        self.appearances['guardian']['states']['idle']['frames'] = []
+        self.write('data/appearances.json', json.dumps(self.appearances).encode())
+        with self.assertRaisesRegex(ValueError, 'unused='):
+            self.check()
 
     def test_missing_resource_wrong_definition_and_truncated_directory(self):
         del self.files['core.gdc']

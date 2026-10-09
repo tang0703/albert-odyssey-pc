@@ -6,6 +6,7 @@ var end_after_down: bool = true
 var fixed_commands: Array[Dictionary] = []
 var impact_kinds: Dictionary = {}
 var impacts_match_actions: bool = true
+var bystander_idle_checkpoint: float = -1.0
 
 func check(value: bool, message: String) -> void:
 	checks += 1
@@ -99,7 +100,11 @@ func run() -> void:
 	ui.ui_test_mode = true
 	ui.settings_enabled = false
 	root.add_child(ui)
-	ui.presentation_finished.connect(func() -> void: completions += 1)
+	ui.presentation_finished.connect(func() -> void:
+		completions += 1
+		if bystander_idle_checkpoint >= 0.0:
+			check(ui.fighters["healer"].state == "idle" and ui.fighters["healer"].clock >= bystander_idle_checkpoint,"finishing an action preserves bystander idle progress")
+			bystander_idle_checkpoint = -1.0)
 	ui.effect_presented.connect(func(event: Dictionary) -> void:
 		effects.append(event)
 		if event["type"] == "damage":
@@ -117,6 +122,10 @@ func run() -> void:
 	check(ui.title_overlay.visible and not ui.started,"title entry")
 	await key(KEY_ENTER)
 	check(ui.started and not ui.title_overlay.visible,"keyboard start")
+	# The healer is a bystander in the initial enemy action. Record nonzero
+	# progress and inspect it in the completion callback, not after a timed frame.
+	ui.fighters["healer"].advance_animation(0.37)
+	bystander_idle_checkpoint = ui.fighters["healer"].clock
 	# Core resolves immediately; the view waits for the authored hit point.
 	var request: Dictionary = ui.battle.enemy_command()
 	var target: String = request["target"]
