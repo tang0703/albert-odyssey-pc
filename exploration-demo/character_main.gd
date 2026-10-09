@@ -6,6 +6,8 @@ const CharacterBundle = preload("res://character_loader.gd")
 const AnimationModel = preload("res://character_animation_core.gd")
 const SourceLayer = preload("res://character_layer.gd")
 const PriorityShader = preload("res://character_priority.gdshader")
+const HdBundle = preload("res://character_hd_loader.gd")
+const HdAnimation = preload("res://character_hd_animation.gd")
 
 var character_bundle: Dictionary = {}
 var character_override: Dictionary = {}
@@ -14,7 +16,11 @@ var animation_state: Dictionary = {}
 var displayed_actor: Dictionary = {}
 var presentation_queue: Array[Dictionary] = []
 var display_delay: int = 0
-var appearance_mode: String = "original"
+var appearance_mode: String = "hd"
+var hd_bundle: Dictionary = {}
+var hd_manifest_sha256: String = ""
+var character_manifest_sha256: String = ""
+var render_phase: float = 0.0
 var appearance_select: OptionButton
 var animation_label: Label
 var presentation_updates: int = 0
@@ -24,9 +30,11 @@ var priority_material: ShaderMaterial
 func _ready() -> void:
 	var scene_directory: String = Bundle.default_directory()
 	var character_directory: String = CharacterBundle.default_directory()
+	var hd_directory: String = HdBundle.default_directory()
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--scene-package="): scene_directory = arg.trim_prefix("--scene-package=")
 		if arg.begins_with("--character-package="): character_directory = arg.trim_prefix("--character-package=")
+		if arg.begins_with("--hd-package="): hd_directory = arg.trim_prefix("--hd-package=")
 	if bundle_override.is_empty(): bundle_override = Bundle.load_bundle(scene_directory)
 	if bundle_override.get("ok", false):
 		var scene_pin: Variant = Bundle.read_json("res://bundle-pin.json")
@@ -40,7 +48,12 @@ func _ready() -> void:
 				animator = AnimationModel.new()
 				var configured: Dictionary = animator.configure(character_bundle.profile, character_bundle.animation_bank, character_bundle.image_table)
 				if not configured.get("ok", false): startup_error = str(configured.error)
-				else: display_delay = int(character_bundle.presentation.actor_to_video_delay_updates)
+				else:
+					display_delay = int(character_bundle.presentation.actor_to_video_delay_updates)
+					character_manifest_sha256 = FileAccess.get_sha256(character_directory.path_join("package.json"))
+					hd_bundle = HdBundle.load_bundle(hd_directory, str(scene_pin.get("manifest_sha256", "")), character_manifest_sha256)
+					if not hd_bundle.get("ok", false): startup_error = str(hd_bundle.get("error", "高清外觀包未核准。"))
+					else: hd_manifest_sha256 = FileAccess.get_sha256(hd_directory.path_join("package.json"))
 	super._ready()
 	if startup_error.is_empty():
 		priority_material = ShaderMaterial.new()
@@ -69,10 +82,11 @@ func build_ui() -> void:
 	side.add_child(row)
 	side.move_child(row, 2)
 	appearance_select = OptionButton.new()
+	appearance_select.add_item("高清重繪")
 	appearance_select.add_item("原作像素")
 	appearance_select.add_item("診斷標記")
 	appearance_select.custom_minimum_size = Vector2(190, 44)
-	appearance_select.item_selected.connect(func(index: int) -> void: change_appearance("original" if index == 0 else "marker"))
+	appearance_select.item_selected.connect(func(index: int) -> void: change_appearance(["hd", "original", "marker"][index]))
 	row.add_child(appearance_select)
 	animation_label = make_label("", 19, "acc8c5")
 	animation_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -93,6 +107,9 @@ func prepare_update_presentation(result: Dictionary) -> String:
 	var next_display: Dictionary = incoming if presentation_queue.is_empty() else presentation_queue[0]
 	var displayed_frame: Dictionary = CharacterBundle.lookup(character_bundle, next_display)
 	if not displayed_frame.get("ok", false): return str(displayed_frame.get("error", "缺少排程中的必要角色影格。"))
+	for candidate: Dictionary in [incoming, next_display]:
+		var hd_error: String = validate_hd_interval(candidate)
+		if not hd_error.is_empty(): return hd_error
 	var ordered: Dictionary = CharacterBundle.draw_order(character_bundle, next_display, source_camera())
 	if not ordered.get("ok", false): return str(ordered.get("error", "場景繪製順序未驗證。"))
 	animation_state = animated.state
@@ -101,7 +118,19 @@ func prepare_update_presentation(result: Dictionary) -> String:
 	presentation_updates += 1
 	return ""
 
+func validate_hd_interval(candidate: Dictionary) -> String:
+	# Any of the interval's three poses may be selected after a step resets the
+	# render fraction or a later render crosses a fractional pose boundary.
+	for timer: int in [0, 4, 7]:
+		var sample: Dictionary = candidate.duplicate(true)
+		if int(sample.status_word) & 2: sample.animation_timer = timer
+		var selected: Dictionary = HdAnimation.select(sample, 0.0)
+		var frame: Dictionary = HdBundle.lookup(hd_bundle, selected)
+		if not frame.get("ok", false): return str(frame.get("error", "缺少必要高清影格。"))
+	return ""
+
 func reset_state() -> void:
+	render_phase = 0.0
 	if animator != null and startup_error.is_empty():
 		animation_state = animator.initial_state()
 		displayed_actor = character_bundle.profile.initial_state.duplicate(true)
@@ -111,19 +140,52 @@ func reset_state() -> void:
 	super.reset_state()
 
 func change_appearance(mode: String) -> void:
-	if not startup_error.is_empty() or mode not in ["original", "marker"]: return
+	if not startup_error.is_empty() or mode not in ["hd", "original", "marker"]: return
 	appearance_mode = mode
-	appearance_select.select(0 if mode == "original" else 1)
+	appearance_select.select(["hd", "original", "marker"].find(mode))
 	refresh()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		var key: int = event.physical_keycode if event.physical_keycode != 0 else event.keycode
 		if key == KEY_F2:
-			change_appearance("marker" if appearance_mode == "original" else "original")
+			var modes: Array[String] = ["hd", "original", "marker"]
+			change_appearance(modes[(modes.find(appearance_mode) + 1) % modes.size()])
 			get_viewport().set_input_as_handled()
 			return
 	super._input(event)
+
+func advance_time(delta: float) -> void:
+	if paused or not startup_error.is_empty(): return
+	var hd_error: String = validate_hd_interval(displayed_actor)
+	if not hd_error.is_empty():
+		startup_error = hd_error
+		paused = true
+		refresh()
+		return
+	var multiple: bool = not replay_mode and active_directions().size() > 1
+	if multiple:
+		advance_update()
+		return
+	super.advance_time(delta)
+	if diagnostics.get("reason", "") != "test_boundary" and startup_error.is_empty():
+		render_phase = clampf(accumulator / tick_seconds, 0.0, 0.999999999)
+		sync_source_layers()
+
+func toggle_pause() -> void:
+	if not startup_error.is_empty(): return
+	if replay_mode and trace_cursor >= bundle.traces[route_index].updates.size(): reset_state()
+	paused = not paused
+	# Retain fractional phase and logical accumulator on pause and resume.
+	refresh()
+
+func single_step() -> void:
+	var previous_updates: int = presentation_updates
+	var previous_accumulator: float = accumulator
+	super.single_step()
+	if presentation_updates != previous_updates: render_phase = 0.0
+	else: accumulator = previous_accumulator
+	sync_source_layers()
 
 func refresh() -> void:
 	super.refresh()
@@ -141,6 +203,7 @@ func draw_player(canvas: Control, origin: Vector2, zoom: float) -> void:
 func sync_source_layers() -> void:
 	if source_layers.is_empty() or displayed_actor.is_empty() or not startup_error.is_empty(): return
 	var selected: Dictionary = CharacterBundle.lookup(character_bundle, displayed_actor)
+	if appearance_mode == "hd": selected = HdBundle.lookup(hd_bundle, HdAnimation.select(displayed_actor, render_phase))
 	if not selected.get("ok", false):
 		startup_error = str(selected.get("error", "角色影格缺失。"))
 		paused = true
@@ -168,9 +231,16 @@ func sync_source_layers() -> void:
 		var world: Vector2 = world_position(displayed_actor) if player else Vector2(float(entry.world_xy_raw[0]), float(entry.world_xy_raw[1])) / 16.0
 		var anchor: Array = frame.anchor
 		var dimensions: Array = frame.dimensions
-		var top_left: Vector2 = (world - camera - Vector2(float(anchor[0]), float(anchor[1]))) * zoom
+		var art_scale: float = float(frame.display_scale) if player and appearance_mode == "hd" else 1.0
+		var top_left: Vector2 = (world - camera - Vector2(float(anchor[0]), float(anchor[1])) * art_scale) * zoom
 		var sprite_priority: int = 2 if player else int(entry.sprite_priority)
-		layer.show_sprite(image, Rect2(top_left, Vector2(float(dimensions[0]), float(dimensions[1])) * zoom), priority_material if sprite_priority == 2 else null, index)
+		layer.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR if player and appearance_mode == "hd" else CanvasItem.TEXTURE_FILTER_NEAREST
+		layer.show_sprite(image, Rect2(top_left, Vector2(float(dimensions[0]), float(dimensions[1])) * zoom * art_scale), priority_material if sprite_priority == 2 else null, index)
 
 func source_camera() -> Vector2:
 	return Vector2(float(bundle.data.camera[0]), float(bundle.data.camera[1]))
+
+func qa_identity() -> Dictionary:
+	return {"schema":"ao_pc_character_ui_qa_v1", "appearance_mode":appearance_mode,
+		"character_manifest_sha256":character_manifest_sha256, "hd_manifest_sha256":hd_manifest_sha256,
+		"hd_images_preloaded":hd_bundle.get("preloaded", false), "hd_frame_count":hd_bundle.get("frames", {}).size()}

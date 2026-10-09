@@ -695,6 +695,7 @@ func finish_qa(error: String = "") -> void:
 		"performance_target_met":avg >= 59 and p95 <= 20 if qa_soak_seconds > 0 else null,
 		"routes_completed":qa_routes_completed, "mismatched_updates":qa_mismatches,
 		"memory_scope":"Godot allocator memory only; process/GPU memory must be collected externally", "screenshots_during_measurement":0}
+	report.merge(qa_identity(), true)
 	var file := FileAccess.open(report_path, FileAccess.WRITE)
 	if file == null:
 		push_error("Cannot write QA report: " + report_path)
@@ -704,6 +705,9 @@ func finish_qa(error: String = "") -> void:
 	file.close()
 	print("EXPLORATION_QA " + JSON.stringify({"report":report_path, "passed":report.passed, "average_fps":avg, "p95_frame_ms":p95}))
 	get_tree().quit(0 if report.passed else 2)
+
+func qa_identity() -> Dictionary:
+	return {}
 
 func median(values: Array[float]) -> float:
 	if values.is_empty(): return 0.0
