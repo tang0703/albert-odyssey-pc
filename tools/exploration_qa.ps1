@@ -90,7 +90,7 @@ function Test-ExplorationSoak($Report,[object[]]$Samples,[int]$Seconds,[int]$War
     $EngineValid=$true
     $Previous=-1.0
     foreach ($Sample in $Report.samples) {
-        if (-not (Test-ExplorationProperties $Sample @('seconds','node_count','engine_static_memory_bytes','engine_video_memory_bytes','window_pixels')) -or -not (Test-ExplorationNumber $Sample.seconds 0) -or -not (Test-ExplorationNumber $Sample.node_count 1 -Integer) -or -not (Test-ExplorationNumber $Sample.engine_static_memory_bytes 1) -or -not (Test-ExplorationNumber $Sample.engine_video_memory_bytes 0) -or ($Sample.window_pixels -join 'x') -ne '3840x2160') { $EngineValid=$false; break }
+        if (-not (Test-ExplorationProperties $Sample @('seconds','node_count','engine_static_memory_bytes','engine_video_memory_bytes','window_pixels')) -or -not (Test-ExplorationNumber $Sample.seconds 0) -or -not (Test-ExplorationNumber $Sample.node_count 1 -Integer) -or -not (Test-ExplorationNumber $Sample.engine_static_memory_bytes 0) -or -not (Test-ExplorationNumber $Sample.engine_video_memory_bytes 0) -or ($Sample.window_pixels -join 'x') -ne '3840x2160') { $EngineValid=$false; break }
         if ($Sample.seconds -le $Previous -or $Sample.seconds -gt $Duration+0.1 -or ($Previous -ge 0 -and $Sample.seconds-$Previous -gt 3)) { $EngineValid=$false; break }
         $Previous=[double]$Sample.seconds
     }
@@ -100,6 +100,11 @@ function Test-ExplorationSoak($Report,[object[]]$Samples,[int]$Seconds,[int]$War
         $Nodes=@($Report.samples | ForEach-Object { $_.node_count } | Sort-Object -Unique)
         if ($Nodes.Count -ne 1) { $Failures.Add('Scene node count changed during steady replay.') }
     }
+    # MEMORY_STATIC is unavailable in Godot release templates (documented as 0).
+    # It is diagnostic only. Positive OS private/working-set samples remain mandatory.
+    $AllocatorZeroCount=@($Report.samples | Where-Object { $_.engine_static_memory_bytes -eq 0 }).Count
+    $AllocatorAvailable=($EngineValid -and $AllocatorZeroCount -eq 0)
+    if ($AllocatorZeroCount -gt 0 -and $AllocatorZeroCount -ne $Report.samples.Count) { $Failures.Add('Engine allocator availability changed during measurement.') }
     $ProcessValid=($Samples.Count -gt 0)
     $Previous=-1.0
     foreach ($Sample in $Samples) {
@@ -134,7 +139,8 @@ function Test-ExplorationSoak($Report,[object[]]$Samples,[int]$Seconds,[int]$War
         failures=@($Failures);average_fps=$Average;p95_ms=$P95;max_ms=$Maximum
         recomputed_measured_seconds=$Duration;raw_frame_count=$Sorted.Count;spikes_over_50ms=@($RawSpikes)
         spikes_over_100ms_require_reproduction_review=($Maximum -gt 100)
-        memory=$Memory;node_counts=$Nodes
+        memory=$Memory;node_counts=$Nodes;engine_allocator_available=$AllocatorAvailable
+        engine_allocator_note='Zero MEMORY_STATIC in release templates means unavailable, not zero usage; acceptance uses independently sampled OS process memory.'
         working_set_peak=$(if ($ProcessValid) { ($Samples | Measure-Object -Property working_set_bytes -Maximum).Maximum } else { $null })
         os_peak_working_set=$(if ($ProcessValid) { ($Samples | Measure-Object -Property peak_working_set_bytes -Maximum).Maximum } else { $null })
         private_bytes_peak=$(if ($ProcessValid) { ($Samples | Measure-Object -Property private_bytes -Maximum).Maximum } else { $null })

@@ -1,6 +1,7 @@
 # MAP001 指定區域行走驗收
 
-日期：2026-10-09。E1–E4 已完成；此版本正在執行 E5 Windows 畫面與 4K 長測，尚未標記整體交付通過。
+日期：2026-10-09。**MAP001 指定區域行走、原作對照與 4K 60 FPS 驗證通過，提供本地 Windows 套件。**
+原需求中的實際 120 FPS GPU 渲染仍未完成驗收，不能宣稱所有驗收項目都通過。完整 Stage B 亦未通過。
 
 ## 已通過的來源與核心關卡
 
@@ -27,13 +28,77 @@
 - 舊快照 SHA256：`615107b20f67b779d4d373a1cc79fce318f5f1a0093893dc7a963014ac80a7ab`。使用者已確認無備份，沒有更換原鎖定值。
 - 原專案 Godot：14 項事件／存檔、9 項資源驗證台檢查通過。
 - 戰鬥：核心 173、介面 417、動畫 39、QA 26、設定 5、6 組 FPS／速度、封裝 8、驗收器 16 項通過。
-- 新行走套件：13 項資料包、12 項封裝、40 項 QA 驗收器故障注入檢查。合成防護測試與原作動態核對分開記錄。
+- 新行走套件：13 項資料包、12 項封裝、44 項 QA 驗收器故障注入檢查通過。合成防護測試與原作動態核對分開記錄。
 
 詳細報告保存在本地 `reports/exploration/`，包括 `player-trace-suite.json`、`godot-movement-validation.json`、`test_ui.log`、`python-regression-final.log`、`battle-regression.log` 及 `ui-gpu-fps-*.json`。
 
-## E5 待完成
+## E5：Windows 畫面、啟動與效能
 
-三解析度實際畫面、正式匯出後操作測試、4K 600 秒穩定演出、程序記憶體／顯存／節點數、ZIP 解壓冷啟動及最終 Git 同步，均須完成後再填入實測值。
+正式測量來源為乾淨提交 `83b19e0e0c59576c028a91fbf27f5ec974ac6f50`，
+從 ZIP 全新解壓路徑執行 release EXE。Godot 4.7.2 `ed1daf0bf`、Compatibility／OpenGL 3.3、
+RTX 4070 Ti SUPER、NVIDIA 617.14。詳細證據位於 `reports/exploration/qa-final-03/`。
+
+|解析度|引擎進入至第一張畫面|引擎進入至穩定尺寸確認|程序啟動至確認標記被觀察|
+|---|---:|---:|---:|
+|1920×1080|77.454 ms|327.512 ms|949.387 ms|
+|2560×1440|91.920 ms|358.549 ms|889.234 ms|
+|3840×2160|111.944 ms|378.555 ms|978.171 ms|
+
+三張 `screen.png` 的實際像素尺寸一致，文字、操作按鈕、形狀框及標記未見裁切。
+每次啟動都是獨立程序，不需編輯器、原始光碟、BIOS 或快照；沒有清除 OS 磁碟快取，
+所以數字不是冷快取性能保證。穩定尺寸確認含 250 ms 觀察；外部標記採 100 ms 輪詢。
+
+長測與截圖分開執行，暖機 15 秒、實測 **600.010424 秒**。期間不執行其他驗證，
+GPU 實際像素在量測前／後各核對一次；量測中讀圖與截圖均為 0 次。
+逐幀視窗／縮放檢查 36,885 次，601 筆引擎樣本的視窗均為 3840×2160。
+
+|量測項目|結果|
+|---|---:|
+|原始影格間隔數|35,990|
+|平均 FPS|59.982291|
+|P95|16.921 ms|
+|最大間隔|86.492 ms|
+|超過 50 ms|2 次，完整時點保留於報告|
+|超過 100 ms|0 次|
+|完成路線／差異更新|261／0（完成數包含暖機）|
+|節點數|601 筆均為 94|
+|程序採樣／GPU 採樣|561／54 筆|
+|私有記憶體前／後段中位數|319.922 → 317.227 MiB，−0.8425%|
+|Working set 前／後段中位數|239.957 → 238.980 MiB，−0.4070%|
+|穩定期間私有／Working set 採樣峰值|320.496／241.012 MiB（程序第 20–610 秒）|
+|含啟動的私有記憶體採樣峰值|410,136,576 bytes|
+|含啟動的 OS peak working set|318,201,856 bytes|
+|GPU dedicated／shared 採樣峰值|310.973／32.684 MiB|
+
+前段中位數採程序第 75–135 秒，末段採最後 60 秒附近的獨立區段；各有 55／54 筆。
+GPU 是 Windows `GPU Process Memory` 按該 PID 合計的計數器，約每 10 秒採樣，
+涵蓋第 23.558–612.361 秒；採樣峰值不等於未間斷硬體峰值。
+兩次尖峰為量測第 77.757724 秒（open 更新 78，86.492 ms）、
+第 124.048058 秒（open 更新 37，61.719 ms）；沒有超過 100 ms 的尖峰。
+
+初次外部驗收器將 release 版 `MEMORY_STATIC=0` 當成缺失，因而拒絕了本次量測。
+Godot 官方文件明示該計數器在 release 版不可用；0 不能解讀成零記憶體用量。
+依據：[Performance MEMORY_STATIC](https://docs.godotengine.org/en/4.6/classes/class_performance.html#class-performance-constant-memory-static)。
+已修正外部驗收器，仍強制完整、非零的 OS 私有／Working set 採樣與 10% 增長上限。
+44 項故障測試包含「內部不可用但外部正常」以及「外部缺失仍須失敗」。
+原始 `report.json` 中的 allocator 中位數、增長及 `memory_target_met` 不作記憶體通過依據。
+
+未修改原始報告或重新拼接時段；原失敗 `acceptance.json` 留存，重算另寫 `acceptance-reviewed.json`，
+其 `full_acceptance=true` 僅指 4K 長測門檻。重算包含原始報告、程序採樣與驗收器雜湊。
+獨立複核得到相同 FPS／P95／記憶體／節點結果。
+
+|量測檔案|SHA256|
+|---|---|
+|`report.json`|`af67b3d4d5aa112836e53699121b29cf3ed6a4af854ece0e96ec62663f2a61f4`|
+|`process-memory.json`|`0cfee7ca76f7e472d90dd5b7dbe69ed5812d96b05b8fee3add5596d281ef41bf`|
+|`MAP001-Walk.exe`|`d34d36f3be1a6c49c56525ae86469b92e4f417ddf0b43cf00dd80c385c4b0562`|
+|`MAP001-Walk.pck`|`90831ae12db988c64b726d0950535f47666b1eb1b55081270c8b24929a70adb1`|
+|`scene/package.json`|`bf837ef145c4ac413f6cb383c70d6a1d7e1e6d2544300719e3add645830e7fbc`|
+
+最終封裝只更新文件與外部驗收器；交付 EXE、PCK、場景識別須與上表一致，
+另留 `reports/exploration/final-delivery-identity.json` 核對最終 ZIP 與乾淨來源提交。
+PCK 精確 12 個資源、交付 14 檔（允許另有 console EXE）、場景資料精確六檔，
+全部大小／SHA256 與解壓內容均由封裝工具核對。
 
 ## 重新執行
 

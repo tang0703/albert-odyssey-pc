@@ -26,6 +26,12 @@ Assert-Check ($Good.passed -and $Good.full_acceptance) ('Healthy source fixture 
 Assert-Check ([math]::Abs($Good.average_fps-60) -lt 0.0001 -and $Good.raw_frame_count -eq 36000 -and [math]::Abs($Good.recomputed_measured_seconds-600) -lt 0.0001) 'Raw interval recomputation is wrong.'
 Assert-Check ($Good.memory.evaluated -and $Good.memory.private_growth -eq 0 -and $Good.memory.working_growth -eq 0) 'Stable external memory did not pass.'
 
+$Release=New-HealthyFixture
+foreach ($Sample in $Release.report.samples) { $Sample.engine_static_memory_bytes=0 }
+$ReleaseResult=Test-ExplorationSoak $Release.report $Release.samples 600 15
+Assert-Check ($ReleaseResult.full_acceptance -and -not $ReleaseResult.engine_allocator_available -and $ReleaseResult.memory.evaluated) 'Release allocator unavailability was confused with missing process evidence.'
+Assert-Check (-not (Test-ExplorationSoak $Release.report @() 600 15).passed) 'Unavailable allocator permitted missing OS process memory.'
+
 Reject-Fixture {param($F) $F.report=$null} 'Missing report accepted.'
 Reject-Fixture {param($F) $F.report=[pscustomobject]@{}} 'Empty report accepted.'
 Reject-Fixture {param($F) $F.report.PSObject.Properties.Remove('mismatched_updates')} 'Missing mismatch evidence accepted.'
@@ -52,6 +58,8 @@ Reject-Fixture {param($F) $F.report.screenshots_during_measurement=1} 'Screensho
 Reject-Fixture {param($F) $F.report.samples=@()} 'Missing engine samples accepted.'
 Reject-Fixture {param($F) $F.report.samples[-1].node_count=95} 'Node growth accepted.'
 Reject-Fixture {param($F) $F.report.samples[10].node_count=$null} 'Missing node count accepted.'
+Reject-Fixture {param($F) $F.report.samples[10].engine_static_memory_bytes=-1} 'Negative allocator memory accepted.'
+Reject-Fixture {param($F) $F.report.samples[10].engine_static_memory_bytes=0} 'Intermittent allocator availability accepted.'
 Reject-Fixture {param($F) $F.samples=@()} 'Missing external process samples accepted.'
 Reject-Fixture {param($F) foreach($S in $F.samples) {$S.private_bytes=0}} 'Zero private memory baseline accepted.'
 Reject-Fixture {param($F) foreach($S in $F.samples | Where-Object {$_.seconds -ge 555}) {$S.private_bytes=112000000}} 'Private memory growth above 10 percent accepted.'
