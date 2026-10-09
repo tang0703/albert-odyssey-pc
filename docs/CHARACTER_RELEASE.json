@@ -1,0 +1,311 @@
+{
+  "schema": "ao_pc_character_release_v1",
+  "sealed_at_utc": "2026-10-09T07:19:44.587736+00:00",
+  "status": "MAP001 指定區域玩家動畫與高清演出驗證通過",
+  "source_commit": "f8c7f5e9b78aed7ffe883391e55099026053a4d7",
+  "source_dirty": false,
+  "zip": {
+    "path": "build/MAP001-Character-Windows-x64.zip",
+    "sha256": "25ec4e38549bd773a5878fc838680245ab1d04c2cd7467148a1097e9a5caaaca",
+    "bytes": 53692623,
+    "local_only_contains_source_art": true
+  },
+  "runtime_identity": {
+    "exe_sha256": "d34d36f3be1a6c49c56525ae86469b92e4f417ddf0b43cf00dd80c385c4b0562",
+    "pck_sha256": "aa830172c669475f577ce1c97165d82c968828401c0ca85ab2c8afc09134733f",
+    "scene_manifest_sha256": "bf837ef145c4ac413f6cb383c70d6a1d7e1e6d2544300719e3add645830e7fbc",
+    "source_character_manifest_sha256": "ccc35c6e98a0a95cf517a555f338b3147dd307c1e60d3a284ffdded76f2bfd21",
+    "hd_manifest_sha256": "00f009e7eded1ab6a3a5fb8b4c621ab03c705b43b701822eb62fb601718e511c"
+  },
+  "tested_candidate_source_commit": "9fdbfcca407a9ed8419357bd310d3a133154e87d",
+  "byte_comparison": {
+    "file_count": 106,
+    "exe_and_external_asset_files_identical": true,
+    "all_pck_resource_bytes_identical": true,
+    "pck_resource_count": 27,
+    "pck_container_bytes_identical": false,
+    "pck_container_difference": "Physical resource packing order; resource path set and all uncompressed bytes identical.",
+    "comparison_report": {
+      "path": "reports/character/a6-final-pck-comparison.json",
+      "sha256": "f1ca07f9d6383519adcf47892e0b10ed6926b1b589938ffe211baf5e271b46b4"
+    },
+    "independent_exact_reconstruction": {
+      "path": "reports/character/a6-final-pck-independent-review.json",
+      "sha256": "33d4f9150d67d60b538a58a59ca3e5a042e2d220cfd47391faa3feede0286804"
+    },
+    "changed_delivery_files": [
+      "BUILD-INFO.json",
+      "CHARACTER_DELIVERY.md",
+      "MAP001-Character.pck"
+    ],
+    "identical_pck_resources": [
+      {
+        "path": ".godot/exported/133200997/export-bb5daab4d53a0f66704a7713f34c2757-character_main.scn",
+        "sha256": "09faa1657a74cb13aca22d4edb06813322f65fe24186881e6451add2103ac05d",
+        "bytes": 882
+      },
+      {
+        "path": ".godot/global_script_class_cache.cfg",
+        "sha256": "9536cb7e7f30117aff684323cd695a36704e5d4fa177cc94a9cc5159bd86d726",
+        "bytes": 362
+      },
+      {
+        "path": ".godot/uid_cache.bin",
+        "sha256": "a8a8d54a00750785f76de0050696ebf0aa05cfd56eb0e635abc965fe2144cc5d",
+        "bytes": 379
+      },
+      {
+        "path": "bundle-pin.json",
+        "sha256": "244637a0cad8f563aaf25cb5a3cd43649ec0522f331600e7d82d00257a79dab1",
+        "bytes": 139
+      },
+      {
+        "path": "character-hd-pin.json",
+        "sha256": "c62949d5f27cf4b912a74c5a70d194861f3773597d5630879cd9eb1f019d3ef5",
+        "bytes": 341
+      },
+      {
+        "path": "character-pin.json",
+        "sha256": "f60fa1e9407a7ce8b8ad78c4f799d5d434197b3c3fddeb42412b1c26c2f8dce5",
+        "bytes": 232
+      },
+      {
+        "path": "character_animation_core.gd.remap",
+        "sha256": "eb766701a6fcf0b80ff1bb78c2c8c32e2b0f0aab0f6f44394637dc9900c9294a",
+        "bytes": 51
+      },
+      {
+        "path": "character_animation_core.gdc",
+        "sha256": "a036deb6ddb49d857811832c7780ab2e00daecedcc2d5e49379cc25b1186b2c1",
+        "bytes": 8672
+      },
+      {
+        "path": "character_hd_animation.gd.remap",
+        "sha256": "6dae73b4df972d13c81be9605f8bed1c0a08b2a8ffd1811be600122b2cd06989",
+        "bytes": 49
+      },
+      {
+        "path": "character_hd_animation.gdc",
+        "sha256": "3de27935e7dd413bcdca8a2bce513dcbb1135288efec0cf3253386fd1b5b3421",
+        "bytes": 2497
+      },
+      {
+        "path": "character_hd_loader.gd.remap",
+        "sha256": "98588a683ebb46c83ad1945ab1b23e512d765aa54d54ea65ee38a649c815fc99",
+        "bytes": 46
+      },
+      {
+        "path": "character_hd_loader.gdc",
+        "sha256": "d3006b705be64a3488b72b2309757c494c5a2227be31fdde4cbbdf61d83ccf2e",
+        "bytes": 8871
+      },
+      {
+        "path": "character_layer.gd.remap",
+        "sha256": "0081f71796c4888188fa76a6c70607d1fd3e851895db3aa083407a289e5dc281",
+        "bytes": 42
+      },
+      {
+        "path": "character_layer.gdc",
+        "sha256": "a5ffb334df3e87a2a481cf5653e1537078f095a286d1306438af12c20c979c2f",
+        "bytes": 555
+      },
+      {
+        "path": "character_loader.gd.remap",
+        "sha256": "9bd649f4288cb3ffc0b0d470f91b75d68807ba75d84d9aeb922e15c85a88e647",
+        "bytes": 43
+      },
+      {
+        "path": "character_loader.gdc",
+        "sha256": "cd5973f63ff2051fb937ec2dcaac709288506f5522b0bd61cde3fc0fa6479c96",
+        "bytes": 12174
+      },
+      {
+        "path": "character_main.gd.remap",
+        "sha256": "9705c16c146aeea7be48e31274b0ceb930021768edfa7199c338d17589f0ccd1",
+        "bytes": 41
+      },
+      {
+        "path": "character_main.gdc",
+        "sha256": "a663f67e6c3b5a10902fe17512b94e3f7255e1dfefb80e8aed67caa5d7423bbd",
+        "bytes": 9049
+      },
+      {
+        "path": "character_main.tscn.remap",
+        "sha256": "fcc2c6b531fd8484a2e18b552d7dc91cde1173cfbc32a22d2a430f466330e6f9",
+        "bytes": 107
+      },
+      {
+        "path": "character_priority.gdshader",
+        "sha256": "0a8e76be6ae9a941e99eae906e0302572dc57ec72ac2bf602ed7420c593fddc5",
+        "bytes": 721
+      },
+      {
+        "path": "main.gd.remap",
+        "sha256": "973e0aeab662d1689eadf1dcd3f73cbbb221874786663fb0100c3ad10fb9cd17",
+        "bytes": 31
+      },
+      {
+        "path": "main.gdc",
+        "sha256": "9df768855e63e43ba24950b703409027409b2742ea59cc242ba456a7e8c069bb",
+        "bytes": 27787
+      },
+      {
+        "path": "movement_core.gd.remap",
+        "sha256": "e3ea51a4057c784695cd35b4521112a8bb403a02b138f433b4c036a22db14ecb",
+        "bytes": 40
+      },
+      {
+        "path": "movement_core.gdc",
+        "sha256": "362334c7aefcdf2987e4a11fbda4371e41f91ec1e94f01e5f8b6b9a5d682df3c",
+        "bytes": 11855
+      },
+      {
+        "path": "package_loader.gd.remap",
+        "sha256": "7170d6824ebc6edc26272be3dde5d73d8ac9969238d10bb83c85acb6bf26d7e2",
+        "bytes": 41
+      },
+      {
+        "path": "package_loader.gdc",
+        "sha256": "c9f6653f706a99f50a93e174e2f758bf5f725e86bca1891e798723b2f25b3c0c",
+        "bytes": 4493
+      },
+      {
+        "path": "project.binary",
+        "sha256": "382c2143928adf373aef516e28de5cbbdd7fe720c03cfe03453765e735725fdf",
+        "bytes": 918
+      }
+    ]
+  },
+  "packaging": {
+    "audit": {
+      "path": "reports/character/entry-package-audit.json",
+      "sha256": "91c16a7846ac54953cd38e9e8d9f676843c29ac5f465f77ab80c162d73b0f5fc"
+    },
+    "zip_audit": {
+      "path": "reports/character/entry-zip-audit.json",
+      "sha256": "b8fc37493b73844cfd48a2624e6171a70804f2acca07327c783882072f47a615"
+    },
+    "extraction_verified": true
+  },
+  "screenshots_from_final_zip": [
+    {
+      "resolution": "1920x1080",
+      "report": {
+        "path": "reports/character/qa-hd-final-screens/1920x1080/report.json",
+        "sha256": "9ae3f67c58458cbca4b1bfd8ccae9e51569715a7ce1ba56f4c3f23d7fb266142"
+      },
+      "image": {
+        "path": "reports/character/qa-hd-final-screens/1920x1080/screen.png",
+        "sha256": "2805d46e204636e5a5d713e5e99faf666caac8075c26995c1afc91d618b3236e"
+      },
+      "launch": {
+        "path": "reports/character/qa-hd-final-screens/1920x1080/launch.json",
+        "sha256": "8fa27d98c16257d6e49aab6080741633c27248d7d95ba55eeb4813c837bc50cd"
+      },
+      "launch_to_first_surface_observed_ms": 1839.672
+    },
+    {
+      "resolution": "2560x1440",
+      "report": {
+        "path": "reports/character/qa-hd-final-screens/2560x1440/report.json",
+        "sha256": "78eef024c6e20e15136ffe75113490f61a332e1c198a63a2873fbd9aa7c54705"
+      },
+      "image": {
+        "path": "reports/character/qa-hd-final-screens/2560x1440/screen.png",
+        "sha256": "a5f4e8c1e9af10793c345d9811e4ef23351158cb8e278464cc2bed5c1891f2f6"
+      },
+      "launch": {
+        "path": "reports/character/qa-hd-final-screens/2560x1440/launch.json",
+        "sha256": "260a29d45d471d11eedecf48b7754f3cf36c91623a608155fd1ade06befc0c94"
+      },
+      "launch_to_first_surface_observed_ms": 1649.7710000000002
+    },
+    {
+      "resolution": "3840x2160",
+      "report": {
+        "path": "reports/character/qa-hd-final-screens/3840x2160/report.json",
+        "sha256": "a921f0f955b281a55738aadf72020d118cf15119b9b6f59dab684d3658ecdcb1"
+      },
+      "image": {
+        "path": "reports/character/qa-hd-final-screens/3840x2160/screen.png",
+        "sha256": "b3d245c4500a54aa8d5fb93e214deb5003430dfc49480e8618b8812654f3fff7"
+      },
+      "launch": {
+        "path": "reports/character/qa-hd-final-screens/3840x2160/launch.json",
+        "sha256": "36951558689aa284d4e7758c1646255b771139ee3d789cfd216904fd118be933"
+      },
+      "launch_to_first_surface_observed_ms": 1646.6593
+    }
+  ],
+  "soak": {
+    "acceptance": {
+      "path": "reports/character/qa-hd-clean-soak/soak-4k/acceptance.json",
+      "sha256": "677be14f355b5c8b2790919a769dcf05920f6bc36beaab04758f80b1756d4a13"
+    },
+    "raw_report": {
+      "path": "reports/character/qa-hd-clean-soak/soak-4k/report.json",
+      "sha256": "91e100e23a3c8a115571a625faf5774eb68863e99c19db8f95423f57d9a6d263"
+    },
+    "process_memory": {
+      "path": "reports/character/qa-hd-clean-soak/soak-4k/process-memory.json",
+      "sha256": "7fdac311be39487058aab0da6b33a0219405c809538fa0ffdda7b6a622ddc5b3"
+    },
+    "collector_operations": {
+      "path": "reports/character/qa-hd-clean-soak/soak-4k/collector-operations.json",
+      "sha256": "d9868f625d92757744943e240c653297dd0344de2c411ab230f37cafda323c3e"
+    },
+    "full_acceptance": true,
+    "measured_seconds": 600.0120259999993,
+    "measured_exe_sha256": "d34d36f3be1a6c49c56525ae86469b92e4f417ddf0b43cf00dd80c385c4b0562",
+    "measured_pck_container_sha256": "c7e03fb5e47fec2f2ca4bd7716fe0ce7e3b7670dc0a7c5ba3371ace23675bf5e",
+    "final_container_separate_600_second_run": false,
+    "reuse_basis": "Same EXE, 97 external package files and every byte of all 27 PCK resources; only physical packing order differs. Steady preloaded replay evidence is inherited; final container cold startup is independently checked at all three resolutions.",
+    "average_fps": 59.98213109148589,
+    "p95_ms": 17.061,
+    "max_ms": 77.941,
+    "spikes_over_50ms": [
+      {
+        "seconds": 2.3917189999999984,
+        "frame_ms": 77.941
+      },
+      {
+        "seconds": 25.576830999999988,
+        "frame_ms": 71.116
+      }
+    ],
+    "memory": {
+      "evaluated": true,
+      "early_private_median": 410152960.0,
+      "late_private_median": 409116672.0,
+      "private_growth": -0.0025265891047085987,
+      "early_working_median": 267055104.0,
+      "late_working_median": 256606208.0,
+      "working_growth": -0.03912636696881855
+    },
+    "node_counts": [
+      117.0
+    ],
+    "source_mismatches": 0,
+    "routes_completed_including_warmup": 261
+  },
+  "retained_spike_analysis": {
+    "path": "reports/character/soak-spike-review.json",
+    "sha256": "eedd0c28f466d4a7ab4e8396ad7bf296438a6f8ab70c2a94820d5b2344660220"
+  },
+  "functional_validation": {
+    "path": "reports/character/entry-ui-validation.json",
+    "sha256": "f450d1489263b507d8c32ecc3f2bb12a4ddcb3b633e2aa1b42bb5d6f05485f49"
+  },
+  "limits": [
+    "Nine legacy snapshot source tests unavailable; original hash lock unchanged.",
+    "Actual GPU 120 FPS not tested; 30/60/120 time slicing is logic validation only.",
+    "Verified MAP001 region only; no full map, camera scrolling, events or battle linkage.",
+    "Source shadows and decorative objects 6/7 are not reconstructed.",
+    "Earlier long-run spikes retained; background game causality not established."
+  ],
+  "offline_preview": "art/characters/map001-player/preview.html",
+  "asset_manifest": {
+    "path": "art/characters/map001-player/walk-v1/manifest.json",
+    "sha256": "a782d63d90e32647f4f3d94bc33da6a0f05a5d1267d6893d3a49ce7aba96fcb2"
+  }
+}
