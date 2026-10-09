@@ -110,7 +110,7 @@ Assert-Check ((Test-Path -LiteralPath (Join-Path $Later.final 'partial.txt')) -a
 # Restore actual test orchestrator, stub external processes, and exercise its gates.
 Set-Item -Path Function:RunCharacterTests -Value $RealTests
 Set-Content -LiteralPath (Join-Path $Reports 'animation-fixtures.json') -Value '{}'
-foreach ($Name in @('test_character_qa.ps1','test_character_entry.ps1')) { Set-Content -LiteralPath (Join-Path $Fixture ('tests/'+$Name)) -Value "Write-Output 'routing fixture only'" }
+foreach ($Name in @('test_character_qa.ps1','test_character_entry.ps1','test_character_environment_probe.ps1')) { Set-Content -LiteralPath (Join-Path $Fixture ('tests/'+$Name)) -Value "Write-Output 'routing fixture only'" }
 $HdReport=[ordered]@{passed=$true;source_comparison_status='passed';source_updates=2052}
 ConvertTo-Json $HdReport | Set-Content -LiteralPath (Join-Path $Reports 'entry-hd-validation.json')
 Set-Content -LiteralPath (Join-Path $Reports 'entry-test_character_ui.log') -Value 'CHARACTER_UI_HD_STATUS=not_run'

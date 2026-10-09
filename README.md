@@ -3,6 +3,20 @@
 目前包含 **Godot 資源驗證台、MAP001 指定區域行走驗證台與可重跑的逆向／匯入工具**。
 MAP001 的玩家、四方向移動及碰撞修正已在限定範圍核對；完整地圖、事件及原作戰鬥仍未完成，Stage B 整體未通過。
 
+**MAP001 玩家高清角色版** 已完成核准四方向的 52 張透明圖、四張圖集與循環預覽，
+可用 F2 在高清／原作像素／診斷標記間切換，保留既有碰撞、步態相位與顯示延遲。
+三種外觀共 6,156 次更新對照零差異。操作見 [角色說明](docs/CHARACTER_README.md)，
+實際 Windows、回歸與效能狀態見 [高清角色交付報告](docs/CHARACTER_DELIVERY.md)，
+素材可用 [四方向離線預覽](art/characters/map001-player/preview.html) 檢視。
+
+```powershell
+.\tools\character.ps1 test
+.\tools\character.ps1 run
+.\tools\character.ps1 export
+```
+
+高清入口需要三份核准的本地資料包；Git 倉庫不附原作素材。
+
 **MAP001 行走驗證台** 使用來源背景與診斷標記，支援四方向操作、暫停、單步、重設及四組原作軌跡對照。
 12 條原作重播的 1,680 次更新，在 Python 與 Godot 中均為零差異。超出已驗證查表範圍會顯示「測試邊界」。
 操作見 [行走說明](exploration-demo/README.md)，來源與限制見 [移動證據](docs/EXPLORATION_MOVEMENT.md)，
@@ -85,7 +99,7 @@ Godot 的 `generated/package.json` 是 Python 輸出，不手動維護。
 此目錄是獨立 Git 倉庫，分支 `main`；作者僅在本倉庫設定為 MK。
 程式、測試、格式說明與摘要納入 Git；原始光碟、BIOS、抽出素材、生成結果、
 工具二進位、個人設定、快取與本地打包均不納入。Git LFS 已在本倉庫啟用，
-供未來可納入版本管理的原創大型美術使用；目前沒有原始遊戲素材被加入 Git。
+管理已核准的新繪角色 PNG／GIF；目前沒有原始遊戲素材被加入 Git。
 
 `build/windows/ao-asset-workbench.exe` 與 `.pck` 為本地開發工具。
 本地 PCK 包含由使用者來源抽出的資料，不是可公開發行的遊戲套件。

@@ -92,7 +92,7 @@ function RunCharacterTests {
         'test_character_runtime_pixels.py','test_character_hd_art.py','test_character_hd_bundle.py','test_character_package.py')) {
         CheckedPython @('-m','unittest','discover','-s','tests','-p',$Name,'-v') ('entry-'+[IO.Path]::GetFileNameWithoutExtension($Name))
     }
-    foreach ($Name in @('test_character_qa.ps1','test_character_entry.ps1')) {
+    foreach ($Name in @('test_character_qa.ps1','test_character_entry.ps1','test_character_environment_probe.ps1')) {
         & (Join-Path $PcRoot ('tests/'+$Name)) *> (Join-Path $Reports ('entry-'+$Name+'.log'))
     }
     Write-Output 'Character source/core/actual-HD/UI and package contract tests passed. GPU composition and performance remain separate acceptance.'
