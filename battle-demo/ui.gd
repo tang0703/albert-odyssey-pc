@@ -1,10 +1,39 @@
 extends Control
 
+signal presentation_finished
+signal effect_presented(event: Dictionary)
+
+class HitBurst extends Node2D:
+	var kind: String = "attack"
+	var elapsed: float = 0.0
+	var duration: float = 0.38
+	func advance(delta: float) -> void:
+		elapsed = minf(duration,elapsed+delta)
+		queue_redraw()
+	func _draw() -> void:
+		var progress: float = elapsed/duration
+		var heavy: bool = kind == "heavy"
+		var radius: float = (44.0 if heavy else 27.0) * (0.65+progress*0.8)
+		var tint := Color("ffd48e" if heavy else ("a9c4ff" if kind in ["wave","fire"] else ("9bdebb" if kind in ["heal","potion"] else "eaf4ff")))
+		tint.a = 1.0-progress
+		if kind in ["heal","potion","guard","wave","fire"]:
+			draw_arc(Vector2.ZERO,radius,0,TAU,36,tint,3.0,true)
+			if kind in ["heal","potion"]:
+				draw_line(Vector2(-12,0),Vector2(12,0),tint,4.0,true)
+				draw_line(Vector2(0,-12),Vector2(0,12),tint,4.0,true)
+		else:
+			draw_arc(Vector2.ZERO,radius,-1.0,1.1,24,tint,7.0 if heavy else 3.0,true)
+			for i: int in range(8 if heavy else 4):
+				var direction := Vector2.from_angle(i*TAU/(8.0 if heavy else 4.0)+0.3)
+				draw_line(direction*radius*0.4,direction*radius,tint,4.0 if heavy else 2.0,true)
+
 const Core = preload("res://core.gd")
 const Fighter = preload("res://fighter.gd")
 const Backdrop = preload("res://backdrop.gd")
+const QaRecorder = preload("res://qa_recorder.gd")
 var battle: DemoBattle
 var appearances: Dictionary
+var appearances_override: Dictionary = {}
 var fighters: Dictionary = {}
 var cards: Dictionary = {}
 var targets_buttons: Array[Button] = []
@@ -37,25 +66,42 @@ var resolution_index: int = 0
 var qa: bool = false
 var qa_path: String = ""
 var qa_seconds: float = 0.0
-var qa_started: int = 0
-var qa_last: int = 0
-var qa_frames: Array[float] = []
-var qa_samples: Array[Dictionary] = []
+var qa_mode: String = "screenshot"
+var qa_warmup: float = 15.0
+var qa_recorder: RefCounted
 var qa_actions: int = 0
 var qa_fights: int = 0
-var qa_next_sample: int = 0
-var qa_shot: bool = false
 var qa_variant: String = ""
 var qa_target: Vector2i = Vector2i.ZERO
 var qa_capture_size: Vector2i = Vector2i.ZERO
 var start_button: Button
 var ui_test_mode: bool = false
+var settings_enabled: bool = true
+var display_units: Dictionary = {}
+var display_current: String = ""
+var display_queue: Array[String] = []
+var display_round: int = 1
+var display_potions: int = 3
+var presentation_events: Array[Dictionary] = []
+var presentation_actor: String = ""
+var presentation_action: String = ""
+var presentation_elapsed: float = 0.0
+var presentation_hit: bool = false
+var actor_finished: bool = false
+var reactions: Dictionary = {}
+var pending_down: Dictionary = {}
+var effect_hold: float = 0.0
+var audio_streams: Dictionary = {}
+var startup_errors: Array[String] = []
+var accept_held: bool = false
 
 func _ready() -> void:
 	Engine.max_fps = 60
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--qa-dir="): qa_path = arg.trim_prefix("--qa-dir="); qa = true
 		if arg.begins_with("--qa-seconds="): qa_seconds = float(arg.trim_prefix("--qa-seconds="))
+		if arg.begins_with("--qa-mode="): qa_mode = arg.trim_prefix("--qa-mode=")
+		if arg.begins_with("--qa-warmup="): qa_warmup = float(arg.trim_prefix("--qa-warmup="))
 		if arg.begins_with("--qa-variant="): qa_variant = arg.trim_prefix("--qa-variant=")
 		if arg.begins_with("--qa-size="):
 			var dimensions: PackedStringArray = arg.trim_prefix("--qa-size=").split("x")
@@ -65,7 +111,8 @@ func _ready() -> void:
 		get_window().position = Vector2i.ZERO
 		get_window().size = qa_target
 	battle = Core.new()
-	appearances = JSON.parse_string(FileAccess.get_file_as_string("res://data/appearances.json"))
+	appearances = appearances_override.duplicate(true) if not appearances_override.is_empty() else JSON.parse_string(FileAccess.get_file_as_string("res://data/appearances.json"))
+	sync_display()
 	load_settings()
 	var font := SystemFont.new()
 	font.font_names = PackedStringArray(["Microsoft JhengHei", "Microsoft YaHei", "Noto Sans CJK TC"])
@@ -74,13 +121,21 @@ func _ready() -> void:
 	style.default_font_size = 25
 	theme = style
 	build_ui()
+	preload_audio()
 	speed_button.text = "演出 %d×" % int(speed)
 	refresh()
+	if not startup_errors.is_empty():
+		start_button.disabled = true
+		push_error("Battle assets could not load: " + "; ".join(startup_errors))
+		start_button.text = "素材載入失敗：" + "; ".join(startup_errors)
 	start_button.grab_focus()
 	if qa:
-		DirAccess.make_dir_recursive_absolute(qa_path)
-		qa_started = Time.get_ticks_usec()
-		qa_last = qa_started
+		qa_recorder = QaRecorder.new()
+		var issue: String = qa_recorder.initialize(self,qa_mode,qa_warmup)
+		if not issue.is_empty() or not startup_errors.is_empty():
+			push_error("QA ERROR: " + issue + "; ".join(startup_errors))
+			get_tree().quit(2)
+			return
 		start_battle()
 
 func panel_style(color: String = "142535") -> StyleBoxFlat:
@@ -150,13 +205,19 @@ func build_ui() -> void:
 	for i: int in range(battle.units.size()):
 		var unit: Dictionary = battle.units[i]
 		var fighter := Fighter.new()
-		fighter.appearance = appearances[unit["appearance"]]
+		var load_error: String = fighter.configure(appearances.get(unit["appearance"], {}))
+		if not appearances.has(unit["appearance"]): load_error = "Missing appearance: " + str(unit["appearance"])
+		if not load_error.is_empty(): startup_errors.append(str(unit["id"]) + ": " + load_error)
 		fighter.facing = 1.0 if unit["side"] == "party" else -1.0
 		fighter.size = Vector2(150,210)
 		fighter.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		stage.add_child(fighter)
+		fighter.set_process(false)
+		fighter.playback_speed = 1.0
+		fighter.animation_hit.connect(on_animation_hit.bind(str(unit["id"])))
+		fighter.animation_completed.connect(on_animation_completed.bind(str(unit["id"])))
 		fighters[unit["id"]] = fighter
-		var name_label := label(unit["name"],22)
+		var name_label := label(display_name(str(unit["id"])),22)
 		name_label.position = Vector2(-15,208)
 		name_label.size = Vector2(180,34)
 		name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -250,32 +311,66 @@ func layout_fighters() -> void:
 		fighter.position = Vector2(stage.size.x*x-75,stage.size.y*0.45-95+slot*20)
 
 func start_battle() -> void:
+	if not startup_errors.is_empty(): return
 	battle.reset()
 	started = true
 	busy = false
 	paused = false
 	selected_action = ""
+	selected_target = ""
 	pending.clear()
+	presentation_events.clear()
+	reactions.clear()
+	pending_down.clear()
+	presentation_actor = ""
+	presentation_action = ""
+	presentation_elapsed = 0.0
+	animation_left = 0.0
+	effect_hold = 0.0
+	presentation_hit = false
+	actor_finished = false
+	clear_popups()
+	audio_player.stop()
+	audio_player.stream_paused = false
 	log_view.clear()
 	title_overlay.hide()
 	modal.hide()
 	for fighter: Control in fighters.values(): fighter.state = "idle"
+	sync_display()
 	refresh()
 
+func sync_display() -> void:
+	display_units.clear()
+	for unit: Dictionary in battle.units: display_units[unit["id"]] = unit.duplicate(true)
+	display_current = battle.current
+	display_queue.assign(battle.queue)
+	display_round = battle.round_number
+	display_potions = battle.potions
+
+func display_name(id: String) -> String:
+	var unit: Dictionary = battle.unit_by_id(id)
+	return str(appearances.get(unit.get("appearance", ""), {}).get("display_name", unit.get("name", id)))
+
+func displayed_living(side: String) -> int:
+	var count: int = 0
+	for unit: Dictionary in display_units.values():
+		if unit["side"] == side and unit["hp"] > 0: count += 1
+	return count
+
 func actions() -> Array[String]:
-	return ["attack",battle.unit_by_id(battle.current)["skill"],"potion","guard"]
+	return ["attack",battle.unit_by_id(display_current)["skill"],"potion","guard"]
 
 func refresh() -> void:
-	round_label.text = "ROUND %02d   /   我方 %d 人  ·  敵方 %d 人" % [battle.round_number,battle.living("party").size(),battle.living("enemy").size()]
-	var order: Array[String] = [battle.unit_by_id(battle.current)["name"]]
-	for id: String in battle.queue: order.append(battle.unit_by_id(id)["name"])
+	round_label.text = "ROUND %02d   /   我方 %d 人  ·  敵方 %d 人" % [display_round,displayed_living("party"),displayed_living("enemy")]
+	var order: Array[String] = [display_name(display_current)]
+	for id: String in display_queue: order.append(display_name(id))
 	order_label.text = "行動順序   " + "   →   ".join(order)
-	for unit: Dictionary in battle.units:
+	for unit: Dictionary in display_units.values():
 		var fighter: Control = fighters[unit["id"]]
 		fighter.active = unit["id"] == battle.current and not busy
 		fighter.selected = not selected_action.is_empty() and (selected_target == unit["id"] or (selected_action == "wave" and unit["side"] == "enemy" and unit["hp"] > 0))
 		fighter.get_meta("hp").value = unit["hp"]
-		cards[unit["id"]].text = "%s%s\nHP %d / %d\nMP %d / %d" % [unit["name"]," ◈" if unit["guarding"] else "",unit["hp"],unit["max_hp"],unit["mp"],unit["max_mp"]]
+		cards[unit["id"]].text = "%s%s\nHP %d / %d\nMP %d / %d" % [display_name(unit["id"])," ◈" if unit["guarding"] else "",unit["hp"],unit["max_hp"],unit["mp"],unit["max_mp"]]
 	var is_party: bool = battle.unit_by_id(battle.current)["side"] == "party"
 	command_box.visible = selected_action.is_empty()
 	target_box.visible = not selected_action.is_empty()
@@ -283,10 +378,10 @@ func refresh() -> void:
 	for i: int in range(commands.size()):
 		var action: String = list[i]
 		var skill: Dictionary = battle.skills[action]
-		commands[i].text = str(skill["name"]) + ("  %d MP" % skill["cost"] if skill["cost"] > 0 else ("  ×%d" % battle.potions if action == "potion" else ""))
+		commands[i].text = str(skill["name"]) + ("  %d MP" % skill["cost"] if skill["cost"] > 0 else ("  ×%d" % display_potions if action == "potion" else ""))
 		commands[i].disabled = busy or not is_party or paused or not battle.available(action)
 		commands[i].tooltip_text = skill["description"]
-	message_label.text = "演出中…" if busy else ("%s，請選擇行動" % battle.unit_by_id(battle.current)["name"] if is_party else "敵方正在行動…")
+	message_label.text = "%s · %s" % [display_name(presentation_actor),battle.skills[presentation_action]["name"]] if busy else ("%s，請選擇行動" % display_name(battle.current) if is_party else "敵方正在行動…")
 	if selected_action.is_empty():
 		preview_label.text = "防禦可減少傷害；藥水與治療只對受傷且存活的隊友有效。"
 	if not busy and is_party and selected_action.is_empty() and started and not paused:
@@ -310,14 +405,14 @@ func update_targets() -> void:
 	for i: int in range(targets_buttons.size()):
 		targets_buttons[i].visible = i < list.size()
 		if i < list.size():
-			targets_buttons[i].text = ("✓ " if list[i] == selected_target else "") + ("敵方全體" if selected_action == "wave" else battle.unit_by_id(list[i])["name"])
+			targets_buttons[i].text = ("✓ " if list[i] == selected_target else "") + ("敵方全體" if selected_action == "wave" else display_name(list[i]))
 	var affected: Array[String] = []
 	if selected_action == "wave": affected.assign(battle.targets(selected_action))
 	else: affected.append(selected_target)
 	var parts: Array[String] = []
 	for id: String in affected:
 		var target: Dictionary = battle.unit_by_id(id)
-		parts.append("%s %s%d" % [target["name"],"+" if selected_action in ["heal","potion"] else "−",battle.amount(selected_action,battle.unit_by_id(battle.current),target)])
+		parts.append("%s %s%d" % [display_name(id),"+" if selected_action in ["heal","potion"] else "−",battle.amount(selected_action,battle.unit_by_id(battle.current),target)])
 	preview_label.text = str(battle.skills[selected_action]["description"]) + "  /  " + ("自身進入防禦" if selected_action == "guard" else "   ·   ".join(parts))
 	message_label.text = "選擇目標，再按「確認行動」；返回不消耗資源。"
 
@@ -343,7 +438,7 @@ func confirm_action() -> void:
 	perform(pending.duplicate())
 
 func perform(command: Dictionary) -> void:
-	if busy or paused: return
+	if busy or paused or not started or not startup_errors.is_empty(): return
 	var result: Dictionary = battle.submit(command)
 	if not result["ok"]: return
 	busy = true
@@ -351,64 +446,151 @@ func perform(command: Dictionary) -> void:
 	selected_action = ""
 	selected_target = ""
 	pending.clear()
-	animation_left = 0.85
-	var actor_name: String = battle.unit_by_id(command["actor"])["name"]
-	log_view.append_text("%s · %s\n" % [actor_name,battle.skills[command["action"]]["name"]])
-	fighters[command["actor"]].state = "attack"
-	for event: Dictionary in result["events"]:
-		if event["type"] in ["damage","heal","guard"]:
-			var fighter: Control = fighters[event["target"]]
-			if event["type"] == "damage": fighter.state = "hurt"
-			var text: String = "防禦" if event["type"] == "guard" else ("+" if event["type"] == "heal" else "−") + str(event["amount"])
-			var popup := label(text,37,"9bdebb" if event["type"] == "heal" else "ffe2ad")
+	presentation_events.assign(result["events"])
+	presentation_actor = str(command["actor"])
+	presentation_action = str(command["action"])
+	presentation_elapsed = 0.0
+	presentation_hit = false
+	actor_finished = false
+	reactions.clear()
+	pending_down.clear()
+	effect_hold = 0.0
+	log_view.append_text("%s · %s\n" % [display_name(presentation_actor),battle.skills[presentation_action]["name"]])
+	# Item and defend use idle poses; other actions use the actor's authored attack.
+	fighters[presentation_actor].state = "idle" if presentation_action in ["guard","potion"] else "attack"
+	animation_left = 0.5 if presentation_action in ["guard","potion"] else fighters[presentation_actor].animation_duration("attack")
+	refresh()
+
+func on_animation_hit(animation_name: String, id: String) -> void:
+	if busy and id == presentation_actor and animation_name == "attack": present_effects()
+
+func on_animation_completed(animation_name: String, id: String) -> void:
+	if not busy: return
+	if id == presentation_actor and animation_name == "attack": actor_finished = true
+	if animation_name == "hurt" and reactions.get(id) == "hurt":
+		if pending_down.has(id):
+			reactions[id] = "down"
+			fighters[id].state = "down"
+			log_view.append_text("    %s 倒下\n" % display_name(id))
+			effect_presented.emit({"type":"down","target":id})
+		else:
+			reactions.erase(id)
+			# Self-healing may use the actor slot; never erase an unfinished attack.
+			fighters[id].state = "idle"
+	elif animation_name == "down" and reactions.get(id) == "down":
+		reactions.erase(id)
+
+func present_effects() -> void:
+	if presentation_hit: return
+	presentation_hit = true
+	effect_hold = 0.45
+	for event: Dictionary in presentation_events:
+		if event["type"] == "down": pending_down[event["target"]] = true
+	for event: Dictionary in presentation_events:
+		var kind: String = event["type"]
+		if kind == "action":
+			display_units[event["actor"]]["mp"] -= event["mp_cost"]
+			display_potions = event["potions"]
+			effect_presented.emit(event.duplicate(true))
+		elif kind in ["damage","heal","guard"]:
+			var id: String = event["target"]
+			var fighter: Control = fighters[id]
+			if kind == "damage":
+				display_units[id]["hp"] -= event["amount"]
+				reactions[id] = "hurt"
+				fighter.state = "hurt"
+			elif kind == "heal": display_units[id]["hp"] += event["amount"]
+			else: display_units[id]["guarding"] = true
+			var text: String = "防禦" if kind == "guard" else ("+" if kind == "heal" else "−") + str(event["amount"])
+			var popup := label(text,37,"9bdebb" if kind == "heal" else "ffe2ad")
 			popup.position = fighter.position + Vector2(40,-12)
 			popup.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			popup.add_to_group("popups")
 			stage.add_child(popup)
-			log_view.append_text("    %s %s\n" % [battle.unit_by_id(event["target"])["name"],text])
-		elif event["type"] == "down":
-			log_view.append_text("    %s 倒下\n" % battle.unit_by_id(event["target"])["name"])
-	# Bound the UI log; the rules journal resets between battles.
+			var burst := HitBurst.new()
+			burst.kind = presentation_action
+			burst.position = fighter.position + Vector2(75,108)
+			burst.add_to_group("impacts")
+			stage.add_child(burst)
+			log_view.append_text("    %s %s\n" % [display_name(id),text])
+			effect_presented.emit(event.duplicate(true))
+	# Audio data was generated before the start button became available.
+	play_tone(presentation_action in ["heal","potion"])
+	refresh()
+
+func clear_popups() -> void:
+	for group: String in ["popups","impacts"]:
+		for popup: Node in get_tree().get_nodes_in_group(group):
+			if popup.get_parent() == stage:
+				stage.remove_child(popup)
+				popup.queue_free()
+
+func finish_presentation() -> void:
+	clear_popups()
+	for unit: Dictionary in battle.units:
+		# Completed down animations retain their final authored frame.
+		if unit["hp"] > 0: fighters[unit["id"]].state = "idle"
 	if log_view.get_line_count() > 90:
 		var lines: PackedStringArray = log_view.text.split("\n")
 		log_view.text = "\n".join(lines.slice(maxi(0,lines.size()-55)))
-	play_tone(command["action"] in ["heal","potion"])
+	sync_display()
+	busy = false
+	for event: Dictionary in presentation_events:
+		if event["type"] == "end": effect_presented.emit(event.duplicate(true))
 	refresh()
+	if not battle.outcome.is_empty():
+		if qa and not ui_test_mode: qa_fights += 1; start_battle()
+		else: show_result()
+	presentation_finished.emit()
+
+func preload_audio() -> void:
+	for healing: bool in [false,true]:
+		var sound := AudioStreamWAV.new()
+		sound.format = AudioStreamWAV.FORMAT_16_BITS
+		sound.mix_rate = 22050
+		var samples := PackedByteArray()
+		samples.resize(4410)
+		for i: int in range(2205):
+			var wave: float = sin(TAU * (660.0 if healing else 180.0) * i / 22050.0) * (1.0-i/2205.0)
+			samples.encode_s16(i*2,int(wave*6000))
+		sound.data = samples
+		audio_streams[healing] = sound
 
 func play_tone(healing: bool) -> void:
 	if volume <= 0: return
-	var sound := AudioStreamWAV.new()
-	sound.format = AudioStreamWAV.FORMAT_16_BITS
-	sound.mix_rate = 22050
-	var samples := PackedByteArray()
-	samples.resize(4410)
-	for i: int in range(2205):
-		var wave: float = sin(TAU * (660.0 if healing else 180.0) * i / 22050.0) * (1.0-i/2205.0)
-		samples.encode_s16(i*2,int(wave*6000))
-	sound.data = samples
-	audio_player.stream = sound
+	audio_player.stream = audio_streams[healing]
 	audio_player.volume_db = linear_to_db(maxf(volume,0.001))
+	audio_player.pitch_scale = speed
 	audio_player.play()
 
 func _process(delta: float) -> void:
-	if not started or ui_test_mode: return
-	if qa: record_qa()
-	for fighter: Control in fighters.values():
-		fighter.playback_speed = 0.0 if paused else speed
+	if not started: return
+	if qa and qa_recorder != null:
+		qa_recorder.observe(self)
+		if qa_recorder.finished: return
 	if paused: return
-	if busy:
-		animation_left -= delta * speed
-		for popup: Node in get_tree().get_nodes_in_group("popups"):
-			popup.position.y -= delta * speed * 28
-		if animation_left <= 0:
-			busy = false
-			for popup: Node in get_tree().get_nodes_in_group("popups"): popup.queue_free()
-			for unit: Dictionary in battle.units: fighters[unit["id"]].state = "down" if unit["hp"] == 0 else "idle"
-			refresh()
-			if not battle.outcome.is_empty():
-				if qa: qa_fights += 1; start_battle()
-				else: show_result()
-	elif battle.outcome.is_empty():
+	# One owner advances animations, including in integration tests. Small slices
+	# preserve hit -> hurt -> down order even when a rendered frame is delayed.
+	var remaining: float = delta * speed
+	while remaining > 0.0:
+		var step: float = minf(remaining,1.0/120.0)
+		remaining -= step
+		for fighter: Control in fighters.values(): fighter.advance_animation(step)
+		if busy:
+			presentation_elapsed += step
+			animation_left = maxf(0.0,animation_left-step)
+			if presentation_action in ["guard","potion"]:
+				if presentation_elapsed >= 0.2: present_effects()
+				if presentation_elapsed >= 0.5: actor_finished = true
+			if presentation_hit: effect_hold = maxf(0.0,effect_hold-step)
+			for popup: Node in get_tree().get_nodes_in_group("popups"):
+				if popup.get_parent() == stage: popup.position.y -= step * 28
+			for impact: Node in get_tree().get_nodes_in_group("impacts"):
+				if impact.get_parent() == stage: impact.advance(step)
+			if actor_finished and presentation_hit and reactions.is_empty() and effect_hold <= 0.0:
+				finish_presentation()
+				return
+	if not busy and battle.outcome.is_empty() and not ui_test_mode:
 		if battle.unit_by_id(battle.current)["side"] == "enemy": perform(battle.enemy_command())
 		elif qa and qa_seconds > 0: perform(auto_command())
 
@@ -452,6 +634,7 @@ func show_result() -> void:
 func show_settings() -> void:
 	if modal.visible: return
 	paused = true
+	audio_player.stream_paused = true
 	var column: VBoxContainer = modal_content()
 	column.add_child(label("暫停 / 設定",48,"f1d4a3"))
 	column.add_child(label("音效音量",26))
@@ -479,17 +662,19 @@ func show_settings() -> void:
 
 func close_settings() -> void:
 	paused = false
+	audio_player.stream_paused = false
 	modal.hide()
 	refresh()
 	if not selected_action.is_empty(): update_targets(); confirm_button.grab_focus()
 
 func toggle_speed() -> void:
 	speed = 2.0 if speed == 1.0 else 1.0
+	audio_player.pitch_scale = speed
 	speed_button.text = "演出 %d×" % int(speed)
 	save_settings()
 
 func save_settings() -> void:
-	if qa: return
+	if qa or not settings_enabled: return
 	var config := ConfigFile.new()
 	config.set_value("demo","volume",volume)
 	config.set_value("demo","speed",speed)
@@ -497,7 +682,7 @@ func save_settings() -> void:
 	config.save("user://battle_demo_settings.cfg")
 
 func load_settings() -> void:
-	if qa: return
+	if qa or not settings_enabled: return
 	var config := ConfigFile.new()
 	if config.load("user://battle_demo_settings.cfg") == OK:
 		volume = clampf(float(config.get_value("demo","volume",0.35)),0,1)
@@ -505,42 +690,17 @@ func load_settings() -> void:
 		resolution_index = clampi(int(config.get_value("demo","resolution",0)),0,2)
 		get_window().size = [Vector2i(1920,1080),Vector2i(2560,1440),Vector2i(3840,2160)][resolution_index]
 
+func _input(event: InputEvent) -> void:
+	# Holding Enter must never select/confirm another action after focus changes.
+	if event is InputEventKey and event.is_action("ui_accept"):
+		if event.pressed:
+			if event.echo or accept_held: get_viewport().set_input_as_handled()
+			accept_held = true
+		else: accept_held = false
+
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		if paused: close_settings()
 		elif not selected_action.is_empty(): cancel_selection()
 		elif started and battle.outcome.is_empty(): show_settings()
 		get_viewport().set_input_as_handled()
-
-func record_qa() -> void:
-	var now: int = Time.get_ticks_usec()
-	var elapsed: float = (now-qa_started)/1000000.0
-	if elapsed > 2: qa_frames.append((now-qa_last)/1000.0)
-	qa_last = now
-	if elapsed >= qa_next_sample:
-		qa_samples.append({"seconds":elapsed,"static_bytes":Performance.get_monitor(Performance.MEMORY_STATIC),"video_bytes":Performance.get_monitor(Performance.RENDER_VIDEO_MEM_USED),"nodes":Performance.get_monitor(Performance.OBJECT_NODE_COUNT)})
-		qa_next_sample += 10
-	if not qa_shot and elapsed > 2 and (busy or battle.unit_by_id(battle.current)["side"] == "party"):
-		if qa_variant == "selection" and not busy:
-			choose_command(1)
-		qa_shot = true
-		capture_qa()
-	if elapsed >= maxf(qa_seconds,4.0):
-		set_process(false)
-		qa_frames.sort()
-		var sum_ms: float = 0.0
-		for frame_ms: float in qa_frames: sum_ms += frame_ms
-		var report := {"seconds":elapsed,"size":[qa_capture_size.x,qa_capture_size.y],"frames":qa_frames.size(),"mean_ms":sum_ms/maxi(qa_frames.size(),1),"p95_ms":qa_frames[int(qa_frames.size()*0.95)] if not qa_frames.is_empty() else 0,"max_ms":qa_frames[-1] if not qa_frames.is_empty() else 0,"samples":qa_samples,"actions":qa_actions,"battles":qa_fights,"speed":speed}
-		var file := FileAccess.open(qa_path.path_join("report.json"),FileAccess.WRITE)
-		file.store_string(JSON.stringify(report,"\t")); file.close()
-		get_tree().quit()
-
-func capture_qa() -> void:
-	await RenderingServer.frame_post_draw
-	var screenshot: Image = get_viewport().get_texture().get_image()
-	qa_capture_size = screenshot.get_size()
-	if qa_target.x > 0 and screenshot.get_size() != qa_target:
-		push_error("QA render size mismatch: " + str(screenshot.get_size()))
-		get_tree().quit(2)
-		return
-	screenshot.save_png(qa_path.path_join("screen.png"))
