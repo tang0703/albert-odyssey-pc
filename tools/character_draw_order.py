@@ -111,7 +111,8 @@ def _memory(high: bytes, low: bytes, address: int, size: int) -> bytes:
 
 
 def scene_from_snapshot(high: bytes, low: bytes, *, decoration_snapshot: bytes | None = None,
-                        camera_at_command_target: list[int] | None = None) -> dict:
+                        camera_at_command_target: list[int] | None = None,
+                        room_camera_scope: bool = False) -> dict:
     """Extract source anchors, pieces and sorting inputs from a sealed sample.
 
     The caller must verify the capture manifest first. This function rejects
@@ -125,7 +126,10 @@ def scene_from_snapshot(high: bytes, low: bytes, *, decoration_snapshot: bytes |
                 or any(type(v) is not int for v in camera_at_command_target)):
             raise ValueError('Invalid command-target camera')
         camera = camera_at_command_target
-    if not 512 * 16 <= camera[0] <= 544 * 16 or not 1536 * 16 <= camera[1] <= 1554 * 16 or s16(high, 0xc42a4) or s16(high, 0xc42a6):
+    if type(room_camera_scope) is not bool:
+        raise ValueError('Invalid camera evidence scope')
+    maximum = (640, 1568) if room_camera_scope else (544, 1554)
+    if not 512 * 16 <= camera[0] <= maximum[0] * 16 or not 1536 * 16 <= camera[1] <= maximum[1] * 16 or s16(high, 0xc42a4) or s16(high, 0xc42a6):
         raise ValueError('Unverified camera or camera displacement')
     if u32(high, 0x741f4) != 1 or u32(high, 0x741e8) != 256:
         raise ValueError('Unverified priority-chain mode')

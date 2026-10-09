@@ -3,7 +3,8 @@ param(
     [Parameter(Mandatory)][string]$Output,
     [ValidateRange(1,1000000)][int]$SampleEvery = 8,
     [switch]$VideoEvidence,
-    [switch]$BoundaryEvidence
+    [switch]$BoundaryEvidence,
+    [switch]$DecorationEvidence
 )
 $ErrorActionPreference = 'Stop'
 $project = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
@@ -25,6 +26,10 @@ $params = @{
 if ($BoundaryEvidence) {
     $params.HookPC += @('0x060AC360','0x060AC4A4','0x060AC4E0','0x060A14DE','0x060AC458')
     $params.WatchRange += @('0x060C41EE:2','0x060CB55A:64','0x060C1E26:2')
+}
+if ($DecorationEvidence) {
+    $params.HookPC += @('0x060915AC','0x0609DDB4','0x0609E00A','0x0609DDC4')
+    $params.WatchRange += @('0x060CA4C0:120','0x260E8A21:98')
 }
 if ((Get-FileHash -LiteralPath $params.LoadState).Hash -ine '72d9fa56fbf525dbb71ae3a21d8e3aaa45f23b7711bfdce2b95d6c6472776b54') {
     throw 'Room capture requires the unchanged named exploration seed'
