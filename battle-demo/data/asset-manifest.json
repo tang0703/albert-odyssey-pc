@@ -1,0 +1,197 @@
+{
+	"assets": [
+		{
+			"character": "pike",
+			"path": "assets/round2/pike/idle-00.png",
+			"role": "sprite",
+			"sha256": "1f4e510a17fde5518223128dad98714ae7d3bbf2089a9b0b455ff120dd06316b"
+		},
+		{
+			"character": "pike",
+			"path": "assets/round2/pike/idle-01.png",
+			"role": "sprite",
+			"sha256": "c0925c1fdfebaef82d20a82a242df0c3ca489644613be5595f9752f7a3796141"
+		},
+		{
+			"character": "pike",
+			"path": "assets/round2/pike/idle-02.png",
+			"role": "sprite",
+			"sha256": "e39f6ccbe3fff27e66a2003301a444c879de4122ea1f53089660c4d16a46c0d4"
+		},
+		{
+			"character": "pike",
+			"path": "assets/round2/pike/idle-03.png",
+			"role": "sprite",
+			"sha256": "886838b58eb7a94623e5f8a62122d69160e6d6d611aecffa6e8bb0c98c6abfe6"
+		},
+		{
+			"character": "pike",
+			"path": "assets/round2/pike/attack-00.png",
+			"role": "sprite",
+			"sha256": "6f3351ba4f708c82caddd49067575e5f79ef039bd74c14e4a2762ddcde76832d"
+		},
+		{
+			"character": "pike",
+			"path": "assets/round2/pike/attack-01.png",
+			"role": "sprite",
+			"sha256": "50fff52366b01ac0ce174a675960c4e280c0d583e6efbdd816e51ca49011df6b"
+		},
+		{
+			"character": "pike",
+			"path": "assets/round2/pike/attack-02.png",
+			"role": "sprite",
+			"sha256": "9686228bbca6eb037bc78af6f10c876072b8f889165c559c65cd05eec380d46b"
+		},
+		{
+			"character": "pike",
+			"path": "assets/round2/pike/attack-03.png",
+			"role": "sprite",
+			"sha256": "ff626622e1257667ddd4a91f8ccf8ad8ed8a9e2f2ccdc946d54cfb316863bb62"
+		},
+		{
+			"character": "pike",
+			"path": "assets/round2/pike/attack-04.png",
+			"role": "sprite",
+			"sha256": "43367eb7796ed12ba615afaabc03f34417ecc49cfe2421cceb96890994fb6a15"
+		},
+		{
+			"character": "pike",
+			"path": "assets/round2/pike/attack-05.png",
+			"role": "sprite",
+			"sha256": "530e84b928597e084a4b2fd555baa7cc44aa6bb86774436e25d749c22c5e522a"
+		},
+		{
+			"character": "pike",
+			"path": "assets/round2/pike/hurt-00.png",
+			"role": "sprite",
+			"sha256": "34c43f1ab2b9ae4787c5bf42a64e152ca139fc01fa8b53e0e1b0b011d2787a9d"
+		},
+		{
+			"character": "pike",
+			"path": "assets/round2/pike/hurt-01.png",
+			"role": "sprite",
+			"sha256": "96cf712a0f3285852b4548e58c8751a4ae3ef4cc133369c79a53d0b52da40f5c"
+		},
+		{
+			"character": "pike",
+			"path": "assets/round2/pike/down-00.png",
+			"role": "sprite",
+			"sha256": "bad0f8fc7954e59fecbd19d5b454e949bf6666a6620d3341d2745a26baad6301"
+		},
+		{
+			"character": "pike",
+			"path": "assets/round2/pike/down-01.png",
+			"role": "sprite",
+			"sha256": "cebe0b5b2ff3c44830af756cc9e99e601ccff0451a88ca88e7513657e7cfd9c8"
+		},
+		{
+			"character": "pike",
+			"path": "assets/round2/pike/down-02.png",
+			"role": "sprite",
+			"sha256": "ef7e32072831bfb5a9795b8bbe93e087445e3711ae378ddd3a355ee065bb6355"
+		},
+		{
+			"character": "pike",
+			"path": "assets/round2/pike/down-03.png",
+			"role": "sprite",
+			"sha256": "b0516a4600a2172b8ac6580cf4f8db52d9616c48d074fe3c103d3dd49c04f586"
+		},
+		{
+			"character": "weredog",
+			"path": "assets/round2/weredog/idle-00.png",
+			"role": "sprite",
+			"sha256": "a50ec527011a6d516203f0d30399dfc9ffed52bc7f966a378c6fb939bf68886f"
+		},
+		{
+			"character": "weredog",
+			"path": "assets/round2/weredog/idle-01.png",
+			"role": "sprite",
+			"sha256": "a14824500316178b988ac09a0f168529041d40160291f5ae8cc8f1f62e84f833"
+		},
+		{
+			"character": "weredog",
+			"path": "assets/round2/weredog/idle-02.png",
+			"role": "sprite",
+			"sha256": "d9c410b007361611dbabc9de41e5071b374f8c42eab0feae2dfd85bfc92bf36c"
+		},
+		{
+			"character": "weredog",
+			"path": "assets/round2/weredog/idle-03.png",
+			"role": "sprite",
+			"sha256": "0a1702ffe355dcce956a4e58748b432731ac76c4ccbf082d428dd91492ddb948"
+		},
+		{
+			"character": "weredog",
+			"path": "assets/round2/weredog/attack-00.png",
+			"role": "sprite",
+			"sha256": "457a287597a2636ba1fef2b772489fe1b003263d06bfc345a5f5152f63f1d235"
+		},
+		{
+			"character": "weredog",
+			"path": "assets/round2/weredog/attack-01.png",
+			"role": "sprite",
+			"sha256": "ce25797579db3f8523dd950318619eae25100579631a21c62b557827cf812a05"
+		},
+		{
+			"character": "weredog",
+			"path": "assets/round2/weredog/attack-02.png",
+			"role": "sprite",
+			"sha256": "bda63f3ab15f43fb6a5c2becc52a45ddcd6cee1cc0dc8e61182564b42990bd09"
+		},
+		{
+			"character": "weredog",
+			"path": "assets/round2/weredog/attack-03.png",
+			"role": "sprite",
+			"sha256": "4f7f8f7424d1074bd4b01de521413a4941b498d01a9ba80e7e4b06af84caabb5"
+		},
+		{
+			"character": "weredog",
+			"path": "assets/round2/weredog/attack-04.png",
+			"role": "sprite",
+			"sha256": "c5531db8f9ea3c4ab3fb373dc91fbaaff398cab62e5c434d6bd8a3e46aa10096"
+		},
+		{
+			"character": "weredog",
+			"path": "assets/round2/weredog/attack-05.png",
+			"role": "sprite",
+			"sha256": "ee4a4528216f27d6e2009ccb7ae88762147188313bc67211411150607c1c9467"
+		},
+		{
+			"character": "weredog",
+			"path": "assets/round2/weredog/hurt-00.png",
+			"role": "sprite",
+			"sha256": "88119d08fe3d47dcb82a0f3234a7be25d334ffad184747565257d60edc32ef06"
+		},
+		{
+			"character": "weredog",
+			"path": "assets/round2/weredog/hurt-01.png",
+			"role": "sprite",
+			"sha256": "d1d0c71b7b79bb8a2f14c4658f2cf8fbae9e43c0c10b6452f847ada8db830850"
+		},
+		{
+			"character": "weredog",
+			"path": "assets/round2/weredog/down-00.png",
+			"role": "sprite",
+			"sha256": "10492adc8fbbdc67c227f3bf1f18fe874f476983343191b45fde6754b13c19f3"
+		},
+		{
+			"character": "weredog",
+			"path": "assets/round2/weredog/down-01.png",
+			"role": "sprite",
+			"sha256": "24b2f8db6d5bfba13e76455d9298a0eabd5743b505442d035130c0b03e4efb99"
+		},
+		{
+			"character": "weredog",
+			"path": "assets/round2/weredog/down-02.png",
+			"role": "sprite",
+			"sha256": "e30b1720c74f5f28e618f288bea2404148e0780109469727a084e1807acac8ca"
+		},
+		{
+			"character": "weredog",
+			"path": "assets/round2/weredog/down-03.png",
+			"role": "sprite",
+			"sha256": "184feaa252ca4c71eb499b1a196a900902b89bb1e13ee8c6308d01aefcba0df4"
+		}
+	],
+	"schema": "battle_assets_v1"
+}

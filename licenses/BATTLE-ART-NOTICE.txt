@@ -1,0 +1,22 @@
+Battle Demo Round 2 artwork notice — 2026-10-09
+
+Pike and WEREDOG are visual reinterpretations of characters appearing in
+Albert Odyssey. Their designs were referenced from local original-game
+screenshots and redrawn with imagegen. The user's approved concept designs
+were adapted into newly generated animation poses. These are not decoded
+original-game animation frames. Other four fighters and the backdrop use
+project-authored procedural drawings; sound effects are synthesized.
+
+This local prototype includes only the newly generated artwork and project
+code. Original screenshots, extracted game resources, disc images, BIOS,
+and emulator save states are not included. Godot and its dependencies have
+separate notices in GODOT-LICENSE.txt and GODOT-COPYRIGHT.txt.
+
+Albert Odyssey names and original character designs remain associated with
+their respective rights holders. This notice does not grant rights to the
+original game or represent an official remake or endorsement. Project code
+licensing must not be interpreted as licensing those underlying designs.
+
+Image provenance and build-time asset hashes are recorded in the source
+repository's art/concepts/round2, art/atlases/round2, and
+battle-demo/data/asset-manifest.json. BUILD-INFO.json records delivery hashes.

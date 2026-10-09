@@ -1,8 +1,220 @@
 {
-  "guardian":{"shape":"shield","color":"79cdd4","anchor":[0.5,1.0],"scale":1.0,"states":{"idle":[],"attack":[],"hurt":[],"down":[]}},
-  "mage":{"shape":"staff","color":"8f9dff","anchor":[0.5,1.0],"scale":1.0,"states":{"idle":[],"attack":[],"hurt":[],"down":[]}},
-  "healer":{"shape":"staff","color":"9bdebb","anchor":[0.5,1.0],"scale":1.0,"states":{"idle":[],"attack":[],"hurt":[],"down":[]}},
-  "armor":{"shape":"shield","color":"e19b79","anchor":[0.5,1.0],"scale":1.1,"states":{"idle":[],"attack":[],"hurt":[],"down":[]}},
-  "scout":{"shape":"blade","color":"e8be78","anchor":[0.5,1.0],"scale":0.9,"states":{"idle":[],"attack":[],"hurt":[],"down":[]}},
-  "enemy_mage":{"shape":"staff","color":"d996c9","anchor":[0.5,1.0],"scale":1.0,"states":{"idle":[],"attack":[],"hurt":[],"down":[]}}
+	"armor": {
+		"anchor": [
+			0.5,
+			1.0
+		],
+		"color": "e19b79",
+		"default_facing": "right",
+		"renderer": "procedural",
+		"scale": 1.1,
+		"shape": "shield",
+		"states": {
+			"attack": [],
+			"down": [],
+			"hurt": [],
+			"idle": []
+		}
+	},
+	"enemy_mage": {
+		"anchor": [
+			0.5,
+			1.0
+		],
+		"color": "d996c9",
+		"default_facing": "right",
+		"renderer": "procedural",
+		"scale": 1.0,
+		"shape": "staff",
+		"states": {
+			"attack": [],
+			"down": [],
+			"hurt": [],
+			"idle": []
+		}
+	},
+	"guardian": {
+		"anchor": [
+			0.5,
+			0.875
+		],
+		"color": "79cdd4",
+		"default_facing": "left",
+		"display_name": "派克",
+		"renderer": "sprite",
+		"scale": 0.52,
+		"shape": "shield",
+		"states": {
+			"attack": {
+				"durations": [
+					0.1,
+					0.12,
+					0.12,
+					0.1,
+					0.12,
+					0.14
+				],
+				"frames": [
+					"res://assets/round2/pike/attack-00.png",
+					"res://assets/round2/pike/attack-01.png",
+					"res://assets/round2/pike/attack-02.png",
+					"res://assets/round2/pike/attack-03.png",
+					"res://assets/round2/pike/attack-04.png",
+					"res://assets/round2/pike/attack-05.png"
+				],
+				"hit_frame": 3,
+				"loop": false
+			},
+			"down": {
+				"durations": [
+					0.13,
+					0.16,
+					0.18,
+					0.3
+				],
+				"frames": [
+					"res://assets/round2/pike/down-00.png",
+					"res://assets/round2/pike/down-01.png",
+					"res://assets/round2/pike/down-02.png",
+					"res://assets/round2/pike/down-03.png"
+				],
+				"loop": false
+			},
+			"hurt": {
+				"durations": [
+					0.14,
+					0.18
+				],
+				"frames": [
+					"res://assets/round2/pike/hurt-00.png",
+					"res://assets/round2/pike/hurt-01.png"
+				],
+				"loop": false
+			},
+			"idle": {
+				"durations": [
+					0.22,
+					0.22,
+					0.22,
+					0.22
+				],
+				"frames": [
+					"res://assets/round2/pike/idle-00.png",
+					"res://assets/round2/pike/idle-01.png",
+					"res://assets/round2/pike/idle-02.png",
+					"res://assets/round2/pike/idle-03.png"
+				],
+				"loop": true
+			}
+		}
+	},
+	"healer": {
+		"anchor": [
+			0.5,
+			1.0
+		],
+		"color": "9bdebb",
+		"default_facing": "right",
+		"renderer": "procedural",
+		"scale": 1.0,
+		"shape": "staff",
+		"states": {
+			"attack": [],
+			"down": [],
+			"hurt": [],
+			"idle": []
+		}
+	},
+	"mage": {
+		"anchor": [
+			0.5,
+			1.0
+		],
+		"color": "8f9dff",
+		"default_facing": "right",
+		"renderer": "procedural",
+		"scale": 1.0,
+		"shape": "staff",
+		"states": {
+			"attack": [],
+			"down": [],
+			"hurt": [],
+			"idle": []
+		}
+	},
+	"scout": {
+		"anchor": [
+			0.5,
+			0.875
+		],
+		"color": "e8be78",
+		"default_facing": "right",
+		"display_name": "WEREDOG",
+		"renderer": "sprite",
+		"scale": 0.5,
+		"shape": "blade",
+		"states": {
+			"attack": {
+				"durations": [
+					0.1,
+					0.12,
+					0.12,
+					0.1,
+					0.12,
+					0.14
+				],
+				"frames": [
+					"res://assets/round2/weredog/attack-00.png",
+					"res://assets/round2/weredog/attack-01.png",
+					"res://assets/round2/weredog/attack-02.png",
+					"res://assets/round2/weredog/attack-03.png",
+					"res://assets/round2/weredog/attack-04.png",
+					"res://assets/round2/weredog/attack-05.png"
+				],
+				"hit_frame": 3,
+				"loop": false
+			},
+			"down": {
+				"durations": [
+					0.13,
+					0.16,
+					0.18,
+					0.3
+				],
+				"frames": [
+					"res://assets/round2/weredog/down-00.png",
+					"res://assets/round2/weredog/down-01.png",
+					"res://assets/round2/weredog/down-02.png",
+					"res://assets/round2/weredog/down-03.png"
+				],
+				"loop": false
+			},
+			"hurt": {
+				"durations": [
+					0.14,
+					0.18
+				],
+				"frames": [
+					"res://assets/round2/weredog/hurt-00.png",
+					"res://assets/round2/weredog/hurt-01.png"
+				],
+				"loop": false
+			},
+			"idle": {
+				"durations": [
+					0.22,
+					0.22,
+					0.22,
+					0.22
+				],
+				"frames": [
+					"res://assets/round2/weredog/idle-00.png",
+					"res://assets/round2/weredog/idle-01.png",
+					"res://assets/round2/weredog/idle-02.png",
+					"res://assets/round2/weredog/idle-03.png"
+				],
+				"loop": true
+			}
+		}
+	}
 }
