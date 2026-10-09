@@ -1,0 +1,12 @@
+none 4
+down 14
+right 3
+down 4
+right 1
+down 1
+right 1
+down 1
+right 36
+up 8
+right 28
+none 24

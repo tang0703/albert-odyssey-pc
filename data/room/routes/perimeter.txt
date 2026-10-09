@@ -1,0 +1,9 @@
+none 4
+down 24
+left 140
+down 90
+right 45
+up 180
+right 140
+down 24
+none 12
