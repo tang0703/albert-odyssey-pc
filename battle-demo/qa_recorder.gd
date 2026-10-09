@@ -112,7 +112,22 @@ func observe(ui: Control) -> void:
 		_fail(ui, "QA surface was not verified before warmup ended")
 		return
 	var was_measuring: bool = measured_start_usec >= 0
+	var prior_spikes: int = spikes_ms.size()
 	_record_clock(now)
+	if spikes_ms.size() > prior_spikes:
+		# Diagnostic counters only: no rendering readback or file I/O. These are
+		# prior-frame engine timings, not proof of an OS or GPU stall's cause.
+		spikes_ms[-1].merge({
+			"engine_process_ms": Performance.get_monitor(Performance.TIME_PROCESS) * 1000.0,
+			"engine_physics_ms": Performance.get_monitor(Performance.TIME_PHYSICS_PROCESS) * 1000.0,
+			"actor": ui.presentation_actor,
+			"action": ui.presentation_action,
+			"presentation_seconds": ui.presentation_elapsed,
+			"busy": ui.busy,
+			"actions": ui.qa_actions,
+			"battles": ui.qa_fights,
+			"log_lines": ui.log_view.get_line_count(),
+		})
 	if not was_measuring and measured_start_usec >= 0:
 		measured_start_actions = ui.qa_actions
 		measured_start_battles = ui.qa_fights
