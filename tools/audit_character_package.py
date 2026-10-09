@@ -94,6 +94,26 @@ def variant_string(raw: bytes) -> str:
     return raw[8:8 + length].decode('utf-8')
 
 
+def character_entry(settings: dict[str, bytes]) -> dict:
+    """Accept only the actual 4.7.2 preset's one explicitly bound override.
+
+    Godot exports the old base main_scene and resolves the custom feature at
+    runtime. Requiring a rewritten base value would reject a valid export;
+    accepting an override without its feature would launch the old entry.
+    """
+    key = 'application/run/main_scene'
+    entry_keys = {name for name in settings if name == key or name.startswith(key + '.')}
+    if entry_keys != {key, key + '.character_demo'}:
+        raise ValueError('Exported project has missing or ambiguous main-scene feature overrides')
+    features = variant_string(settings.get('_custom_features', b''))
+    base = variant_string(settings[key])
+    target = variant_string(settings[key + '.character_demo'])
+    if features != 'character_demo' or base != 'res://main.tscn' or target != 'res://character_main.tscn':
+        raise ValueError('Exported project feature binding does not launch the character entry')
+    return {'custom_features': features, 'base_main_scene': base,
+            'feature_override': 'character_demo', 'effective_main_scene': target}
+
+
 def audit_pck(raw: bytes, pins: dict[str, bytes]) -> list[dict]:
     validate_pins(pins)
     files = unpack(raw)
@@ -111,10 +131,7 @@ def audit_pck(raw: bytes, pins: dict[str, bytes]) -> list[dict]:
         if len(files[name + '.gdc']) < 12 or not files[name + '.gdc'].startswith(b'GDSC'):
             raise ValueError('Invalid compiled script: ' + name)
     settings = project_values(files['project.binary'])
-    # Export must resolve the character_demo override into the actual entry.
-    # Merely including a character scene beside the old main is insufficient.
-    if variant_string(settings.get('application/run/main_scene', b'')) != 'res://character_main.tscn':
-        raise ValueError('Exported project does not launch the character entry')
+    character_entry(settings)
     if not files[main] or b'shader_type canvas_item;' not in files['character_priority.gdshader']:
         raise ValueError('Missing compiled scene or priority shader')
     return [{'path': name, 'bytes': len(value), 'sha256': sha(value)} for name, value in sorted(files.items())]

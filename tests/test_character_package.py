@@ -18,11 +18,18 @@ import audit_character_package as package
 from test_exploration_package import pck
 
 
-def project(main='res://character_main.tscn'):
-    value = main.encode()
-    payload = struct.pack('<II', 4, len(value)) + value + b'\0' * (-len(value) % 4)
-    key = b'application/run/main_scene'
-    return b'ECFG' + struct.pack('<II', 1, len(key)) + key + struct.pack('<I', len(payload)) + payload
+def project(main='res://main.tscn', feature='character_demo', override='res://character_main.tscn', extra=None):
+    values = {'application/run/main_scene': main,
+              'application/run/main_scene.character_demo': override,
+              '_custom_features': feature}
+    values.update(extra or {})
+    rows = []
+    for name, text in values.items():
+        if text is None: continue
+        value, key = text.encode(), name.encode()
+        payload = struct.pack('<II', 4, len(value)) + value + b'\0' * (-len(value) % 4)
+        rows.append(struct.pack('<I', len(key)) + key + struct.pack('<I', len(payload)) + payload)
+    return b'ECFG' + struct.pack('<I', len(rows)) + b''.join(rows)
 
 
 class CharacterPackageTests(unittest.TestCase):
@@ -79,14 +86,27 @@ class CharacterPackageTests(unittest.TestCase):
             self.assertEqual(high.call_args.kwargs['scene_bundle'],self.delivery/'scene')
             self.assertEqual(high.call_args.kwargs['source_character_bundle'],self.delivery/'character')
 
-    def test_old_main_entry_rejected_even_with_character_scene(self):
-        for main in ['res://main.tscn', 'res://tests/test_character_ui.gd']:
-            with self.subTest(main=main), self.assertRaisesRegex(ValueError, 'launch'):
-                package.audit_pck(pck(self.files | {'project.binary':project(main)}), self.pins)
+    def test_effective_character_entry_requires_matching_feature_and_override(self):
+        result = package.character_entry(package.project_values(project()))
+        self.assertEqual(result['effective_main_scene'], 'res://character_main.tscn')
+        for changed in [
+            {'main':'res://tests/test_character_ui.gd'},
+            {'main':'res://character_main.tscn'},
+            {'feature':None}, {'feature':''}, {'feature':'other_demo'},
+            {'feature':'character_demo,unreviewed'}, {'feature':' character_demo '},
+            {'override':None}, {'override':'res://main.tscn'},
+            {'override':'res://tests/test_character_ui.gd'},
+            {'extra':{'application/run/main_scene.windows':'res://main.tscn'}},
+            {'extra':{'application/run/main_scene.other_demo':'res://character_main.tscn'}},
+        ]:
+            with self.subTest(changed=changed), self.assertRaises(ValueError):
+                package.audit_pck(pck(self.files | {'project.binary':project(**changed)}), self.pins)
 
     def test_pck_raw_sources_reference_png_and_tests_rejected(self):
         for name in ['wram-high.bin','BIOS.bin','source.cue','reference.png','generated/character/up-idle.png',
-                     'tests/test_ui.gdc','extra.gdc','main.tscn.remap','character_main.gd']:
+                     'tests/test_ui.gdc','extra.gdc','main.tscn.remap','character_main.gd',
+                     'character_art_review.gdc','character_art_review.gd.remap',
+                     '.godot/exported/123/export-'+('f'*32)+'-main.scn']:
             with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'resource mismatch'):
                 package.audit_pck(pck(self.files | {name:b'unapproved'}), self.pins)
 

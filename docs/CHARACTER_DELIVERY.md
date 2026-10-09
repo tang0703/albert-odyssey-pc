@@ -16,7 +16,9 @@ Windows 套件包含獨立 EXE／PCK、操作及授權文件、BUILD-INFO 與三
 
 52 張姿勢是四方向各一待機、12 張行走。原作參照圖、imagegen 中間產物、RAM dump、完整 savestate、光碟、BIOS 及測試報告不進入交付包。批准資料包中具明確用途與固定白名單的小型動畫／旗標資料仍按各包規格保存。含原作素材的套件僅限本地，不同步 GitHub。
 
-`audit_character_package.py` 檢查三個獨立 pin、彼此來源關係、所有外置包語意與逐檔 SHA256。PCK 僅接受已列名的 compiled scripts／remaps、角色入口、shader、三 pin 與引擎必要 metadata；不接受內嵌 generated 圖片、參照 PNG 或測試。`project.binary` 必須確實指向 `character_main.tscn`，僅在 PCK 裡放入角色場景不算正確入口。
+`audit_character_package.py` 檢查三個獨立 pin、彼此來源關係、所有外置包語意與逐檔 SHA256。PCK 僅接受已列名的 compiled scripts／remaps、角色入口、shader、三 pin 與引擎必要 metadata；不接受內嵌 generated 圖片、參照 PNG 或測試。`main.gd` 作為角色入口基底保留；舊 `main.tscn` 及美術審閱腳本 `character_art_review.gd` 明確排除。
+
+Godot 4.7.2 實際 `project.binary` 保留 `application/run/main_scene=res://main.tscn`，執行時透過 `_custom_features=character_demo` 與 `application/run/main_scene.character_demo=res://character_main.tscn` 選取角色入口。驗證器要求這三項完全吻合，並拒絕任何額外 main_scene feature 覆寫；僅放入角色場景或單獨存在覆寫設定都不算通過。
 
 BUILD-INFO 記錄完整 Git 提交、是否有未提交變更、Godot 版本、建置時間、三 pin SHA256 及逐檔清單。ZIP 在解壓前先驗檔名／大小／CRC／SHA256，拒絕 traversal、重複及大小寫別名、連結、額外或缺失檔案；只解壓至全新目錄，再對完整交付重新驗證。上述封裝檢查不自動給予冷啟動或效能通過。
 
