@@ -75,7 +75,10 @@ try {
             }
             CheckedPython @('-m','unittest','discover','-s',(Join-Path $PcRoot 'tests'),'-p',$TestName,'-v') ([IO.Path]::GetFileNameWithoutExtension($TestName))
         }
-        Write-Output 'Exploration Godot, bundle and package tests passed.'
+        $QaTest=Join-Path $PcRoot 'tests/test_exploration_qa.ps1'
+        if (-not (Test-Path -LiteralPath $QaTest -PathType Leaf)) { throw 'Required QA acceptance fixture test is missing.' }
+        & $QaTest *> (Join-Path $Reports 'qa-fixture-tests.txt')
+        Write-Output 'Exploration Godot, bundle, package and QA acceptance tests passed.'
         return
     }
 

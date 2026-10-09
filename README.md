@@ -1,7 +1,22 @@
 # Albert Odyssey 高清 2D PC 重製
 
-目前交付的是 **Godot 資源驗證台與可重跑的逆向／匯入工具**，不是已完成的可玩切片。
-Stage B 仍未通過，尚未實作原作地圖探索、碰撞、完整事件或戰鬥。
+目前包含 **Godot 資源驗證台、MAP001 指定區域行走驗證台與可重跑的逆向／匯入工具**。
+MAP001 的玩家、四方向移動及碰撞修正已在限定範圍核對；完整地圖、事件及原作戰鬥仍未完成，Stage B 整體未通過。
+
+**MAP001 行走驗證台** 使用來源背景與診斷標記，支援四方向操作、暫停、單步、重設及四組原作軌跡對照。
+12 條原作重播的 1,680 次更新，在 Python 與 Godot 中均為零差異。超出已驗證查表範圍會顯示「測試邊界」。
+操作見 [行走說明](exploration-demo/README.md)，來源與限制見 [移動證據](docs/EXPLORATION_MOVEMENT.md)，
+Windows 與實測結果見 [行走驗收](docs/EXPLORATION_ACCEPTANCE.md)。
+
+```powershell
+.\tools\exploration.ps1 build  # 從已鎖定的本地來源建立資料包
+.\tools\exploration.ps1 test
+.\tools\exploration.ps1 run
+.\tools\exploration.ps1 export
+```
+
+本地 Windows 套件：`build/MAP001-Walk-Windows-x64.zip`，完整解壓後執行 `MAP001-Walk.exe`。
+套件包含原作背景，只留本地；執行不需要光碟、BIOS、快照或 Godot 編輯器。
 
 **三曜試煉：獨立三對三戰鬥 demo** 已加入派克與 WEREDOG 的新繪動畫，
 其餘四名保留簡易角色。採新規則，可獨立執行，與上面的原作還原關卡分開驗收。
@@ -54,7 +69,7 @@ Krita 使用已固定 SHA256 的 5.3.3 官方便攜封裝，雜湊是本輪官�
   鏡頭仍採固定參照情境，尚無完整場景載入器。詳見 `docs/SOURCE_SCENE.md`。
 - 第三段資料已定位至原作工作記憶體；尚未確認碰撞／場景入口用途，見 `docs/SCENE_METADATA.md`。
 - 已依原程式將第三段展開成旗標表，65,536 bytes 與存檔完全一致；旗標用途待查，見 `docs/SCENE_FLAGS.md`。
-- 已重建角色座標查表與兩個局部狀態更新例程，並定位位置修正分支；完整碰撞尚未完成，見 `docs/ACTOR_FLAGS.md`。
+- 已從同步原作捕捉確認玩家、形狀、四方向碰撞修正及更新順序；限定 108 個實際查詢格，完整地圖碰撞尚未完成，見 `docs/EXPLORATION_MOVEMENT.md`。
 - 三解析度文字／素材驗證台、對話切換、頁面界限與瀏覽歷史基礎。
 - PC 中介事件 VM、明確文字等待、邏輯 tick 等待、條件分支及未知指令拒絕。
   VM 目前僅有合成契約測試，尚未接入原作事件翻譯器及地圖。

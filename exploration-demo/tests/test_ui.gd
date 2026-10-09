@@ -164,6 +164,16 @@ func run() -> void:
 	check(final_states[0].updates == 59, "logical period follows original 176473/10546875 seconds")
 	ui.clear_held_keys()
 	check(ui.held_keys.is_empty(), "focus loss clears held controls")
+	# QA cannot treat a once-verified first frame as proof of later dimensions.
+	ui.qa_target = root.size
+	var previous_scale: Vector2i = root.content_scale_size
+	root.content_scale_size = Vector2i(1920,1080)
+	check(ui.qa_surface_size_issue(ui.qa_target).is_empty(), "QA accepts actual matching window dimensions")
+	check(not ui.qa_surface_size_issue(ui.qa_target + Vector2i(1,0)).is_empty(), "QA rejects mismatched GPU image dimensions")
+	root.content_scale_size = Vector2i(1600,900)
+	check(not ui.qa_surface_size_issue(ui.qa_target).is_empty(), "QA rejects canvas scaling drift even with matching client size")
+	root.content_scale_size = previous_scale
+	ui.qa_target = Vector2i.ZERO
 	ui.queue_free()
 	await process_frame
 	print("EXPLORATION_UI_TESTS_PASSED checks=%d" % checks)

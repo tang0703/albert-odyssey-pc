@@ -37,6 +37,9 @@ func run() -> void:
 	put("extra.bin", PackedByteArray([1]))
 	check(not Bundle.load_bundle(directory).ok, "Unlisted file rejected")
 	DirAccess.remove_absolute(directory.path_join("extra.bin"))
+	put(".unexpected", PackedByteArray([1]))
+	check(not Bundle.load_bundle(directory).ok, "Hidden unlisted file rejected")
+	DirAccess.remove_absolute(directory.path_join(".unexpected"))
 	for name: String in ["flags.bin", "nbg0.png", "profile.json", "traces.json"]:
 		DirAccess.remove_absolute(directory.path_join(name))
 		check(not Bundle.load_bundle(directory).ok, "Missing required file rejected: " + name)

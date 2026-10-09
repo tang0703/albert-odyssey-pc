@@ -67,10 +67,22 @@ var qa_soak_seconds: float = 0.0
 var qa_warmup_seconds: float = 15.0
 var qa_started_usec: int = 0
 var qa_first_frame_usec: int = 0
+var qa_verified_surface_usec: int = 0
+var qa_last_pixel_read_usec: int = 0
 var qa_measure_started_usec: int = 0
 var qa_previous_usec: int = 0
 var qa_next_sample: float = 0.0
 var qa_surface_verified: bool = false
+var qa_stable_since_usec: int = 0
+var qa_surface_checks: int = 0
+var qa_ready_written: bool = false
+var qa_last_surface_size: Vector2i = Vector2i.ZERO
+var qa_verified_pixel_size: Vector2i = Vector2i.ZERO
+var qa_pixel_reads_before_measurement: int = 0
+var qa_pixel_reads_after_measurement: int = 0
+var qa_window_corrections: Array[Dictionary] = []
+var qa_surface_changes: Array[Dictionary] = []
+const QA_SURFACE_STABILITY_SECONDS: float = 0.25
 var qa_finishing: bool = false
 var qa_frames_ms: Array[float] = []
 var qa_samples: Array[Dictionary] = []
@@ -93,9 +105,7 @@ func _ready() -> void:
 				var parts: PackedStringArray = arg.trim_prefix("--qa-size=").to_lower().split("x")
 				if parts.size() == 2: qa_target = Vector2i(int(parts[0]), int(parts[1]))
 	if qa_target.x > 0 and qa_target.y > 0:
-		get_window().borderless = true
-		get_window().position = Vector2i.ZERO
-		get_window().size = qa_target
+		lock_qa_window_size()
 	bundle = bundle_override if not bundle_override.is_empty() else Bundle.load_bundle(folder)
 	if not bundle.get("ok", false):
 		startup_error = str(bundle.get("error", "資料包載入失敗"))
@@ -129,7 +139,7 @@ func _ready() -> void:
 		mode_select.select(1)
 		reset_state()
 		paused = false
-		RenderingServer.frame_post_draw.connect(qa_first_draw, CONNECT_ONE_SHOT)
+		RenderingServer.frame_post_draw.connect(qa_check_rendered_surface)
 
 func panel_style(color: String) -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()
@@ -475,21 +485,100 @@ func draw_map(canvas: Control) -> void:
 		var observed: Vector2 = (world_position(expected) - camera) * zoom
 		canvas.draw_arc(observed, zoom * 4.5, 0, TAU, 24, Color("ffd18a"), maxf(1.5, zoom * 0.4), true)
 
-func qa_first_draw() -> void:
-	qa_first_frame_usec = Time.get_ticks_usec()
-	var image: Image = get_viewport().get_texture().get_image()
-	if image == null or (qa_target != Vector2i.ZERO and image.get_size() != qa_target):
-		finish_qa("Actual rendered surface differs from requested QA size")
+func lock_qa_window_size() -> void:
+	# Window-only QA policy. A late Windows DPI/monitor event must not silently
+	# change the rendered workload. Do not alter desktop or global DPI settings.
+	if qa_target.x <= 0 or qa_target.y <= 0: return
+	var window: Window = get_window()
+	window.mode = Window.MODE_WINDOWED
+	window.borderless = true
+	window.unresizable = true
+	window.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
+	window.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
+	window.content_scale_size = Vector2i(1920, 1080)
+	window.content_scale_factor = 1.0
+	window.min_size = qa_target
+	window.max_size = qa_target
+	window.position = Vector2i.ZERO
+	window.size = qa_target
+
+func qa_actual_surface_size() -> Vector2i:
+	# On Godot 4.7.2 Windows canvas_items, ViewportTexture.get_width()/get_size()
+	# can report the stretch factor twice while get_image() has correct pixels.
+	# Monitor the physical client size instead, and verify GPU pixels at both ends.
+	return DisplayServer.window_get_size(get_window().get_window_id())
+
+func qa_surface_size_issue(actual: Vector2i) -> String:
+	if actual.x <= 0 or actual.y <= 0: return "Rendered QA surface is empty"
+	if qa_target != Vector2i.ZERO and actual != qa_target:
+		return "Rendered QA size drifted: actual %s, requested %s" % [actual, qa_target]
+	if qa_target != Vector2i.ZERO and get_window().size != qa_target:
+		return "QA window size drifted: actual %s, requested %s" % [get_window().size, qa_target]
+	if qa_target != Vector2i.ZERO and (get_window().content_scale_mode != Window.CONTENT_SCALE_MODE_CANVAS_ITEMS or get_window().content_scale_aspect != Window.CONTENT_SCALE_ASPECT_KEEP or get_window().content_scale_size != Vector2i(1920,1080) or not is_equal_approx(get_window().content_scale_factor, 1.0)):
+		return "QA canvas scaling configuration changed"
+	return ""
+
+func qa_read_pixels() -> Image:
+	# finish_qa closes timing before its last read. No measured frame includes
+	# GPU readback, PNG compression, report sorting or report/file I/O.
+	if qa_measure_started_usec > 0 and not qa_finishing:
+		push_error("GPU readback rejected during measured soak")
+		return null
+	if qa_measure_started_usec > 0: qa_pixel_reads_after_measurement += 1
+	else: qa_pixel_reads_before_measurement += 1
+	qa_last_pixel_read_usec = Time.get_ticks_usec()
+	return get_viewport().get_texture().get_image()
+
+func qa_check_rendered_surface() -> void:
+	if qa_finishing: return
+	var now: int = Time.get_ticks_usec()
+	if qa_first_frame_usec == 0: qa_first_frame_usec = now
+	var actual: Vector2i = qa_actual_surface_size()
+	qa_surface_checks += 1
+	if actual != qa_last_surface_size:
+		qa_surface_changes.append({"seconds_from_start":float(now - qa_started_usec) / 1000000.0, "size":[actual.x,actual.y], "measuring":qa_measure_started_usec > 0})
+		qa_last_surface_size = actual
+	var issue: String = qa_surface_size_issue(actual)
+	if not issue.is_empty():
+		qa_surface_verified = false
+		qa_stable_since_usec = 0
+		if qa_measure_started_usec > 0:
+			finish_qa(issue)
+			return
+		qa_window_corrections.append({"seconds_from_start":float(now - qa_started_usec) / 1000000.0, "surface":[actual.x,actual.y], "window":[get_window().size.x,get_window().size.y]})
+		lock_qa_window_size()
+		return
+	if qa_surface_verified: return
+	if qa_stable_since_usec == 0:
+		qa_stable_since_usec = now
+		return
+	if float(now - qa_stable_since_usec) / 1000000.0 < QA_SURFACE_STABILITY_SECONDS: return
+	# The one startup pixel read occurs only before measurement. Later checks
+	# use dimensions, including every rendered frame throughout a soak.
+	if qa_measure_started_usec > 0:
+		finish_qa("QA surface lost verification after measurement began")
+		return
+	var image: Image = qa_read_pixels()
+	if image == null or image.is_empty():
+		finish_qa("Actual rendered surface has no pixels")
+		return
+	issue = qa_surface_size_issue(image.get_size())
+	if not issue.is_empty():
+		finish_qa(issue)
 		return
 	qa_surface_verified = true
+	qa_verified_pixel_size = image.get_size()
+	if qa_ready_written: return
+	qa_verified_surface_usec = now
 	var marker_path: String = qa_report
 	if marker_path.is_empty(): marker_path = qa_output if qa_soak_seconds > 0 else qa_output + ".json"
 	var marker := FileAccess.open(marker_path + ".ready.json", FileAccess.WRITE)
 	if marker == null:
 		finish_qa("Cannot write first-frame ready marker")
 		return
-	marker.store_string(JSON.stringify({"schema":"ao_pc_exploration_first_frame_v1", "ticks_usec":qa_first_frame_usec, "actual_viewport":[image.get_width(), image.get_height()], "surface_verified":true}))
+	marker.store_string(JSON.stringify({"schema":"ao_pc_exploration_first_frame_v1", "ticks_usec":qa_verified_surface_usec, "first_draw_ticks_usec":qa_first_frame_usec, "actual_viewport":[image.get_width(), image.get_height()], "surface_verified":true, "stability_seconds":QA_SURFACE_STABILITY_SECONDS}))
 	marker.close()
+	qa_ready_written = true
 
 func observe_qa() -> void:
 	if qa_finishing: return
@@ -498,11 +587,23 @@ func observe_qa() -> void:
 	if not qa_surface_verified:
 		if startup_elapsed > 20: finish_qa("No verified rendered surface; headless is unsuitable for visual QA")
 		return
+	var size_issue: String = qa_surface_size_issue(qa_actual_surface_size())
+	if not size_issue.is_empty():
+		qa_surface_verified = false
+		if qa_measure_started_usec > 0: finish_qa(size_issue)
+		return
 	if qa_soak_seconds <= 0:
 		if startup_elapsed >= 2:
 			qa_finishing = true
 			await RenderingServer.frame_post_draw
-			var image: Image = get_viewport().get_texture().get_image()
+			var image: Image = qa_read_pixels()
+			var issue: String = "Screenshot surface is empty" if image == null or image.is_empty() else qa_surface_size_issue(image.get_size())
+			if not issue.is_empty():
+				qa_finishing = false
+				qa_surface_verified = false
+				finish_qa(issue)
+				return
+			qa_verified_pixel_size = image.get_size()
 			var code: Error = image.save_png(qa_output)
 			qa_finishing = false
 			finish_qa("" if code == OK else "PNG save failed: %s" % error_string(code))
@@ -518,13 +619,25 @@ func observe_qa() -> void:
 	qa_frames_ms.append(ms)
 	if ms > 50: qa_spikes.append({"seconds": elapsed, "frame_ms": ms, "route": str(bundle.traces[route_index].id), "update": trace_cursor})
 	if elapsed >= qa_next_sample:
-		qa_samples.append({"seconds": elapsed, "engine_static_memory_bytes": Performance.get_monitor(Performance.MEMORY_STATIC), "engine_video_memory_bytes": Performance.get_monitor(Performance.RENDER_VIDEO_MEM_USED), "node_count": Performance.get_monitor(Performance.OBJECT_NODE_COUNT), "frame_ms": ms, "fps_monitor": Performance.get_monitor(Performance.TIME_FPS), "routes_completed": qa_routes_completed})
+		var window_size: Vector2i = qa_actual_surface_size()
+		qa_samples.append({"seconds": elapsed, "engine_static_memory_bytes": Performance.get_monitor(Performance.MEMORY_STATIC), "engine_video_memory_bytes": Performance.get_monitor(Performance.RENDER_VIDEO_MEM_USED), "node_count": Performance.get_monitor(Performance.OBJECT_NODE_COUNT), "frame_ms": ms, "fps_monitor": Performance.get_monitor(Performance.TIME_FPS), "routes_completed": qa_routes_completed, "window_pixels":[window_size.x,window_size.y]})
 		qa_next_sample = floor(elapsed) + 1.0
 	if elapsed >= qa_soak_seconds: finish_qa()
 
 func finish_qa(error: String = "") -> void:
 	if qa_finishing: return
 	qa_finishing = true
+	var actual: Vector2i = qa_verified_pixel_size
+	if DisplayServer.get_name() != "headless" and qa_surface_checks > 0:
+		var final_pixels: Image = qa_read_pixels()
+		if final_pixels != null and not final_pixels.is_empty(): actual = final_pixels.get_size()
+		else:
+			qa_surface_verified = false
+			if error.is_empty(): error = "Final GPU pixel verification failed"
+	var size_issue: String = qa_surface_size_issue(actual)
+	if not size_issue.is_empty():
+		qa_surface_verified = false
+		if error.is_empty(): error = size_issue
 	var report_path: String = qa_report
 	if report_path.is_empty(): report_path = qa_output if qa_soak_seconds > 0 else qa_output + ".json"
 	var sorted_frames: Array[float] = qa_frames_ms.duplicate()
@@ -549,9 +662,15 @@ func finish_qa(error: String = "") -> void:
 	var growth: float = final_memory / initial_memory - 1.0 if initial_memory > 0 else 0.0
 	var report: Dictionary = {"schema":"ao_pc_exploration_ui_qa_v1", "mode":"soak" if qa_soak_seconds > 0 else "screenshot", "error":error,
 		"passed":error.is_empty() and qa_surface_verified and qa_mismatches == 0, "surface_verified":qa_surface_verified,
-		"actual_viewport": [get_viewport().get_texture().get_width(), get_viewport().get_texture().get_height()],
+		"actual_viewport": [actual.x, actual.y], "requested_viewport":[qa_target.x,qa_target.y],
+		"surface_size_checks":qa_surface_checks, "surface_size_changes":qa_surface_changes, "warmup_window_corrections":qa_window_corrections,
+		"surface_size_check_method":"Physical client/window dimensions and canvas scale configuration every frame; actual GPU pixels before and after timing",
+		"pixel_reads_before_measurement":qa_pixel_reads_before_measurement, "pixel_reads_after_measurement":qa_pixel_reads_after_measurement, "pixel_reads_during_measurement":0,
+		"startup_surface_stability_seconds":QA_SURFACE_STABILITY_SECONDS,
 		"startup_to_first_render_ms":float(qa_first_frame_usec - qa_started_usec) / 1000.0 if qa_first_frame_usec > 0 else null,
-		"startup_note":"Engine entry to first draw; not an OS cold-cache claim", "reference_id":bundle.get("data", {}).get("reference_id", ""),
+		"startup_to_verified_surface_ms":float(qa_verified_surface_usec - qa_started_usec) / 1000.0 if qa_verified_surface_usec > 0 else null,
+		"measurement_started_ticks_usec":qa_measure_started_usec, "measurement_finished_ticks_usec":qa_previous_usec, "final_pixel_verification_ticks_usec":qa_last_pixel_read_usec,
+		"startup_note":"First render is the first frame_post_draw callback; verified-surface ready additionally requires 250ms stable dimensions. Neither is an OS cold-cache claim", "reference_id":bundle.get("data", {}).get("reference_id", ""),
 		"measured_seconds":duration, "warmup_seconds":qa_warmup_seconds, "samples":qa_samples, "frame_spikes_over_50ms":qa_spikes,
 		"memory_first_segment_median_bytes":initial_memory, "memory_last_segment_median_bytes":final_memory, "memory_median_growth_ratio":growth,
 		"nodes_first_segment_median":median(node_start), "nodes_last_segment_median":median(node_end),

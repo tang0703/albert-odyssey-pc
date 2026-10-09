@@ -6,7 +6,9 @@ const PAYLOADS: Array[String] = ["flags.bin", "nbg0.png", "nbg1.png", "profile.j
 const ROUTES: Array[String] = ["cardinal", "corners", "open", "release"]
 
 static func default_directory() -> String:
-	if OS.has_feature("standalone"):
+	# Godot 4 exported templates have no `editor` feature. `standalone` was
+	# a Godot 3 tag and would send an exported build to the source-tree path.
+	if not OS.has_feature("editor"):
 		return OS.get_executable_path().get_base_dir().path_join("scene")
 	return ProjectSettings.globalize_path("res://generated/scene")
 
