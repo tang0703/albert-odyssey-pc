@@ -152,6 +152,29 @@ function Test-CharacterSoak($Report,[object[]]$Samples,[int]$Seconds,[int]$Warmu
     }
 }
 
+function Invoke-CharacterCollectorOperation([string]$Operation,[Diagnostics.Stopwatch]$Timer,[Collections.Generic.List[object]]$Operations,[scriptblock]$Body) {
+    $Start=$Timer.Elapsed.TotalSeconds
+    $StartTicks=[Diagnostics.Stopwatch]::GetTimestamp()
+    $Succeeded=$false
+    $ErrorMessage=$null
+    $ErrorType=$null
+    try {
+        & $Body
+        $Succeeded=$true
+    } catch {
+        $ErrorMessage=$_.Exception.Message
+        $ErrorType=$_.Exception.GetType().FullName
+        throw
+    } finally {
+        $EndTicks=[Diagnostics.Stopwatch]::GetTimestamp()
+        $End=$Timer.Elapsed.TotalSeconds
+        $Operations.Add([pscustomobject]@{index=($Operations.Count+1);operation=$Operation;
+            start_seconds=$Start;end_seconds=$End;duration_ms=(($End-$Start)*1000.0);
+            start_timestamp_ticks=$StartTicks;end_timestamp_ticks=$EndTicks;
+            succeeded=$Succeeded;error_type=$ErrorType;error=$ErrorMessage})
+    }
+}
+
 function Get-CharacterLaunchIdentity([string]$Path) {
     $Absolute=(Resolve-Path -LiteralPath $Path).ProviderPath
     $Directory=Split-Path -Parent $Absolute
@@ -193,6 +216,8 @@ function Invoke-CharacterQa([string]$Name,[string]$Size,[bool]$Soak) {
     & $Python (Join-Path $PSScriptRoot 'audit_character_package.py') audit --delivery (Split-Path -Parent $Executable) --report $PackageAudit | Out-Null
     if ($LASTEXITCODE -ne 0) { throw 'Character delivery must pass the full HD/scene/source package audit before QA.' }
     $LaunchIdentity=Get-CharacterLaunchIdentity $Executable
+    $CollectorOperations=[Collections.Generic.List[object]]::new()
+    $CollectorClockStartedUtc=[DateTime]::UtcNow.ToString('o')
     $Timer=[Diagnostics.Stopwatch]::StartNew()
     $Process=Start-Process -FilePath $Executable -ArgumentList $Arguments -WindowStyle Hidden -PassThru
     $Samples=[Collections.Generic.List[object]]::new()
@@ -203,8 +228,11 @@ function Invoke-CharacterQa([string]$Name,[string]$Size,[bool]$Soak) {
     $CounterErrors=[Collections.Generic.List[string]]::new()
     try {
         while (-not $Process.HasExited) {
-            $Process.Refresh()
-            if ($Timer.Elapsed.TotalSeconds -ge $NextConcurrentCheck) { Assert-CharacterNoConcurrentWork $Process.Id; $NextConcurrentCheck=$Timer.Elapsed.TotalSeconds+10 }
+            Invoke-CharacterCollectorOperation 'Process.Refresh' $Timer $CollectorOperations { $Process.Refresh() }
+            if ($Timer.Elapsed.TotalSeconds -ge $NextConcurrentCheck) {
+                Invoke-CharacterCollectorOperation 'Get-CimInstance/concurrent_work_guard' $Timer $CollectorOperations { Assert-CharacterNoConcurrentWork $Process.Id }
+                $NextConcurrentCheck=$Timer.Elapsed.TotalSeconds+10
+            }
             if ($Process.HasExited) { break }
             if ($null -eq $ReadySeconds -and (Test-Path -LiteralPath ($Report+'.ready.json'))) {
                 $ObservedReady=$Timer.Elapsed.TotalSeconds
@@ -215,7 +243,9 @@ function Invoke-CharacterQa([string]$Name,[string]$Size,[bool]$Soak) {
             $Sample=[ordered]@{seconds=[math]::Round($Timer.Elapsed.TotalSeconds,3);working_set_bytes=$Process.WorkingSet64;private_bytes=$Process.PrivateMemorySize64;peak_working_set_bytes=$Process.PeakWorkingSet64;gpu_dedicated_bytes=$null;gpu_shared_bytes=$null}
             if ($Soak -and $null -ne $ReadySeconds -and $Timer.Elapsed.TotalSeconds -ge $NextGpu) {
                 try {
-                    $Counters=Get-Counter -Counter @('\GPU Process Memory(*)\Dedicated Usage','\GPU Process Memory(*)\Shared Usage') -ErrorAction Stop
+                    $Counters=Invoke-CharacterCollectorOperation 'Get-Counter/gpu_process_memory' $Timer $CollectorOperations {
+                        Get-Counter -Counter @('\GPU Process Memory(*)\Dedicated Usage','\GPU Process Memory(*)\Shared Usage') -ErrorAction Stop
+                    }
                     $Owned=@($Counters.CounterSamples | Where-Object { $_.InstanceName -like ('pid_'+$Process.Id+'_*') })
                     $Dedicated=@($Owned | Where-Object { $_.Path -like '*\dedicated usage' })
                     $Shared=@($Owned | Where-Object { $_.Path -like '*\shared usage' })
@@ -264,10 +294,25 @@ function Invoke-CharacterQa([string]$Name,[string]$Size,[bool]$Soak) {
             $Acceptance | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $Folder 'acceptance.json') -Encoding utf8
             if (-not $Acceptance.passed) { throw ('Soak failed: '+($Acceptance.failures -join ' ')) }
         } elseif (-not (Test-Path -LiteralPath $Output)) { throw 'Missing rendered screenshot.' }
-        Write-Output ('QA passed: '+$Folder)
+        if ($Soak -and -not $Acceptance.full_acceptance) {
+            Write-Output ('Timing and memory targets passed; full acceptance remains pending spike review or a complete 600-second run: '+$Folder)
+        } else {
+            Write-Output ('QA passed: '+$Folder)
+        }
     } finally {
-        if (-not $Process.HasExited) { $Process.Kill(); $Process.WaitForExit() }
-        $Process.Dispose()
+        try {
+            if (-not $Process.HasExited) { $Process.Kill(); $Process.WaitForExit() }
+        } finally {
+            $Timer.Stop()
+            # Runtime collector timings remain in memory until the game has exited.
+            [ordered]@{schema='ao_pc_character_collector_operations_v1';clock='same Stopwatch as process-memory.json seconds';
+                clock_started_utc=$CollectorClockStartedUtc;stopwatch_frequency=[Diagnostics.Stopwatch]::Frequency;
+                process_id=$Process.Id;elapsed_seconds=$Timer.Elapsed.TotalSeconds;
+                scope='Runtime refresh, concurrent-work CIM guard and GPU counter call; preflight checks occur before this clock.';
+                written_after_process_exit=$Process.HasExited;operations=@($CollectorOperations.ToArray())} |
+                ConvertTo-Json -Depth 6 | Set-Content -LiteralPath (Join-Path $Folder 'collector-operations.json') -Encoding utf8
+            $Process.Dispose()
+        }
     }
 }
 

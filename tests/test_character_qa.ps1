@@ -20,6 +20,19 @@ function Reject-Fixture([scriptblock]$Change,[string]$Message) {
     Assert-Check (-not $Result.passed -and -not $Result.full_acceptance) $Message
 }
 
+$OperationClock=[Diagnostics.Stopwatch]::StartNew()
+$Operations=[Collections.Generic.List[object]]::new()
+$Returned=@(Invoke-CharacterCollectorOperation 'synthetic_success' $OperationClock $Operations { 17; 23 })
+Assert-Check (($Returned -join ',') -eq '17,23' -and $Operations.Count -eq 1) 'Timing wrapper changed successful operation output or lost its row.'
+$Operation=$Operations[0]
+Assert-Check ($Operation.index -eq 1 -and $Operation.operation -eq 'synthetic_success' -and $Operation.succeeded -and $null -eq $Operation.error -and $null -eq $Operation.error_type) 'Successful operation timing status is incorrect.'
+Assert-Check ($Operation.start_seconds -ge 0 -and $Operation.end_seconds -ge $Operation.start_seconds -and $Operation.end_timestamp_ticks -ge $Operation.start_timestamp_ticks -and [math]::Abs($Operation.duration_ms-1000*($Operation.end_seconds-$Operation.start_seconds)) -lt 0.000001) 'Operation timing boundaries are inconsistent.'
+$OperationThrew=$false
+try { Invoke-CharacterCollectorOperation 'synthetic_failure' $OperationClock $Operations { throw [InvalidOperationException]::new('collector fault fixture') } } catch { $OperationThrew=$_.Exception.Message -eq 'collector fault fixture' }
+Assert-Check ($OperationThrew -and $Operations.Count -eq 2 -and -not $Operations[1].succeeded -and $Operations[1].index -eq 2 -and $Operations[1].error -eq 'collector fault fixture' -and $Operations[1].error_type -eq 'System.InvalidOperationException') 'Failed operation was swallowed or omitted from timing evidence.'
+Assert-Check ($Operations[1].start_seconds -ge $Operations[0].end_seconds -and $Operations[1].end_seconds -ge $Operations[1].start_seconds) 'Sequential operation timings do not share a monotonic clock.'
+$OperationClock.Stop()
+
 $Healthy=New-HealthyFixture
 $Good=Test-CharacterSoak $Healthy.report $Healthy.samples 600 15
 Assert-Check ($Good.passed -and $Good.full_acceptance) ('Healthy source fixture failed: '+($Good.failures -join '; '))
