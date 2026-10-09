@@ -1,0 +1,52 @@
+{
+  "schema": "battle_demo_soak_acceptance_v2",
+  "passed": true,
+  "failures": [],
+  "mean_fps": 59.85737641340929,
+  "p95_ms": 16.81,
+  "max_ms": 1170.299,
+  "spikes_over_100ms_require_review": true,
+  "spikes_ms": [
+    {
+      "frame_ms": 138.479,
+      "measured_seconds": 426.887646,
+      "seconds": 441.889275
+    },
+    {
+      "frame_ms": 1170.299,
+      "measured_seconds": 428.877094,
+      "seconds": 443.878723
+    },
+    {
+      "frame_ms": 86.564,
+      "measured_seconds": 429.039241,
+      "seconds": 444.04087
+    }
+  ],
+  "startup_ms": 554.485,
+  "memory": {
+    "evaluated": true,
+    "early_window_seconds": [
+      75,
+      135
+    ],
+    "late_window_seconds": [
+      555,
+      615
+    ],
+    "early_private_median": 388788224.0,
+    "late_private_median": 387907584.0,
+    "private_growth_percent": -0.22650891813019713,
+    "early_working_set_median": 275603456.0,
+    "late_working_set_median": 267124736.0,
+    "working_set_growth_percent": -3.0764200576642975
+  },
+  "nodes": {
+    "evaluated": true,
+    "early_floor": 72.0,
+    "late_floor": 72.0
+  },
+  "process_working_set_peak": 293502976.0,
+  "process_private_peak": 426315776.0,
+  "engine_video_bytes_peak": 129322905.0
+}

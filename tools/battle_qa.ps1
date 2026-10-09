@@ -35,21 +35,44 @@ function Test-SoakReport($Report,[object[]]$ProcessSamples,[int]$Seconds,[int]$W
             if ($PrivateGrowth -gt 10 -or $WorkingGrowth -gt 10) { $Failures.Add('Process memory median increased by more than 10 percent.') }
         }
     }
-    # Compare low-water marks so short-lived hit popups are not mistaken for leaks.
-    # Samples use wall seconds since QA start, including the warmup interval.
+    # Prefer identical lifecycle checkpoints. Periodic samples can contain a hit
+    # label and impact node, so their raw counts must not override clean checkpoints.
     $Nodes=[ordered]@{evaluated=$false}
-    if ($Seconds -ge 180) {
+    if ($null -ne $Report.battle_node_checkpoints) {
+        $Checkpoints=@($Report.battle_node_checkpoints)
+        if ($Checkpoints.Count -lt 2) { $Failures.Add('At least two cleaned battle checkpoints are required for node comparison.') }
+        else {
+            $Persistent=@($Checkpoints | ForEach-Object { $_.persistent_nodes })
+            $Nodes=[ordered]@{evaluated=$true;method='cleaned_battle_checkpoints';checkpoints=$Checkpoints.Count;first_persistent=$Persistent[0];last_persistent=$Persistent[-1];minimum=($Persistent | Measure-Object -Minimum).Minimum;maximum=($Persistent | Measure-Object -Maximum).Maximum}
+            foreach ($Checkpoint in $Checkpoints) {
+                if ($Checkpoint.busy -ne $false -or $null -eq $Checkpoint.transient_nodes -or $Checkpoint.transient_nodes -ne 0 -or $null -eq $Checkpoint.persistent_nodes -or $Checkpoint.persistent_nodes -le 0) {
+                    $Failures.Add('Invalid battle checkpoint: presentation or transient nodes were not cleaned.'); break
+                }
+                if ($null -eq $Checkpoint.tree_nodes -or $Checkpoint.tree_nodes -ne $Checkpoint.persistent_nodes -or ($null -ne $Checkpoint.nodes -and $Checkpoint.nodes -ne $Checkpoint.tree_nodes)) {
+                    $Failures.Add('Battle checkpoint scene-tree/global node counts disagree.'); break
+                }
+            }
+            if ($Nodes.minimum -ne $Nodes.maximum) { $Failures.Add('Persistent node count changed between cleaned battles.') }
+            if (@($Checkpoints.battles | Select-Object -Unique).Count -lt 2) { $Failures.Add('Node checkpoints must cover different completed battles.') }
+            foreach ($Sample in $Report.samples) {
+                if ($null -ne $Sample.persistent_nodes -and $Sample.persistent_nodes -ne $Persistent[0]) { $Failures.Add('Periodic inventory shows persistent node growth or loss.'); break }
+                if ($null -ne $Sample.tree_nodes -and $null -ne $Sample.transient_nodes -and $null -ne $Sample.persistent_nodes -and $Sample.tree_nodes -ne ($Sample.persistent_nodes+$Sample.transient_nodes)) { $Failures.Add('Periodic node inventory totals disagree.'); break }
+            }
+        }
+    } elseif ($Seconds -ge 180) {
+        # Preserve the conservative legacy verdict when no inventory was recorded.
         $EarlyMonitors=@($Report.samples | Where-Object { $_.seconds -ge ($Warmup+60) -and $_.seconds -lt ($Warmup+120) })
         $LateMonitors=@($Report.samples | Where-Object { $_.seconds -ge ($Warmup+$Seconds-60) })
         if ($EarlyMonitors.Count -lt 3 -or $LateMonitors.Count -lt 3) { $Failures.Add('Insufficient engine monitor samples.') }
         else {
             $EarlyNodes=($EarlyMonitors | Measure-Object -Property nodes -Minimum).Minimum
             $LateNodes=($LateMonitors | Measure-Object -Property nodes -Minimum).Minimum
-            $Nodes=[ordered]@{evaluated=$true;early_floor=$EarlyNodes;late_floor=$LateNodes}
+            $Nodes=[ordered]@{evaluated=$true;method='legacy_raw_low_water';early_floor=$EarlyNodes;late_floor=$LateNodes}
             if ($LateNodes -gt $EarlyNodes) { $Failures.Add('Live node low-water mark grew between comparison windows.') }
         }
     }
-    return [ordered]@{schema='battle_demo_soak_acceptance_v2';passed=($Failures.Count -eq 0);failures=@($Failures);mean_fps=(1000.0/[math]::Max(0.001,$Report.mean_ms));p95_ms=$Report.p95_ms;max_ms=$Report.max_ms;spikes_over_100ms_require_review=($Report.max_ms -gt 100);spikes_ms=$Report.spikes_ms;startup_ms=$Report.startup_ms;memory=$Memory;nodes=$Nodes;process_working_set_peak=($ProcessSamples | Measure-Object -Property working_set -Maximum).Maximum;process_private_peak=($ProcessSamples | Measure-Object -Property private_bytes -Maximum).Maximum;engine_video_bytes_peak=($Report.samples | Measure-Object -Property video_bytes -Maximum).Maximum}
+    $OsPeakSamples=@($ProcessSamples | Where-Object { $null -ne $_.peak_working_set })
+    return [ordered]@{schema='battle_demo_soak_acceptance_v3';passed=($Failures.Count -eq 0);full_memory_and_node_acceptance=($Failures.Count -eq 0 -and $Memory.evaluated -and $Nodes.evaluated);failures=@($Failures);mean_fps=(1000.0/[math]::Max(0.001,$Report.mean_ms));p95_ms=$Report.p95_ms;max_ms=$Report.max_ms;spikes_over_100ms_require_review=($Report.max_ms -gt 100);spikes_ms=$Report.spikes_ms;startup_ms=$Report.startup_ms;memory=$Memory;nodes=$Nodes;process_working_set_peak=($ProcessSamples | Measure-Object -Property working_set -Maximum).Maximum;process_working_set_os_peak=($OsPeakSamples | Measure-Object -Property peak_working_set -Maximum).Maximum;process_private_peak=($ProcessSamples | Measure-Object -Property private_bytes -Maximum).Maximum;engine_video_bytes_peak=($Report.samples | Measure-Object -Property video_bytes -Maximum).Maximum}
 }
 
 function Invoke-DemoQa([string]$Name,[string]$Size,[int]$Seconds,[string]$Mode,[string]$Variant='') {

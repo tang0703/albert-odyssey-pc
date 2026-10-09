@@ -23,6 +23,10 @@ var finished: bool = false
 var error_message: String = ""
 var measured_start_actions: int = 0
 var measured_start_battles: int = 0
+var node_inventory_changes: Array[Dictionary] = []
+var battle_node_checkpoints: Array[Dictionary] = []
+var _persistent_signature: String = ""
+var _last_completed_battle: int = 0
 var _ui: Control
 
 func configure(path: String, mode_name: String, warmup: float, seconds: float, target: Vector2i) -> String:
@@ -57,6 +61,10 @@ func configure(path: String, mode_name: String, warmup: float, seconds: float, t
 	error_message = ""
 	measured_start_actions = 0
 	measured_start_battles = 0
+	node_inventory_changes.clear()
+	battle_node_checkpoints.clear()
+	_persistent_signature = ""
+	_last_completed_battle = 0
 	return ""
 
 func initialize(ui: Control, mode_name: String = "screenshot", warmup: float = 15.0) -> String:
@@ -67,6 +75,7 @@ func initialize(ui: Control, mode_name: String = "screenshot", warmup: float = 1
 		return "Cannot create QA output directory: " + output_path
 	_ui = ui
 	RenderingServer.frame_post_draw.connect(_first_rendered_frame, CONNECT_ONE_SHOT)
+	ui.presentation_finished.connect(_on_presentation_finished)
 	return ""
 
 func _first_rendered_frame() -> void:
@@ -164,13 +173,100 @@ func _record_clock(now: int) -> void:
 
 func _record_metrics(elapsed: float) -> void:
 	# Engine counters require no framebuffer readback.
-	samples.append({
+	var sample: Dictionary = {
 		"seconds": elapsed,
 		"phase": "measured" if measured_start_usec >= 0 else "warmup",
 		"static_bytes": Performance.get_monitor(Performance.MEMORY_STATIC),
 		"video_bytes": Performance.get_monitor(Performance.RENDER_VIDEO_MEM_USED),
 		"nodes": Performance.get_monitor(Performance.OBJECT_NODE_COUNT),
+	}
+	if is_instance_valid(_ui) and _ui.is_inside_tree():
+		sample.merge(_record_node_inventory(_ui, elapsed, "periodic_sample"))
+	samples.append(sample)
+
+func _node_inventory(ui: Node) -> Dictionary:
+	var entries: Array[Dictionary] = []
+	_collect_nodes(ui.get_tree().root, ui, false, entries)
+	var persistent: Array[Dictionary] = []
+	var transient: Array[Dictionary] = []
+	var ui_nodes: int = 0
+	var ui_persistent: int = 0
+	var groups: Dictionary = {"popups": 0, "impacts": 0}
+	for entry: Dictionary in entries:
+		if entry["transient"]:
+			transient.append({"path": entry["path"], "class": entry["class"]})
+		else:
+			persistent.append({"path": entry["path"], "class": entry["class"]})
+		if entry["in_ui"]:
+			ui_nodes += 1
+			if not entry["transient"]:
+				ui_persistent += 1
+		for group: String in groups:
+			if entry["groups"].has(group):
+				groups[group] += 1
+	return {
+		"tree_nodes": entries.size(),
+		"persistent_nodes": persistent.size(),
+		"transient_nodes": transient.size(),
+		"ui_nodes": ui_nodes,
+		"ui_persistent_nodes": ui_persistent,
+		"transient_groups": groups,
+		"persistent_inventory": persistent,
+		"transient_inventory": transient,
+	}
+
+func _collect_nodes(node: Node, ui: Node, inherited_transient: bool, entries: Array[Dictionary]) -> void:
+	var transient: bool = inherited_transient or node.is_in_group("popups") or node.is_in_group("impacts")
+	entries.append({
+		"path": str(node.get_path()),
+		"class": node.get_class(),
+		"transient": transient,
+		"in_ui": node == ui or ui.is_ancestor_of(node),
+		"groups": node.get_groups(),
 	})
+	# Include internal children so an engine-created tooltip cannot hide from
+	# the scene-tree inventory merely because it is absent from the editor tree.
+	for child: Node in node.get_children(true):
+		_collect_nodes(child, ui, transient, entries)
+
+func _record_node_inventory(ui: Control, elapsed: float, reason: String) -> Dictionary:
+	var inventory: Dictionary = _node_inventory(ui)
+	var signature: String = JSON.stringify(inventory["persistent_inventory"])
+	var context: Dictionary = {
+		"seconds": elapsed,
+		"phase": "measured" if measured_start_usec >= 0 else "warmup",
+		"battles": ui.qa_fights,
+		"actions": ui.qa_actions,
+		"busy": ui.busy,
+		"actor": ui.presentation_actor,
+		"action": ui.presentation_action,
+		"presentation_seconds": ui.presentation_elapsed,
+	}
+	if signature != _persistent_signature:
+		var change: Dictionary = context.duplicate()
+		change.merge(inventory.duplicate(true))
+		change["reason"] = reason
+		node_inventory_changes.append(change)
+		_persistent_signature = signature
+	inventory.erase("persistent_inventory")
+	# Keep transient paths/classes in samples: exact effect nodes establish
+	# whether a changing total was an in-flight action rather than a leak.
+	inventory.merge(context)
+	return inventory
+
+func _on_presentation_finished() -> void:
+	if finished or not is_instance_valid(_ui) or _ui.qa_fights == _last_completed_battle:
+		return
+	_last_completed_battle = _ui.qa_fights
+	# finish_presentation detaches and queues effect nodes for deletion. Let
+	# deferred deletion finish, then compare the same boundary in each battle.
+	await _ui.get_tree().process_frame
+	if finished or not is_instance_valid(_ui) or not _ui.is_inside_tree():
+		return
+	var elapsed: float = (Time.get_ticks_usec() - started_usec) / 1000000.0
+	var checkpoint: Dictionary = _record_node_inventory(_ui, elapsed, "battle_finished")
+	checkpoint["nodes"] = Performance.get_monitor(Performance.OBJECT_NODE_COUNT)
+	battle_node_checkpoints.append(checkpoint)
 
 func make_report(now: int, actions: int, battles: int, speed: float) -> Dictionary:
 	var ordered: Array[float] = frames.duplicate()
@@ -198,6 +294,9 @@ func make_report(now: int, actions: int, battles: int, speed: float) -> Dictiona
 		"max_ms": ordered[-1] if not ordered.is_empty() else 0.0,
 		"spikes_ms": spikes_ms,
 		"samples": samples,
+		"node_inventory_changes": node_inventory_changes,
+		"battle_node_checkpoints": battle_node_checkpoints,
+		"node_inventory_definition": "All live scene-tree nodes including internal children; popups/impacts subtrees classified as transient. Global nodes monitor retained separately.",
 		"actions": actions,
 		"battles": battles,
 		"measured_actions": actions - measured_start_actions,

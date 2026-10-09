@@ -1,0 +1,973 @@
+{
+	"actions": 168,
+	"battle_node_checkpoints": [
+		{
+			"action": "",
+			"actions": 19,
+			"actor": "",
+			"battles": 1,
+			"busy": false,
+			"nodes": 72.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.0,
+			"seconds": 15.218202,
+			"transient_groups": {
+				"impacts": 0,
+				"popups": 0
+			},
+			"transient_inventory": [],
+			"transient_nodes": 0,
+			"tree_nodes": 72,
+			"ui_nodes": 71,
+			"ui_persistent_nodes": 71
+		},
+		{
+			"action": "",
+			"actions": 38,
+			"actor": "",
+			"battles": 2,
+			"busy": false,
+			"nodes": 72.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.0,
+			"seconds": 30.517592,
+			"transient_groups": {
+				"impacts": 0,
+				"popups": 0
+			},
+			"transient_inventory": [],
+			"transient_nodes": 0,
+			"tree_nodes": 72,
+			"ui_nodes": 71,
+			"ui_persistent_nodes": 71
+		},
+		{
+			"action": "",
+			"actions": 57,
+			"actor": "",
+			"battles": 3,
+			"busy": false,
+			"nodes": 72.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.0,
+			"seconds": 45.817069,
+			"transient_groups": {
+				"impacts": 0,
+				"popups": 0
+			},
+			"transient_inventory": [],
+			"transient_nodes": 0,
+			"tree_nodes": 72,
+			"ui_nodes": 71,
+			"ui_persistent_nodes": 71
+		},
+		{
+			"action": "",
+			"actions": 76,
+			"actor": "",
+			"battles": 4,
+			"busy": false,
+			"nodes": 72.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.0,
+			"seconds": 61.116337,
+			"transient_groups": {
+				"impacts": 0,
+				"popups": 0
+			},
+			"transient_inventory": [],
+			"transient_nodes": 0,
+			"tree_nodes": 72,
+			"ui_nodes": 71,
+			"ui_persistent_nodes": 71
+		},
+		{
+			"action": "",
+			"actions": 95,
+			"actor": "",
+			"battles": 5,
+			"busy": false,
+			"nodes": 72.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.0,
+			"seconds": 76.415754,
+			"transient_groups": {
+				"impacts": 0,
+				"popups": 0
+			},
+			"transient_inventory": [],
+			"transient_nodes": 0,
+			"tree_nodes": 72,
+			"ui_nodes": 71,
+			"ui_persistent_nodes": 71
+		},
+		{
+			"action": "",
+			"actions": 114,
+			"actor": "",
+			"battles": 6,
+			"busy": false,
+			"nodes": 72.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.0,
+			"seconds": 91.715148,
+			"transient_groups": {
+				"impacts": 0,
+				"popups": 0
+			},
+			"transient_inventory": [],
+			"transient_nodes": 0,
+			"tree_nodes": 72,
+			"ui_nodes": 71,
+			"ui_persistent_nodes": 71
+		},
+		{
+			"action": "",
+			"actions": 133,
+			"actor": "",
+			"battles": 7,
+			"busy": false,
+			"nodes": 72.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.0,
+			"seconds": 107.014692,
+			"transient_groups": {
+				"impacts": 0,
+				"popups": 0
+			},
+			"transient_inventory": [],
+			"transient_nodes": 0,
+			"tree_nodes": 72,
+			"ui_nodes": 71,
+			"ui_persistent_nodes": 71
+		},
+		{
+			"action": "",
+			"actions": 152,
+			"actor": "",
+			"battles": 8,
+			"busy": false,
+			"nodes": 72.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.0,
+			"seconds": 122.313917,
+			"transient_groups": {
+				"impacts": 0,
+				"popups": 0
+			},
+			"transient_inventory": [],
+			"transient_nodes": 0,
+			"tree_nodes": 72,
+			"ui_nodes": 71,
+			"ui_persistent_nodes": 71
+		}
+	],
+	"battles": 8,
+	"error": "",
+	"frames": 7201,
+	"max_ms": 27.902,
+	"mean_fps": 60.0023990960633,
+	"mean_ms": 16.6660002777391,
+	"measured_actions": 149,
+	"measured_battles": 8,
+	"measured_seconds": 120.011868,
+	"memory_counters": "Godot engine static and video bytes; external process memory recorded separately",
+	"mode": "soak",
+	"node_inventory_changes": [
+		{
+			"action": "",
+			"actions": 0,
+			"actor": "",
+			"battles": 0,
+			"busy": false,
+			"persistent_inventory": [
+				{
+					"class": "Window",
+					"path": "/root"
+				},
+				{
+					"class": "Control",
+					"path": "/root/BattleDemo"
+				},
+				{
+					"class": "MarginContainer",
+					"path": "/root/BattleDemo/@MarginContainer@2"
+				},
+				{
+					"class": "VBoxContainer",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3"
+				},
+				{
+					"class": "HBoxContainer",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@4"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@4/@Label@5"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@4/@Label@6"
+				},
+				{
+					"class": "Button",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@4/@Button@7"
+				},
+				{
+					"class": "Button",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@4/@Button@8"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Label@9"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Label@10"
+				},
+				{
+					"class": "Control",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11"
+				},
+				{
+					"class": "Control",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Control@12"
+				},
+				{
+					"class": "Control",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Control@13"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Control@13/@Label@14"
+				},
+				{
+					"class": "ProgressBar",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Control@13/@ProgressBar@15"
+				},
+				{
+					"class": "Control",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Control@16"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Control@16/@Label@17"
+				},
+				{
+					"class": "ProgressBar",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Control@16/@ProgressBar@18"
+				},
+				{
+					"class": "Control",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Control@19"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Control@19/@Label@20"
+				},
+				{
+					"class": "ProgressBar",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Control@19/@ProgressBar@21"
+				},
+				{
+					"class": "Control",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Control@22"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Control@22/@Label@23"
+				},
+				{
+					"class": "ProgressBar",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Control@22/@ProgressBar@24"
+				},
+				{
+					"class": "Control",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Control@25"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Control@25/@Label@26"
+				},
+				{
+					"class": "ProgressBar",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Control@25/@ProgressBar@27"
+				},
+				{
+					"class": "Control",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Control@28"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Control@28/@Label@29"
+				},
+				{
+					"class": "ProgressBar",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Control@28/@ProgressBar@30"
+				},
+				{
+					"class": "HBoxContainer",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@31"
+				},
+				{
+					"class": "PanelContainer",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@31/@PanelContainer@33"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@31/@PanelContainer@33/@Label@32"
+				},
+				{
+					"class": "PanelContainer",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@31/@PanelContainer@35"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@31/@PanelContainer@35/@Label@34"
+				},
+				{
+					"class": "PanelContainer",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@31/@PanelContainer@37"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@31/@PanelContainer@37/@Label@36"
+				},
+				{
+					"class": "PanelContainer",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@31/@PanelContainer@39"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@31/@PanelContainer@39/@Label@38"
+				},
+				{
+					"class": "PanelContainer",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@31/@PanelContainer@41"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@31/@PanelContainer@41/@Label@40"
+				},
+				{
+					"class": "PanelContainer",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@31/@PanelContainer@43"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@31/@PanelContainer@43/@Label@42"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Label@44"
+				},
+				{
+					"class": "HBoxContainer",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@45"
+				},
+				{
+					"class": "Button",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@45/@Button@46"
+				},
+				{
+					"class": "Button",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@45/@Button@47"
+				},
+				{
+					"class": "Button",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@45/@Button@48"
+				},
+				{
+					"class": "Button",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@45/@Button@49"
+				},
+				{
+					"class": "HBoxContainer",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@50"
+				},
+				{
+					"class": "Button",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@50/@Button@51"
+				},
+				{
+					"class": "Button",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@50/@Button@52"
+				},
+				{
+					"class": "Button",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@50/@Button@53"
+				},
+				{
+					"class": "Button",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@50/@Button@54"
+				},
+				{
+					"class": "Button",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@HBoxContainer@50/@Button@55"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Label@56"
+				},
+				{
+					"class": "RichTextLabel",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@RichTextLabel@59"
+				},
+				{
+					"class": "VScrollBar",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@RichTextLabel@59/@VScrollBar@57"
+				},
+				{
+					"class": "Timer",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@RichTextLabel@59/@Timer@58"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Label@60"
+				},
+				{
+					"class": "AudioStreamPlayer",
+					"path": "/root/BattleDemo/@AudioStreamPlayer@61"
+				},
+				{
+					"class": "PanelContainer",
+					"path": "/root/BattleDemo/@PanelContainer@62"
+				},
+				{
+					"class": "CenterContainer",
+					"path": "/root/BattleDemo/@PanelContainer@62/@CenterContainer@63"
+				},
+				{
+					"class": "VBoxContainer",
+					"path": "/root/BattleDemo/@PanelContainer@62/@CenterContainer@63/@VBoxContainer@64"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@PanelContainer@62/@CenterContainer@63/@VBoxContainer@64/@Label@65"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@PanelContainer@62/@CenterContainer@63/@VBoxContainer@64/@Label@66"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@PanelContainer@62/@CenterContainer@63/@VBoxContainer@64/@Label@67"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@PanelContainer@62/@CenterContainer@63/@VBoxContainer@64/@Label@68"
+				},
+				{
+					"class": "Button",
+					"path": "/root/BattleDemo/@PanelContainer@62/@CenterContainer@63/@VBoxContainer@64/@Button@69"
+				},
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@PanelContainer@62/@CenterContainer@63/@VBoxContainer@64/@Label@70"
+				},
+				{
+					"class": "PanelContainer",
+					"path": "/root/BattleDemo/@PanelContainer@71"
+				}
+			],
+			"persistent_nodes": 72,
+			"phase": "warmup",
+			"presentation_seconds": 0.0,
+			"reason": "periodic_sample",
+			"seconds": 0.021937,
+			"transient_groups": {
+				"impacts": 0,
+				"popups": 0
+			},
+			"transient_inventory": [],
+			"transient_nodes": 0,
+			"tree_nodes": 72,
+			"ui_nodes": 71,
+			"ui_persistent_nodes": 71
+		}
+	],
+	"node_inventory_definition": "All live scene-tree nodes including internal children; popups/impacts subtrees classified as transient. Global nodes monitor retained separately.",
+	"p95_ms": 16.728,
+	"readback_during_measurement": false,
+	"requested_measured_seconds": 120.0,
+	"samples": [
+		{
+			"action": "",
+			"actions": 0,
+			"actor": "",
+			"battles": 0,
+			"busy": false,
+			"nodes": 72.0,
+			"persistent_nodes": 72,
+			"phase": "warmup",
+			"presentation_seconds": 0.0,
+			"seconds": 0.021937,
+			"static_bytes": 77458671.0,
+			"transient_groups": {
+				"impacts": 0,
+				"popups": 0
+			},
+			"transient_inventory": [],
+			"transient_nodes": 0,
+			"tree_nodes": 72,
+			"ui_nodes": 71,
+			"ui_persistent_nodes": 71,
+			"video_bytes": 123708925.0
+		},
+		{
+			"action": "wave",
+			"actions": 13,
+			"actor": "mage",
+			"battles": 0,
+			"busy": true,
+			"nodes": 74.0,
+			"persistent_nodes": 72,
+			"phase": "warmup",
+			"presentation_seconds": 0.233324,
+			"seconds": 10.001746,
+			"static_bytes": 98312263.0,
+			"transient_groups": {
+				"impacts": 1,
+				"popups": 1
+			},
+			"transient_inventory": [
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Label@104"
+				},
+				{
+					"class": "Node2D",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Node2D@105"
+				}
+			],
+			"transient_nodes": 2,
+			"tree_nodes": 74,
+			"ui_nodes": 73,
+			"ui_persistent_nodes": 71,
+			"video_bytes": 129311577.0
+		},
+		{
+			"action": "heavy",
+			"actions": 19,
+			"actor": "guardian",
+			"battles": 0,
+			"busy": true,
+			"nodes": 74.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.916629999999999,
+			"seconds": 15.001541,
+			"static_bytes": 98416211.0,
+			"transient_groups": {
+				"impacts": 1,
+				"popups": 1
+			},
+			"transient_inventory": [
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Label@116"
+				},
+				{
+					"class": "Node2D",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Node2D@117"
+				}
+			],
+			"transient_nodes": 2,
+			"tree_nodes": 74,
+			"ui_nodes": 73,
+			"ui_persistent_nodes": 71,
+			"video_bytes": 129305457.0
+		},
+		{
+			"action": "attack",
+			"actions": 26,
+			"actor": "scout",
+			"battles": 1,
+			"busy": true,
+			"nodes": 72.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.33332,
+			"seconds": 20.001342,
+			"static_bytes": 98195539.0,
+			"transient_groups": {
+				"impacts": 0,
+				"popups": 0
+			},
+			"transient_inventory": [],
+			"transient_nodes": 0,
+			"tree_nodes": 72,
+			"ui_nodes": 71,
+			"ui_persistent_nodes": 71,
+			"video_bytes": 129315849.0
+		},
+		{
+			"action": "heavy",
+			"actions": 38,
+			"actor": "guardian",
+			"battles": 1,
+			"busy": true,
+			"nodes": 74.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.616642,
+			"seconds": 30.00097,
+			"static_bytes": 98450955.0,
+			"transient_groups": {
+				"impacts": 1,
+				"popups": 1
+			},
+			"transient_inventory": [
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Label@162"
+				},
+				{
+					"class": "Node2D",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Node2D@163"
+				}
+			],
+			"transient_nodes": 2,
+			"tree_nodes": 74,
+			"ui_nodes": 73,
+			"ui_persistent_nodes": 71,
+			"video_bytes": 129305457.0
+		},
+		{
+			"action": "attack",
+			"actions": 50,
+			"actor": "armor",
+			"battles": 2,
+			"busy": true,
+			"nodes": 74.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.33332,
+			"seconds": 40.000546,
+			"static_bytes": 98356135.0,
+			"transient_groups": {
+				"impacts": 1,
+				"popups": 1
+			},
+			"transient_inventory": [
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Label@194"
+				},
+				{
+					"class": "Node2D",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Node2D@195"
+				}
+			],
+			"transient_nodes": 2,
+			"tree_nodes": 74,
+			"ui_nodes": 73,
+			"ui_persistent_nodes": 71,
+			"video_bytes": 129310185.0
+		},
+		{
+			"action": "attack",
+			"actions": 63,
+			"actor": "armor",
+			"battles": 3,
+			"busy": true,
+			"nodes": 74.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.424986666666667,
+			"seconds": 50.000316,
+			"static_bytes": 98267719.0,
+			"transient_groups": {
+				"impacts": 1,
+				"popups": 1
+			},
+			"transient_inventory": [
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Label@224"
+				},
+				{
+					"class": "Node2D",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Node2D@225"
+				}
+			],
+			"transient_nodes": 2,
+			"tree_nodes": 74,
+			"ui_nodes": 73,
+			"ui_persistent_nodes": 71,
+			"video_bytes": 129319641.0
+		},
+		{
+			"action": "heavy",
+			"actions": 76,
+			"actor": "guardian",
+			"battles": 3,
+			"busy": true,
+			"nodes": 72.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.033332,
+			"seconds": 60.016375,
+			"static_bytes": 98485159.0,
+			"transient_groups": {
+				"impacts": 0,
+				"popups": 0
+			},
+			"transient_inventory": [],
+			"transient_nodes": 0,
+			"tree_nodes": 72,
+			"ui_nodes": 71,
+			"ui_persistent_nodes": 71,
+			"video_bytes": 129306393.0
+		},
+		{
+			"action": "heavy",
+			"actions": 87,
+			"actor": "guardian",
+			"battles": 4,
+			"busy": true,
+			"nodes": 74.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.899963999999999,
+			"seconds": 70.015976,
+			"static_bytes": 98412371.0,
+			"transient_groups": {
+				"impacts": 1,
+				"popups": 1
+			},
+			"transient_inventory": [
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Label@284"
+				},
+				{
+					"class": "Node2D",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Node2D@285"
+				}
+			],
+			"transient_nodes": 2,
+			"tree_nodes": 74,
+			"ui_nodes": 73,
+			"ui_persistent_nodes": 71,
+			"video_bytes": 129310185.0
+		},
+		{
+			"action": "heavy",
+			"actions": 100,
+			"actor": "guardian",
+			"battles": 5,
+			"busy": true,
+			"nodes": 74.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.66664,
+			"seconds": 80.01558,
+			"static_bytes": 98346707.0,
+			"transient_groups": {
+				"impacts": 1,
+				"popups": 1
+			},
+			"transient_inventory": [
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Label@314"
+				},
+				{
+					"class": "Node2D",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Node2D@315"
+				}
+			],
+			"transient_nodes": 2,
+			"tree_nodes": 74,
+			"ui_nodes": 73,
+			"ui_persistent_nodes": 71,
+			"video_bytes": 129319641.0
+		},
+		{
+			"action": "attack",
+			"actions": 113,
+			"actor": "healer",
+			"battles": 5,
+			"busy": true,
+			"nodes": 72.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.133328,
+			"seconds": 90.015201,
+			"static_bytes": 98528987.0,
+			"transient_groups": {
+				"impacts": 0,
+				"popups": 0
+			},
+			"transient_inventory": [],
+			"transient_nodes": 0,
+			"tree_nodes": 72,
+			"ui_nodes": 71,
+			"ui_persistent_nodes": 71,
+			"video_bytes": 129306393.0
+		},
+		{
+			"action": "heavy",
+			"actions": 125,
+			"actor": "guardian",
+			"battles": 6,
+			"busy": true,
+			"nodes": 72.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.299988,
+			"seconds": 100.014803,
+			"static_bytes": 98426663.0,
+			"transient_groups": {
+				"impacts": 0,
+				"popups": 0
+			},
+			"transient_inventory": [],
+			"transient_nodes": 0,
+			"tree_nodes": 72,
+			"ui_nodes": 71,
+			"ui_persistent_nodes": 71,
+			"video_bytes": 129311121.0
+		},
+		{
+			"action": "heavy",
+			"actions": 138,
+			"actor": "guardian",
+			"battles": 7,
+			"busy": true,
+			"nodes": 72.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.066664,
+			"seconds": 110.014418,
+			"static_bytes": 98386799.0,
+			"transient_groups": {
+				"impacts": 0,
+				"popups": 0
+			},
+			"transient_inventory": [],
+			"transient_nodes": 0,
+			"tree_nodes": 72,
+			"ui_nodes": 71,
+			"ui_persistent_nodes": 71,
+			"video_bytes": 129315849.0
+		},
+		{
+			"action": "wave",
+			"actions": 150,
+			"actor": "mage",
+			"battles": 7,
+			"busy": true,
+			"nodes": 74.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.233324,
+			"seconds": 120.013977,
+			"static_bytes": 98624911.0,
+			"transient_groups": {
+				"impacts": 1,
+				"popups": 1
+			},
+			"transient_inventory": [
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Label@434"
+				},
+				{
+					"class": "Node2D",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Node2D@435"
+				}
+			],
+			"transient_nodes": 2,
+			"tree_nodes": 74,
+			"ui_nodes": 73,
+			"ui_persistent_nodes": 71,
+			"video_bytes": 129311577.0
+		},
+		{
+			"action": "attack",
+			"actions": 162,
+			"actor": "healer",
+			"battles": 8,
+			"busy": true,
+			"nodes": 74.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.399984,
+			"seconds": 130.013608,
+			"static_bytes": 98525015.0,
+			"transient_groups": {
+				"impacts": 1,
+				"popups": 1
+			},
+			"transient_inventory": [
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Label@466"
+				},
+				{
+					"class": "Node2D",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Node2D@467"
+				}
+			],
+			"transient_nodes": 2,
+			"tree_nodes": 74,
+			"ui_nodes": 73,
+			"ui_persistent_nodes": 71,
+			"video_bytes": 129314913.0
+		},
+		{
+			"action": "attack",
+			"actions": 168,
+			"actor": "armor",
+			"battles": 8,
+			"busy": true,
+			"nodes": 74.0,
+			"persistent_nodes": 72,
+			"phase": "measured",
+			"presentation_seconds": 0.633308,
+			"seconds": 135.013409,
+			"static_bytes": 98616491.0,
+			"transient_groups": {
+				"impacts": 1,
+				"popups": 1
+			},
+			"transient_inventory": [
+				{
+					"class": "Label",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Label@478"
+				},
+				{
+					"class": "Node2D",
+					"path": "/root/BattleDemo/@MarginContainer@2/@VBoxContainer@3/@Control@11/@Node2D@479"
+				}
+			],
+			"transient_nodes": 2,
+			"tree_nodes": 74,
+			"ui_nodes": 73,
+			"ui_persistent_nodes": 71,
+			"video_bytes": 129310185.0
+		}
+	],
+	"seconds": 135.013409,
+	"size": [
+		3840,
+		2160
+	],
+	"speed": 1.0,
+	"spikes_ms": [],
+	"startup_definition": "engine startup to first frame_post_draw",
+	"startup_ms": 1235.166,
+	"steady_measurement": true,
+	"surface_verified": true,
+	"warmup_seconds": 15.0
+}

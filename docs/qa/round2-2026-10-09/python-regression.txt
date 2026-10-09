@@ -1,0 +1,176 @@
+Failed to find real location of C:\Users\tang0\miniconda3\python.exe
+test_bad_input_and_code_mutation_rejected (test_actor_flags.ActorFlagsTests.test_bad_input_and_code_mutation_rejected) ... ok
+test_bit20_sets_and_clears_only_actor_bit1 (test_actor_flags.ActorFlagsTests.test_bit20_sets_and_clears_only_actor_bit1) ... ok
+test_fraction_cell_and_wrapped_boundaries (test_actor_flags.ActorFlagsTests.test_fraction_cell_and_wrapped_boundaries) ... ok
+test_mode_guard_and_complete_low_byte_replacement (test_actor_flags.ActorFlagsTests.test_mode_guard_and_complete_low_byte_replacement) ... ok
+test_query_uses_position_after_delta (test_actor_flags.ActorFlagsTests.test_query_uses_position_after_delta) ... ok
+test_signed_delta_word_overflow_and_preserved_bytes (test_actor_flags.ActorFlagsTests.test_signed_delta_word_overflow_and_preserved_bytes) ... ok
+test_source_grid_exhaustive_probe_is_labeled_synthetic (test_actor_flags.ActorFlagsTests.test_source_grid_exhaustive_probe_is_labeled_synthetic) ... ok
+test_four_cells_palette_and_flips (test_background.BackgroundTests.test_four_cells_palette_and_flips) ... ok
+test_pattern_page_stride_and_provenance (test_background.BackgroundTests.test_pattern_page_stride_and_provenance) ... ok
+test_real_parameters_and_unsupported_settings (test_background.BackgroundTests.test_real_parameters_and_unsupported_settings) ... ERROR
+test_snapshot_pages_and_negative_raw_source_matches (test_background.BackgroundTests.test_snapshot_pages_and_negative_raw_source_matches) ... ERROR
+test_viewport_wraps_planes_in_both_directions (test_background.BackgroundTests.test_viewport_wraps_planes_in_both_directions) ... ok
+test_appearance_and_manifest_must_reference_exact_same_assets (test_battle_package.PackageTests.test_appearance_and_manifest_must_reference_exact_same_assets) ... ok
+test_baseline_and_approved_texture_closure (test_battle_package.PackageTests.test_baseline_and_approved_texture_closure) ... ok
+test_changed_source_and_stale_import_are_rejected (test_battle_package.PackageTests.test_changed_source_and_stale_import_are_rejected) ... ok
+test_missing_resource_wrong_definition_and_truncated_directory (test_battle_package.PackageTests.test_missing_resource_wrong_definition_and_truncated_directory) ... ok
+test_payload_corruption_and_overlapping_entries_are_rejected (test_battle_package.PackageTests.test_payload_corruption_and_overlapping_entries_are_rejected) ... ok
+test_remap_and_compiled_content_are_checked (test_battle_package.PackageTests.test_remap_and_compiled_content_are_checked) ... ok
+test_source_dependency_and_manifest_path_are_checked (test_battle_package.PackageTests.test_source_dependency_and_manifest_path_are_checked) ... ok
+test_unlisted_asset_and_raw_source_are_rejected (test_battle_package.PackageTests.test_unlisted_asset_and_raw_source_are_rejected) ... ok
+test_container_rejects_changed_header_and_trailer (test_map_graphics.GraphicsTests.test_container_rejects_changed_header_and_trailer) ... ok
+test_full_source_vram_match (test_map_graphics.GraphicsTests.test_full_source_vram_match) ... ERROR
+test_high_distance_nibble (test_map_graphics.GraphicsTests.test_high_distance_nibble) ... ok
+test_literals_and_overlap_low_length_nibble (test_map_graphics.GraphicsTests.test_literals_and_overlap_low_length_nibble) ... ok
+test_rejects_invalid_references_sizes_truncation_and_trailing_data (test_map_graphics.GraphicsTests.test_rejects_invalid_references_sizes_truncation_and_trailing_data) ... ok
+test_actual_sources_and_translation_alignment (test_pipeline.ImportTests.test_actual_sources_and_translation_alignment) ... ok
+test_aiff_real_header_and_truncation (test_pipeline.ImportTests.test_aiff_real_header_and_truncation) ... ok
+test_bounds (test_pipeline.ImportTests.test_bounds) ... ok
+test_lock_detects_mutation_and_path_escape (test_pipeline.ImportTests.test_lock_detects_mutation_and_path_escape) ... ok
+test_mixed_texture_depth_and_nibble_order (test_pipeline.ImportTests.test_mixed_texture_depth_and_nibble_order) ... ok
+test_real_v1n_round_trip (test_pipeline.ImportTests.test_real_v1n_round_trip) ... ok
+test_snf_boundary_and_corruption (test_pipeline.ImportTests.test_snf_boundary_and_corruption) ... ok
+test_texture_rejects_truncation_unknown_tag_duplicate_and_trailer (test_pipeline.ImportTests.test_texture_rejects_truncation_unknown_tag_duplicate_and_trailer) ... ok
+test_full_source_replay_matches_pinned_snapshot (test_scene_flags.SceneFlagsTests.test_full_source_replay_matches_pinned_snapshot) ... ERROR
+test_group_order_masks_and_skipped_records (test_scene_flags.SceneFlagsTests.test_group_order_masks_and_skipped_records) ... ok
+test_invalid_structure_and_out_of_buffer_rejected (test_scene_flags.SceneFlagsTests.test_invalid_structure_and_out_of_buffer_rejected) ... ok
+test_linear_row_crossing_matches_reader (test_scene_flags.SceneFlagsTests.test_linear_row_crossing_matches_reader) ... ok
+test_reader_mutations_fail_closed (test_scene_flags.SceneFlagsTests.test_reader_mutations_fail_closed) ... ok
+test_zero_dimensions_and_skip_do_not_write (test_scene_flags.SceneFlagsTests.test_zero_dimensions_and_skip_do_not_write) ... ok
+test_real_block_provenance_without_collision_claim (test_scene_metadata.MetadataTests.test_real_block_provenance_without_collision_claim) ... ERROR
+test_static_queue_opcodes_and_literals_guarded (test_scene_metadata.MetadataTests.test_static_queue_opcodes_and_literals_guarded) ... ok
+test_structural_records_remain_opaque (test_scene_metadata.MetadataTests.test_structural_records_remain_opaque) ... ok
+test_system_ram_boundaries_and_mutation (test_scene_metadata.MetadataTests.test_system_ram_boundaries_and_mutation) ... ERROR
+test_all_visible_patterns_and_prior_viewports_match (test_source_scene.SourceSceneTests.test_all_visible_patterns_and_prior_viewports_match) ... ERROR
+test_compact_indices_priority_and_flips (test_source_scene.SourceSceneTests.test_compact_indices_priority_and_flips) ... ok
+test_dimensions_layer_and_camera_rejected (test_source_scene.SourceSceneTests.test_dimensions_layer_and_camera_rejected) ... ok
+test_palette_zero_rgb_is_irrelevant_when_transparent (test_source_scene.SourceSceneTests.test_palette_zero_rgb_is_irrelevant_when_transparent) ... ok
+test_source_only_render_and_layout_stride (test_source_scene.SourceSceneTests.test_source_only_render_and_layout_stride) ... ok
+test_binding_requires_bytes_dimensions_depth_and_keeps_duplicates (test_vdp1.CommandTests.test_binding_requires_bytes_dimensions_depth_and_keeps_duplicates) ... ok
+test_budget_and_truncated (test_vdp1.CommandTests.test_budget_and_truncated) ... ok
+test_call_return_and_skip_variants (test_vdp1.CommandTests.test_call_return_and_skip_variants) ... ok
+test_cycle_bounds_alignment_nested_and_orphan_return (test_vdp1.CommandTests.test_cycle_bounds_alignment_nested_and_orphan_return) ... ok
+test_end_overrides_invalid_command_and_jump (test_vdp1.CommandTests.test_end_overrides_invalid_command_and_jump) ... ok
+test_locked_capture_inventory (test_vdp1.CommandTests.test_locked_capture_inventory) ... ok
+test_reference_is_rejected_and_keeps_partial_evidence (test_vdp1.CommandTests.test_reference_is_rejected_and_keeps_partial_evidence) ... ok
+test_skip_assign_ignores_unreachable_invalid_command (test_vdp1.CommandTests.test_skip_assign_ignores_unreachable_invalid_command) ... ok
+test_skipped_local_does_not_change_origin (test_vdp1.CommandTests.test_skipped_local_does_not_change_origin) ... ok
+test_bank_priority_mask_rgb_and_transparency (test_ymir_state.StateTests.test_bank_priority_mask_rgb_and_transparency) ... ok
+test_pinned_region_registers_and_memory (test_ymir_state.StateTests.test_pinned_region_registers_and_memory) ... ERROR
+test_real_palette_samples_remain_diagnostic (test_ymir_state.StateTests.test_real_palette_samples_remain_diagnostic) ... ERROR
+test_rejects_changed_truncated_version_and_boundary (test_ymir_state.StateTests.test_rejects_changed_truncated_version_and_boundary) ... ok
+test_signed_color_offsets_and_clamp (test_ymir_state.StateTests.test_signed_color_offsets_and_clamp) ... ok
+test_unsupported_modes_and_bounds_do_not_fallback (test_ymir_state.StateTests.test_unsupported_modes_and_bounds_do_not_fallback) ... ok
+
+======================================================================
+ERROR: test_real_parameters_and_unsupported_settings (test_background.BackgroundTests.test_real_parameters_and_unsupported_settings)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "G:\codex\SS\pc-remake\tests\test_background.py", line 53, in test_real_parameters_and_unsupported_settings
+    r=b.extract(b.verify_source(b.WORKSPACE,lock['path'],lock['sha256']),lock)["regs2"]
+                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\codex\SS\pc-remake\tools\pipeline.py", line 47, in verify_source
+    raise ValueError(f"Source hash mismatch: {relative}")
+ValueError: Source hash mismatch: work/ymir/dialogue-trace/savestates/D8562E1863DD5A2595CBE2D3A50EDFA4/0.savestate
+
+======================================================================
+ERROR: test_snapshot_pages_and_negative_raw_source_matches (test_background.BackgroundTests.test_snapshot_pages_and_negative_raw_source_matches)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "G:\codex\SS\pc-remake\tests\test_background.py", line 62, in test_snapshot_pages_and_negative_raw_source_matches
+    report=b.run()
+  File "G:\codex\SS\pc-remake\tools\decode_background.py", line 93, in run
+    state = extract(verify_source(WORKSPACE, lock["path"], lock["sha256"]), lock)
+                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\codex\SS\pc-remake\tools\pipeline.py", line 47, in verify_source
+    raise ValueError(f"Source hash mismatch: {relative}")
+ValueError: Source hash mismatch: work/ymir/dialogue-trace/savestates/D8562E1863DD5A2595CBE2D3A50EDFA4/0.savestate
+
+======================================================================
+ERROR: test_full_source_vram_match (test_map_graphics.GraphicsTests.test_full_source_vram_match)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "G:\codex\SS\pc-remake\tests\test_map_graphics.py", line 43, in test_full_source_vram_match
+    report=g.run()
+  File "G:\codex\SS\pc-remake\tools\decode_map_graphics.py", line 81, in run
+    state = extract(verify_source(WORKSPACE,lock['path'],lock['sha256']),lock)
+                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\codex\SS\pc-remake\tools\pipeline.py", line 47, in verify_source
+    raise ValueError(f"Source hash mismatch: {relative}")
+ValueError: Source hash mismatch: work/ymir/dialogue-trace/savestates/D8562E1863DD5A2595CBE2D3A50EDFA4/0.savestate
+
+======================================================================
+ERROR: test_full_source_replay_matches_pinned_snapshot (test_scene_flags.SceneFlagsTests.test_full_source_replay_matches_pinned_snapshot)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "G:\codex\SS\pc-remake\tests\test_scene_flags.py", line 53, in test_full_source_replay_matches_pinned_snapshot
+    result = p.run()
+  File "G:\codex\SS\pc-remake\tools\decode_scene_flags.py", line 77, in run
+    state = verify_source(WORKSPACE, lock['path'], lock['sha256'])
+  File "G:\codex\SS\pc-remake\tools\pipeline.py", line 47, in verify_source
+    raise ValueError(f"Source hash mismatch: {relative}")
+ValueError: Source hash mismatch: work/ymir/dialogue-trace/savestates/D8562E1863DD5A2595CBE2D3A50EDFA4/0.savestate
+
+======================================================================
+ERROR: test_real_block_provenance_without_collision_claim (test_scene_metadata.MetadataTests.test_real_block_provenance_without_collision_claim)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "G:\codex\SS\pc-remake\tests\test_scene_metadata.py", line 38, in test_real_block_provenance_without_collision_claim
+    result=p.run()
+  File "G:\codex\SS\pc-remake\tools\probe_scene_metadata.py", line 68, in run
+    state=verify_source(WORKSPACE,lock['path'],lock['sha256'])
+  File "G:\codex\SS\pc-remake\tools\pipeline.py", line 47, in verify_source
+    raise ValueError(f"Source hash mismatch: {relative}")
+ValueError: Source hash mismatch: work/ymir/dialogue-trace/savestates/D8562E1863DD5A2595CBE2D3A50EDFA4/0.savestate
+
+======================================================================
+ERROR: test_system_ram_boundaries_and_mutation (test_scene_metadata.MetadataTests.test_system_ram_boundaries_and_mutation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "G:\codex\SS\pc-remake\tests\test_scene_metadata.py", line 13, in test_system_ram_boundaries_and_mutation
+    low,high,spans=p.system_ram(data,lock)
+                   ~~~~~~~~~~~~^^^^^^^^^^^
+  File "G:\codex\SS\pc-remake\tools\probe_scene_metadata.py", line 11, in system_ram
+    raise ValueError('Pinned little-endian v13 state required')
+ValueError: Pinned little-endian v13 state required
+
+======================================================================
+ERROR: test_all_visible_patterns_and_prior_viewports_match (test_source_scene.SourceSceneTests.test_all_visible_patterns_and_prior_viewports_match)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "G:\codex\SS\pc-remake\tests\test_source_scene.py", line 42, in test_all_visible_patterns_and_prior_viewports_match
+    report=s.run()
+  File "G:\codex\SS\pc-remake\tools\decode_source_scene.py", line 70, in run
+    state = extract(verify_source(WORKSPACE,lock['path'],lock['sha256']),lock)
+                    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\codex\SS\pc-remake\tools\pipeline.py", line 47, in verify_source
+    raise ValueError(f"Source hash mismatch: {relative}")
+ValueError: Source hash mismatch: work/ymir/dialogue-trace/savestates/D8562E1863DD5A2595CBE2D3A50EDFA4/0.savestate
+
+======================================================================
+ERROR: test_pinned_region_registers_and_memory (test_ymir_state.StateTests.test_pinned_region_registers_and_memory)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "G:\codex\SS\pc-remake\tests\test_ymir_state.py", line 15, in test_pinned_region_registers_and_memory
+    state = y.extract(data, lock)
+  File "G:\codex\SS\pc-remake\tools\read_ymir_state.py", line 13, in extract
+    raise ValueError("Save-state fixture identity changed")
+ValueError: Save-state fixture identity changed
+
+======================================================================
+ERROR: test_real_palette_samples_remain_diagnostic (test_ymir_state.StateTests.test_real_palette_samples_remain_diagnostic)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "G:\codex\SS\pc-remake\tests\test_ymir_state.py", line 81, in test_real_palette_samples_remain_diagnostic
+    report = y.run()
+  File "G:\codex\SS\pc-remake\tools\read_ymir_state.py", line 97, in run
+    data = verify_source(WORKSPACE, lock["path"], lock["sha256"])
+  File "G:\codex\SS\pc-remake\tools\pipeline.py", line 47, in verify_source
+    raise ValueError(f"Source hash mismatch: {relative}")
+ValueError: Source hash mismatch: work/ymir/dialogue-trace/savestates/D8562E1863DD5A2595CBE2D3A50EDFA4/0.savestate
+
+----------------------------------------------------------------------
+Ran 63 tests in 0.787s
+
+FAILED (errors=9)

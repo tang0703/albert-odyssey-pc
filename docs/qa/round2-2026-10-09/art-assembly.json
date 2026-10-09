@@ -1,0 +1,1034 @@
+{
+	"alpha_alignment_threshold": 0.5,
+	"cell_size": 320,
+	"characters": [
+		{
+			"atlas_resize_factor": 1.0207336523126,
+			"frames": [
+				{
+					"atlas_index": 0,
+					"index": 0,
+					"low_alpha_bounds": [
+						72,
+						98,
+						381,
+						356
+					],
+					"output_alpha_bounds": [
+						77,
+						103,
+						373,
+						346
+					],
+					"sha256": "1f4e510a17fde5518223128dad98714ae7d3bbf2089a9b0b455ff120dd06316b",
+					"source_alpha_bounds": [
+						48,
+						69,
+						233,
+						216
+					],
+					"source_rect": [
+						0,
+						0,
+						320,
+						320
+					],
+					"state": "idle",
+					"y_translation": -7
+				},
+				{
+					"atlas_index": 1,
+					"index": 1,
+					"low_alpha_bounds": [
+						72,
+						98,
+						384,
+						356
+					],
+					"output_alpha_bounds": [
+						77,
+						103,
+						375,
+						346
+					],
+					"sha256": "c0925c1fdfebaef82d20a82a242df0c3ca489644613be5595f9752f7a3796141",
+					"source_alpha_bounds": [
+						48,
+						69,
+						234,
+						216
+					],
+					"source_rect": [
+						320,
+						0,
+						320,
+						320
+					],
+					"state": "idle",
+					"y_translation": -7
+				},
+				{
+					"atlas_index": 2,
+					"index": 2,
+					"low_alpha_bounds": [
+						73,
+						97,
+						383,
+						356
+					],
+					"output_alpha_bounds": [
+						77,
+						102,
+						374,
+						347
+					],
+					"sha256": "e39f6ccbe3fff27e66a2003301a444c879de4122ea1f53089660c4d16a46c0d4",
+					"source_alpha_bounds": [
+						48,
+						69,
+						234,
+						216
+					],
+					"source_rect": [
+						640,
+						0,
+						320,
+						320
+					],
+					"state": "idle",
+					"y_translation": -8
+				},
+				{
+					"atlas_index": 3,
+					"index": 3,
+					"low_alpha_bounds": [
+						73,
+						98,
+						381,
+						356
+					],
+					"output_alpha_bounds": [
+						77,
+						103,
+						375,
+						346
+					],
+					"sha256": "886838b58eb7a94623e5f8a62122d69160e6d6d611aecffa6e8bb0c98c6abfe6",
+					"source_alpha_bounds": [
+						48,
+						69,
+						235,
+						216
+					],
+					"source_rect": [
+						960,
+						0,
+						320,
+						320
+					],
+					"state": "idle",
+					"y_translation": -7
+				},
+				{
+					"atlas_index": 4,
+					"index": 0,
+					"low_alpha_bounds": [
+						72,
+						96,
+						381,
+						354
+					],
+					"output_alpha_bounds": [
+						76,
+						102,
+						373,
+						347
+					],
+					"sha256": "6f3351ba4f708c82caddd49067575e5f79ef039bd74c14e4a2762ddcde76832d",
+					"source_alpha_bounds": [
+						48,
+						68,
+						233,
+						217
+					],
+					"source_rect": [
+						0,
+						320,
+						320,
+						320
+					],
+					"state": "attack",
+					"y_translation": -8
+				},
+				{
+					"atlas_index": 5,
+					"index": 1,
+					"low_alpha_bounds": [
+						145,
+						101,
+						308,
+						350
+					],
+					"output_alpha_bounds": [
+						149,
+						103,
+						302,
+						346
+					],
+					"sha256": "50fff52366b01ac0ce174a675960c4e280c0d583e6efbdd816e51ca49011df6b",
+					"source_alpha_bounds": [
+						93,
+						70,
+						189,
+						216
+					],
+					"source_rect": [
+						320,
+						320,
+						320,
+						320
+					],
+					"state": "attack",
+					"y_translation": -9
+				},
+				{
+					"atlas_index": 6,
+					"index": 2,
+					"low_alpha_bounds": [
+						128,
+						50,
+						292,
+						401
+					],
+					"output_alpha_bounds": [
+						133,
+						54,
+						286,
+						395
+					],
+					"sha256": "9686228bbca6eb037bc78af6f10c876072b8f889165c559c65cd05eec380d46b",
+					"source_alpha_bounds": [
+						83,
+						41,
+						179,
+						247
+					],
+					"source_rect": [
+						640,
+						320,
+						320,
+						320
+					],
+					"state": "attack",
+					"y_translation": -12
+				},
+				{
+					"atlas_index": 7,
+					"index": 3,
+					"low_alpha_bounds": [
+						38,
+						101,
+						417,
+						350
+					],
+					"output_alpha_bounds": [
+						40,
+						102,
+						414,
+						347
+					],
+					"sha256": "ff626622e1257667ddd4a91f8ccf8ad8ed8a9e2f2ccdc946d54cfb316863bb62",
+					"source_alpha_bounds": [
+						25,
+						70,
+						259,
+						217
+					],
+					"source_rect": [
+						960,
+						320,
+						320,
+						320
+					],
+					"state": "attack",
+					"y_translation": -10
+				},
+				{
+					"atlas_index": 8,
+					"index": 4,
+					"low_alpha_bounds": [
+						62,
+						99,
+						396,
+						354
+					],
+					"output_alpha_bounds": [
+						63,
+						104,
+						392,
+						345
+					],
+					"sha256": "43367eb7796ed12ba615afaabc03f34417ecc49cfe2421cceb96890994fb6a15",
+					"source_alpha_bounds": [
+						40,
+						69,
+						244,
+						215
+					],
+					"source_rect": [
+						0,
+						640,
+						320,
+						320
+					],
+					"state": "attack",
+					"y_translation": -6
+				},
+				{
+					"atlas_index": 9,
+					"index": 5,
+					"low_alpha_bounds": [
+						70,
+						99,
+						383,
+						354
+					],
+					"output_alpha_bounds": [
+						72,
+						104,
+						379,
+						345
+					],
+					"sha256": "530e84b928597e084a4b2fd555baa7cc44aa6bb86774436e25d749c22c5e522a",
+					"source_alpha_bounds": [
+						45,
+						69,
+						237,
+						215
+					],
+					"source_rect": [
+						320,
+						640,
+						320,
+						320
+					],
+					"state": "attack",
+					"y_translation": -6
+				},
+				{
+					"atlas_index": 10,
+					"index": 0,
+					"low_alpha_bounds": [
+						86,
+						102,
+						364,
+						351
+					],
+					"output_alpha_bounds": [
+						90,
+						107,
+						355,
+						342
+					],
+					"sha256": "34c43f1ab2b9ae4787c5bf42a64e152ca139fc01fa8b53e0e1b0b011d2787a9d",
+					"source_alpha_bounds": [
+						56,
+						71,
+						222,
+						213
+					],
+					"source_rect": [
+						640,
+						640,
+						320,
+						320
+					],
+					"state": "hurt",
+					"y_translation": -6
+				},
+				{
+					"atlas_index": 11,
+					"index": 1,
+					"low_alpha_bounds": [
+						72,
+						99,
+						382,
+						354
+					],
+					"output_alpha_bounds": [
+						77,
+						104,
+						373,
+						345
+					],
+					"sha256": "96cf712a0f3285852b4548e58c8751a4ae3ef4cc133369c79a53d0b52da40f5c",
+					"source_alpha_bounds": [
+						48,
+						69,
+						233,
+						215
+					],
+					"source_rect": [
+						960,
+						640,
+						320,
+						320
+					],
+					"state": "hurt",
+					"y_translation": -6
+				},
+				{
+					"atlas_index": 12,
+					"index": 0,
+					"low_alpha_bounds": [
+						68,
+						125,
+						390,
+						329
+					],
+					"output_alpha_bounds": [
+						69,
+						127,
+						384,
+						322
+					],
+					"sha256": "bad0f8fc7954e59fecbd19d5b454e949bf6666a6620d3341d2745a26baad6301",
+					"source_alpha_bounds": [
+						43,
+						61,
+						240,
+						202
+					],
+					"source_rect": [
+						0,
+						960,
+						320,
+						320
+					],
+					"state": "down",
+					"y_translation": 29
+				},
+				{
+					"atlas_index": 13,
+					"index": 1,
+					"low_alpha_bounds": [
+						65,
+						156,
+						385,
+						298
+					],
+					"output_alpha_bounds": [
+						67,
+						158,
+						378,
+						291
+					],
+					"sha256": "cebe0b5b2ff3c44830af756cc9e99e601ccff0451a88ca88e7513657e7cfd9c8",
+					"source_alpha_bounds": [
+						42,
+						77,
+						236,
+						182
+					],
+					"source_rect": [
+						320,
+						960,
+						320,
+						320
+					],
+					"state": "down",
+					"y_translation": 35
+				},
+				{
+					"atlas_index": 14,
+					"index": 2,
+					"low_alpha_bounds": [
+						64,
+						246,
+						405,
+						207
+					],
+					"output_alpha_bounds": [
+						66,
+						251,
+						398,
+						198
+					],
+					"sha256": "ef7e32072831bfb5a9795b8bbe93e087445e3711ae378ddd3a355ee065bb6355",
+					"source_alpha_bounds": [
+						41,
+						134,
+						249,
+						123
+					],
+					"source_rect": [
+						640,
+						960,
+						320,
+						320
+					],
+					"state": "down",
+					"y_translation": 37
+				},
+				{
+					"atlas_index": 15,
+					"index": 3,
+					"low_alpha_bounds": [
+						74,
+						281,
+						389,
+						173
+					],
+					"output_alpha_bounds": [
+						76,
+						286,
+						385,
+						163
+					],
+					"sha256": "b0516a4600a2172b8ac6580cf4f8db52d9616c48d074fe3c103d3dd49c04f586",
+					"source_alpha_bounds": [
+						48,
+						157,
+						240,
+						102
+					],
+					"source_rect": [
+						960,
+						960,
+						320,
+						320
+					],
+					"state": "down",
+					"y_translation": 35
+				}
+			],
+			"id": "pike",
+			"normalized_atlas_size": [
+				1280,
+				1280
+			],
+			"source_sha256": "e7a9388a40758c4419893a7cb9f64e0abdab273be738b61103d18233cd4637c8",
+			"source_size": [
+				1254,
+				1254
+			]
+		},
+		{
+			"atlas_resize_factor": 1.0207336523126,
+			"frames": [
+				{
+					"atlas_index": 0,
+					"index": 0,
+					"low_alpha_bounds": [
+						77,
+						119,
+						338,
+						334
+					],
+					"output_alpha_bounds": [
+						80,
+						124,
+						333,
+						325
+					],
+					"sha256": "a50ec527011a6d516203f0d30399dfc9ffed52bc7f966a378c6fb939bf68886f",
+					"source_alpha_bounds": [
+						50,
+						83,
+						208,
+						203
+					],
+					"source_rect": [
+						0,
+						0,
+						320,
+						320
+					],
+					"state": "idle",
+					"y_translation": -9
+				},
+				{
+					"atlas_index": 1,
+					"index": 1,
+					"low_alpha_bounds": [
+						78,
+						123,
+						340,
+						330
+					],
+					"output_alpha_bounds": [
+						83,
+						125,
+						329,
+						324
+					],
+					"sha256": "a14824500316178b988ac09a0f168529041d40160291f5ae8cc8f1f62e84f833",
+					"source_alpha_bounds": [
+						52,
+						84,
+						206,
+						202
+					],
+					"source_rect": [
+						320,
+						0,
+						320,
+						320
+					],
+					"state": "idle",
+					"y_translation": -9
+				},
+				{
+					"atlas_index": 2,
+					"index": 2,
+					"low_alpha_bounds": [
+						70,
+						124,
+						332,
+						328
+					],
+					"output_alpha_bounds": [
+						75,
+						126,
+						326,
+						323
+					],
+					"sha256": "d9c410b007361611dbabc9de41e5071b374f8c42eab0feae2dfd85bfc92bf36c",
+					"source_alpha_bounds": [
+						47,
+						85,
+						203,
+						201
+					],
+					"source_rect": [
+						640,
+						0,
+						320,
+						320
+					],
+					"state": "idle",
+					"y_translation": -9
+				},
+				{
+					"atlas_index": 3,
+					"index": 3,
+					"low_alpha_bounds": [
+						85,
+						123,
+						334,
+						329
+					],
+					"output_alpha_bounds": [
+						88,
+						125,
+						326,
+						324
+					],
+					"sha256": "0a1702ffe355dcce956a4e58748b432731ac76c4ccbf082d428dd91492ddb948",
+					"source_alpha_bounds": [
+						55,
+						84,
+						204,
+						202
+					],
+					"source_rect": [
+						960,
+						0,
+						320,
+						320
+					],
+					"state": "idle",
+					"y_translation": -9
+				},
+				{
+					"atlas_index": 4,
+					"index": 0,
+					"low_alpha_bounds": [
+						75,
+						117,
+						340,
+						334
+					],
+					"output_alpha_bounds": [
+						80,
+						121,
+						333,
+						328
+					],
+					"sha256": "457a287597a2636ba1fef2b772489fe1b003263d06bfc345a5f5152f63f1d235",
+					"source_alpha_bounds": [
+						50,
+						81,
+						208,
+						205
+					],
+					"source_rect": [
+						0,
+						320,
+						320,
+						320
+					],
+					"state": "attack",
+					"y_translation": -8
+				},
+				{
+					"atlas_index": 5,
+					"index": 1,
+					"low_alpha_bounds": [
+						89,
+						116,
+						346,
+						334
+					],
+					"output_alpha_bounds": [
+						91,
+						118,
+						340,
+						331
+					],
+					"sha256": "ce25797579db3f8523dd950318619eae25100579631a21c62b557827cf812a05",
+					"source_alpha_bounds": [
+						57,
+						79,
+						212,
+						207
+					],
+					"source_rect": [
+						320,
+						320,
+						320,
+						320
+					],
+					"state": "attack",
+					"y_translation": -9
+				},
+				{
+					"atlas_index": 6,
+					"index": 2,
+					"low_alpha_bounds": [
+						78,
+						120,
+						337,
+						331
+					],
+					"output_alpha_bounds": [
+						82,
+						123,
+						332,
+						326
+					],
+					"sha256": "bda63f3ab15f43fb6a5c2becc52a45ddcd6cee1cc0dc8e61182564b42990bd09",
+					"source_alpha_bounds": [
+						51,
+						82,
+						207,
+						204
+					],
+					"source_rect": [
+						640,
+						320,
+						320,
+						320
+					],
+					"state": "attack",
+					"y_translation": -8
+				},
+				{
+					"atlas_index": 7,
+					"index": 3,
+					"low_alpha_bounds": [
+						67,
+						115,
+						387,
+						336
+					],
+					"output_alpha_bounds": [
+						70,
+						121,
+						379,
+						328
+					],
+					"sha256": "4f7f8f7424d1074bd4b01de521413a4941b498d01a9ba80e7e4b06af84caabb5",
+					"source_alpha_bounds": [
+						44,
+						81,
+						237,
+						205
+					],
+					"source_rect": [
+						960,
+						320,
+						320,
+						320
+					],
+					"state": "attack",
+					"y_translation": -9
+				},
+				{
+					"atlas_index": 8,
+					"index": 4,
+					"low_alpha_bounds": [
+						70,
+						117,
+						373,
+						336
+					],
+					"output_alpha_bounds": [
+						74,
+						122,
+						367,
+						327
+					],
+					"sha256": "c5531db8f9ea3c4ab3fb373dc91fbaaff398cab62e5c434d6bd8a3e46aa10096",
+					"source_alpha_bounds": [
+						46,
+						80,
+						230,
+						205
+					],
+					"source_rect": [
+						0,
+						640,
+						320,
+						320
+					],
+					"state": "attack",
+					"y_translation": -6
+				},
+				{
+					"atlas_index": 9,
+					"index": 5,
+					"low_alpha_bounds": [
+						80,
+						116,
+						347,
+						338
+					],
+					"output_alpha_bounds": [
+						82,
+						121,
+						340,
+						328
+					],
+					"sha256": "ee4a4528216f27d6e2009ccb7ae88762147188313bc67211411150607c1c9467",
+					"source_alpha_bounds": [
+						51,
+						80,
+						213,
+						205
+					],
+					"source_rect": [
+						320,
+						640,
+						320,
+						320
+					],
+					"state": "attack",
+					"y_translation": -7
+				},
+				{
+					"atlas_index": 10,
+					"index": 0,
+					"low_alpha_bounds": [
+						89,
+						114,
+						354,
+						339
+					],
+					"output_alpha_bounds": [
+						93,
+						118,
+						348,
+						331
+					],
+					"sha256": "88119d08fe3d47dcb82a0f3234a7be25d334ffad184747565257d60edc32ef06",
+					"source_alpha_bounds": [
+						58,
+						79,
+						218,
+						206
+					],
+					"source_rect": [
+						640,
+						640,
+						320,
+						320
+					],
+					"state": "hurt",
+					"y_translation": -8
+				},
+				{
+					"atlas_index": 11,
+					"index": 1,
+					"low_alpha_bounds": [
+						72,
+						122,
+						346,
+						331
+					],
+					"output_alpha_bounds": [
+						75,
+						124,
+						338,
+						325
+					],
+					"sha256": "d1d0c71b7b79bb8a2f14c4658f2cf8fbae9e43c0c10b6452f847ada8db830850",
+					"source_alpha_bounds": [
+						47,
+						81,
+						211,
+						204
+					],
+					"source_rect": [
+						960,
+						640,
+						320,
+						320
+					],
+					"state": "hurt",
+					"y_translation": -6
+				},
+				{
+					"atlas_index": 12,
+					"index": 0,
+					"low_alpha_bounds": [
+						93,
+						195,
+						350,
+						259
+					],
+					"output_alpha_bounds": [
+						98,
+						199,
+						340,
+						250
+					],
+					"sha256": "10492adc8fbbdc67c227f3bf1f18fe874f476983343191b45fde6754b13c19f3",
+					"source_alpha_bounds": [
+						61,
+						87,
+						213,
+						157
+					],
+					"source_rect": [
+						0,
+						960,
+						320,
+						320
+					],
+					"state": "down",
+					"y_translation": 59
+				},
+				{
+					"atlas_index": 13,
+					"index": 1,
+					"low_alpha_bounds": [
+						99,
+						212,
+						341,
+						242
+					],
+					"output_alpha_bounds": [
+						101,
+						217,
+						334,
+						232
+					],
+					"sha256": "24b2f8db6d5bfba13e76455d9298a0eabd5743b505442d035130c0b03e4efb99",
+					"source_alpha_bounds": [
+						63,
+						98,
+						209,
+						145
+					],
+					"source_rect": [
+						320,
+						960,
+						320,
+						320
+					],
+					"state": "down",
+					"y_translation": 60
+				},
+				{
+					"atlas_index": 14,
+					"index": 2,
+					"low_alpha_bounds": [
+						70,
+						275,
+						357,
+						176
+					],
+					"output_alpha_bounds": [
+						74,
+						280,
+						351,
+						169
+					],
+					"sha256": "e30b1720c74f5f28e618f288bea2404148e0780109469727a084e1807acac8ca",
+					"source_alpha_bounds": [
+						46,
+						135,
+						220,
+						106
+					],
+					"source_rect": [
+						640,
+						960,
+						320,
+						320
+					],
+					"state": "down",
+					"y_translation": 64
+				},
+				{
+					"atlas_index": 15,
+					"index": 3,
+					"low_alpha_bounds": [
+						62,
+						296,
+						382,
+						154
+					],
+					"output_alpha_bounds": [
+						65,
+						302,
+						377,
+						147
+					],
+					"sha256": "184feaa252ca4c71eb499b1a196a900902b89bb1e13ee8c6308d01aefcba0df4",
+					"source_alpha_bounds": [
+						41,
+						149,
+						235,
+						92
+					],
+					"source_rect": [
+						960,
+						960,
+						320,
+						320
+					],
+					"state": "down",
+					"y_translation": 63
+				}
+			],
+			"id": "weredog",
+			"normalized_atlas_size": [
+				1280,
+				1280
+			],
+			"source_sha256": "5b526c10d8792a70b1dcf83a224cfa65ed3f619ea94f95425056791e7a0d2197",
+			"source_size": [
+				1254,
+				1254
+			]
+		}
+	],
+	"foot_y": 448,
+	"frame_size": 512,
+	"issues": [],
+	"passed": true,
+	"schema": "battle_art_assembly_v1",
+	"uniform_resize": 1.6
+}

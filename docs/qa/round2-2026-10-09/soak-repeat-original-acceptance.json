@@ -1,0 +1,38 @@
+{
+  "schema": "battle_demo_soak_acceptance_v2",
+  "passed": false,
+  "failures": [
+    "Live node low-water mark grew between comparison windows."
+  ],
+  "mean_fps": 59.992144988927876,
+  "p95_ms": 16.816,
+  "max_ms": 40.844,
+  "spikes_over_100ms_require_review": false,
+  "spikes_ms": [],
+  "startup_ms": 638.341,
+  "memory": {
+    "evaluated": true,
+    "early_window_seconds": [
+      75,
+      135
+    ],
+    "late_window_seconds": [
+      555,
+      615
+    ],
+    "early_private_median": 400584704.0,
+    "late_private_median": 403001344.0,
+    "private_growth_percent": 0.6032781521283503,
+    "early_working_set_median": 300296192.0,
+    "late_working_set_median": 287119360.0,
+    "working_set_growth_percent": -4.38794508589706
+  },
+  "nodes": {
+    "evaluated": true,
+    "early_floor": 72.0,
+    "late_floor": 74.0
+  },
+  "process_working_set_peak": 314097664.0,
+  "process_private_peak": 441802752.0,
+  "engine_video_bytes_peak": 129319641.0
+}

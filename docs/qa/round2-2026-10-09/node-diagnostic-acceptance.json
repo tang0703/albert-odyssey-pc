@@ -1,0 +1,29 @@
+{
+  "schema": "battle_demo_soak_acceptance_v3",
+  "passed": true,
+  "full_memory_and_node_acceptance": false,
+  "failures": [],
+  "mean_fps": 60.0023990960631,
+  "p95_ms": 16.728,
+  "max_ms": 27.902,
+  "spikes_over_100ms_require_review": false,
+  "spikes_ms": [],
+  "startup_ms": 1235.166,
+  "memory": {
+    "evaluated": false,
+    "reason": "A run of at least 180 seconds is required for separate comparison windows."
+  },
+  "nodes": {
+    "evaluated": true,
+    "method": "cleaned_battle_checkpoints",
+    "checkpoints": 8,
+    "first_persistent": 72,
+    "last_persistent": 72,
+    "minimum": 72.0,
+    "maximum": 72.0
+  },
+  "process_working_set_peak": null,
+  "process_working_set_os_peak": null,
+  "process_private_peak": null,
+  "engine_video_bytes_peak": 129319641.0
+}

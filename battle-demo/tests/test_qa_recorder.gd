@@ -10,6 +10,9 @@ func check(value: bool, message: String) -> void:
 		assert(value, message)
 
 func _initialize() -> void:
+	call_deferred("run")
+
+func run() -> void:
 	var recorder := Recorder.new()
 	check(recorder.configure("user://qa-test", "soak", 15.0, 600.0, Vector2i(3840, 2160)).is_empty(), "valid steady soak")
 	recorder.started_usec = 0
@@ -47,5 +50,40 @@ func _initialize() -> void:
 	check(not recorder.configure("user://qa-test", "soak", 15.0, 0.0, Vector2i.ZERO).is_empty(), "soak duration required")
 	check(not recorder.configure("user://qa-test", "soak", NAN, 600.0, Vector2i.ZERO).is_empty(), "nonfinite timing rejected")
 	check(not recorder.configure("user://qa-test", "soak", 15.0, 600.0, Vector2i(3840, 0)).is_empty(), "partial target dimensions rejected")
+	var ui := Control.new()
+	ui.name = "NodeInventoryFixture"
+	root.add_child(ui)
+	var permanent := Control.new()
+	permanent.name = "Permanent"
+	ui.add_child(permanent)
+	var popup := Label.new()
+	popup.name = "Damage"
+	popup.add_to_group("popups")
+	ui.add_child(popup)
+	var popup_child := Control.new()
+	popup_child.name = "TransientChild"
+	popup.add_child(popup_child)
+	var impact := Control.new()
+	impact.name = "Impact"
+	impact.add_to_group("impacts")
+	ui.add_child(impact)
+	var inventory: Dictionary = recorder._node_inventory(ui)
+	check(inventory["ui_nodes"] == 5 and inventory["ui_persistent_nodes"] == 2, "UI node inventory distinguishes permanent nodes from effects")
+	check(inventory["transient_nodes"] == 3 and inventory["transient_groups"] == {"popups": 1, "impacts": 1}, "transient descendants inherit classification")
+	check(inventory["persistent_nodes"] == inventory["tree_nodes"] - 3, "global scene-tree counts reconcile")
+	var permanent_entries: Array = inventory["persistent_inventory"]
+	check(permanent_entries.any(func(entry: Dictionary) -> bool: return entry["path"].ends_with("/Permanent") and entry["class"] == "Control"), "diagnostics include stable paths and classes")
+	ui.remove_child(popup)
+	popup.free()
+	ui.remove_child(impact)
+	impact.free()
+	var without_effects: Dictionary = recorder._node_inventory(ui)
+	check(without_effects["persistent_inventory"] == permanent_entries and without_effects["transient_nodes"] == 0, "finished effects do not change persistent inventory")
+	var internal := Label.new()
+	internal.name = "InternalTooltip"
+	ui.add_child(internal, false, Node.INTERNAL_MODE_BACK)
+	var with_internal: Dictionary = recorder._node_inventory(ui)
+	check(with_internal["persistent_nodes"] == without_effects["persistent_nodes"] + 1, "internal engine-like nodes are visible to diagnosis")
+	ui.free()
 	print("BATTLE QA RECORDER: %d checks passed" % checks)
 	quit()

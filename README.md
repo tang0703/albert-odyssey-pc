@@ -3,9 +3,10 @@
 目前交付的是 **Godot 資源驗證台與可重跑的逆向／匯入工具**，不是已完成的可玩切片。
 Stage B 仍未通過，尚未實作原作地圖探索、碰撞、完整事件或戰鬥。
 
-2026-09-10 新增 **三曜試煉：獨立三對三戰鬥 demo**。這是採新規則與原創簡易角色的
-可玩原型，不依賴原作素材，與上面的原作還原關卡分開驗收。
-操作與規則見 [Demo 說明](battle-demo/README.md)，測試與交付見 [驗收紀錄](docs/BATTLE_DEMO.md)。
+**三曜試煉：獨立三對三戰鬥 demo** 已加入派克與 WEREDOG 的新繪動畫，
+其餘四名保留簡易角色。採新規則，可獨立執行，與上面的原作還原關卡分開驗收。
+操作與規則見 [Demo 說明](battle-demo/README.md)，最新測試與交付見
+[第二輪驗收紀錄](docs/BATTLE_DEMO_ROUND2.md)；[第一輪紀錄](docs/BATTLE_DEMO.md) 保留作歷史基準。
 
 ```powershell
 .\tools\battle.ps1 -Action run

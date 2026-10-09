@@ -1,0 +1,479 @@
+{
+	"actions": 779,
+	"battles": 40,
+	"error": "",
+	"frames": 35996,
+	"max_ms": 40.844,
+	"mean_fps": 59.9921449889277,
+	"mean_ms": 16.6688488998778,
+	"measured_actions": 759,
+	"measured_battles": 39,
+	"measured_seconds": 600.011885,
+	"memory_counters": "Godot engine static and video bytes; external process memory recorded separately",
+	"mode": "soak",
+	"p95_ms": 16.816,
+	"readback_during_measurement": false,
+	"requested_measured_seconds": 600.0,
+	"samples": [
+		{
+			"nodes": 72.0,
+			"phase": "warmup",
+			"seconds": 0.021096,
+			"static_bytes": 0.0,
+			"video_bytes": 123708925.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "warmup",
+			"seconds": 10.015575,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 72.0,
+			"phase": "measured",
+			"seconds": 15.015992,
+			"static_bytes": 0.0,
+			"video_bytes": 129308505.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 20.016599,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 72.0,
+			"phase": "measured",
+			"seconds": 30.000445,
+			"static_bytes": 0.0,
+			"video_bytes": 129315561.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 40.001208,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 50.001958,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 72.0,
+			"phase": "measured",
+			"seconds": 60.002803,
+			"static_bytes": 0.0,
+			"video_bytes": 129315561.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 70.003582,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 80.004378,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 72.0,
+			"phase": "measured",
+			"seconds": 90.005001,
+			"static_bytes": 0.0,
+			"video_bytes": 129315561.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 100.005797,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 110.006636,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 72.0,
+			"phase": "measured",
+			"seconds": 120.007298,
+			"static_bytes": 0.0,
+			"video_bytes": 129308505.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 130.008141,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 140.008839,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 72.0,
+			"phase": "measured",
+			"seconds": 150.009596,
+			"static_bytes": 0.0,
+			"video_bytes": 129308505.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 160.010336,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 170.011001,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 72.0,
+			"phase": "measured",
+			"seconds": 180.011868,
+			"static_bytes": 0.0,
+			"video_bytes": 129308505.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 190.012544,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 200.013259,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 72.0,
+			"phase": "measured",
+			"seconds": 210.014161,
+			"static_bytes": 0.0,
+			"video_bytes": 129308505.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 220.014881,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 230.015669,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 72.0,
+			"phase": "measured",
+			"seconds": 240.016415,
+			"static_bytes": 0.0,
+			"video_bytes": 129308505.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 250.0005,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 260.001217,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 270.001949,
+			"static_bytes": 0.0,
+			"video_bytes": 129305457.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 280.002731,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 290.003452,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 300.004268,
+			"static_bytes": 0.0,
+			"video_bytes": 129305457.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 310.004987,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 320.005636,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 330.006493,
+			"static_bytes": 0.0,
+			"video_bytes": 129305457.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 340.007186,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 350.007886,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 360.008781,
+			"static_bytes": 0.0,
+			"video_bytes": 129305457.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 370.009538,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 380.010319,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 390.011021,
+			"static_bytes": 0.0,
+			"video_bytes": 129305457.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 400.011721,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 410.012693,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 420.013641,
+			"static_bytes": 0.0,
+			"video_bytes": 129305457.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 430.014296,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 440.015052,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 450.015445,
+			"static_bytes": 0.0,
+			"video_bytes": 129305457.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 460.016299,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 470.000393,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 480.001183,
+			"static_bytes": 0.0,
+			"video_bytes": 129305457.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 490.001852,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 500.002587,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 510.003434,
+			"static_bytes": 0.0,
+			"video_bytes": 129305457.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 520.00411,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 530.004964,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 540.00572,
+			"static_bytes": 0.0,
+			"video_bytes": 129305457.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 550.006361,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 560.007119,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 570.007836,
+			"static_bytes": 0.0,
+			"video_bytes": 129305457.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 580.008596,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 590.00934,
+			"static_bytes": 0.0,
+			"video_bytes": 129319641.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 600.01024,
+			"static_bytes": 0.0,
+			"video_bytes": 129305457.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 610.010822,
+			"static_bytes": 0.0,
+			"video_bytes": 129311577.0
+		},
+		{
+			"nodes": 74.0,
+			"phase": "measured",
+			"seconds": 615.027877,
+			"static_bytes": 0.0,
+			"video_bytes": 129305457.0
+		}
+	],
+	"seconds": 615.027877,
+	"size": [
+		3840,
+		2160
+	],
+	"speed": 1.0,
+	"spikes_ms": [],
+	"startup_definition": "engine startup to first frame_post_draw",
+	"startup_ms": 638.341,
+	"steady_measurement": true,
+	"surface_verified": true,
+	"warmup_seconds": 15.0
+}
