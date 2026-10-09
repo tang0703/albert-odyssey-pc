@@ -215,8 +215,8 @@ function Invoke-CharacterQa([string]$Name,[string]$Size,[bool]$Soak) {
     Assert-CharacterNoConcurrentWork
     $PackageAudit=Join-Path $Folder 'package-before.json'
     $Python=Join-Path (Split-Path -Parent $PcRoot) 'tools/pc-remake/python/Scripts/python.exe'
-    & $Python (Join-Path $PSScriptRoot 'audit_character_package.py') audit --delivery (Split-Path -Parent $Executable) --report $PackageAudit | Out-Null
-    if ($LASTEXITCODE -ne 0) { throw 'Character delivery must pass the full HD/scene/source package audit before QA.' }
+    & $Python (Join-Path $PSScriptRoot 'audit_room_package.py') audit (Split-Path -Parent $Executable) --report $PackageAudit | Out-Null
+    if ($LASTEXITCODE -ne 0) { throw 'Room delivery must pass the full four-package audit before QA.' }
     $LaunchIdentity=Get-CharacterLaunchIdentity $Executable
     $CollectorOperations=[Collections.Generic.List[object]]::new()
     $CollectorClockStartedUtc=[DateTime]::UtcNow.ToString('o')
