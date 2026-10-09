@@ -84,7 +84,7 @@ Reject-Fixture {param($F) foreach($S in $F.samples | Where-Object {$_.seconds -g
 Reject-Fixture {param($F) foreach($S in $F.samples) {$S.gpu_dedicated_bytes=$null;$S.gpu_shared_bytes=$null}} 'Missing GPU counters accepted.'
 Reject-Fixture {param($F) foreach($S in $F.samples) {$S.gpu_shared_bytes=$null}} 'Missing shared GPU observations accepted.'
 Reject-Fixture {param($F) foreach($S in $F.samples | Where-Object {$_.seconds -ge 30}) {$S.gpu_dedicated_bytes=$null;$S.gpu_shared_bytes=$null}} 'GPU samples only at startup accepted.'
-Reject-Fixture {param($F) $F.report.frame_spikes_over_50ms=@([pscustomobject]@{seconds=1;frame_ms=150;route='open';update=1})} 'Invented spike evidence accepted.'
+Reject-Fixture {param($F) $F.report.frame_spikes_over_50ms=@([pscustomobject]@{seconds=1;frame_ms=150;route='interior';update=1})} 'Invented spike evidence accepted.'
 
 $Spike=New-HealthyFixture
 $Spike.report.frame_intervals_ms[5]=150
@@ -92,7 +92,7 @@ $Duration=($Spike.report.frame_intervals_ms | Measure-Object -Sum).Sum/1000.0
 $Spike.report.measured_seconds=$Duration
 $Spike.report.average_fps=36000/$Duration
 $Spike.report.max_frame_ms=150
-$Spike.report.frame_spikes_over_50ms=@([pscustomobject]@{seconds=(5*(1000.0/60.0)+150)/1000;frame_ms=150;route='open';update=1})
+$Spike.report.frame_spikes_over_50ms=@([pscustomobject]@{seconds=(5*(1000.0/60.0)+150)/1000;frame_ms=150;route='interior';update=1})
 $SpikeResult=Test-CharacterSoak $Spike.report $Spike.samples 600 15
 Assert-Check ($SpikeResult.passed -and -not $SpikeResult.full_acceptance -and $SpikeResult.spikes_over_100ms_require_reproduction_review) ('Isolated spike did not require separate review: '+($SpikeResult.failures -join '; '))
 $Spike.report.frame_spikes_over_50ms[0].seconds=5
@@ -103,15 +103,15 @@ $AllowedRoot=[IO.Path]::GetFullPath((Join-Path (Split-Path -Parent $PSScriptRoot
 if ([IO.Path]::GetDirectoryName($FixtureRoot) -ne $AllowedRoot) { throw 'Fixture path escaped reports/tmp.' }
 foreach($Directory in @('scene','character','character-hd','room')) { New-Item -ItemType Directory -Path (Join-Path $FixtureRoot $Directory) -Force | Out-Null }
 try {
-    [IO.File]::WriteAllText((Join-Path $FixtureRoot 'MAP001-Character.exe'),'synthetic exe')
-    [IO.File]::WriteAllText((Join-Path $FixtureRoot 'MAP001-Character.pck'),'synthetic pck')
+    [IO.File]::WriteAllText((Join-Path $FixtureRoot 'MAP001-Room.exe'),'synthetic exe')
+    [IO.File]::WriteAllText((Join-Path $FixtureRoot 'MAP001-Room.pck'),'synthetic pck')
     [IO.File]::WriteAllText((Join-Path $FixtureRoot 'scene/package.json'),'synthetic manifest')
     [IO.File]::WriteAllText((Join-Path $FixtureRoot 'character/package.json'),'synthetic source character manifest')
     [IO.File]::WriteAllText((Join-Path $FixtureRoot 'character-hd/package.json'),'synthetic HD manifest')
     [IO.File]::WriteAllText((Join-Path $FixtureRoot 'room/package.json'),'synthetic room manifest')
     @{source_commit=('a'*40);source_has_uncommitted_changes=$false} | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $FixtureRoot 'BUILD-INFO.json') -Encoding utf8
-    $Identity=Get-CharacterLaunchIdentity (Join-Path $FixtureRoot 'MAP001-Character.exe')
-    Assert-Check ($Identity.executable_path -eq (Join-Path $FixtureRoot 'MAP001-Character.exe') -and $Identity.executable_sha256.Length -eq 64 -and $Identity.pck_sha256.Length -eq 64 -and $Identity.scene_manifest_sha256.Length -eq 64 -and $Identity.character_manifest_sha256.Length -eq 64 -and $Identity.hd_manifest_sha256.Length -eq 64 -and $Identity.source_commit -eq ('a'*40) -and -not $Identity.source_dirty) 'Launch binary/source identity incomplete.'
+    $Identity=Get-CharacterLaunchIdentity (Join-Path $FixtureRoot 'MAP001-Room.exe')
+    Assert-Check ($Identity.executable_path -eq (Join-Path $FixtureRoot 'MAP001-Room.exe') -and $Identity.executable_sha256.Length -eq 64 -and $Identity.pck_sha256.Length -eq 64 -and $Identity.scene_manifest_sha256.Length -eq 64 -and $Identity.character_manifest_sha256.Length -eq 64 -and $Identity.hd_manifest_sha256.Length -eq 64 -and $Identity.source_commit -eq ('a'*40) -and -not $Identity.source_dirty) 'Launch binary/source identity incomplete.'
 } finally {
     $Resolved=[IO.Path]::GetFullPath($FixtureRoot)
     if ([IO.Path]::GetDirectoryName($Resolved) -ne $AllowedRoot) { throw 'Fixture cleanup escaped reports/tmp.' }

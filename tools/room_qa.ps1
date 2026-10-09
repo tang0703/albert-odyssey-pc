@@ -86,7 +86,7 @@ function Test-CharacterSoak($Report,[object[]]$Samples,[int]$Seconds,[int]$Warmu
     else {
         for ($Index=0; $Index -lt $RawSpikes.Count; $Index++) {
             $Spike=$Report.frame_spikes_over_50ms[$Index]
-            if (-not (Test-CharacterProperties $Spike @('seconds','frame_ms','route','update')) -or -not (Test-CharacterNumber $Spike.seconds 0) -or -not (Test-CharacterNumber $Spike.frame_ms 50) -or -not (Test-CharacterNumber $Spike.update 0 -Integer) -or $Spike.route -notin @('cardinal','corners','open','release')) { $Failures.Add('Invalid frame-spike location evidence.'); break }
+            if (-not (Test-CharacterProperties $Spike @('seconds','frame_ms','route','update')) -or -not (Test-CharacterNumber $Spike.seconds 0) -or -not (Test-CharacterNumber $Spike.frame_ms 50) -or -not (Test-CharacterNumber $Spike.update 0 -Integer) -or $Spike.route -notin @('interior','contacts','perimeter','visual-west','visual-east')) { $Failures.Add('Invalid frame-spike location evidence.'); break }
             if ([math]::Abs($Spike.seconds-$RawSpikes[$Index].seconds) -gt 0.001 -or [math]::Abs($Spike.frame_ms-$RawSpikes[$Index].frame_ms) -gt 0.0001) { $Failures.Add('Frame spike timing differs from raw intervals.'); break }
         }
     }
@@ -179,7 +179,7 @@ function Invoke-CharacterCollectorOperation([string]$Operation,[Diagnostics.Stop
 function Get-CharacterLaunchIdentity([string]$Path) {
     $Absolute=(Resolve-Path -LiteralPath $Path).ProviderPath
     $Directory=Split-Path -Parent $Absolute
-    $Pck=Join-Path $Directory 'MAP001-Character.pck'
+    $Pck=Join-Path $Directory 'MAP001-Room.pck'
     $Manifest=Join-Path $Directory 'scene/package.json'
     $CharacterManifest=Join-Path $Directory 'character/package.json'
     $HdManifest=Join-Path $Directory 'character-hd/package.json'
@@ -267,7 +267,7 @@ function Invoke-CharacterQa([string]$Name,[string]$Size,[bool]$Soak) {
         $Process.WaitForExit()
         $Samples | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath (Join-Path $Folder 'process-memory.json') -Encoding utf8
         $AfterAudit=Join-Path $Folder 'package-after.json'
-        & $Python (Join-Path $PSScriptRoot 'audit_character_package.py') audit --delivery (Split-Path -Parent $Executable) --report $AfterAudit | Out-Null
+        & $Python (Join-Path $PSScriptRoot 'audit_room_package.py') audit (Split-Path -Parent $Executable) --report $AfterAudit | Out-Null
         if ($LASTEXITCODE -ne 0) { throw 'Character delivery changed or failed verification after QA.' }
         $BeforePackage=Get-Content -LiteralPath $PackageAudit -Raw | ConvertFrom-Json
         $AfterPackage=Get-Content -LiteralPath $AfterAudit -Raw | ConvertFrom-Json
