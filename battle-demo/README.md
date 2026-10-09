@@ -11,6 +11,7 @@ Windows x64：完整解壓 ZIP，將 `Triad-Trial.exe` 與 `Triad-Trial.pck` 放
 
 用瀏覽器開啟 `Animation-Preview.html` 可離線查看兩角八組動作、暫停、倍速、翻轉與透明邊緣。
 預覽中待機循環，其他動作停在末格；按「重新播放」再次檢視。
+本輪實測及限制見 `ROUND2-ACCEPTANCE.md`；套件來源版本與檔案雜湊見 `BUILD-INFO.json`。
 
 ## 操作
 
