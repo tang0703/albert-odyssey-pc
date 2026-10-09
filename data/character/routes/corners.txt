@@ -1,0 +1,8 @@
+none 4
+down 18
+left 45
+none 4
+up 35
+right 45
+down 15
+none 4

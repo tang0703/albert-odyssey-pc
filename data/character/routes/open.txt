@@ -1,0 +1,13 @@
+none 4
+down 31
+none 4
+left 19
+none 4
+right 8
+none 4
+left 8
+none 4
+up 8
+none 4
+down 8
+none 12

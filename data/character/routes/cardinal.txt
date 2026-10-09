@@ -1,0 +1,9 @@
+none 4
+left 80
+none 4
+right 80
+none 4
+up 80
+none 4
+down 100
+none 8

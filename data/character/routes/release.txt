@@ -1,0 +1,4 @@
+none 4
+down 18
+left 2
+none 8
