@@ -3,6 +3,7 @@ config_version=5
 [application]
 config/name="MAP001 行走驗證台"
 run/main_scene="res://main.tscn"
+run/main_scene.character_demo="res://character_main.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [display]
