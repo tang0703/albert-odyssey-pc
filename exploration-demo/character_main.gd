@@ -59,7 +59,7 @@ func _ready() -> void:
 		priority_material = ShaderMaterial.new()
 		priority_material.shader = PriorityShader
 		priority_material.set_shader_parameter("source_foreground", character_bundle.foreground_texture)
-		var ordered: Dictionary = CharacterBundle.draw_order(character_bundle, displayed_actor, source_camera())
+		var ordered: Dictionary = presentation_order(displayed_actor, source_camera())
 		if not ordered.get("ok", false):
 			startup_error = str(ordered.get("error", "場景繪製順序未驗證。"))
 			paused = true
@@ -110,7 +110,7 @@ func prepare_update_presentation(result: Dictionary) -> String:
 	for candidate: Dictionary in [incoming, next_display]:
 		var hd_error: String = validate_hd_interval(candidate)
 		if not hd_error.is_empty(): return hd_error
-	var ordered: Dictionary = CharacterBundle.draw_order(character_bundle, next_display, source_camera())
+	var ordered: Dictionary = presentation_order(next_display, source_camera())
 	if not ordered.get("ok", false): return str(ordered.get("error", "場景繪製順序未驗證。"))
 	animation_state = animated.state
 	presentation_queue.append(incoming)
@@ -209,7 +209,7 @@ func sync_source_layers() -> void:
 		paused = true
 		push_error(startup_error)
 		return
-	var ordered: Dictionary = CharacterBundle.draw_order(character_bundle, displayed_actor, source_camera())
+	var ordered: Dictionary = presentation_order(displayed_actor, source_camera())
 	if not ordered.get("ok", false):
 		startup_error = str(ordered.get("error", "場景繪製順序未驗證。"))
 		paused = true
@@ -236,6 +236,9 @@ func sync_source_layers() -> void:
 		var sprite_priority: int = 2 if player else int(entry.sprite_priority)
 		layer.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR if player and appearance_mode == "hd" else CanvasItem.TEXTURE_FILTER_NEAREST
 		layer.show_sprite(image, Rect2(top_left, Vector2(float(dimensions[0]), float(dimensions[1])) * zoom * art_scale), priority_material if sprite_priority == 2 else null, index)
+
+func presentation_order(actor: Dictionary, camera: Vector2) -> Dictionary:
+	return CharacterBundle.draw_order(character_bundle, actor, camera)
 
 func source_camera() -> Vector2:
 	return Vector2(float(bundle.data.camera[0]), float(bundle.data.camera[1]))

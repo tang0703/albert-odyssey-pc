@@ -461,7 +461,7 @@ func draw_map(canvas: Control) -> void:
 	var zoom: float = canvas.size.x / 320.0
 	var camera := Vector2(float(bundle.data.camera[0]), float(bundle.data.camera[1]))
 	var whole := Rect2(Vector2.ZERO, canvas.size)
-	for index: int in [1, 0]: canvas.draw_texture_rect(bundle.textures[index], whole, false)
+	draw_background(canvas, whole)
 	if show_overlay:
 		for index: int in verified_indices:
 			@warning_ignore("integer_division")
@@ -493,6 +493,9 @@ func draw_map(canvas: Control) -> void:
 	if replay_mode and not expected.is_empty():
 		var observed: Vector2 = (world_position(expected) - camera) * zoom
 		canvas.draw_arc(observed, zoom * 4.5, 0, TAU, 24, Color("ffd18a"), maxf(1.5, zoom * 0.4), true)
+
+func draw_background(canvas: Control, whole: Rect2) -> void:
+	for index: int in [1, 0]: canvas.draw_texture_rect(bundle.textures[index], whole, false)
 
 func draw_player(canvas: Control, origin: Vector2, zoom: float) -> void:
 	canvas.draw_circle(origin, 3.0 * zoom, Color("07161b"))
