@@ -79,7 +79,7 @@ Godot preset 1 為 `Windows Character Workbench`，feature 為 `character_demo`�
 - 暖機後的獨立前後取樣窗，程序 private bytes 與 working set 中位數成長各不超過 10%；節點數穩定。
 - 程序記憶體、GPU dedicated／shared 觀測必須跨越完整測量，保存峰值與間隔。release 的 Godot allocator 若全為 0，記為 unavailable；不得把它當成零使用量，外部程序記憶體仍為必要證據。
 
-輸出包括 `report.json`、`process-memory.json`、`launch.json`、`package-before.json`、`package-after.json`、`acceptance.json`、engine log；截圖模式另存 `screen.png`。`collector-operations.json` 記錄程序記憶體、CIM 守衛及 GPU 計數器取樣的時間區間，以免將工具開銷直接歸因遊戲。
+輸出包括 `report.json`、`process-memory.json`、`launch.json`、`package-before.json`、`package-after.json`、`acceptance.json`、engine log；截圖模式另存 `screen.png`。`collector-operations.json` 記錄 Process.Refresh、CIM 守衛及 GPU 計數器呼叫區間；不包含 Refresh 之後程序記憶體屬性 getter 的完整耗時。這些時序只供關聯檢查，不能直接證明尖峰原因。
 
 ## 已完成的功能與回歸
 
@@ -120,7 +120,7 @@ Godot preset 1 為 `Windows Character Workbench`，feature 為 `character_demo`�
 |---|---:|
 | 解析度／暖機／量測 | 3840×2160／15 秒／600.012026 秒 |
 | 實際影格數 | 35,990 |
-| 完成路線／來源差異 | 261／0 |
+| 完成路線／來源差異（含暖機累計） | 261／0 |
 | 平均 FPS／P95 | 59.982／17.061 ms |
 | 最大影格 | 77.941 ms |
 | 超過 50 ms | 2 筆：2.391719 秒的 77.941 ms、25.576831 秒的 71.116 ms |
