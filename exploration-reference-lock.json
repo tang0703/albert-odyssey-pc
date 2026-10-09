@@ -1,0 +1,127 @@
+{
+  "schema": "ao_pc_exploration_reference_lock_v1",
+  "reference_id": "map001-freewalk-20261009",
+  "baseline_commit": "7becb4810d753a90803f2a5e133d1bf38f91460e",
+  "seed": {
+    "path": "reports/exploration/e1-nav-05/frame-000600/state.savestate",
+    "bytes": 5782514,
+    "sha256": "72d9fa56fbf525dbb71ae3a21d8e3aaa45f23b7711bfdce2b95d6c6472776b54"
+  },
+  "sources": {
+    "path": "reports/exploration/sources-20261009.json",
+    "bytes": 10850,
+    "sha256": "4a1c95c875f5b86553dd7b83b69d333ac6f1acec7366b5b2681b5bbd694982d2"
+  },
+  "build": {
+    "path": "reports/exploration/ymir-capture-build/build-manifest.json",
+    "bytes": 1453,
+    "sha256": "997d6753b888482eb92b85dcffbd7953b673e73711233a61aab030e8dccd34fb"
+  },
+  "navigation": [
+    {
+      "path": "reports/exploration/e1-nav-01/manifest.json",
+      "bytes": 12042,
+      "sha256": "94728a453ab640ccecc1beefa4429384c4b9af1b8f659bb74a15164175002f04"
+    },
+    {
+      "path": "reports/exploration/e1-nav-02/manifest.json",
+      "bytes": 12020,
+      "sha256": "21000ecb7cbd87f79e03c363a21c164a35dc71347d23cb65dd244394699c81b6"
+    },
+    {
+      "path": "reports/exploration/e1-nav-03/manifest.json",
+      "bytes": 14661,
+      "sha256": "ecc1c8858e58f0b45978440173ae512b8ab94b17b876739f9cbd3167055c3cd7"
+    },
+    {
+      "path": "reports/exploration/e1-nav-04/manifest.json",
+      "bytes": 12020,
+      "sha256": "6dd809b2ee5c659ff59c04a57a63a8cc482d373285a7d60efa7cf28f1c2c6eec"
+    },
+    {
+      "path": "reports/exploration/e1-nav-05/manifest.json",
+      "bytes": 12019,
+      "sha256": "1ebefea75437ad551d7b483e18820b12aec3f091a9112a576523d09bde3dfc3d"
+    }
+  ],
+  "captures": {
+    "cardinal": [
+      {
+        "path": "reports/exploration/cardinal-a/manifest.json",
+        "bytes": 12433,
+        "sha256": "672cbd88605dffd7747640a7b5082b7df3687a34990b83fb80a3d0b443efbed3"
+      },
+      {
+        "path": "reports/exploration/cardinal-b/manifest.json",
+        "bytes": 12433,
+        "sha256": "7546c7c52146804d8352c726e2f141ea64f202f0941536974e0a655d5024998c"
+      },
+      {
+        "path": "reports/exploration/cardinal-c/manifest.json",
+        "bytes": 12433,
+        "sha256": "33128c82f3c0e0e237bda29c3e4e3fc5ccd9687c7208c1b07816fb39d38092c1"
+      }
+    ],
+    "corners": [
+      {
+        "path": "reports/exploration/corners-a/manifest.json",
+        "bytes": 12429,
+        "sha256": "5f583e51ac8ca0b8f88e3ba3a1e98bc6d5e1183cde47a7f009d4b09ad43be3dd"
+      },
+      {
+        "path": "reports/exploration/corners-b/manifest.json",
+        "bytes": 12429,
+        "sha256": "d214c9f8ab345b07f07c652175b365918ee5028014d70e61849d9ee72ec61c19"
+      },
+      {
+        "path": "reports/exploration/corners-c/manifest.json",
+        "bytes": 12429,
+        "sha256": "581e6412b4fd8d71659b3edd2955152bb5c7b5f95d5704758b4b1b45350c4973"
+      }
+    ],
+    "open": [
+      {
+        "path": "reports/exploration/open-a/manifest.json",
+        "bytes": 12420,
+        "sha256": "2f2d85fdf1e70ef7202f7f83c33840d9223ed3cf84cdaf9ff0b09bbc8a323056"
+      },
+      {
+        "path": "reports/exploration/open-b/manifest.json",
+        "bytes": 12420,
+        "sha256": "8a35f74561a7fa1c4610fb3af0973aedbd4ceca3bbe2eb11954bf6dd324814fd"
+      },
+      {
+        "path": "reports/exploration/open-c/manifest.json",
+        "bytes": 12420,
+        "sha256": "6bd63ae6a2b2b138305d357787555e8ba224027f3c1d58cbca650c217464f4dd"
+      }
+    ],
+    "release": [
+      {
+        "path": "reports/exploration/release-a/manifest.json",
+        "bytes": 12434,
+        "sha256": "1bcbfca84f477826ee2080444b7083202660b0cec0a775076de42b4f760ed7a9"
+      },
+      {
+        "path": "reports/exploration/release-b/manifest.json",
+        "bytes": 12434,
+        "sha256": "cb0157cbb5ba4dfbf09e060c533ea672ea257990089d304cb526b7be35f93d7d"
+      },
+      {
+        "path": "reports/exploration/release-c/manifest.json",
+        "bytes": 12434,
+        "sha256": "dbce3434521d6bcaf1211fc6b33b47412ac139b8cdbc70f85ea760f87ee86d50"
+      }
+    ]
+  },
+  "limitations": [
+    "Local original source files are not included in Git.",
+    "This lock preserves identities; stage acceptance requires the validators and reports.",
+    "The historical savestate-lock.json remains unchanged."
+  ],
+  "scene": {
+    "path": "reports/exploration/e1-scene-final/scene-validation.json",
+    "bytes": 2852,
+    "sha256": "7bcd373393c41fad9e9a598973f3907f5656f3ab2a69a72bc968111da5b512c1"
+  }
+}
