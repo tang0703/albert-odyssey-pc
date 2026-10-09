@@ -103,7 +103,13 @@ def character_entry(settings: dict[str, bytes]) -> dict:
     """
     key = 'application/run/main_scene'
     entry_keys = {name for name in settings if name == key or name.startswith(key + '.')}
-    if entry_keys != {key, key + '.character_demo'}:
+    allowed_keys = {key, key + '.character_demo'}
+    # The separately exported room entry is inert without its exact feature.
+    if key + '.room_demo' in entry_keys:
+        if variant_string(settings[key + '.room_demo']) != 'res://room_main.tscn':
+            raise ValueError('Unknown inactive room entry override')
+        allowed_keys.add(key + '.room_demo')
+    if entry_keys != allowed_keys:
         raise ValueError('Exported project has missing or ambiguous main-scene feature overrides')
     features = variant_string(settings.get('_custom_features', b''))
     base = variant_string(settings[key])

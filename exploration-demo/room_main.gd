@@ -45,6 +45,12 @@ func _ready() -> void:
 		reset_state()
 		refresh()
 
+func workbench_title() -> String:
+	return "MAP001  /  同室內探索"
+
+func workbench_subtitle() -> String:
+	return "原作鏡頭 · 來源碰撞 · 三種外觀"
+
 func reset_state() -> void:
 	if room_bundle.get("ok",false) and room_decorations != null:
 		camera_states = room_bundle.data.initial_cameras.duplicate(true)

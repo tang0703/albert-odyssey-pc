@@ -89,6 +89,8 @@ class CharacterPackageTests(unittest.TestCase):
     def test_effective_character_entry_requires_matching_feature_and_override(self):
         result = package.character_entry(package.project_values(project()))
         self.assertEqual(result['effective_main_scene'], 'res://character_main.tscn')
+        inert = project(extra={'application/run/main_scene.room_demo':'res://room_main.tscn'})
+        self.assertEqual(package.character_entry(package.project_values(inert)), result)
         for changed in [
             {'main':'res://tests/test_character_ui.gd'},
             {'main':'res://character_main.tscn'},
@@ -98,6 +100,7 @@ class CharacterPackageTests(unittest.TestCase):
             {'override':'res://tests/test_character_ui.gd'},
             {'extra':{'application/run/main_scene.windows':'res://main.tscn'}},
             {'extra':{'application/run/main_scene.other_demo':'res://character_main.tscn'}},
+            {'extra':{'application/run/main_scene.room_demo':'res://tests/test_ui.gd'}},
         ]:
             with self.subTest(changed=changed), self.assertRaises(ValueError):
                 package.audit_pck(pck(self.files | {'project.binary':project(**changed)}), self.pins)

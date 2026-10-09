@@ -189,10 +189,10 @@ func build_ui() -> void:
 	margin.add_child(column)
 	var heading := HBoxContainer.new()
 	column.add_child(heading)
-	var title := make_label("MAP001  /  行走驗證台", 38, "eef4ed")
+	var title := make_label(workbench_title(), 38, "eef4ed")
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	heading.add_child(title)
-	heading.add_child(make_label("固定鏡頭 · 原始整數座標 · 本地來源", 23, "86a6b4"))
+	heading.add_child(make_label(workbench_subtitle(), 23, "86a6b4"))
 	domain_label = make_label("指定區域驗證，不代表完整地圖或 Stage B 通過", 23, "9eb9c3")
 	column.add_child(domain_label)
 	var body := HBoxContainer.new()
@@ -283,6 +283,12 @@ func build_ui() -> void:
 	var footer := make_label("方向鍵 / WASD 移動　Space 暫停　. 單步　R 重設　F1 疊圖　｜　多方向同按不移動；範圍外為「測試邊界」", 23, "89a6b3")
 	footer.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.add_child(footer)
+
+func workbench_title() -> String:
+	return "MAP001  /  行走驗證台"
+
+func workbench_subtitle() -> String:
+	return "固定鏡頭 · 原始整數座標 · 本地來源"
 
 func clear_held_keys() -> void:
 	held_keys.clear()
