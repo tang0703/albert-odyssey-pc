@@ -330,13 +330,13 @@ func advance_time(delta: float) -> void:
 func advance_update() -> void:
 	if state.is_empty() or not startup_error.is_empty(): return
 	var result: Dictionary
+	var next_expected: Dictionary = {}
 	if replay_mode:
 		var trace: Dictionary = bundle.traces[route_index]
 		if trace_cursor >= trace.updates.size(): return
 		var record: Dictionary = trace.updates[trace_cursor]
 		result = core.step_game_input(state, int(record.game_pad_word))
-		expected = record.expected.duplicate(true)
-		trace_cursor += 1
+		next_expected = record.expected.duplicate(true)
 	else:
 		var directions: Array[String] = active_directions()
 		if directions.size() > 1:
@@ -345,14 +345,22 @@ func advance_update() -> void:
 			refresh()
 			return
 		result = core.step(state, "none" if directions.is_empty() else directions[0])
-		expected = {}
 	if not result.ok:
 		startup_error = str(result.error)
 		paused = true
 		note = "核心拒絕更新：" + startup_error
 		refresh()
 		return
+	var presentation_error: String = prepare_update_presentation(result)
+	if not presentation_error.is_empty():
+		startup_error = presentation_error
+		paused = true
+		note = "演出拒絕更新：" + startup_error
+		refresh()
+		return
 	state = result.state
+	expected = next_expected
+	if replay_mode: trace_cursor += 1
 	diagnostics = result.diagnostics
 	update_count += 1
 	current_differences.clear()
@@ -376,6 +384,11 @@ func advance_update() -> void:
 			reset_state()
 			paused = false
 	refresh()
+
+func prepare_update_presentation(_result: Dictionary) -> String:
+	# Optional visual models validate before the movement state is committed.
+	# The original marker entry has no additional presentation state.
+	return ""
 
 func change_mode(index: int) -> void:
 	replay_mode = index == 1
@@ -476,14 +489,17 @@ func draw_map(canvas: Control) -> void:
 			@warning_ignore("integer_division")
 			var cell := Vector2(index % 256, index / 256) * 8.0 - camera
 			canvas.draw_rect(Rect2(cell * zoom, Vector2.ONE * 8.0 * zoom), Color("ffe4ac"), false, maxf(1.5, zoom * 0.4))
+	draw_player(canvas, origin, zoom)
+	if replay_mode and not expected.is_empty():
+		var observed: Vector2 = (world_position(expected) - camera) * zoom
+		canvas.draw_arc(observed, zoom * 4.5, 0, TAU, 24, Color("ffd18a"), maxf(1.5, zoom * 0.4), true)
+
+func draw_player(canvas: Control, origin: Vector2, zoom: float) -> void:
 	canvas.draw_circle(origin, 3.0 * zoom, Color("07161b"))
 	canvas.draw_circle(origin, 2.0 * zoom, Color("dcfff2"))
 	var direction := Vector2.from_angle(float(state.heading) * PI / 4.0)
 	canvas.draw_line(origin + direction * zoom * 3, origin + direction * zoom * 10, Color("fcffff"), maxf(2, zoom * 0.7), true)
 	canvas.draw_circle(origin + direction * zoom * 10, zoom, Color("fcffff"))
-	if replay_mode and not expected.is_empty():
-		var observed: Vector2 = (world_position(expected) - camera) * zoom
-		canvas.draw_arc(observed, zoom * 4.5, 0, TAU, 24, Color("ffd18a"), maxf(1.5, zoom * 0.4), true)
 
 func lock_qa_window_size() -> void:
 	# Window-only QA policy. A late Windows DPI/monitor event must not silently
