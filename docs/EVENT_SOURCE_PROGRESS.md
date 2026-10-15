@@ -1,6 +1,6 @@
 # MAP001 樓梯前 Cirrus 事件：來源工作紀錄
 
-2026-10-15。D0、D1 已完成；D2–D4 尚未驗收。
+2026-10-15。D0–D3 已完成，D4 執行與效能驗收通過；封裝及解壓交付結果以 `EVENT_RELEASE.json` 為準。
 
 ## 已完成的前置交付
 
@@ -40,12 +40,12 @@ flowchart TD
 
 沿用既有語料的穩定 ID，不改譯文：
 
-| ID | 繁中 |
-|---|---|
-| `map001_00afe2_p01` | 嗨，瞌睡蟲！你在做什麼，夢遊嗎？ |
-| `map001_00afe2_p02` | 別丟下我一個人。我發誓要保護你，記得嗎？ |
+| ID | 英文原文 | 既有繁中 |
+|---|---|---|
+| `map001_00afe2_p01` | Hey, sleepyhead! What are you doing, sleep walking? | 嗨，瞌睡蟲！你在做什麼，夢遊嗎？ |
+| `map001_00afe2_p02` | Don't leave home without me. I'm sworn to protect you, remember? | 別丟下我一個人。我發誓要保護你，記得嗎？ |
 
-英文來源及位移沿用本地 `work/analysis/dialogue_map001_cirrus_stair_descriptor.json`；正式事件包仍需綁定文字及來源雜湊。
+英文來源及位移沿用本地 `work/analysis/dialogue_map001_cirrus_stair_descriptor.json`；正式第五事件包已綁定文字、腳本、來源及既有四包雜湊。
 
 ## D1 驗收結果
 
@@ -62,8 +62,8 @@ flowchart TD
 
 D1 通過範圍限於上述來源分支、排程、控制恢復、重觸發、角色／鏡頭及世界畫面。原作文字描繪改由核准高清介面替代；尚不能宣稱 PC 事件版完成。
 
-## 下一階段入口
+## PC 實作與交付
 
-D2 使用具名 PC 指令建立獨立事件核心，對照 `generated/event/reference` 的六組初始狀態與輸入。後續來源狀態只能作比較，不能回填模型。D3 實作 PC 裝置回應、繁中介面與演出；D4 另做新版本回歸、實際畫面、獨立 4K 長測及封裝。
+D2 使用具名 PC 指令建立獨立事件核心，對照六組初始狀態與輸入。後續來源狀態只作比較，不回填模型。D3 已完成 PC 裝置回應、繁中介面與演出；D4 新版回歸、六張實際畫面及獨立 4K 長測通過。D1 章節中的後續階段待辦描述是來源關卡當時的範圍，最新狀態見 `EVENT_DELIVERY.md`。
 
-目前沒有 `MAP001-Event-Windows-x64.zip`。九項舊快照缺失測試、影子省略、相鄰場景及 Stage B 尚未完成的限制保持不變。
+交付名稱為 `MAP001-Event-Windows-x64.zip`，最終身份見 `EVENT_RELEASE.json`。九項舊快照缺失測試、影子省略、相鄰場景及 Stage B 尚未完成的限制保持不變。
