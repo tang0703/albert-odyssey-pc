@@ -28,7 +28,7 @@ def validate(folder,collect_world=False):
             raise ValueError('Changed initial model state')
     source=(root/'work/extract/MAP001.TWN').read_bytes()
     model=Model(high,low,source,(root/'work/extract/TWN.BIN').read_bytes())
-    errors=[];observed=[];pending=False;checks=0;updates=0;devices=[];commands=[];initial_tail=False;world=[]
+    errors=[];observed=[];pending=False;checks=0;updates=0;devices=[];commands=[];initial_tail=False;world=[];verified_queries=[]
     digest=hashlib.sha256()
     for line in (folder/'hooks.jsonl').open('rb'):
         digest.update(line)
@@ -87,13 +87,17 @@ def validate(folder,collect_world=False):
                 if value!=getattr(model.effect,name):delta['effect_'+name]=[value,getattr(model.effect,name)]
                 checks+=1
         if delta:errors.append({'update':model.update,'frame':row['frame'],'fields':delta})
+        verified_queries=sorted(model.queries)
         checks+=len(actual_actor)+16+60+2
         if model.commands:commands.append({'update':model.update,'frame':row['frame'],'commands':model.commands,'requests':model.requests})
         if collect_world:
             world.append({'event_index':row['event_index'],'update':model.update,'frame':row['frame'],
                 'player':model.player.hex(),'decor':model.decor.hex(),'ambient':model.ambient.hex(),
                 'effect':dict(vars(model.effect)) if model.effect else None,'effect_xy':model.effect_xy,
-                'cameras':[dict(c) for c in model.cameras]})
+                'cameras':[dict(c) for c in model.cameras],
+                'disabled':model.disabled,'fixed_camera':model.fixed,'camera_target':model.target,'camera_speed':model.speed,
+                'root':dict(vars(model.root)) if model.root else None,'child':dict(vars(model.child)) if model.child else None,
+                'runs':model.runs,'story':model.story.hex(),'commands':list(model.commands),'requests':list(model.requests)})
     if digest.hexdigest()!=records['hooks.jsonl']['sha256']:raise ValueError('Changed source hook stream')
     if (folder/'manifest.json').read_bytes()!=manifest_raw:raise ValueError('Manifest changed during comparison')
     return {'schema':'ao_pc_event_sequence_device_input_reference_v1','passed':not errors and updates>0,
@@ -103,7 +107,7 @@ def validate(folder,collect_world=False):
         'complete_updates':updates-int(initial_tail),'predicted_updates':model.update,
         'initial_partial_update_checked':initial_tail,'final_update_completion_not_captured':pending,
         'pending_gates':['PC dialogue/device mapping','effect graphics and scene composition','three-repeat synchronization','Godot parity'],
-        'query_indices':sorted(model.queries),'world_predictions':world}
+        'query_indices':verified_queries,'world_predictions':world}
 
 
 if __name__=='__main__':

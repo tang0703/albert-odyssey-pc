@@ -33,7 +33,11 @@ def predicted_scene(high,low,source,state):
     return scene(bytes(mem),low)
 
 
-def check(folder):
+def check(folder,pixel_folder=None):
+    pixels=None
+    if pixel_folder is not None:
+        from event_pixel_reference import Pixels
+        pixels=Pixels(pixel_folder)
     reference=validate(folder,collect_world=True)
     if not reference['passed']:raise ValueError('Event core failed before world comparison')
     high=(folder/'frame-000000/wram-high.bin').read_bytes();low=(folder/'frame-000000/wram-low.bin').read_bytes()
@@ -62,8 +66,8 @@ def check(folder):
     if pending is not None or not submissions:raise ValueError('Incomplete command buffer evidence')
     manifest_raw=(folder/'manifest.json').read_bytes();manifest=json.loads(manifest_raw.decode('utf-8-sig'))
     expected=next(r['sha256'] for r in manifest['outputs'] if r['path']=='vdp-events.jsonl')
-    digest=hashlib.sha256();frames=[];errors=[];start=None;commands=[];skipped=[]
-    def finish():
+    digest=hashlib.sha256();frames=[];errors=[];start=None;commands=[];skipped=[];draw_end=None
+    def finish(final=False):
         if start is None:return
         if not commands:raise ValueError('Source draw contains no executed commands')
         first=commands[0]['event_index']
@@ -95,13 +99,33 @@ def check(folder):
                 'order_matches':observed==current['body_and_prop_order'],'unbound':unbound})
         frames.append({'frame':start['frame'],'update':states[index]['update'],'submission_complete':submission['complete'],
             'command_bank':submission['bank'],'world_pieces':len(observed),'source_ui_commands':ui,'shadow_commands':shadow})
+        if pixels is not None:
+            if draw_end is None and not final:raise ValueError('Draw has no observed presentation swap')
+            if draw_end is not None:pixels.add_draw(current,commands,draw_end)
     for line in (folder/'vdp-events.jsonl').open('rb'):
         digest.update(line);row=json.loads(line)
-        if row['kind']=='vdp1_begin':finish();start=row;commands=[]
+        if row['kind']=='vdp1_begin':finish();start=row;commands=[];draw_end=None
         elif row['kind']=='command_execute_before':commands.append(row)
-    finish()
+        elif row['kind']=='vdp1_swap_after_flip':
+            # The source can poll an invalid next command until the scheduled
+            # framebuffer swap. The newly displayed bank is the final image of
+            # this draw even when there was no END command.
+            draw_end=dict(row);draw_end['draw_bank']=row['display_bank']
+        elif row['kind']=='software_video_complete' and pixels is not None:
+            # Scroll values at the draw boundary precede preparation of the
+            # next video. Keep the active video UI configuration separate.
+            from verify_character_capture import VDP2_ADDRESSES
+            video=dict(row);regs=bytearray.fromhex(row['vdp2_registers_be_hex'])
+            old=bytes.fromhex(start['vdp2_registers_be_hex'])
+            for name in ('SCXIN0','SCYIN0','SCXIN1','SCYIN1'):
+                offset=VDP2_ADDRESSES[name];regs[offset:offset+2]=old[offset:offset+2]
+            video['vdp2_registers_be_hex']=regs.hex()
+            pixels.videos.append(video)
+    finish(final=True)
     if digest.hexdigest()!=expected:raise ValueError('Changed VDP command evidence')
-    return {'schema':'ao_pc_event_predicted_world_diagnostic_v1','passed':not errors and bool(frames),
+    pixel_report=pixels.finish() if pixels is not None else None
+    return {'schema':'ao_pc_event_predicted_world_diagnostic_v1','passed':not errors and bool(frames) and (pixel_report is None or pixel_report['passed']),
+        'pixels':pixel_report,
         'full_event_acceptance':False,'capture_integrity_required':True,'capture_manifest_sha256':hashlib.sha256(manifest_raw).hexdigest(),
         'core_checks':reference['checks'],'render_phase':'Latest completed priority-chain submission for the consumed command bank; no fixed video-frame subtraction.',
         'source_ranges':source_ranges,
@@ -110,7 +134,7 @@ def check(folder):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('capture',type=Path);p.add_argument('--out',type=Path,required=True)
-    a=p.parse_args();r=check(a.capture);a.out.write_text(json.dumps(r,indent=2)+'\n',encoding='utf-8')
+    p=argparse.ArgumentParser();p.add_argument('capture',type=Path);p.add_argument('--out',type=Path,required=True);p.add_argument('--pixel-capture',type=Path)
+    a=p.parse_args();r=check(a.capture,a.pixel_capture);a.out.write_text(json.dumps(r,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({'passed':r['passed'],'frames':len(r['frames']),'errors':r['errors'][:5],'error_count':len(r['errors'])}))
     raise SystemExit(0 if r['passed'] else 1)
