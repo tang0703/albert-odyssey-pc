@@ -12,6 +12,7 @@
 # checkout line-ending conversion invalidate the accepted capture build/input.
 tools/ymir_character_capture/* -text whitespace=trailing-space,space-before-tab,cr-at-eol
 data/character/routes/* -text whitespace=trailing-space,space-before-tab,cr-at-eol
+data/event/routes/* -text whitespace=trailing-space,space-before-tab,cr-at-eol
 tools/verify_character_capture.py -text whitespace=trailing-space,space-before-tab,cr-at-eol
 tests/test_character_capture.py -text whitespace=trailing-space,space-before-tab,cr-at-eol
 character-reference-lock.json -text whitespace=trailing-space,space-before-tab,cr-at-eol

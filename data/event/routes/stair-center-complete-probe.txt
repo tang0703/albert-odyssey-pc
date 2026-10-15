@@ -1,0 +1,16 @@
+# Exploratory full page confirmations and re-entry; not yet a formal route.
+none 4
+down 30
+right 67
+none 300
+c 1
+none 180
+c 1
+none 300
+left 40
+right 40
+none 300
+c 1
+none 180
+c 1
+none 300

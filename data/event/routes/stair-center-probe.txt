@@ -1,0 +1,12 @@
+# Exploratory capture, not an accepted event reference.
+none 4
+down 30
+right 67
+none 180
+c 1
+none 120
+c 1
+none 120
+left 20
+right 20
+none 90
