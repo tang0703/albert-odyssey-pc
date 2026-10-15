@@ -1,0 +1,130 @@
+{
+  "schema": "ao_pc_room_acceptance_v1",
+  "passed": true,
+  "status": "MAP001 同一室內擴展探索與鏡頭驗證通過",
+  "source_commit": "799851bfbdc6d89363400964e1a725e01a1748d1",
+  "executable_sha256": "d34d36f3be1a6c49c56525ae86469b92e4f417ddf0b43cf00dd80c385c4b0562",
+  "pck_sha256": "4f2a71bd3f7527ded4795715b7db6322315e0b73344f933b6befb1849f2f6428",
+  "room_manifest_sha256": "4f5871775e4ff5de364cb78ed6aab695bcca5e60b57be4977d01270c7ed3e8d2",
+  "source": {
+    "routes": 8,
+    "replays_each": 3,
+    "captured_frames": 16332,
+    "verified_query_cells": 613,
+    "actor_updates": 5061,
+    "completed_camera_updates": 5057,
+    "godot_core_checks": 30383,
+    "graphics_frames": 854,
+    "compared_non_shadow_pixels": 60905663,
+    "unexplained_pixels": 0,
+    "gpu_cases": 32,
+    "gpu_compared_pixels": 2290204
+  },
+  "ui": {
+    "checks": 61061,
+    "three_mode_updates": 15183,
+    "mismatches": 0
+  },
+  "regressions": {
+    "old_movement_updates": 1680,
+    "old_three_mode_updates": 6156,
+    "python_full_run": 354,
+    "python_full_run_passed": 345,
+    "old_snapshot_unavailable": [
+      "test_all_visible_patterns_and_prior_viewports_match",
+      "test_full_source_replay_matches_pinned_snapshot",
+      "test_full_source_vram_match",
+      "test_pinned_region_registers_and_memory",
+      "test_real_block_provenance_without_collision_claim",
+      "test_real_palette_samples_remain_diagnostic",
+      "test_real_parameters_and_unsupported_settings",
+      "test_snapshot_pages_and_negative_raw_source_matches",
+      "test_system_ram_boundaries_and_mutation"
+    ],
+    "additional_room_package_tests": 5,
+    "old_snapshot_sha256": "615107b20f67b779d4d373a1cc79fce318f5f1a0093893dc7a963014ac80a7ab"
+  },
+  "screenshots": [
+    {
+      "resolution": "1920x1080",
+      "file": "reports\\room\\qa-release-3\\1920x1080\\screen.png",
+      "sha256": "759a1a67300d4b780d73f0155e966a6692d4a89b0986c144904bb34190ee8979",
+      "cold_process_first_surface_observed_ms": 2774.877,
+      "os_disk_cache_flushed": false
+    },
+    {
+      "resolution": "2560x1440",
+      "file": "reports\\room\\qa-release-3\\2560x1440\\screen.png",
+      "sha256": "df8a77f3630ebac49dd1b3396a54e0271302f24d95e7eed092360711fe2b8299",
+      "cold_process_first_surface_observed_ms": 2011.1543,
+      "os_disk_cache_flushed": false
+    },
+    {
+      "resolution": "3840x2160",
+      "file": "reports\\room\\qa-release-3\\3840x2160\\screen.png",
+      "sha256": "6003915d4e8f5447e7d40c61bad7894ea6bd4acefb4e3c8d2c1dab55af767cfa",
+      "cold_process_first_surface_observed_ms": 2053.0663,
+      "os_disk_cache_flushed": false
+    }
+  ],
+  "performance": {
+    "schema": "ao_pc_room_soak_acceptance_v1",
+    "passed": true,
+    "full_acceptance": true,
+    "failures": [],
+    "average_fps": 59.99840544237835,
+    "p95_ms": 16.971,
+    "max_ms": 30.074,
+    "recomputed_measured_seconds": 600.0159459999968,
+    "raw_frame_count": 36000,
+    "spikes_over_50ms": [],
+    "spikes_over_100ms_require_reproduction_review": false,
+    "memory": {
+      "evaluated": true,
+      "early_private_median": 558780416.0,
+      "late_private_median": 542441472.0,
+      "private_growth": -0.02924036621927706,
+      "early_working_median": 387667968.0,
+      "late_working_median": 386895872.0,
+      "working_growth": -0.001991642497530255
+    },
+    "node_counts": [
+      119.0
+    ],
+    "engine_allocator_available": false,
+    "engine_allocator_note": "Zero MEMORY_STATIC in release templates means unavailable, not zero usage; acceptance uses independently sampled OS process memory.",
+    "working_set_peak": 396214272.0,
+    "os_peak_working_set": 427151360.0,
+    "private_bytes_peak": 642531328.0,
+    "gpu_dedicated_bytes_peak": 395280384.0,
+    "gpu_shared_bytes_peak": 40550400.0,
+    "gpu_scope": "Windows GPU Process Memory counter, summed over adapters for this PID; sampled every 10 seconds"
+  },
+  "evidence_sha256": {
+    "reports\\room\\r1-survey.json": "a6144d7ee9dda764d27234d27030725fa6a0405d5ba300d1857a6fcad0548d69",
+    "reports\\room\\r2-godot.json": "8a8106f7b90b40793f75f31cdd63372cc1100d5aa85d7c056936d38aea7c0fe4",
+    "reports\\room\\graphics-validation.json": "d847f8b10d28ed7bbdbd019106736cf751ebcc4a7204dc1f7122fbd1dd7b06bf",
+    "reports\\room\\r4-ui.json": "6e4741db7ffc439eba56f99b25cad9e7a5a18c15561818241aeab73859eef941",
+    "reports\\room\\r4-gpu.json": "75721b7474d9ace8ab5ff238952380b0492290bd4ea25dc8f57f68a6c271da8d",
+    "reports\\room\\r4-old-character-ui.json": "f450d1489263b507d8c32ecc3f2bb12a4ddcb3b633e2aa1b42bb5d6f05485f49",
+    "reports\\exploration\\godot-movement-validation.json": "2eff043c378166ba80ed7eb799019d1427107720551ba0697fcfc9119728bd3e",
+    "reports\\room\\qa-release-3\\1920x1080\\report.json": "882a04583392f4870b6c3118952f39b2ca8332f13611781b5188085218dbafc4",
+    "reports\\room\\qa-release-3\\1920x1080\\launch.json": "0bc1a865e52cc7d3616633b3daf4960ef0c8766f2f977878a12ad66a10946818",
+    "reports\\room\\qa-release-3\\2560x1440\\report.json": "574fc85a1b3b4ec0a45930453a2946f9d9a12ede03c3d16c59e7294005c85bad",
+    "reports\\room\\qa-release-3\\2560x1440\\launch.json": "55ee447d63c03df0548461725ec92212291e782d189ba3992aa2201574b1ebd3",
+    "reports\\room\\qa-release-3\\3840x2160\\report.json": "a20bc4d6bc4abaecad8b824460cf6d862b962e6c0ed191a013cf7196a13827a2",
+    "reports\\room\\qa-release-3\\3840x2160\\launch.json": "c83450116828084d58df15ddcc2db897a63c064c900ba306bfb79d70cae839fa",
+    "reports\\room\\d0-20261015-host-preflight.json": "79c148fb51d9dbf6133f5598f731e872f32674442e9337eed583aa3e79634254",
+    "reports\\room\\d0-20261015-host-postflight.json": "fe5c5e5a6cbbb278d8b13dde5d358b6ddef237ac33a4b3165055ab822013755a",
+    "reports\\room\\d0-20261015-soak\\soak-4k\\acceptance.json": "a0f1f96bca7d45423da52eea9a6479f7daca66bacf41a07d9c12defec6fc7848",
+    "reports\\room\\d0-20261015-soak\\soak-4k\\report.json": "6943a94e760a1351d154d16bbe5d4227a44744095c265c326ca81c0d54aab63b",
+    "reports\\room\\d0-20261015-soak\\soak-4k\\launch.json": "a0e86feb89691b310fa86b9536e3262cb1f37ecc16f36bc694f058358bc24b92"
+  },
+  "limits": [
+    "Original shadow omitted.",
+    "Exit is a test boundary; no adjacent scene or stair event.",
+    "Full MAP001 and Stage B remain unaccepted.",
+    "Actual GPU 120 FPS not part of this release target."
+  ],
+  "environment_observation_scope": "Read-only preflight/postflight sample windows; no process terminated and no whole-run causal attribution."
+}

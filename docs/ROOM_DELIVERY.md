@@ -1,6 +1,29 @@
-# MAP001 室內探索候選版驗收紀錄
+# MAP001 室內探索交付驗收紀錄
 
-2026-10-09。**R1–R4 已完成；R5 尚未完成，不標記整輪驗收通過。**
+2026-10-15。**R1–R5 已完成：MAP001 同一室內擴展探索與鏡頭驗證通過。**
+
+正式套件：`build/MAP001-Room-Windows-x64.zip`，54,033,566 bytes。
+SHA256：`76a0a0b90bb9fa07b68f11ee9bbc3922ddc8e95c7cbab3a09225c9598162cced`。
+
+## R5 正式長測
+
+2026-10-15 主機前後觀測均為 `clear_in_sample_window`；未關閉使用者程序。
+先前受背景負載影響的紀錄保留；本次隔離環境無 GPU 計數器的失敗探測也保留，
+正式主機資料另存 `d0-20261015-host-preflight.json`／`d0-20261015-host-postflight.json`。
+
+| 項目 | 結果 |
+|---|---|
+| 4K 穩定演出 | 600.016 秒，36,000 影格；平均 59.998 FPS |
+| 影格時間 | P95 16.971 ms；最大 30.074 ms；無 >50 ms |
+| 私有記憶體中位數 | 558,780,416 → 542,441,472 bytes，下降 2.92% |
+| 節點數 | 固定 119 |
+| GPU 專用／共用記憶體取樣峰值 | 395,280,384／40,550,400 bytes |
+
+效能期間未截圖、未並行其他驗證。Release 引擎配置器記憶體不可用，使用 OS 程序記憶體；
+GPU 數據每十秒取樣，前後負載觀測不宣稱能歸因整段期間所有背景活動。
+原始證據：`reports/room/d0-20261015-soak/soak-4k`。
+ZIP 清單、逐檔內容雜湊及解壓稽核通過；解壓後三解析度啟動證據位於
+`reports/room/d0-20261015-extracted-qa`，套件稽核位於 `reports/room/d0-zip-audit.json`。
 
 ## 可執行候選版
 
@@ -39,7 +62,7 @@ Windows x64、Godot 4.7.2 Compatibility；無需編輯器、光碟或 BIOS。
 本地證據：`reports/room/qa-release-3`、`r4-ui.json`、`r4-gpu.json`、`graphics-validation.json`、
 `decoration-validation.json`、`acceptance-summary.json`。圖像／RAM／快照與含来源資料包不納入 Git。
 
-## R5 剩餘關卡
+## 2026-10-09 歷史待驗紀錄（已由上方正式結果完成）
 
 宿主前置及複查仍發現背景遊戲負載，尚未開始 4K 600 秒量測，未關閉使用者程序。
 來源觀測留於 `environment-preflight.json` 及 `environment-preflight-recheck.json`。
