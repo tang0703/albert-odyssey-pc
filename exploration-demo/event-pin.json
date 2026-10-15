@@ -1,6 +1,6 @@
 {
   "schema": "ao_pc_event_bundle_pin_v1",
-  "manifest_sha256": "a1746703730150e4f2e7eaa895d80a04e4dbbe85f9736d996ea43d65ca28a6b7",
+  "manifest_sha256": "4c830604e9eaeadb0542df39f37355f7d37509f24940ed7cc8a210c012f04510",
   "dependencies": {
     "scene": "bf837ef145c4ac413f6cb383c70d6a1d7e1e6d2544300719e3add645830e7fbc",
     "character": "ccc35c6e98a0a95cf517a555f338b3147dd307c1e60d3a284ffdded76f2bfd21",

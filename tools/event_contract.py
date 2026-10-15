@@ -96,7 +96,7 @@ def build():
             'evidence':'Control lock changes animation selection/cursor before the attached expression ends; the last rendered player image remains cached.',
             'forced_walk':'Script axis movement can animate a walk with input-moving bit clear; image cache, not input ownership, selects the visual.'},
         'pc_device_contract':{'audio':'Preload before play; acknowledge successful local load/start, not emulated CD latency.',
-            'text':'Present two whole pages; each fresh confirmation advances one; clear active after the second.',
+            'text':'Present two whole pages; each fresh confirmation advances one. After the second, acknowledge closure only once the required Cirrus animation has finished presenting, so fast PC reading never reuses its occupied child slot.',
             'source_parity':'Feed original device acknowledgements only in the source comparison harness.'},
         'retrigger':'Region test runs each update while root is inactive; source branch byte remains 1.',
         'limitations':['Only captured story branch supported.','Source text drawing is replaced by approved HD UI.',

@@ -60,7 +60,7 @@ try {
         $Tests=@(Get-ChildItem -LiteralPath (Join-Path $Demo 'tests') -Filter 'test_*.gd' -File | Sort-Object Name)
         if (-not ($Tests.Name -contains 'test_movement.gd')) { throw 'Required Godot movement test is missing.' }
         foreach ($Test in $Tests) {
-            if ($Test.Name -in @('test_character_compositor.gd','test_character_hd_compositor.gd','test_room_gpu.gd')) {
+            if ($Test.Name -in @('test_character_compositor.gd','test_character_hd_compositor.gd','test_room_gpu.gd','test_event_gpu.gd')) {
                 Write-Output ('GPU-only validation is run separately with an actual renderer: '+$Test.Name)
                 continue
             }

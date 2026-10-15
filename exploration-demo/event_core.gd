@@ -5,6 +5,7 @@ const Movement = preload("res://movement_core.gd")
 const ActorAnimation = preload("res://character_animation_core.gd")
 const Decorations = preload("res://room_decoration_core.gd")
 const RoomMovement = preload("res://room_movement_core.gd")
+const PROGRAMS_SHA: String = "51ce587f24b7b1e4cc9702b3e48b19274247df835138a7493fa2f2498bb18d1f"
 const ACTIONS: Array[String] = ["end","require_story_branch","lock_control","unlock_control","attach_player","wait_player","expression","player_pose","camera_target","camera_follow_player","wait_camera","load_audio","wait_audio_loaded","play_audio","wait_audio_started","attach_cirrus","cirrus_animation","wait_updates","source_text_layout","dialogue","player_speed","player_move_axis"]
 var initial: Dictionary = {}
 var instructions: Dictionary = {}
@@ -67,6 +68,8 @@ func configure(data: Dictionary, movement_profile: Dictionary, flag_bytes: Packe
 	var contract: Dictionary = data.contract
 	if contract.get("schema") != "ao_pc_cirrus_source_contract_v1" or not contract.get("programs") is Dictionary or contract.programs.size() != 5:
 		return {"ok":false,"error":"Unknown event instruction contract"}
+	if ActorAnimation._hash(JSON.stringify(contract.programs,"",true).to_utf8_buffer()) != PROGRAMS_SHA:
+		return {"ok":false,"error":"Unapproved converted instructions or operands"}
 	var checker := RoomMovement.new()
 	var checked: Dictionary = checker.configure_room(movement_profile,flag_bytes,room.boundaries)
 	if not checked.ok: return checked
@@ -346,6 +349,8 @@ func step(pad: int, signals: Dictionary) -> Dictionary:
 	if initial.is_empty() or not error.is_empty(): return {"ok":false,"error":"Event core is not ready: "+error}
 	if not [0,0x1000,0x2000,0x4000,0x8000,0x0200].has(pad) or not Movement._keys_match(signals,["resource_loaded","resource_playing","text_active"]):
 		return {"ok":false,"error":"Invalid event input/device acknowledgement"}
+	if not Movement.integer(signals.resource_loaded) or int(signals.resource_loaded) not in [0,1] or not Movement.integer(signals.resource_playing) or int(signals.resource_playing) < 0 or int(signals.resource_playing) > 255 or not signals.text_active is bool:
+		return {"ok":false,"error":"Invalid device acknowledgement type or range"}
 	var before: Dictionary = snapshot()
 	update += 1; commands.clear(); requests.clear(); diagnostics = {"applied":true}
 	put(player,6,word(player,6)&0xfffd); put(player,0x18,0); put(player,0x1a,0)

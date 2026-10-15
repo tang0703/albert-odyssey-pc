@@ -26,6 +26,9 @@ func run() -> void:
 	invalid.contract.programs.entry[0].action = "execute_raw_saturn_bytes"
 	var rejected := Core.new()
 	if rejected.configure(invalid,room.movement_profile,flags,character,room).ok: fail("Unknown instruction accepted"); return
+	invalid = data.duplicate(true)
+	invalid.contract.programs.retreat[0].args.index = 5
+	if rejected.configure(invalid,room.movement_profile,flags,character,room).ok: fail("Changed source operand accepted"); return
 	for route: String in ["center","top","bottom","reenter","wait","hold"]:
 		var fixture: Dictionary = Common.read_json(base.path_join("reference/"+route+".json"))
 		var core := Core.new()
