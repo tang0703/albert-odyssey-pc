@@ -1,0 +1,43 @@
+{
+  "schema": "ao_pc_equipment_candidate_release_v1",
+  "date": "2026-10-25",
+  "completion": "MAP001 最小裝備流程與樓梯後續功能驗證通過；效能驗收暫緩",
+  "functional_passed": true,
+  "performance_tested": false,
+  "full_runtime_acceptance": false,
+  "binary_source_commit": "fa70ad2015d01734e71a80ddb67c288837410c99",
+  "binary_source_dirty": false,
+  "zip": {
+    "path": "build/MAP001-Equipment-Candidate-Windows-x64.zip",
+    "bytes": 54960544,
+    "sha256": "38659cca2dd3034b0741f3e241b2a3315138f6882e6c3e29a087554468e2f0ee",
+    "files": 186
+  },
+  "package_manifest_sha256": "386ea8b040a1392c379a4fb547df753fa0fda74c2a89e86dd1efb430eccc180f",
+  "functional_report": {
+    "path": "reports/equipment/q5-functional.json",
+    "sha256": "b0fd25cbe089cc9452d4f386c5187de4d20525f3d10e5c23ec56aab4fc2b1663"
+  },
+  "screenshots": "reports/equipment/q5-screens/index.html",
+  "extracted_launches": [
+    {
+      "state": "unowned",
+      "report": "reports/equipment/q5-extracted/1920x1080-unowned/report.json",
+      "report_sha256": "827ab5f370a223e7ca62b63ce28713b67072857ec52d128030066a7c915702f8",
+      "image_sha256": "833ec1273905fcf55e33515bddbe97fc54234f97059569e4e05a3a12c19be512"
+    },
+    {
+      "state": "boundary",
+      "report": "reports/equipment/q5-extracted/1920x1080-boundary/report.json",
+      "report_sha256": "3f2c004d2ca46dd8bc860c925e699efb4fb8f53aa4a43a75fc42f13525c1049b",
+      "image_sha256": "5cad8da846fb8d50a32785f273351fd3d922f9272324209a1b94e9dbdf6165d9"
+    }
+  ],
+  "extracted_package_unchanged": true,
+  "source_local_only": true,
+  "limits": [
+    "舊快照缺失九項未能重跑；未修改鎖。",
+    "7 項效能證據相依測試略過；本輪未進行負載或效能基準。",
+    "前版 P5、影子、跨場景、實際 GPU 120 FPS 與 Stage B 整體未完成。"
+  ]
+}
