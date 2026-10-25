@@ -1,0 +1,14 @@
+none 4
+down 30
+right 19
+down 10
+none 5
+c 1
+none 300
+c 1
+none 160
+c 1
+none 60
+up 9
+right 52
+none 40

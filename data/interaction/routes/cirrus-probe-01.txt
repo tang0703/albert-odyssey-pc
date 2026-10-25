@@ -1,0 +1,7 @@
+none 4
+down 30
+right 19
+down 2
+none 4
+c 1
+none 300

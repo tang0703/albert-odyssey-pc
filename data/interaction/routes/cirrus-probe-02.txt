@@ -1,0 +1,11 @@
+none 4
+down 30
+right 19
+down 10
+none 5
+c 1
+none 180
+a 1
+none 180
+b 1
+none 180
