@@ -1,0 +1,12 @@
+{
+  "schema": "ao_pc_equipment_pin_v1",
+  "manifest_sha256": "485cd1339805f5c9e288529cb65c3b4a405dd61a953cdfba91ef43a0590eafae",
+  "dependencies": {
+    "scene": "bf837ef145c4ac413f6cb383c70d6a1d7e1e6d2544300719e3add645830e7fbc",
+    "character": "ccc35c6e98a0a95cf517a555f338b3147dd307c1e60d3a284ffdded76f2bfd21",
+    "character-hd": "00f009e7eded1ab6a3a5fb8b4c621ab03c705b43b701822eb62fb601718e511c",
+    "room": "4f5871775e4ff5de364cb78ed6aab695bcca5e60b57be4977d01270c7ed3e8d2",
+    "event": "4c830604e9eaeadb0542df39f37355f7d37509f24940ed7cc8a210c012f04510",
+    "interaction": "365489c2f1c59410f26babb2e461c3dd2d25fb597d65306c4788aca01ff6a71e"
+  }
+}

@@ -51,7 +51,7 @@ def validate(folder,collect_world=False):
             if 'stair_scene_boundary' not in room_boundaries.contacts(model.boundaries,*[int.from_bytes(model.player[i:i+2],'big',signed=True) for i in (0,2)]):raise ValueError('Unexpected scene trigger')
             model.step(int.from_bytes(watched(row,0x06036642,2),'big'),{'resource_loaded':0,'resource_playing':0,'text_active':False})
             if watched(row,0x060c8758,112)!=model.player:errors.append({'frame':row['frame'],'transition_player':'mismatch'})
-            transition={'frame':row['frame'],'update':model.update,'player':model.player.hex(),'record':watched(row,0x060cb55a,32).hex(),'scene_commit_performed':False}
+            transition={'pad':int.from_bytes(watched(row,0x06036642,2),'big'),'frame':row['frame'],'update':model.update,'player':model.player.hex(),'record':watched(row,0x060cb55a,32).hex(),'scene_commit_performed':False}
             continue
         if pc==0x06091594:
             if pending:raise ValueError('Missing complete update hook')
