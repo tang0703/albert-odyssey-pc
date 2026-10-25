@@ -395,8 +395,8 @@ func observe_qa() -> void:
 func qa_identity() -> Dictionary:
 	var result: Dictionary = super.qa_identity()
 	result.schema = "ao_pc_interaction_ui_qa_v1"
-	result.event_manifest_sha256 = event_bundle.get("manifest_sha256","")
-	result.event_images_preloaded = event_bundle.get("preloaded",false)
+	result.interaction_manifest_sha256 = event_bundle.get("manifest_sha256","")
+	result.interaction_images_preloaded = event_bundle.get("preloaded",false)
 	result.pc_device_policy = true
 	result.dialogue_page = dialogue.page
 	result.confirmations = dialogue.accepted
