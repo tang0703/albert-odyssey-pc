@@ -45,6 +45,8 @@ func run() -> void:
 		if ui.dialogue.active: break
 	check(ui.dialogue.active and ui.dialogue.page_count == 1 and ui.dialogue.accepted == 0,"Opening key cannot consume pickup dialogue")
 	check(ui.dialogue_id == "map001_00b061","Pickup source text")
+	for n: int in 3: await process_frame
+	check(ui.dialogue_panel.size.y < ui.map_canvas.size.y*0.5,"Wrapped dialogue shrinks after layout without covering player area")
 	for n: int in 20: enter(ui,true,true); ui.advance_update()
 	check(ui.dialogue.accepted == 0,"Held key does not confirm")
 	var before: Dictionary = ui.event_core.snapshot()

@@ -114,6 +114,9 @@ func build_ui() -> void:
 	continue_button.size_flags_horizontal = Control.SIZE_SHRINK_END
 	column.add_child(continue_button)
 	map_canvas.resized.connect(_dialogue_layout)
+	# Wrapped text's minimum height settles after the first layout pass. Shrink
+	# again on that notification, including while the simulation is paused.
+	dialogue_panel.minimum_size_changed.connect(_dialogue_layout)
 
 func _dialogue_layout() -> void:
 	if dialogue_panel == null: return
