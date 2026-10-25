@@ -1,5 +1,7 @@
 # MAP001 房內 Cirrus 主動互動
 
+**本次交付為候選版：功能、來源與三解析度畫面已驗證；效能最終驗收暫緩。** 使用者於 2026-10-25 指示先不進行後續負載測試。首次長測有尚未完成重測的影格尖峰，因此本包不是 P5 正式通過版本。
+
 完整解壓後執行 `MAP001-Interaction.exe`，保留相鄰 scene、character、character-hd、room、event、interaction 六個資料夾。無需安裝 Godot，也不需光碟、BIOS 或原作快照。
 
 自由探索：方向鍵／WASD 移動，朝向桌上的 Cirrus 按 Enter 或「互動」。對話時 Enter／「繼續」每次確認一頁，按住不會連續翻頁。靠近樓梯可驗證拾取前後不同提醒。

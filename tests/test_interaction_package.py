@@ -45,4 +45,14 @@ class InteractionPackageTests(unittest.TestCase):
     def test_truncated_export_rejected(self):
         with self.assertRaises(ValueError):audit.audit_pck(self.raw[:len(self.raw)//2])
 
+    def test_pending_performance_cannot_be_formal_zip(self):
+        validation=json.loads((self.folder/'INTERACTION_VALIDATION.json').read_bytes())
+        if validation['passed']:self.skipTest('Only applies to pending candidate')
+        with self.assertRaisesRegex(ValueError,'P5 acceptance incomplete'):
+            audit.package(self.folder,audit.ROOT/'build/MAP001-Interaction-Windows-x64.zip',audit.ROOT/'build/never-extracted')
+
+    def test_candidate_flag_cannot_use_formal_name(self):
+        with self.assertRaisesRegex(ValueError,'Candidate delivery'):
+            audit.package(self.folder,audit.ROOT/'build/MAP001-Interaction-Windows-x64.zip',audit.ROOT/'build/never-extracted',candidate=True)
+
 if __name__=='__main__':unittest.main()

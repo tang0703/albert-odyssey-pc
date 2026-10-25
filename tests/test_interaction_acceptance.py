@@ -9,7 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 import summarize_interaction_acceptance as acceptance
 
 
-@unittest.skipUnless((acceptance.BASE / 'soak-release-01/soak-4k/acceptance.json').exists(), 'Local final event evidence required')
+@unittest.skipUnless((acceptance.BASE / acceptance.SOAK / 'acceptance.json').exists(), 'Local final interaction evidence required')
 class InteractionAcceptanceTests(unittest.TestCase):
     def reject(self, suffix, mutate):
         original = Path.read_bytes
@@ -41,7 +41,7 @@ class InteractionAcceptanceTests(unittest.TestCase):
         self.reject('2560x1440-stairs-1/report.json', lambda d: d.update(dialogue_page=0))
 
     def test_background_load_rejected(self):
-        self.reject('p5-host-preflight.json', lambda d: d['assessment'].update(status='blocked'))
+        self.reject('host-preflight.json', lambda d: d['assessment'].update(status='blocked'))
 
     def test_wrong_source_coverage_rejected(self):
         self.reject('p3-gpu.json', lambda d: d['cases'][0].update(differences=1))

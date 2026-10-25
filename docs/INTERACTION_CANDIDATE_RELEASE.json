@@ -1,0 +1,63 @@
+{
+  "schema": "ao_pc_interaction_candidate_release_v1",
+  "formal_acceptance": false,
+  "candidate_package_verified": true,
+  "status": "performance_validation_deferred_by_user",
+  "user_instruction": "先不進行負載測試",
+  "binary_source_commit": "d59cf2c9ad6483a5fcce4a717bcdcca7c1e34b60",
+  "archive": {
+    "schema": "ao_pc_interaction_zip_audit_v1",
+    "passed": true,
+    "runtime_acceptance": false,
+    "release_status": "candidate_performance_pending",
+    "path": "G:\\codex\\SS\\pc-remake\\build\\MAP001-Interaction-Candidate-Windows-x64.zip",
+    "sha256": "4bb396d056402dc7a52b09f197a9cfaa6df295b1868c065f5459ca867ce77c3a",
+    "bytes": 54777430,
+    "files": 177,
+    "extraction": "G:\\codex\\SS\\pc-remake\\build\\interaction-candidate-extracted"
+  },
+  "extracted_launches": [
+    {
+      "case": "1920x1080-pickup-0",
+      "passed": true,
+      "dialogue_id": "map001_00b061",
+      "page": 0,
+      "process_id": 16388,
+      "source_commit": "d59cf2c9ad6483a5fcce4a717bcdcca7c1e34b60"
+    },
+    {
+      "case": "1920x1080-stairs-1",
+      "passed": true,
+      "dialogue_id": "map001_00b0b5",
+      "page": 1,
+      "process_id": 21288,
+      "source_commit": "d59cf2c9ad6483a5fcce4a717bcdcca7c1e34b60"
+    }
+  ],
+  "functional_validation_passed": true,
+  "visual_validation_passed": true,
+  "pending": [
+    "Independent 600-second repeat deferred by user.",
+    "Initial >100ms spikes remain unconfirmed; diagnostic did not reproduce them.",
+    "Formal P5 completion is not granted."
+  ],
+  "limits": [
+    "No equipment menu or adjacent room. Source post-pickup stairs warn and retreat.",
+    "Source shadows, actual GPU 120 FPS and Stage B incomplete.",
+    "Nine missing old snapshot tests retain original locks.",
+    "Source assets and ZIP remain local."
+  ],
+  "evidence_sha256": {
+    "reports\\interaction\\p5-candidate-validation.json": "981acf8337082bbac161da9b0c5b79854c11ada435f028b9854f386a039fbd91",
+    "reports\\interaction\\p5-candidate-zip-audit.json": "37f679e7839a26baca54b500fcbb0897dbf763525bbca5d7a4de7d756033a94b",
+    "build\\interaction-candidate-extracted\\INTERACTION_VALIDATION.json": "981acf8337082bbac161da9b0c5b79854c11ada435f028b9854f386a039fbd91",
+    "reports\\interaction\\candidate-extracted-qa\\1920x1080-pickup-0\\report.json": "9cad2b4f8fdea9aa28cb64205987729afbc651672edfdde0f585cd71557fbc75",
+    "reports\\interaction\\candidate-extracted-qa\\1920x1080-pickup-0\\launch.json": "ce745542d105017bea63530510ecbbfeadebd6bae99cf74b9ec55c6c8d053c5c",
+    "reports\\interaction\\candidate-extracted-qa\\1920x1080-pickup-0\\package-before.json": "832d25d54c552f23d4a518eccb1aba01385d73b764e537260dccfc014a42cd63",
+    "reports\\interaction\\candidate-extracted-qa\\1920x1080-pickup-0\\package-after.json": "832d25d54c552f23d4a518eccb1aba01385d73b764e537260dccfc014a42cd63",
+    "reports\\interaction\\candidate-extracted-qa\\1920x1080-stairs-1\\report.json": "12a2012e351c6459c004bacba7a4b3bdbd27100142da19f67289726a0f32122e",
+    "reports\\interaction\\candidate-extracted-qa\\1920x1080-stairs-1\\launch.json": "f028414c6b9c1af53b75ad59ef6a4692867a14d48d463bbcad952b22a1b53fb1",
+    "reports\\interaction\\candidate-extracted-qa\\1920x1080-stairs-1\\package-before.json": "832d25d54c552f23d4a518eccb1aba01385d73b764e537260dccfc014a42cd63",
+    "reports\\interaction\\candidate-extracted-qa\\1920x1080-stairs-1\\package-after.json": "832d25d54c552f23d4a518eccb1aba01385d73b764e537260dccfc014a42cd63"
+  }
+}

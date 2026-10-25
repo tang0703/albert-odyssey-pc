@@ -341,6 +341,11 @@ $LockPath=Join-Path $PcRoot 'reports/exploration/render-qa.lock'
 $QaLock=$null
 try {
     $QaLock=[IO.File]::Open($LockPath,[IO.FileMode]::OpenOrCreate,[IO.FileAccess]::ReadWrite,[IO.FileShare]::None)
+    if (-not $SkipSoak) {
+        # Keep preflight and launch in the same fail-closed invocation. A failed
+        # observation must never be followed by an independently issued launch.
+        & (Join-Path $PSScriptRoot 'character_environment_probe.ps1') -ReportPath (Join-Path $OutputRoot 'host-preflight.json') -Phase preflight
+    }
     if (-not $SoakOnly) {
         foreach ($Size in @('1920x1080','2560x1440','3840x2160')) {
             foreach ($State in @('before','pickup','after','stairs')) {
@@ -349,7 +354,10 @@ try {
             }
         }
     }
-    if (-not $SkipSoak) { Invoke-CharacterQa 'soak-4k' '3840x2160' $true }
+    if (-not $SkipSoak) {
+        Invoke-CharacterQa 'soak-4k' '3840x2160' $true
+        & (Join-Path $PSScriptRoot 'character_environment_probe.ps1') -ReportPath (Join-Path $OutputRoot 'host-postflight.json') -Phase postflight
+    }
 } finally {
     if ($QaLock) { $QaLock.Dispose() }
     $env:APPDATA=$PriorAppData; $env:TEMP=$PriorTemp; $env:TMP=$PriorTmp

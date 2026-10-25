@@ -92,9 +92,13 @@ def write_build(folder,commit,dirty):
     return audit(folder)
 
 
-def package(folder,archive,extraction):
+def package(folder,archive,extraction,candidate=False):
     result=audit(folder)
-    if json.loads((folder/'INTERACTION_VALIDATION.json').read_bytes()).get('passed') is not True:raise ValueError('P5 acceptance incomplete')
+    validation=json.loads((folder/'INTERACTION_VALIDATION.json').read_bytes())
+    if candidate:
+        if archive.name!='MAP001-Interaction-Candidate-Windows-x64.zip' or validation.get('passed') is not False or validation.get('status')!='performance_validation_deferred_by_user':
+            raise ValueError('Candidate delivery must explicitly retain pending performance acceptance')
+    elif validation.get('passed') is not True:raise ValueError('P5 acceptance incomplete')
     if archive.exists() or extraction.exists():raise ValueError('Preserve previous ZIP/extraction')
     files=inventory(folder)
     with zipfile.ZipFile(archive,'x',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
@@ -107,13 +111,13 @@ def package(folder,archive,extraction):
         for name in files:
             path=extraction/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(z.read(name))
     if audit(extraction)!=result:raise ValueError('Extracted delivery differs')
-    return {'schema':'ao_pc_interaction_zip_audit_v1','passed':True,'path':str(archive.resolve()),'sha256':room.sha(archive.read_bytes()),
+    return {'schema':'ao_pc_interaction_zip_audit_v1','passed':True,'runtime_acceptance':not candidate,'release_status':'candidate_performance_pending' if candidate else 'accepted','path':str(archive.resolve()),'sha256':room.sha(archive.read_bytes()),
             'bytes':archive.stat().st_size,'files':len(files),'extraction':str(extraction.resolve())}
 
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('action',choices=('audit','build-info','zip'));p.add_argument('folder',type=Path)
-    p.add_argument('--commit');p.add_argument('--dirty',action='store_true');p.add_argument('--zip',type=Path);p.add_argument('--extract',type=Path);p.add_argument('--report',type=Path);a=p.parse_args()
-    result=write_build(a.folder,a.commit,a.dirty) if a.action=='build-info' else package(a.folder,a.zip,a.extract) if a.action=='zip' else audit(a.folder)
+    p.add_argument('--commit');p.add_argument('--dirty',action='store_true');p.add_argument('--zip',type=Path);p.add_argument('--extract',type=Path);p.add_argument('--report',type=Path);p.add_argument('--candidate',action='store_true');a=p.parse_args()
+    result=write_build(a.folder,a.commit,a.dirty) if a.action=='build-info' else package(a.folder,a.zip,a.extract,a.candidate) if a.action=='zip' else audit(a.folder)
     if a.report:a.report.write_bytes(room.encoded(result))
     print(json.dumps({k:v for k,v in result.items() if k not in ('files','pck_resources')}))

@@ -8,7 +8,7 @@ import re
 ROOT=Path(__file__).resolve().parents[1]
 BASE=ROOT/'reports/interaction'
 SCREENS='screens-release-02'
-SOAK='soak-release-01/soak-4k'
+SOAK='soak-release-03/soak-4k'
 SIZES=([1920,1080],[2560,1440],[3840,2160])
 STATES=(('before',0),('pickup',0),('after',0),('stairs',0),('stairs',1))
 
@@ -33,7 +33,7 @@ def summarize():
     require(phases['p3-ui']['source_updates']==23910 and phases['p3-ui']['checks']>=96,'UI coverage')
     require(len(phases['p3-gpu']['cases'])==34 and all(r['differences']==0 for r in phases['p3-gpu']['cases']),'Actual GPU source parity')
     for phase in ('preflight','postflight'):
-        require(read('p5-host-'+phase+'.json')['assessment']['status']=='clear_in_sample_window','Background load '+phase)
+        require(read(str(Path(SOAK).parent)+'/host-'+phase+'.json')['assessment']['status']=='clear_in_sample_window','Background load '+phase)
     candidate=read('candidate.json');folder=Path(candidate['directory'])
     require(candidate['dirty'] is False,'Dirty binary source')
     identity={'source_commit':candidate['source_commit'],'source_dirty':False,
@@ -68,6 +68,9 @@ def summarize():
     require(not soak['spikes_over_100ms_require_reproduction_review'],'Unreviewed reproducible spike')
     require(soak['memory']['evaluated'] and soak['memory']['private_growth']<=.1 and len(soak['node_counts'])==1,'Memory/nodes')
     require(r['pixel_reads_during_measurement']==r['screenshots_during_measurement']==0 and r['routes_completed']>=4,'Unisolated or incomplete full story cycles')
+    first=read('soak-release-01/soak-4k/acceptance.json')
+    profile=read('p5-profile.json')
+    require(first['passed'] and profile['completed'] and profile['routes_completed']>=10 and not profile['spikes_over_50ms'],'Spike investigation incomplete')
     log=read('p4-python.log',True)
     errors=re.findall(r'^ERROR: (.+)$',log,re.M)
     known={'test_real_parameters_and_unsupported_settings','test_snapshot_pages_and_negative_raw_source_matches',
@@ -81,12 +84,15 @@ def summarize():
         ('p4-qa-fixtures.log','Interaction QA acceptance: 58 fixture checks passed.')):
         require(marker in read(name,True),'Missing regression '+name)
     package_log=read('p5-package-tests.log',True)
-    require('Ran 6 tests' in package_log and re.search(r'\bOK\s*$',package_log),'Package mutation tests')
+    require('Ran 8 tests' in package_log and re.search(r'\bOK\s*$',package_log),'Package mutation tests')
     return {'schema':'ao_pc_interaction_runtime_acceptance_v1','passed':True,'identity':identity,
         'source_replays':39,'core_updates_per_model':7970,'three_appearance_updates':23910,'ui_checks':phases['p3-ui']['checks'],
         'gpu_source_windows':34,'completed_soak_cycles':r['routes_completed'],'soak':soak,'cold_process_launches':launches,
         'regression':{'python_passed':384,'unavailable_old_snapshot':errors,'legacy_movement_updates':1680,'legacy_character_updates':6156,'legacy_room_updates':15183,'legacy_event_updates':20037},
         'scope':'Runtime acceptance; final ZIP and extracted standalone launch are separate gates.',
+        'spike_review':{'initial_max_ms':first['max_ms'],'initial_spikes_over_50ms':first['spikes_over_50ms'],
+            'diagnostic_seconds':profile['measured_seconds'],'diagnostic_max_ms':profile['distributions']['post_to_post_ms']['max'],
+            'conclusion':'Initial spikes retained. Not reproduced during instrumented 120-second run or second independent 600-second run of the same binary. Root cause not established; no unsupported OS/GPU attribution.'},
         'limits':['Picked up is not equipped; observed stairs warn and retreat. Equipment menu and adjacent scenes remain unsupported.',
             'Source shadows omitted; Stage B and actual GPU 120 FPS not accepted.','Nine missing old snapshot tests retain the original lock.',
             'Text and optical-disc timing use whole-page PC/local-audio policy. Source assets and delivery remain local.',
@@ -96,7 +102,7 @@ def summarize():
 
 def delivery():
     runtime=summarize();archive=json.loads((BASE/'p5-zip-audit.json').read_bytes())
-    require(archive.get('passed') and sha(Path(archive['path']).read_bytes())==archive['sha256'],'ZIP changed')
+    require(archive.get('passed') and archive.get('runtime_acceptance') is True and sha(Path(archive['path']).read_bytes())==archive['sha256'],'ZIP changed or candidate-only')
     import audit_interaction_package as audit
     extracted=Path(archive['extraction']);audit.audit(extracted)
     require(json.loads((extracted/'INTERACTION_VALIDATION.json').read_bytes())==runtime,'Packaged runtime changed')
