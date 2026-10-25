@@ -50,6 +50,7 @@ func workbench_subtitle() -> String: return "房內探索 · 裝備與卸下 · 
 
 func build_ui() -> void:
 	super.build_ui()
+	status_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	equipment_button = make_button("裝備  E",toggle_equipment)
 	equipment_button.focus_mode = Control.FOCUS_NONE
 	play_button.get_parent().add_child(equipment_button)
@@ -218,4 +219,6 @@ func qa_identity() -> Dictionary:
 	result.attack = event_core.attack if equipment_ready else -1
 	result.equipment_panel_visible = equipment_panel.visible if equipment_panel != null else false
 	result.boundary_shown = boundary_shown
+	result.panel_layout_valid = not equipment_panel.visible or (map_canvas.get_global_rect().encloses(equipment_panel.get_global_rect()) and equipment_panel.get_global_rect().encloses(close_button.get_global_rect()))
+	result.toolbar_layout_valid = get_global_rect().encloses(equipment_button.get_global_rect()) and get_global_rect().encloses(status_label.get_global_rect())
 	return result
