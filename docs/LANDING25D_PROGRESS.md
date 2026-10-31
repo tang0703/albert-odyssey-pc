@@ -30,3 +30,27 @@ LAIA 來源影格為 `3/4/5` 左右鏡射，以及 `6/7/8` 背面，共九種組
 - `art/enhanced25d-landing/v1/source-binding.json`：不含原作圖像／RAM 的盤點與來源綁定。
 
 W1 完成來源清單及原作座標疊圖。美術對位與遮擋須以 W2/W3 產物再核對，尚未宣稱新畫面或可操作流程通過。本輪無負載、長循環、效能或 GPU FPS 測試，未啟用 Computer Use。
+
+## W2 已提供審閱，等待核准
+
+以內建 imagegen 製作四方向 LAIA、房間底層、空餐桌、餐具食物、正／背面椅子與圓凳，共十張原始點陣稿。各張圖與完整生成提示詞保存於 `art/enhanced25d-landing/v1/drafts/`；`provenance.json` 記錄內容與提示詞雜湊。只用 Godot 量測、裁取透明外框及縮放顯示，沒有用程式生成角色姿勢或改繪像素。
+
+實際 Godot Compatibility 美術檢視器已輸出三張 1920×1080 靜態審閱畫面：
+
+- `reports/enhanced25d-landing/directions-review.png`：四方向及既有玩家等高度比較。
+- `reports/enhanced25d-landing/room-review.png`：完整分層構圖、來源位置參照與 36 世界單位同框比例。
+- `reports/enhanced25d-landing/alignment-review.png`：98 格覆蓋與來源玩家／LAIA 路徑。
+
+房間人物位置取 `reference-equip.json` 的 `post_commit[600]`（玩家相對座標 `(368,144)`、LAIA `(192,120)`），只是審閱樣本，不是直接改動可玩核心或宣稱事件驗收。`layout.json` 僅定義美術校準與分層；餐具繪製範圍修正至桌面之內，來源物件足點保持 `(272,160)`。人物腳底使用不含羽翼的下緣輪廓定位，材質仍保留完整原始輸出。
+
+來源可辨認淡紫髮、白羽翼與粉紫服裝；眼睛顏色、金邊、衣服剪裁、鞋款、背面接縫與本事件未使用的正面屬重繪詮釋。LAIA 四方向均以 36 世界單位高度呈現，等待使用者選定。
+
+### W3 前明列待辦
+
+- W2 使用者核准房間構圖、四方向造型及人物高度。未核准前不製作 52 幀。
+- 八幀料理蒸氣、新素材逐幀一致性、正式圖集與必要動作對應尚未製作。
+- 椅子背面第一稿仍接近正面結構；第二稿也未改善，保存於本地 `art/local/enhanced25d-landing-rejected/`，未作定稿。W3 需繼續修整，不能以同圖冒充兩種朝向。
+- 以來源演出排序完成正式家具／前景遮擋、人物存在狀態、轉場交接與新包拒絕機制；目前只是靜態審閱器。
+- 沒有新可執行 ZIP；沒有重跑整套遊戲回歸，也沒有執行任何效能測試。兩輪三張短程審閱圖均正常輸出，無逾時；各輪畫面及日誌分開保留。
+
+重跑順序：`tools/prepare_landing25d_review.py`、`tools/build_landing25d_review.py`、`tools/landing25d_review.ps1 -Mode all`。審閱器位於 `art/enhanced25d-landing/review-project/`，與舊入口隔離。來源小圖合成畫面留本地；純新繪四方向預覽可納入 Git。

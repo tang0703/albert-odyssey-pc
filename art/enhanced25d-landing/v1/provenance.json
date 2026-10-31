@@ -1,0 +1,197 @@
+{
+  "schema": "ao_pc_landing25d_art_provenance_v1",
+  "tool": "built-in image_gen",
+  "review_status": "pending_user_W2",
+  "art_files": {
+    "chair-back-01.png": {
+      "sha256": "310a06dad4cf2d95cc0a25e6a47e3a4c0312a44cad385671fa5626c848d161ab",
+      "size": [
+        1310,
+        1201
+      ],
+      "box": [
+        348,
+        213,
+        963,
+        1015
+      ],
+      "foot": [
+        655.5,
+        1015
+      ],
+      "prompt_sha256": "bc45280d86f17a0071f93b1b50676b53ff8bb880ea8477997129120351e0e682"
+    },
+    "chair-front-01.png": {
+      "sha256": "921ae72f8c1b73c4282cbc5a27086de123b44fd26f0dd3094626138c80f4241b",
+      "size": [
+        1310,
+        1201
+      ],
+      "box": [
+        390,
+        232,
+        920,
+        997
+      ],
+      "foot": [
+        655.0,
+        997
+      ],
+      "prompt_sha256": "ed02b7c1128f4b99e0db9c3c7b5c8f841f11923e5ea17eff479702f5d3b1b988"
+    },
+    "laia-down-01.png": {
+      "sha256": "ceb966907f4b538cd830584bc94e1c60e05e792d2b83e8721f7f7baf269c7eb8",
+      "size": [
+        1145,
+        1374
+      ],
+      "box": [
+        90,
+        84,
+        1059,
+        1304
+      ],
+      "foot": [
+        583.5,
+        1304
+      ],
+      "prompt_sha256": "8772cd3caa1acda048914458998b6037dc6e416c796e3422c9c64afe3d22332d"
+    },
+    "laia-left-01.png": {
+      "sha256": "040e729d9b1ad374254449db9e8181fb7abfd1f1cffe3cc7b97cccd97bf7f5ee",
+      "size": [
+        1145,
+        1374
+      ],
+      "box": [
+        272,
+        72,
+        1051,
+        1333
+      ],
+      "foot": [
+        522.0,
+        1333
+      ],
+      "prompt_sha256": "100db0ad1b17132f63313da95dafb777350fe7a8bc4051457fd4e53c84cdb997"
+    },
+    "laia-right-01.png": {
+      "sha256": "37330f2054d3f1a954033cb36054309ed62693d99852463c37abc334302530c1",
+      "size": [
+        1145,
+        1374
+      ],
+      "box": [
+        149,
+        73,
+        841,
+        1329
+      ],
+      "foot": [
+        641.5,
+        1329
+      ],
+      "prompt_sha256": "106060371a7c837b2571696df0d35199763e371868a84a60febcfa153e165264"
+    },
+    "laia-up-01.png": {
+      "sha256": "4352384557d1049ca27913c9b2b3e216a51f0aa90c369658a8f31bc63f0a9dc0",
+      "size": [
+        1145,
+        1374
+      ],
+      "box": [
+        60,
+        62,
+        1086,
+        1297
+      ],
+      "foot": [
+        583.0,
+        1297
+      ],
+      "prompt_sha256": "c27be3dc5f39ce64e0ab9428131618b0b3e346d8f66a526dcc3b1bd7f56a4340"
+    },
+    "meal-01.png": {
+      "sha256": "ea7a32a6225f42269e346a247e265a1e52dc69eb0b58da866519d5a1a3fd640e",
+      "size": [
+        1619,
+        972
+      ],
+      "box": [
+        74,
+        77,
+        1549,
+        886
+      ],
+      "foot": [
+        811.5,
+        886
+      ],
+      "prompt_sha256": "da3ee0c2df7a5e9d7328723d268488c1eed7e9e4f42dbb0048e4124269145075"
+    },
+    "room-shell-01.png": {
+      "sha256": "6eb4108fcff1beed947d5fcd9157eb00972e1ab27f4e0ec1df86b40a81e4256a",
+      "size": [
+        1659,
+        948
+      ],
+      "box": [
+        0,
+        0,
+        1659,
+        948
+      ],
+      "foot": [
+        829.5,
+        948
+      ],
+      "prompt_sha256": "61089c9ce813502fccd1737deca4db04b8e74b36bdb035ef1726128f29514ffe"
+    },
+    "stool-01.png": {
+      "sha256": "ec5313006b9640e07ea3e2c97f6bac21daa4028ce3b378530b398f59cfacb12a",
+      "size": [
+        1363,
+        1154
+      ],
+      "box": [
+        378,
+        265,
+        980,
+        964
+      ],
+      "foot": [
+        679.0,
+        964
+      ],
+      "prompt_sha256": "14092d1352477ee8d1d7a46828eef5b2a2551b254f4cc7b0de0fc8790be6a67b"
+    },
+    "table-01.png": {
+      "sha256": "6556c59fd41b9a3d7d579854c536b0e1ac71d4956e12ee9eefd670c7b1e2f735",
+      "size": [
+        1659,
+        948
+      ],
+      "box": [
+        130,
+        234,
+        1529,
+        793
+      ],
+      "foot": [
+        829.5,
+        793
+      ],
+      "prompt_sha256": "af43adbcd1aec29eaa65c4ff33233f25c1771d5b3aa531ba74d9030f2a635cde"
+    }
+  },
+  "layout_sha256": "ab5675853b875d3a3d34dd3d8f4bdb4236f16a81f8ff0cda4d688d85d244a9b4",
+  "reference_sources": [
+    "local source-contact.png",
+    "transition/background.png",
+    "enhanced25d/v1/references/approved-room.png",
+    "enhanced25d/v1/drafts/down-idle-01.png"
+  ],
+  "pixel_editing": "None: raw outputs retained; Godot crops and scales for review only.",
+  "performance_tested": false,
+  "animation_production_started": false
+}

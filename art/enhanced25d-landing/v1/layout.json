@@ -1,0 +1,30 @@
+{
+  "schema": "ao_pc_landing25d_review_layout_v1",
+  "runtime_approved": false,
+  "origin": [512,1792],
+  "dimensions": [448,256],
+  "laia_height_world": 36,
+  "player_height_world": 36,
+  "shell": {
+    "file": "room-shell-01.png",
+    "source_x": [0,30,132,192,208,352,368,418,448],
+    "art_x": [0,25,130,187,203,353,367,423,448],
+    "source_y": [0,10,42,80,112,125,176,208,228,256],
+    "art_y": [0,9,37,76,107,119,180,214,227,256]
+  },
+  "layers": [
+    {"id":"west_chair_1","file":"chair-front-01.png","rect":[32,120,32,40],"depth":160,"preserve":true,"source":"background"},
+    {"id":"west_chair_2","file":"chair-front-01.png","rect":[64,120,32,40],"depth":160,"preserve":true,"source":"background"},
+    {"id":"west_chair_3","file":"chair-front-01.png","rect":[96,120,32,40],"depth":160,"preserve":true,"source":"background"},
+    {"id":"north_chair_3","file":"chair-front-01.png","rect":[235,88,32,24],"depth":112,"preserve":true,"source":"object:3:0"},
+    {"id":"north_chair_4","file":"chair-front-01.png","rect":[267,88,32,24],"depth":112,"preserve":true,"source":"object:4:0"},
+    {"id":"table_body","file":"table-01.png","rect":[216,112,96,64],"depth":176,"preserve":false,"source":"background"},
+    {"id":"meal_0","file":"meal-01.png","rect":[232,115,76,31],"depth":1176,"preserve":false,"source":"object:0:0","note":"Art-only tabletop fit; source object foot remains (272,160)."},
+    {"id":"south_chair_2","file":"chair-back-01.png","rect":[234,168,32,24],"depth":192,"preserve":true,"source":"object:2:1"},
+    {"id":"south_chair_5","file":"chair-back-01.png","rect":[266,168,32,24],"depth":192,"preserve":true,"source":"object:5:1"},
+    {"id":"west_stool_6","file":"stool-01.png","rect":[130,93,24,24],"depth":112,"preserve":true,"source":"object:6:2"},
+    {"id":"north_stool_7","file":"stool-01.png","rect":[306,61,24,24],"depth":80,"preserve":true,"source":"object:7:2"}
+  ],
+  "pending": ["W2 user approval", "Eight source-timed steam frames", "Final furniture occlusion", "LAIA 52-frame production", "Production package and gameplay integration"],
+  "interpretations": ["Eye colour", "Gold trim and dress construction", "Boot details", "Rear hair and scarf construction", "Unobserved down-facing design"]
+}

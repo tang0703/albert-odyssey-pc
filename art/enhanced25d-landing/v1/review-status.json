@@ -1,0 +1,36 @@
+{
+  "schema": "ao_pc_landing25d_w2_review_v1",
+  "status": "waiting_for_user_approval",
+  "performance_tested": false,
+  "gameplay_validation": false,
+  "animation_production_started": false,
+  "reviews": [
+    {
+      "name": "directions",
+      "local_file": "reports\\enhanced25d-landing\\directions-review.png",
+      "sha256": "7e48bc9db641fa58eee04e0cff5843696e5b2c71b4b01454a2306b018a767167",
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "name": "room",
+      "local_file": "reports\\enhanced25d-landing\\room-review.png",
+      "sha256": "10e6414c3ef1cc414dc176920217c9acf3ec61194142ebc27739041a89280a1d",
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "name": "alignment",
+      "local_file": "reports\\enhanced25d-landing\\alignment-review.png",
+      "sha256": "bbe6f467de8df4e7c2d72442bfd7511c725ff4cc7fd507bbbfb433a33083ca43",
+      "size": [
+        1920,
+        1080
+      ]
+    }
+  ]
+}
