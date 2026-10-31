@@ -3,6 +3,8 @@
 目前包含 **Godot 資源驗證台、MAP001 指定區域行走驗證台與可重跑的逆向／匯入工具**。
 MAP001 的玩家、四方向移動、室內碰撞與鏡頭已在限定範圍核對；完整地圖及原作戰鬥仍未完成，Stage B 整體未通過。
 
+**MAP001 落點左側原作事件候選版** 已完成取得／裝備 Cirrus → 下樓 → LAIA 八頁繁中對話及來源演出 → 本場景恢復控制 → 最小後續行走。98 個實際查表格、169,210,612 個來源像素與 42,891 次三外觀更新對照通過；三解析度 18 張短程畫面及 253 檔 ZIP 核對通過。**效能驗收暫緩，未執行負載、長循環或實際 GPU FPS 測試。** 完整解壓本地 `build/MAP001-Landing-Event-Candidate-Windows-x64.zip`，執行 `MAP001-Landing-Event.exe`。見 [操作說明](docs/LANDING_EVENT_README.md)、[來源事件](docs/LANDING_EVENT_SOURCE.md)、[交付驗收](docs/LANDING_EVENT_DELIVERY.md)、[候選身份及 SHA256](docs/LANDING_EVENT_CANDIDATE_RELEASE.json)。`tools/landing_event.ps1 run` 啟動，`tools/landing_event.ps1 test` 重跑功能；需要九份本地資料包。舊入口與八包限制保留，來源素材及 ZIP 不上傳 GitHub。
+
 **MAP001 首次單向轉場候選版** 已完成取得／裝備 Cirrus → 原作淡出入及初始化 → 恢復控制 → 落點右側已驗證通道行走。95 個實際查表格、31,629,202 個來源像素及 10,965 次三外觀更新對照通過；三解析度 12 張畫面、228 檔 ZIP 雜湊及兩次解壓後獨立啟動通過。**效能驗收暫緩，未執行負載或 FPS 測試。** 完整解壓本地 `build/MAP001-Transition-Candidate-Windows-x64.zip`，執行 `MAP001-Transition.exe`。見 [操作說明](docs/TRANSITION_README.md)、[來源與流程](docs/TRANSITION_SOURCE.md)、[驗收報告](docs/TRANSITION_DELIVERY.md)、[候選身份及 SHA256](docs/TRANSITION_CANDIDATE_RELEASE.json)。`tools/transition.ps1 run` 啟動，`tools/transition.ps1 test` 重跑功能。需要八份本地資料包；舊入口及七包保持原有限制。
 
 **MAP001 最小裝備流程候選版** 已完成拿起 Cirrus → 精簡高清武器面板 → 裝備／卸下 → 樓梯後續 → 轉場提交前停止。原作允許卸下，並保留「曾裝備」旗標。功能、三外觀、來源像素、三解析度與封裝啟動驗證通過；**本輪未執行負載或效能基準，效能驗收暫緩**。完整解壓本地 `build/MAP001-Equipment-Candidate-Windows-x64.zip` 後執行 `MAP001-Equipment.exe`。見 [操作說明](docs/EQUIPMENT_README.md)、[來源與操作對照](docs/EQUIPMENT_SOURCE.md)、[交付報告](docs/EQUIPMENT_DELIVERY.md)、[候選身份與 SHA256](docs/EQUIPMENT_CANDIDATE_RELEASE.json)。`tools/equipment.ps1 run` 啟動，`tools/equipment.ps1 test` 重跑功能；需要七份本地資料包，來源素材及 ZIP 不上傳 GitHub。

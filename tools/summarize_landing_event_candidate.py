@@ -18,7 +18,7 @@ def summarize(folder,screens):
         if data.get(key) is not True:raise ValueError('Failed functional gate: '+str(path))
         evidence[path.relative_to(ROOT).as_posix()]=sha(raw);return data
     gate(base/'l1-acceptance.json','l1_complete')
-    for name in ('l2-python','l2-godot','l3-acceptance','l4-ui','l4-input','l4-gpu','l5-regression'):
+    for name in ('l2-python','l2-godot','l3-acceptance','l4-ui','l4-input','l4-gpu','l4-text-layout','l5-regression'):
         gate(base/(name+'.json'))
     python=gate(base/'l5-python.json','available_tests_passed')
     if python['unexpected'] or len(python['unavailable_old_snapshot'])!=9 or len(python['skipped'])!=7:raise ValueError('Unexpected regression gaps')

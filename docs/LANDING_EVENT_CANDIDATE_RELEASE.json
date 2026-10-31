@@ -1,0 +1,60 @@
+{
+  "schema": "ao_pc_landing_event_candidate_release_v1",
+  "date": "2026-10-31",
+  "completion": "MAP001 落點左側原作事件與必要後續行走功能驗證通過；效能驗收暫緩",
+  "functional_passed": true,
+  "performance_tested": false,
+  "full_runtime_acceptance": false,
+  "binary_source_commit": "f7577141c2ffe9e75744ef9638446955cae8e34f",
+  "binary_source_dirty": false,
+  "zip": {
+    "path": "build/MAP001-Landing-Event-Candidate-Windows-x64.zip",
+    "bytes": 65820944,
+    "sha256": "e4e90fcb9dbe8e5a57b7c6326349ba4729055b512ee0275683a441b2b4bbbe54",
+    "files": 253
+  },
+  "package_manifest_sha256": "a90a6768a92dfdf2e6875c3834caad9c534afbd29ad49e9cf760754b1f74793f",
+  "functional_report": {
+    "path": "reports/landing-event/l5-functional.json",
+    "sha256": "9bd0028fb4bf61d559a91dd016d1bdb54b53a552467b0cba9703f946a917adde"
+  },
+  "screenshots": "reports/landing-event/screenshots-l5-final/screenshots.json",
+  "screenshot_cases": 18,
+  "extracted_launches": [
+    {
+      "state": "after",
+      "report": "reports/landing-event/extracted-l5-retry/1920x1080-after/report.json",
+      "report_sha256": "5635b8b076021773723873a61d0e3222b7a8383ac8f34d0801ae8fce79eaec01",
+      "image_sha256": "7b9cc503001d5c1d8decef1fa53a83ce9db51ed7992e849309359120206b500a"
+    },
+    {
+      "state": "boundary",
+      "report": "reports/landing-event/extracted-l5-retry/1920x1080-boundary/report.json",
+      "report_sha256": "cc1f7619c38a40d683221bb3de554b92683d31c75f1b2a51da0340045d8bae46",
+      "image_sha256": "d22970d2df4a137f082e41eafeff31461a97e7d97f29e05c8155dfc5ffc2d515"
+    }
+  ],
+  "extracted_package_unchanged": true,
+  "source_local_only": true,
+  "landing_query_cells": 98,
+  "source_pixel_comparisons": 169210612,
+  "python_passed": 449,
+  "unavailable_old_snapshot_tests": 9,
+  "skipped_performance_evidence_tests": 7,
+  "limits": [
+    "單向下樓及 LAIA 事件；恢復控制後只開放來源已驗證連通區域。其他事件、回程與出口保留測試邊界。",
+    "未執行負載、長循環、效能基準或實際 GPU FPS 測試；首次解壓截圖逾時紀錄保留。",
+    "影子、完整音樂播放、雙向往返、目的地整室探索、前版效能及 Stage B 整體仍未完成。"
+  ],
+  "landing_event_manifest_sha256": "fba7297f0d1e9f88098dfd81aed4167ad63798386a6b72e3826da0904aef7cb5",
+  "dialogue_layout_cases": 24,
+  "landing_event_source_updates": 42891,
+  "endpoint": "same_scene_control_restored",
+  "source_replays": 15,
+  "extracted_first_attempt": {
+    "passed": false,
+    "reason": "45 second screenshot deadline exceeded after verified first frame; cause undetermined. Fresh-profile retry passed both endpoints.",
+    "evidence": "reports/landing-event/extracted-l5/1920x1080-after",
+    "performance_claim": false
+  }
+}
