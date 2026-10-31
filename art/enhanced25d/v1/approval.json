@@ -1,0 +1,27 @@
+{
+  "schema": "ao_pc_25d_direction_approval_v1",
+  "approved": true,
+  "user_answer": "採用目前四方向造型與比例，製作 52 幀",
+  "question_id": "call_d89379a816f1404b85fe82731b038a43",
+  "review_commit": "5f32e18",
+  "references": {
+    "down": {
+      "file": "drafts/down-idle-01.png",
+      "sha256": "fad12291864b8d09d19299f8aea6260d2e2783c9c246520d253223c9898f4546"
+    },
+    "left": {
+      "file": "drafts/left-idle-01.png",
+      "sha256": "589b0c406598d401be484a80c9dac6cc8e2259a37fc361e8249515a125ee952c"
+    },
+    "right": {
+      "file": "drafts/right-idle-01.png",
+      "sha256": "9d46443b9eeb882460256831d0ee63e7df4e7ee07281a4fec95c8f9891552e08"
+    },
+    "up": {
+      "file": "drafts/up-idle-01.png",
+      "sha256": "307c140bfb685c3b4c810963e7472a09b0b138b067c36363df23c545f2f193cc"
+    }
+  },
+  "character_height_world": 36,
+  "scope": "Four direction identity and in-room scale; not animation, scene layering, gameplay or performance acceptance"
+}

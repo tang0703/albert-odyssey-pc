@@ -1,0 +1,4626 @@
+{
+  "schema": "ao_pc_25d_animation_candidate_v1",
+  "approved": false,
+  "approval_sha256": "a200d9a1bb2385173addc0bbafd698fa19233b2928d8f8db1a353f6c40a67ff8",
+  "generation_method": "built-in imagegen",
+  "phase": {
+    "cycle_updates": 40,
+    "source_primary_count": 4,
+    "updates_per_primary": 10,
+    "walk_frame_count": 12,
+    "phase_interval_denominator": 3,
+    "walk_index_formula": "primary*3+floor((timer+render_phase)*3/10)",
+    "integer_update_durations_per_primary": [
+      4,
+      3,
+      3
+    ],
+    "render_phase_range": "[0,1)",
+    "changes_logic_clock": false
+  },
+  "frame_count": 52,
+  "canvas": [
+    512,
+    512
+  ],
+  "runtime_ready": false,
+  "pending": [
+    "loop continuity",
+    "anchor review",
+    "runtime integration"
+  ],
+  "sources": {
+    "animation-sources/down-keys.png": {
+      "sha256": "b767cdff7d17c57114164c1ce4659b1c563e270ae061f9125eeb92ae97e0745c"
+    },
+    "animation-sources/down-t2.png": {
+      "sha256": "506809e92c219fc68583f001924da356620515e6851e9ebb382e52f2f988fa81"
+    },
+    "animation-sources/down-t1.png": {
+      "sha256": "95a8d9f679f29ca28c47413a045e418773b81ef07e57ffd9904728bd5f58922d"
+    },
+    "drafts/down-idle-01.png": {
+      "sha256": "fad12291864b8d09d19299f8aea6260d2e2783c9c246520d253223c9898f4546"
+    },
+    "animation-sources/left-keys.png": {
+      "sha256": "a2b42c4fd214137a0249d01d0ad0576f815ba4098dd76469b85b13f8035ca013"
+    },
+    "animation-sources/left-t1.png": {
+      "sha256": "dc2bb669b5cfa52e7513a1a9892457d3eabdaab4cc579c2be8c0beb0a98024d6"
+    },
+    "animation-sources/left-t2.png": {
+      "sha256": "59b365ffb125293667cae4b57c2e55c62dadeaa2538af67cd1116903a79c014f"
+    },
+    "drafts/left-idle-01.png": {
+      "sha256": "589b0c406598d401be484a80c9dac6cc8e2259a37fc361e8249515a125ee952c"
+    },
+    "animation-sources/right-keys.png": {
+      "sha256": "623833c6ed989afc5ef455ef6f539a6c2245e56c4fa1c17145c6644b41f06702"
+    },
+    "animation-sources/right-t1.png": {
+      "sha256": "5ebe2515908cfe9d75434de3274e77e54872b7d0ceed420dcb142553c7bcb55d"
+    },
+    "animation-sources/right-t2.png": {
+      "sha256": "1cd21779e975f3cfb0cb6b53dab773abe54c7696a168275346c74ad7844089a2"
+    },
+    "drafts/right-idle-01.png": {
+      "sha256": "9d46443b9eeb882460256831d0ee63e7df4e7ee07281a4fec95c8f9891552e08"
+    },
+    "animation-sources/up-keys.png": {
+      "sha256": "d5c53e886f8f1804e405358859ca2e9709caf29e2544ef68f40ae311be11bff5"
+    },
+    "animation-sources/up-t2.png": {
+      "sha256": "a523e6b9227843510d4d8ce068af7e90ce0608ac66411e38e5f11a1b6b2300f7"
+    },
+    "animation-sources/up-t1.png": {
+      "sha256": "aa034394291c3029bcb315145f70af6c997b9262aeb40fbafd8d5f087dd5dfe5"
+    },
+    "drafts/up-idle-01.png": {
+      "sha256": "307c140bfb685c3b4c810963e7472a09b0b138b067c36363df23c545f2f193cc"
+    }
+  },
+  "frames": [
+    {
+      "id": "map001_player_25d/down/walk-00",
+      "direction": "down",
+      "cell": 0,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/down-walk-00.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/down-keys.png",
+      "source_sha256": "b767cdff7d17c57114164c1ce4659b1c563e270ae061f9125eeb92ae97e0745c",
+      "source_rect": [
+        173,
+        55,
+        267,
+        555
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        141.5,
+        563
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          275,
+          563
+        ],
+        "output_bbox": [
+          8,
+          8,
+          275,
+          563
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 267,
+      "source_pose_cell": 0,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          19,
+          1254,
+          1254
+        ],
+        "output_bbox": [
+          173,
+          54,
+          1065,
+          1216
+        ],
+        "removed_low_alpha_pixels": 74712,
+        "removed_small_component_pixels": 9,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "252065305b915fbba548d55915b7f66d0f6a968f41d74cb3851ca217f49d2998",
+      "uniform_pose_scale": 0.7207207207207207,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "7458b32afc5c7fc4e1dd67c2001c3ec00a5ce92ab2c62eab230797a57cc56144"
+    },
+    {
+      "id": "map001_player_25d/down/walk-01",
+      "direction": "down",
+      "cell": 1,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/down-walk-01.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/down-t2.png",
+      "source_sha256": "506809e92c219fc68583f001924da356620515e6851e9ebb382e52f2f988fa81",
+      "source_rect": [
+        764,
+        657,
+        305,
+        568
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        160.5,
+        576
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          313,
+          576
+        ],
+        "output_bbox": [
+          8,
+          8,
+          313,
+          576
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 305,
+      "source_pose_cell": 3,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          31,
+          1238,
+          1238
+        ],
+        "output_bbox": [
+          195,
+          43,
+          1069,
+          1225
+        ],
+        "removed_low_alpha_pixels": 47078,
+        "removed_small_component_pixels": 3,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "31b712728a0e4d096a9f44c0162158fbd974b79be727582a07d2a0e781fc0df0",
+      "uniform_pose_scale": 0.704225352112676,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "28ed9ad2bef35413fddb5fe6b0145188453b556bfdf5ab2fa628643b0e99239c"
+    },
+    {
+      "id": "map001_player_25d/down/walk-02",
+      "direction": "down",
+      "cell": 2,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/down-walk-02.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/down-t1.png",
+      "source_sha256": "95a8d9f679f29ca28c47413a045e418773b81ef07e57ffd9904728bd5f58922d",
+      "source_rect": [
+        767,
+        648,
+        292,
+        570
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        154.0,
+        578
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          300,
+          578
+        ],
+        "output_bbox": [
+          8,
+          8,
+          300,
+          578
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 292,
+      "source_pose_cell": 3,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          23,
+          23,
+          1238,
+          1232
+        ],
+        "output_bbox": [
+          219,
+          51,
+          1059,
+          1218
+        ],
+        "removed_low_alpha_pixels": 38772,
+        "removed_small_component_pixels": 6,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "37ca6574450c39ca13e32b825a15f8105120932d64c25572125f138b703534f6",
+      "uniform_pose_scale": 0.7017543859649122,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "beea325ca2268e7dde52e1091a43ea652874db4f313341a84207770c28923760"
+    },
+    {
+      "id": "map001_player_25d/down/walk-03",
+      "direction": "down",
+      "cell": 3,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/down-walk-03.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        1536,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/down-keys.png",
+      "source_sha256": "b767cdff7d17c57114164c1ce4659b1c563e270ae061f9125eeb92ae97e0745c",
+      "source_rect": [
+        797,
+        655,
+        268,
+        561
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        142.0,
+        569
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          276,
+          569
+        ],
+        "output_bbox": [
+          8,
+          8,
+          276,
+          569
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 268,
+      "source_pose_cell": 3,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          19,
+          1254,
+          1254
+        ],
+        "output_bbox": [
+          173,
+          54,
+          1065,
+          1216
+        ],
+        "removed_low_alpha_pixels": 74712,
+        "removed_small_component_pixels": 9,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "03e8c85fb1cdb20cff0459829a79f1c3beba214903dd9832402343939f517ad8",
+      "uniform_pose_scale": 0.7130124777183601,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "e4fa14d793b457a66e348ab62acedbc15f6574933aef88cdffe43d058719959d"
+    },
+    {
+      "id": "map001_player_25d/down/walk-04",
+      "direction": "down",
+      "cell": 4,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/down-walk-04.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/down-t2.png",
+      "source_sha256": "506809e92c219fc68583f001924da356620515e6851e9ebb382e52f2f988fa81",
+      "source_rect": [
+        195,
+        43,
+        305,
+        588
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        160.5,
+        596
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          313,
+          596
+        ],
+        "output_bbox": [
+          8,
+          8,
+          313,
+          596
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 305,
+      "source_pose_cell": 0,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          31,
+          1238,
+          1238
+        ],
+        "output_bbox": [
+          195,
+          43,
+          1069,
+          1225
+        ],
+        "removed_low_alpha_pixels": 47078,
+        "removed_small_component_pixels": 3,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "00c3b6eee4bdd3a89fcd2e16804f4f4ebdb5a28ed9918da9d9a1fd9ac3555d1f",
+      "uniform_pose_scale": 0.6802721088435374,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "8c4ade894f423152633dc13ced62704e35289f8bfe39a4c4e4c5f265546d684f"
+    },
+    {
+      "id": "map001_player_25d/down/walk-05",
+      "direction": "down",
+      "cell": 5,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/down-walk-05.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/down-t1.png",
+      "source_sha256": "95a8d9f679f29ca28c47413a045e418773b81ef07e57ffd9904728bd5f58922d",
+      "source_rect": [
+        761,
+        55,
+        294,
+        559
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        155.0,
+        567
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          302,
+          567
+        ],
+        "output_bbox": [
+          8,
+          8,
+          302,
+          567
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 294,
+      "source_pose_cell": 1,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          23,
+          23,
+          1238,
+          1232
+        ],
+        "output_bbox": [
+          219,
+          51,
+          1059,
+          1218
+        ],
+        "removed_low_alpha_pixels": 38772,
+        "removed_small_component_pixels": 6,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "06773d993b9ef6bcb7ef53aa105574bfd849c4b5c06592cff1651c7b3dad18a9",
+      "uniform_pose_scale": 0.7155635062611807,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "9aaebb65312e14ddea9700e94a6dc1102999ab2b8d235b6d389e3f56263b82aa"
+    },
+    {
+      "id": "map001_player_25d/down/walk-06",
+      "direction": "down",
+      "cell": 6,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/down-walk-06.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/down-keys.png",
+      "source_sha256": "b767cdff7d17c57114164c1ce4659b1c563e270ae061f9125eeb92ae97e0745c",
+      "source_rect": [
+        173,
+        657,
+        268,
+        555
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        142.0,
+        563
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          276,
+          563
+        ],
+        "output_bbox": [
+          8,
+          8,
+          276,
+          563
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 268,
+      "source_pose_cell": 2,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          19,
+          1254,
+          1254
+        ],
+        "output_bbox": [
+          173,
+          54,
+          1065,
+          1216
+        ],
+        "removed_low_alpha_pixels": 74712,
+        "removed_small_component_pixels": 9,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "18b87c47d092466971fbd443c5a8bfb07e9dd4eb6f43f35d033d686869f893f6",
+      "uniform_pose_scale": 0.7207207207207207,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "cd58f3bf0edb5964058923a842f18a5f42936bbc3f7d822b4de198d567e8e609"
+    },
+    {
+      "id": "map001_player_25d/down/walk-07",
+      "direction": "down",
+      "cell": 7,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/down-walk-07.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        1536,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/down-t2.png",
+      "source_sha256": "506809e92c219fc68583f001924da356620515e6851e9ebb382e52f2f988fa81",
+      "source_rect": [
+        763,
+        44,
+        305,
+        587
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        160.5,
+        595
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          313,
+          595
+        ],
+        "output_bbox": [
+          8,
+          8,
+          313,
+          595
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 305,
+      "source_pose_cell": 1,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          31,
+          1238,
+          1238
+        ],
+        "output_bbox": [
+          195,
+          43,
+          1069,
+          1225
+        ],
+        "removed_low_alpha_pixels": 47078,
+        "removed_small_component_pixels": 3,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "058235a80651a72306d835b28cd1781bfc15ddac46266b2a5ef78f9c056956eb",
+      "uniform_pose_scale": 0.6814310051107325,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "9210399de2391cd7810d0944a5aa4e6ebb1340c63629e299e5d9885deed9a9af"
+    },
+    {
+      "id": "map001_player_25d/down/walk-08",
+      "direction": "down",
+      "cell": 8,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/down-walk-08.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        0,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/down-t1.png",
+      "source_sha256": "95a8d9f679f29ca28c47413a045e418773b81ef07e57ffd9904728bd5f58922d",
+      "source_rect": [
+        220,
+        51,
+        293,
+        558
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        154.5,
+        566
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          301,
+          566
+        ],
+        "output_bbox": [
+          8,
+          8,
+          301,
+          566
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 293,
+      "source_pose_cell": 0,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          23,
+          23,
+          1238,
+          1232
+        ],
+        "output_bbox": [
+          219,
+          51,
+          1059,
+          1218
+        ],
+        "removed_low_alpha_pixels": 38772,
+        "removed_small_component_pixels": 6,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "1b6e647927ec13353f72943e46ee2321a36f97e285db9ec55583970f3b745cfc",
+      "uniform_pose_scale": 0.7168458781362007,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "f5dc7603458437df15082d3cf444ac26c2c487258ba521a65ae62711526bfc6a"
+    },
+    {
+      "id": "map001_player_25d/down/walk-09",
+      "direction": "down",
+      "cell": 9,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/down-walk-09.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        512,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/down-keys.png",
+      "source_sha256": "b767cdff7d17c57114164c1ce4659b1c563e270ae061f9125eeb92ae97e0745c",
+      "source_rect": [
+        796,
+        54,
+        265,
+        559
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        140.5,
+        567
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          273,
+          567
+        ],
+        "output_bbox": [
+          8,
+          8,
+          273,
+          567
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 265,
+      "source_pose_cell": 1,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          19,
+          1254,
+          1254
+        ],
+        "output_bbox": [
+          173,
+          54,
+          1065,
+          1216
+        ],
+        "removed_low_alpha_pixels": 74712,
+        "removed_small_component_pixels": 9,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "2b75f83936517a13de2aea8aec1f053881d0621d33b9a48745fe9762bb85702c",
+      "uniform_pose_scale": 0.7155635062611807,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "737179d459537aaee9f39f018991483f19e355dfb21259b316e207df5ad1efc2"
+    },
+    {
+      "id": "map001_player_25d/down/walk-10",
+      "direction": "down",
+      "cell": 10,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/down-walk-10.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        1024,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/down-t2.png",
+      "source_sha256": "506809e92c219fc68583f001924da356620515e6851e9ebb382e52f2f988fa81",
+      "source_rect": [
+        196,
+        657,
+        305,
+        568
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        160.5,
+        576
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          313,
+          576
+        ],
+        "output_bbox": [
+          8,
+          8,
+          313,
+          576
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 305,
+      "source_pose_cell": 2,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          31,
+          1238,
+          1238
+        ],
+        "output_bbox": [
+          195,
+          43,
+          1069,
+          1225
+        ],
+        "removed_low_alpha_pixels": 47078,
+        "removed_small_component_pixels": 3,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "08b70f840f08a5bf3cdc59bff2664a93ce5463445e5105d856ea7a45bfc06a08",
+      "uniform_pose_scale": 0.704225352112676,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "7564fac8740bd707223f5c0bb489970e4ea9a73e3c8317cfb0933b137d65c10d"
+    },
+    {
+      "id": "map001_player_25d/down/walk-11",
+      "direction": "down",
+      "cell": 11,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/down-walk-11.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        1536,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/down-t1.png",
+      "source_sha256": "95a8d9f679f29ca28c47413a045e418773b81ef07e57ffd9904728bd5f58922d",
+      "source_rect": [
+        219,
+        646,
+        294,
+        562
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        155.0,
+        570
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          302,
+          570
+        ],
+        "output_bbox": [
+          8,
+          8,
+          302,
+          570
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 294,
+      "source_pose_cell": 2,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          23,
+          23,
+          1238,
+          1232
+        ],
+        "output_bbox": [
+          219,
+          51,
+          1059,
+          1218
+        ],
+        "removed_low_alpha_pixels": 38772,
+        "removed_small_component_pixels": 6,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "1af6ac948d30b570f0b80a45f38aa95cad680bf4a272ccf5dcf48024c96f829f",
+      "uniform_pose_scale": 0.7117437722419929,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "859b3e6a22969f277595f2d22e797a241bb53e1063fb54fff21763094e50be22"
+    },
+    {
+      "id": "map001_player_25d/down/idle",
+      "direction": "down",
+      "cell": 12,
+      "action": "idle",
+      "kind": "idle",
+      "file": "frames/down-idle.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        0,
+        1536,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "drafts/down-idle-01.png",
+      "source_sha256": "fad12291864b8d09d19299f8aea6260d2e2783c9c246520d253223c9898f4546",
+      "source_rect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "resolution_scale": 0.5,
+      "source_anchor": [
+        307.5,
+        593
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          28,
+          27,
+          606,
+          615
+        ],
+        "output_bbox": [
+          175,
+          30,
+          440,
+          593
+        ],
+        "removed_low_alpha_pixels": 4996,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 265,
+      "source_pose_cell": null,
+      "sheet_alpha_cleanup": null,
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "1cf3839c752ee9746817c066f05391869ec50f4ffceada7ace3cb896b3c198e1",
+      "uniform_pose_scale": 0.7104795737122558,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "7093d1afd6ee5e295e2e281f9fb1d0f603fb02d63b5d6e5c84bc252f23d7dfa4"
+    },
+    {
+      "id": "map001_player_25d/left/walk-00",
+      "direction": "left",
+      "cell": 0,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/left-walk-00.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/left-keys.png",
+      "source_sha256": "a2b42c4fd214137a0249d01d0ad0576f815ba4098dd76469b85b13f8035ca013",
+      "source_rect": [
+        195,
+        33,
+        326,
+        579
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        171.0,
+        587
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          334,
+          587
+        ],
+        "output_bbox": [
+          8,
+          8,
+          334,
+          587
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 268,
+      "source_pose_cell": 0,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          21,
+          1238,
+          1254
+        ],
+        "output_bbox": [
+          180,
+          33,
+          1103,
+          1232
+        ],
+        "removed_low_alpha_pixels": 49398,
+        "removed_small_component_pixels": 2,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "16dae7ef3cd622dfc64be541be514fe548d03abb038ec440390a0865c8919eeb",
+      "uniform_pose_scale": 0.690846286701209,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "a6d9bee4beb6bd51a86bded582c478c5a7a0e6f61501b19136a25e81d7933d95"
+    },
+    {
+      "id": "map001_player_25d/left/walk-01",
+      "direction": "left",
+      "cell": 1,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/left-walk-01.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/left-t1.png",
+      "source_sha256": "dc2bb669b5cfa52e7513a1a9892457d3eabdaab4cc579c2be8c0beb0a98024d6",
+      "source_rect": [
+        180,
+        17,
+        367,
+        619
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        191.5,
+        627
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          375,
+          627
+        ],
+        "output_bbox": [
+          8,
+          8,
+          375,
+          627
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 302,
+      "source_pose_cell": 0,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          27,
+          6,
+          1238,
+          1254
+        ],
+        "output_bbox": [
+          153,
+          13,
+          1136,
+          1233
+        ],
+        "removed_low_alpha_pixels": 48679,
+        "removed_small_component_pixels": 4,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "1c0021073be14f6c5ceba44bdfdf34e65145826b2cb86fc0383274ed36d81ecf",
+      "uniform_pose_scale": 0.6462035541195477,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "314c65443989d2b22b764ea5d14149a1899a413e30b2a5a999a03d6d9d6e2bf1"
+    },
+    {
+      "id": "map001_player_25d/left/walk-02",
+      "direction": "left",
+      "cell": 2,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/left-walk-02.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/left-t2.png",
+      "source_sha256": "59b365ffb125293667cae4b57c2e55c62dadeaa2538af67cd1116903a79c014f",
+      "source_rect": [
+        214,
+        26,
+        288,
+        598
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        152.0,
+        606
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          296,
+          606
+        ],
+        "output_bbox": [
+          8,
+          8,
+          296,
+          606
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 288,
+      "source_pose_cell": 0,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          79,
+          22,
+          1200,
+          1254
+        ],
+        "output_bbox": [
+          214,
+          25,
+          1151,
+          1223
+        ],
+        "removed_low_alpha_pixels": 39212,
+        "removed_small_component_pixels": 4,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "6416d36f52996aead3010aa26e9da9d9a9198dd6318a21a7cbedba63440bb44e",
+      "uniform_pose_scale": 0.6688963210702341,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "f249ba864d356ccf27fcbecd84e647d3de88fcf97fc421631c896c806f55b577"
+    },
+    {
+      "id": "map001_player_25d/left/walk-03",
+      "direction": "left",
+      "cell": 3,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/left-walk-03.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        1536,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/left-keys.png",
+      "source_sha256": "a2b42c4fd214137a0249d01d0ad0576f815ba4098dd76469b85b13f8035ca013",
+      "source_rect": [
+        812,
+        35,
+        267,
+        587
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        141.5,
+        595
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          275,
+          595
+        ],
+        "output_bbox": [
+          8,
+          8,
+          275,
+          595
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 267,
+      "source_pose_cell": 1,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          21,
+          1238,
+          1254
+        ],
+        "output_bbox": [
+          180,
+          33,
+          1103,
+          1232
+        ],
+        "removed_low_alpha_pixels": 49398,
+        "removed_small_component_pixels": 2,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "0847965a3d9bb74e5f58bf1c22e8176d85797870ebb144c6d2a0de14f9d040e1",
+      "uniform_pose_scale": 0.6814310051107325,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "28ad1388917a0fa306af92207ff23c349bb93a027e9807db3b857eb3888acc92"
+    },
+    {
+      "id": "map001_player_25d/left/walk-04",
+      "direction": "left",
+      "cell": 4,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/left-walk-04.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/left-t1.png",
+      "source_sha256": "dc2bb669b5cfa52e7513a1a9892457d3eabdaab4cc579c2be8c0beb0a98024d6",
+      "source_rect": [
+        807,
+        13,
+        314,
+        620
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        165.0,
+        628
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          322,
+          628
+        ],
+        "output_bbox": [
+          8,
+          8,
+          322,
+          628
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 303,
+      "source_pose_cell": 1,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          27,
+          6,
+          1238,
+          1254
+        ],
+        "output_bbox": [
+          153,
+          13,
+          1136,
+          1233
+        ],
+        "removed_low_alpha_pixels": 48679,
+        "removed_small_component_pixels": 4,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "01f0be0e98984de6f97b45feaadc7c8e0023f4a7c88aa427f9794b604fe0ba17",
+      "uniform_pose_scale": 0.6451612903225806,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "49295efebc5e05410f056a0247627e6054704205986bf2132090890c4a1bdde1"
+    },
+    {
+      "id": "map001_player_25d/left/walk-05",
+      "direction": "left",
+      "cell": 5,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/left-walk-05.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/left-t2.png",
+      "source_sha256": "59b365ffb125293667cae4b57c2e55c62dadeaa2538af67cd1116903a79c014f",
+      "source_rect": [
+        759,
+        25,
+        392,
+        597
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        204.0,
+        605
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          400,
+          605
+        ],
+        "output_bbox": [
+          8,
+          8,
+          400,
+          605
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 289,
+      "source_pose_cell": 1,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          79,
+          22,
+          1200,
+          1254
+        ],
+        "output_bbox": [
+          214,
+          25,
+          1151,
+          1223
+        ],
+        "removed_low_alpha_pixels": 39212,
+        "removed_small_component_pixels": 4,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "3f9834cd18e3a0155dd58721142819e1023cb07b27b7557f40487fc74894da63",
+      "uniform_pose_scale": 0.6700167504187605,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "2f9dfd30aaeaac9f6ea504ba2cbfa21468c40246e9b5f431ef82e469844a35ff"
+    },
+    {
+      "id": "map001_player_25d/left/walk-06",
+      "direction": "left",
+      "cell": 6,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/left-walk-06.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/left-keys.png",
+      "source_sha256": "a2b42c4fd214137a0249d01d0ad0576f815ba4098dd76469b85b13f8035ca013",
+      "source_rect": [
+        180,
+        645,
+        340,
+        577
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        178.0,
+        585
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          348,
+          585
+        ],
+        "output_bbox": [
+          8,
+          8,
+          348,
+          585
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 268,
+      "source_pose_cell": 2,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          21,
+          1238,
+          1254
+        ],
+        "output_bbox": [
+          180,
+          33,
+          1103,
+          1232
+        ],
+        "removed_low_alpha_pixels": 49398,
+        "removed_small_component_pixels": 2,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "1a873a26580b78730b9dbee072a21d84278e22aed270762f78add321cdf6da68",
+      "uniform_pose_scale": 0.6932409012131716,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "59b0089eecebdbf534b7b7ddc1ef45be3aec19561a49f7f554fb4707d8b4f9ff"
+    },
+    {
+      "id": "map001_player_25d/left/walk-07",
+      "direction": "left",
+      "cell": 7,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/left-walk-07.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        1536,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/left-t1.png",
+      "source_sha256": "dc2bb669b5cfa52e7513a1a9892457d3eabdaab4cc579c2be8c0beb0a98024d6",
+      "source_rect": [
+        153,
+        638,
+        429,
+        594
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        222.5,
+        602
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          437,
+          602
+        ],
+        "output_bbox": [
+          8,
+          8,
+          437,
+          602
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 298,
+      "source_pose_cell": 2,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          27,
+          6,
+          1238,
+          1254
+        ],
+        "output_bbox": [
+          153,
+          13,
+          1136,
+          1233
+        ],
+        "removed_low_alpha_pixels": 48679,
+        "removed_small_component_pixels": 4,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "0a85762be6072573152cf2a50843cabaf9551ff6613c25f8c64993679800e0a8",
+      "uniform_pose_scale": 0.6734006734006734,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "b054a23babb307d7fc017f6cc18997fde0bdd233eac1963bb0e0bc320dbdc3f9"
+    },
+    {
+      "id": "map001_player_25d/left/walk-08",
+      "direction": "left",
+      "cell": 8,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/left-walk-08.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        0,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/left-t2.png",
+      "source_sha256": "59b365ffb125293667cae4b57c2e55c62dadeaa2538af67cd1116903a79c014f",
+      "source_rect": [
+        215,
+        634,
+        288,
+        589
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        152.0,
+        597
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          296,
+          597
+        ],
+        "output_bbox": [
+          8,
+          8,
+          296,
+          597
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 288,
+      "source_pose_cell": 2,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          79,
+          22,
+          1200,
+          1254
+        ],
+        "output_bbox": [
+          214,
+          25,
+          1151,
+          1223
+        ],
+        "removed_low_alpha_pixels": 39212,
+        "removed_small_component_pixels": 4,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "45bca56bbfebb85fea5f36672a4387a9c65fe0f532a45df858f4d9e457d1b65d",
+      "uniform_pose_scale": 0.6791171477079796,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "186bfe1e38a730ced33eec50747167dc011345c94ecd4361ea6e4b1c7cd695df"
+    },
+    {
+      "id": "map001_player_25d/left/walk-09",
+      "direction": "left",
+      "cell": 9,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/left-walk-09.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        512,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/left-keys.png",
+      "source_sha256": "a2b42c4fd214137a0249d01d0ad0576f815ba4098dd76469b85b13f8035ca013",
+      "source_rect": [
+        836,
+        642,
+        267,
+        590
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        141.5,
+        598
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          275,
+          598
+        ],
+        "output_bbox": [
+          8,
+          8,
+          275,
+          598
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 267,
+      "source_pose_cell": 3,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          21,
+          1238,
+          1254
+        ],
+        "output_bbox": [
+          180,
+          33,
+          1103,
+          1232
+        ],
+        "removed_low_alpha_pixels": 49398,
+        "removed_small_component_pixels": 2,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "068885dbacbd789ba77909379833c99a7f8ea5b7e30c0035417fd67e8d97df26",
+      "uniform_pose_scale": 0.6779661016949152,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "4a6e66d6ba249e6f6892cb3cbbe1ea683b4d223c1325c0af5dd8cf1baafab1ea"
+    },
+    {
+      "id": "map001_player_25d/left/walk-10",
+      "direction": "left",
+      "cell": 10,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/left-walk-10.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        1024,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/left-t1.png",
+      "source_sha256": "dc2bb669b5cfa52e7513a1a9892457d3eabdaab4cc579c2be8c0beb0a98024d6",
+      "source_rect": [
+        815,
+        643,
+        321,
+        590
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        168.5,
+        598
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          329,
+          598
+        ],
+        "output_bbox": [
+          8,
+          8,
+          329,
+          598
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 296,
+      "source_pose_cell": 3,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          27,
+          6,
+          1238,
+          1254
+        ],
+        "output_bbox": [
+          153,
+          13,
+          1136,
+          1233
+        ],
+        "removed_low_alpha_pixels": 48679,
+        "removed_small_component_pixels": 4,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "0ed13cef104bc09f2aa49c76171520e6721d32357a8b0faae89eb6fdde11d5f7",
+      "uniform_pose_scale": 0.6779661016949152,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "1f329191e2173ae80750a7c9f0d4d02e8f83863c9302930bca5144956542c8ec"
+    },
+    {
+      "id": "map001_player_25d/left/walk-11",
+      "direction": "left",
+      "cell": 11,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/left-walk-11.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        1536,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/left-t2.png",
+      "source_sha256": "59b365ffb125293667cae4b57c2e55c62dadeaa2538af67cd1116903a79c014f",
+      "source_rect": [
+        769,
+        635,
+        368,
+        584
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        192.0,
+        592
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          376,
+          592
+        ],
+        "output_bbox": [
+          8,
+          8,
+          376,
+          592
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 288,
+      "source_pose_cell": 3,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          79,
+          22,
+          1200,
+          1254
+        ],
+        "output_bbox": [
+          214,
+          25,
+          1151,
+          1223
+        ],
+        "removed_low_alpha_pixels": 39212,
+        "removed_small_component_pixels": 4,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "0f420f45a9f0c984bb915a30e7c34d80873d2feae8b30593cb81186aab516ebf",
+      "uniform_pose_scale": 0.684931506849315,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "2d3ff506fde274b2518ce8cc79a01192edf6db1ede70255fa610676495315b43"
+    },
+    {
+      "id": "map001_player_25d/left/idle",
+      "direction": "left",
+      "cell": 12,
+      "action": "idle",
+      "kind": "idle",
+      "file": "frames/left-idle.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        0,
+        1536,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "drafts/left-idle-01.png",
+      "source_sha256": "589b0c406598d401be484a80c9dac6cc8e2259a37fc361e8249515a125ee952c",
+      "source_rect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "resolution_scale": 0.5,
+      "source_anchor": [
+        315.5,
+        608
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          45,
+          9,
+          606,
+          611
+        ],
+        "output_bbox": [
+          192,
+          11,
+          439,
+          608
+        ],
+        "removed_low_alpha_pixels": 4751,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 247,
+      "source_pose_cell": null,
+      "sheet_alpha_cleanup": null,
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "44ebccd6d3ef9fd8c8bf777cf329b9fac8faaf5319c8bb7ced52b6b3bbcb7521",
+      "uniform_pose_scale": 0.6700167504187605,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "51a2ea9b7e8472de02d898bf2ac5823c6e7783acac9753cdbcb78b0cf7ca200d"
+    },
+    {
+      "id": "map001_player_25d/right/walk-00",
+      "direction": "right",
+      "cell": 0,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/right-walk-00.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/right-keys.png",
+      "source_sha256": "623833c6ed989afc5ef455ef6f539a6c2245e56c4fa1c17145c6644b41f06702",
+      "source_rect": [
+        215,
+        18,
+        359,
+        587
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        187.5,
+        595
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          367,
+          595
+        ],
+        "output_bbox": [
+          8,
+          8,
+          367,
+          595
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 261,
+      "source_pose_cell": 0,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          13,
+          1234,
+          1238
+        ],
+        "output_bbox": [
+          205,
+          15,
+          1086,
+          1228
+        ],
+        "removed_low_alpha_pixels": 48021,
+        "removed_small_component_pixels": 2,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "1fe22c32509c37e2b8e3e91b33f8223b48a3672df2fc2d002480b5d33c1c9c17",
+      "uniform_pose_scale": 0.6814310051107325,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "dfa8d508e4833e1736a1c0401728ffa653f04ff89508538a2d944d9aa45777ac"
+    },
+    {
+      "id": "map001_player_25d/right/walk-01",
+      "direction": "right",
+      "cell": 1,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/right-walk-01.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/right-t1.png",
+      "source_sha256": "5ebe2515908cfe9d75434de3274e77e54872b7d0ceed420dcb142553c7bcb55d",
+      "source_rect": [
+        232,
+        19,
+        328,
+        594
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        172.0,
+        602
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          336,
+          602
+        ],
+        "output_bbox": [
+          8,
+          8,
+          336,
+          602
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 258,
+      "source_pose_cell": 0,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          16,
+          1240,
+          1254
+        ],
+        "output_bbox": [
+          200,
+          19,
+          1144,
+          1222
+        ],
+        "removed_low_alpha_pixels": 66910,
+        "removed_small_component_pixels": 1,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "4cf0b539a545f953bde0eea2cef99ea87050d6e3fbed41bc7f91645e585399f9",
+      "uniform_pose_scale": 0.6734006734006734,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "3254bb3eb671ccbf17bc4def7d383ed0b32077f0ef26939dcb4574fc8261c680"
+    },
+    {
+      "id": "map001_player_25d/right/walk-02",
+      "direction": "right",
+      "cell": 2,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/right-walk-02.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/right-t2.png",
+      "source_sha256": "1cd21779e975f3cfb0cb6b53dab773abe54c7696a168275346c74ad7844089a2",
+      "source_rect": [
+        238,
+        16,
+        270,
+        601
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        143.0,
+        609
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          278,
+          609
+        ],
+        "output_bbox": [
+          8,
+          8,
+          278,
+          609
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 270,
+      "source_pose_cell": 0,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          25,
+          14,
+          1228,
+          1230
+        ],
+        "output_bbox": [
+          238,
+          16,
+          1172,
+          1223
+        ],
+        "removed_low_alpha_pixels": 44769,
+        "removed_small_component_pixels": 8,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "08bbe7b45dac87ad1cecf95b361455e0d27039d51eb604a680c6d6663226c701",
+      "uniform_pose_scale": 0.6655574043261231,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "e3b3237e779fc4c6e7a8d0710fd49e03708729e4419b7060b20a46164bbd76f5"
+    },
+    {
+      "id": "map001_player_25d/right/walk-03",
+      "direction": "right",
+      "cell": 3,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/right-walk-03.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        1536,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/right-keys.png",
+      "source_sha256": "623833c6ed989afc5ef455ef6f539a6c2245e56c4fa1c17145c6644b41f06702",
+      "source_rect": [
+        790,
+        15,
+        294,
+        597
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        155.0,
+        605
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          302,
+          605
+        ],
+        "output_bbox": [
+          8,
+          8,
+          302,
+          605
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 259,
+      "source_pose_cell": 1,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          13,
+          1234,
+          1238
+        ],
+        "output_bbox": [
+          205,
+          15,
+          1086,
+          1228
+        ],
+        "removed_low_alpha_pixels": 48021,
+        "removed_small_component_pixels": 2,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "43cf24c5ff4bf0927bcd85f9344630d40e195bcd1cff0e99604c432db70a9c94",
+      "uniform_pose_scale": 0.6700167504187605,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "d25abb146d8584ecea6bc2b0dd027290591476ba500834b55c917ab42777a2a6"
+    },
+    {
+      "id": "map001_player_25d/right/walk-04",
+      "direction": "right",
+      "cell": 4,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/right-walk-04.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/right-t1.png",
+      "source_sha256": "5ebe2515908cfe9d75434de3274e77e54872b7d0ceed420dcb142553c7bcb55d",
+      "source_rect": [
+        780,
+        21,
+        364,
+        598
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        190.0,
+        606
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          372,
+          606
+        ],
+        "output_bbox": [
+          8,
+          8,
+          372,
+          606
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 258,
+      "source_pose_cell": 1,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          16,
+          1240,
+          1254
+        ],
+        "output_bbox": [
+          200,
+          19,
+          1144,
+          1222
+        ],
+        "removed_low_alpha_pixels": 66910,
+        "removed_small_component_pixels": 1,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "1628707c9a829a93cab9c7f32126b03e1fda3474af76d652d29f6f5a1c356795",
+      "uniform_pose_scale": 0.6688963210702341,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "78af5bd765dfb28e355365d9eb874f7a5c7a4cced20706b73aaf8269c3338003"
+    },
+    {
+      "id": "map001_player_25d/right/walk-05",
+      "direction": "right",
+      "cell": 5,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/right-walk-05.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/right-t2.png",
+      "source_sha256": "1cd21779e975f3cfb0cb6b53dab773abe54c7696a168275346c74ad7844089a2",
+      "source_rect": [
+        775,
+        16,
+        388,
+        606
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        202.0,
+        614
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          396,
+          614
+        ],
+        "output_bbox": [
+          8,
+          8,
+          396,
+          614
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 269,
+      "source_pose_cell": 1,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          25,
+          14,
+          1228,
+          1230
+        ],
+        "output_bbox": [
+          238,
+          16,
+          1172,
+          1223
+        ],
+        "removed_low_alpha_pixels": 44769,
+        "removed_small_component_pixels": 8,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "0f40835367fbfa48f41db88e36ad4f05739c4642b12f261bc89baf96ee4465fe",
+      "uniform_pose_scale": 0.6600660066006601,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "a621216b2e9f3475536156bc4e572c074536a516b7c29788d9354951199354ac"
+    },
+    {
+      "id": "map001_player_25d/right/walk-06",
+      "direction": "right",
+      "cell": 6,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/right-walk-06.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/right-keys.png",
+      "source_sha256": "623833c6ed989afc5ef455ef6f539a6c2245e56c4fa1c17145c6644b41f06702",
+      "source_rect": [
+        205,
+        623,
+        361,
+        593
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        188.5,
+        601
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          369,
+          601
+        ],
+        "output_bbox": [
+          8,
+          8,
+          369,
+          601
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 263,
+      "source_pose_cell": 2,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          13,
+          1234,
+          1238
+        ],
+        "output_bbox": [
+          205,
+          15,
+          1086,
+          1228
+        ],
+        "removed_low_alpha_pixels": 48021,
+        "removed_small_component_pixels": 2,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "0867e354b3d4070746a8334cbbee32ed22578d213cea4fa575fd5edd822159ed",
+      "uniform_pose_scale": 0.6745362563237775,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "c9eae7c784b405760e5a52c9fa1c2544a6643133f0bdc0f4096ca9e100d50355"
+    },
+    {
+      "id": "map001_player_25d/right/walk-07",
+      "direction": "right",
+      "cell": 7,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/right-walk-07.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        1536,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/right-t1.png",
+      "source_sha256": "5ebe2515908cfe9d75434de3274e77e54872b7d0ceed420dcb142553c7bcb55d",
+      "source_rect": [
+        200,
+        632,
+        385,
+        589
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        200.5,
+        597
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          393,
+          597
+        ],
+        "output_bbox": [
+          8,
+          8,
+          393,
+          597
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 260,
+      "source_pose_cell": 2,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          16,
+          1240,
+          1254
+        ],
+        "output_bbox": [
+          200,
+          19,
+          1144,
+          1222
+        ],
+        "removed_low_alpha_pixels": 66910,
+        "removed_small_component_pixels": 1,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "1f43c9318b58da56aaa1ee5d5f86901a4612c6de5d6f0d01252256f18a53c290",
+      "uniform_pose_scale": 0.6791171477079796,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "1cd8aeacf0ecc738f6e32f6e5598752f068414346ed90ea2b70f270f65641dcf"
+    },
+    {
+      "id": "map001_player_25d/right/walk-08",
+      "direction": "right",
+      "cell": 8,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/right-walk-08.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        0,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/right-t2.png",
+      "source_sha256": "1cd21779e975f3cfb0cb6b53dab773abe54c7696a168275346c74ad7844089a2",
+      "source_rect": [
+        239,
+        633,
+        298,
+        589
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        157.0,
+        597
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          306,
+          597
+        ],
+        "output_bbox": [
+          8,
+          8,
+          306,
+          597
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 271,
+      "source_pose_cell": 2,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          25,
+          14,
+          1228,
+          1230
+        ],
+        "output_bbox": [
+          238,
+          16,
+          1172,
+          1223
+        ],
+        "removed_low_alpha_pixels": 44769,
+        "removed_small_component_pixels": 8,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "1b8e5d8733a6f57ec083b0550a71488f2bcce02f1265d22b63c68fc8fda260a1",
+      "uniform_pose_scale": 0.6791171477079796,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "e8bc79861352ff511e85bd306f6db6790e91b486bb4ef2272e016d9ea69cf1f5"
+    },
+    {
+      "id": "map001_player_25d/right/walk-09",
+      "direction": "right",
+      "cell": 9,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/right-walk-09.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        512,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/right-keys.png",
+      "source_sha256": "623833c6ed989afc5ef455ef6f539a6c2245e56c4fa1c17145c6644b41f06702",
+      "source_rect": [
+        790,
+        620,
+        296,
+        608
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        156.0,
+        616
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          304,
+          616
+        ],
+        "output_bbox": [
+          8,
+          8,
+          304,
+          616
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 264,
+      "source_pose_cell": 3,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          13,
+          1234,
+          1238
+        ],
+        "output_bbox": [
+          205,
+          15,
+          1086,
+          1228
+        ],
+        "removed_low_alpha_pixels": 48021,
+        "removed_small_component_pixels": 2,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "0d389d0385fac42d9a690b8cd367a0a5a580fcb237c33c3a50d169eedbc0e111",
+      "uniform_pose_scale": 0.6578947368421053,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "a1125242813b8f3287ce800a736340aac5eec7cf7dd19c81bc0eb3b13c3bd80c"
+    },
+    {
+      "id": "map001_player_25d/right/walk-10",
+      "direction": "right",
+      "cell": 10,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/right-walk-10.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        1024,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/right-t1.png",
+      "source_sha256": "5ebe2515908cfe9d75434de3274e77e54872b7d0ceed420dcb142553c7bcb55d",
+      "source_rect": [
+        787,
+        631,
+        357,
+        591
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        186.5,
+        599
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          365,
+          599
+        ],
+        "output_bbox": [
+          8,
+          8,
+          365,
+          599
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 260,
+      "source_pose_cell": 3,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          16,
+          1240,
+          1254
+        ],
+        "output_bbox": [
+          200,
+          19,
+          1144,
+          1222
+        ],
+        "removed_low_alpha_pixels": 66910,
+        "removed_small_component_pixels": 1,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "0aa0249f5ff0b89a8fe6e858a8dc068127a386a6feabd58d1b8cd79c41ed93b9",
+      "uniform_pose_scale": 0.676818950930626,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "e7233f6294ea4d885c8d2482a918072b041b693ae7a0bfc567a81054bd156879"
+    },
+    {
+      "id": "map001_player_25d/right/walk-11",
+      "direction": "right",
+      "cell": 11,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/right-walk-11.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        1536,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/right-t2.png",
+      "source_sha256": "1cd21779e975f3cfb0cb6b53dab773abe54c7696a168275346c74ad7844089a2",
+      "source_rect": [
+        792,
+        633,
+        380,
+        590
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        198.0,
+        598
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          388,
+          598
+        ],
+        "output_bbox": [
+          8,
+          8,
+          388,
+          598
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 271,
+      "source_pose_cell": 3,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          25,
+          14,
+          1228,
+          1230
+        ],
+        "output_bbox": [
+          238,
+          16,
+          1172,
+          1223
+        ],
+        "removed_low_alpha_pixels": 44769,
+        "removed_small_component_pixels": 8,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "31f2b508103c6cb40450ad4a51fcc3a0c234d47a388971d9db6f202ba022a303",
+      "uniform_pose_scale": 0.6779661016949152,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "4d40d01d556588093b5adcbba4b802b44adfebc461722358cd398966be8d15dd"
+    },
+    {
+      "id": "map001_player_25d/right/idle",
+      "direction": "right",
+      "cell": 12,
+      "action": "idle",
+      "kind": "idle",
+      "file": "frames/right-idle.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        0,
+        1536,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "drafts/right-idle-01.png",
+      "source_sha256": "9d46443b9eeb882460256831d0ee63e7df4e7ee07281a4fec95c8f9891552e08",
+      "source_rect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "resolution_scale": 0.5,
+      "source_anchor": [
+        315.5,
+        610
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          29,
+          17,
+          617,
+          614
+        ],
+        "output_bbox": [
+          192,
+          19,
+          439,
+          610
+        ],
+        "removed_low_alpha_pixels": 4540,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 247,
+      "source_pose_cell": null,
+      "sheet_alpha_cleanup": null,
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "266582daec681087b2f45a7ba0a71dcf25eb96c6099928272ccddd261d31a856",
+      "uniform_pose_scale": 0.676818950930626,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "6ec47dda178057fd7cae9387665e8f5e1230a1bde4963407a90dc6c5b93cc3f5"
+    },
+    {
+      "id": "map001_player_25d/up/walk-00",
+      "direction": "up",
+      "cell": 0,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/up-walk-00.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/up-keys.png",
+      "source_sha256": "d5c53e886f8f1804e405358859ca2e9709caf29e2544ef68f40ae311be11bff5",
+      "source_rect": [
+        272,
+        41,
+        258,
+        568
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        137.0,
+        576
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          266,
+          576
+        ],
+        "output_bbox": [
+          8,
+          8,
+          266,
+          576
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 258,
+      "source_pose_cell": 0,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          17,
+          31,
+          1234,
+          1254
+        ],
+        "output_bbox": [
+          270,
+          41,
+          1003,
+          1207
+        ],
+        "removed_low_alpha_pixels": 48292,
+        "removed_small_component_pixels": 2,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "02e6cbed32a14b73351fe1b71a4805fa4ad2ba167c89062e4800af56135b84ba",
+      "uniform_pose_scale": 0.704225352112676,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "a4b08843deac2ac12958157316b48deb3da4b07e29bfab42c19979c7385cc757"
+    },
+    {
+      "id": "map001_player_25d/up/walk-01",
+      "direction": "up",
+      "cell": 1,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/up-walk-01.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/up-t2.png",
+      "source_sha256": "a523e6b9227843510d4d8ce068af7e90ce0608ac66411e38e5f11a1b6b2300f7",
+      "source_rect": [
+        768,
+        36,
+        260,
+        558
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        138.0,
+        566
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          268,
+          566
+        ],
+        "output_bbox": [
+          8,
+          8,
+          268,
+          566
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 260,
+      "source_pose_cell": 1,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          27,
+          17,
+          1234,
+          1254
+        ],
+        "output_bbox": [
+          284,
+          36,
+          1028,
+          1202
+        ],
+        "removed_low_alpha_pixels": 57630,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "18f4de57c1f6a8f0e3556b327748aaa1780b348288d554cfc87ec02d22a06a4c",
+      "uniform_pose_scale": 0.7168458781362007,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "dedd90599ff5440c9afb33406e5800d121d51fc6be17af08dcb20b931077c8b2"
+    },
+    {
+      "id": "map001_player_25d/up/walk-02",
+      "direction": "up",
+      "cell": 2,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/up-walk-02.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/up-t2.png",
+      "source_sha256": "a523e6b9227843510d4d8ce068af7e90ce0608ac66411e38e5f11a1b6b2300f7",
+      "source_rect": [
+        287,
+        635,
+        263,
+        549
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        139.5,
+        557
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          271,
+          557
+        ],
+        "output_bbox": [
+          8,
+          8,
+          271,
+          557
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 263,
+      "source_pose_cell": 2,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          27,
+          17,
+          1234,
+          1254
+        ],
+        "output_bbox": [
+          284,
+          36,
+          1028,
+          1202
+        ],
+        "removed_low_alpha_pixels": 57630,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "38fde9ba73456429921557d1ff6235c8ec1ac7c5f11331d2485b965fb3d98762",
+      "uniform_pose_scale": 0.7285974499089253,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "75a5b85f78f51fa69430bd8c776fcfa0f11c20bc9ce50cbf23aee7cdfc556885"
+    },
+    {
+      "id": "map001_player_25d/up/walk-03",
+      "direction": "up",
+      "cell": 3,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/up-walk-03.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        1536,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/up-keys.png",
+      "source_sha256": "d5c53e886f8f1804e405358859ca2e9709caf29e2544ef68f40ae311be11bff5",
+      "source_rect": [
+        745,
+        638,
+        258,
+        564
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        137.0,
+        572
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          266,
+          572
+        ],
+        "output_bbox": [
+          8,
+          8,
+          266,
+          572
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 256,
+      "source_pose_cell": 3,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          17,
+          31,
+          1234,
+          1254
+        ],
+        "output_bbox": [
+          270,
+          41,
+          1003,
+          1207
+        ],
+        "removed_low_alpha_pixels": 48292,
+        "removed_small_component_pixels": 2,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "032444c786022a4bb21b8762842fdc0ad9453ae41acc86f58bafc0a08613bbbe",
+      "uniform_pose_scale": 0.7092198581560284,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "9448f3844c7ee62e086542bd359dad1ade64ef2f5067048e9edaef4388ecc764"
+    },
+    {
+      "id": "map001_player_25d/up/walk-04",
+      "direction": "up",
+      "cell": 4,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/up-walk-04.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/up-t1.png",
+      "source_sha256": "aa034394291c3029bcb315145f70af6c997b9262aeb40fbafd8d5f087dd5dfe5",
+      "source_rect": [
+        746,
+        644,
+        259,
+        550
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        137.5,
+        558
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          267,
+          558
+        ],
+        "output_bbox": [
+          8,
+          8,
+          267,
+          558
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 259,
+      "source_pose_cell": 3,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          19,
+          1208,
+          1254
+        ],
+        "output_bbox": [
+          271,
+          48,
+          1005,
+          1198
+        ],
+        "removed_low_alpha_pixels": 45512,
+        "removed_small_component_pixels": 8,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "217b3f08b15b4d851b3193ba5089d856a378bba12d27c6596f498c892b78ce97",
+      "uniform_pose_scale": 0.7272727272727273,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "dfaa9c26eb3cc21573c6b887fab174fd263a4639bf96496cc86bf67eac6ff27a"
+    },
+    {
+      "id": "map001_player_25d/up/walk-05",
+      "direction": "up",
+      "cell": 5,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/up-walk-05.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/up-t1.png",
+      "source_sha256": "aa034394291c3029bcb315145f70af6c997b9262aeb40fbafd8d5f087dd5dfe5",
+      "source_rect": [
+        271,
+        647,
+        262,
+        551
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        139.0,
+        559
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          270,
+          559
+        ],
+        "output_bbox": [
+          8,
+          8,
+          270,
+          559
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 258,
+      "source_pose_cell": 2,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          19,
+          1208,
+          1254
+        ],
+        "output_bbox": [
+          271,
+          48,
+          1005,
+          1198
+        ],
+        "removed_low_alpha_pixels": 45512,
+        "removed_small_component_pixels": 8,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "80c4030cff5fdaaf0f6119c3980f8b103582053212f8b98b5ca1ae2bc686c4d5",
+      "uniform_pose_scale": 0.7259528130671506,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "95016696b659bfc689d8908b1da31f5b712d0cd8177656045d3420fb82d888bf"
+    },
+    {
+      "id": "map001_player_25d/up/walk-06",
+      "direction": "up",
+      "cell": 6,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/up-walk-06.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/up-keys.png",
+      "source_sha256": "d5c53e886f8f1804e405358859ca2e9709caf29e2544ef68f40ae311be11bff5",
+      "source_rect": [
+        270,
+        637,
+        260,
+        570
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        138.0,
+        578
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          268,
+          578
+        ],
+        "output_bbox": [
+          8,
+          8,
+          268,
+          578
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 256,
+      "source_pose_cell": 2,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          17,
+          31,
+          1234,
+          1254
+        ],
+        "output_bbox": [
+          270,
+          41,
+          1003,
+          1207
+        ],
+        "removed_low_alpha_pixels": 48292,
+        "removed_small_component_pixels": 2,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "0e7573292aefb62ca8db93a083ac04ff568502ded010b019da67b5f65e463ac3",
+      "uniform_pose_scale": 0.7017543859649122,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "589ba7e9ad0cda4c63fcd8e0620efc4cf16b60a86099f5f32e3f7ee4471c0559"
+    },
+    {
+      "id": "map001_player_25d/up/walk-07",
+      "direction": "up",
+      "cell": 7,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/up-walk-07.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        1536,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/up-t2.png",
+      "source_sha256": "a523e6b9227843510d4d8ce068af7e90ce0608ac66411e38e5f11a1b6b2300f7",
+      "source_rect": [
+        765,
+        635,
+        263,
+        567
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        139.5,
+        575
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          271,
+          575
+        ],
+        "output_bbox": [
+          8,
+          8,
+          271,
+          575
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 263,
+      "source_pose_cell": 3,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          27,
+          17,
+          1234,
+          1254
+        ],
+        "output_bbox": [
+          284,
+          36,
+          1028,
+          1202
+        ],
+        "removed_low_alpha_pixels": 57630,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "465b6badc019d479e9553883b413d2605f03c6fa188629bf2ab8078bf303c49f",
+      "uniform_pose_scale": 0.7054673721340388,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "3be9903b64131498e92f4737e4cba3cc422877bf9a412c17cae5db18e69d1ab9"
+    },
+    {
+      "id": "map001_player_25d/up/walk-08",
+      "direction": "up",
+      "cell": 8,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/up-walk-08.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        0,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/up-t1.png",
+      "source_sha256": "aa034394291c3029bcb315145f70af6c997b9262aeb40fbafd8d5f087dd5dfe5",
+      "source_rect": [
+        747,
+        48,
+        256,
+        559
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        136.0,
+        567
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          264,
+          567
+        ],
+        "output_bbox": [
+          8,
+          8,
+          264,
+          567
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 256,
+      "source_pose_cell": 1,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          19,
+          1208,
+          1254
+        ],
+        "output_bbox": [
+          271,
+          48,
+          1005,
+          1198
+        ],
+        "removed_low_alpha_pixels": 45512,
+        "removed_small_component_pixels": 8,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "067a45320bf6ef82824c8d4879366c2fe914e88ae250466e42bbbd37b90cba49",
+      "uniform_pose_scale": 0.7155635062611807,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "9e7655d89560867aa3313f091e063380c37ed39b8e2be55c9dead09f0e8c171f"
+    },
+    {
+      "id": "map001_player_25d/up/walk-09",
+      "direction": "up",
+      "cell": 9,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/up-walk-09.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        512,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/up-keys.png",
+      "source_sha256": "d5c53e886f8f1804e405358859ca2e9709caf29e2544ef68f40ae311be11bff5",
+      "source_rect": [
+        748,
+        47,
+        254,
+        558
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        135.0,
+        566
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          262,
+          566
+        ],
+        "output_bbox": [
+          8,
+          8,
+          262,
+          566
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 254,
+      "source_pose_cell": 1,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          17,
+          31,
+          1234,
+          1254
+        ],
+        "output_bbox": [
+          270,
+          41,
+          1003,
+          1207
+        ],
+        "removed_low_alpha_pixels": 48292,
+        "removed_small_component_pixels": 2,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "06d8a6a89f8c9b6f5ad6697eeee290ed2d92885f066d2ba25f0ad32905ea35c8",
+      "uniform_pose_scale": 0.7168458781362007,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "7e9229270fb259ebaaca6bbb3bfd9f45b442f2476cf0403162d5e0628c72f9ea"
+    },
+    {
+      "id": "map001_player_25d/up/walk-10",
+      "direction": "up",
+      "cell": 10,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/up-walk-10.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        1024,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/up-t2.png",
+      "source_sha256": "a523e6b9227843510d4d8ce068af7e90ce0608ac66411e38e5f11a1b6b2300f7",
+      "source_rect": [
+        284,
+        37,
+        265,
+        558
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        140.5,
+        566
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          273,
+          566
+        ],
+        "output_bbox": [
+          8,
+          8,
+          273,
+          566
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 262,
+      "source_pose_cell": 0,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          27,
+          17,
+          1234,
+          1254
+        ],
+        "output_bbox": [
+          284,
+          36,
+          1028,
+          1202
+        ],
+        "removed_low_alpha_pixels": 57630,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "314e17d9af2ad8c89a8b7cf13a1c8456e2bcf92ab15d942751570c84a0e2e867",
+      "uniform_pose_scale": 0.7168458781362007,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "3a3678cf024dc49551c64629ad458d6968666273bd96716eefbba3f5c325d174"
+    },
+    {
+      "id": "map001_player_25d/up/walk-11",
+      "direction": "up",
+      "cell": 11,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/up-walk-11.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        1536,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "animation-sources/up-t1.png",
+      "source_sha256": "aa034394291c3029bcb315145f70af6c997b9262aeb40fbafd8d5f087dd5dfe5",
+      "source_rect": [
+        276,
+        48,
+        257,
+        548
+      ],
+      "resolution_scale": 1.0,
+      "source_anchor": [
+        136.5,
+        556
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          8,
+          8,
+          265,
+          556
+        ],
+        "output_bbox": [
+          8,
+          8,
+          265,
+          556
+        ],
+        "removed_low_alpha_pixels": 0,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 257,
+      "source_pose_cell": 0,
+      "sheet_alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          19,
+          1208,
+          1254
+        ],
+        "output_bbox": [
+          271,
+          48,
+          1005,
+          1198
+        ],
+        "removed_low_alpha_pixels": 45512,
+        "removed_small_component_pixels": 8,
+        "rgb_unchanged": true
+      },
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "388cb6a1428acab101501a1c1276fda4c0c53e5ba0139d907ce9c0733a55dc90",
+      "uniform_pose_scale": 0.7299270072992701,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "985639771211b1a210649f66c67be1ee761a1615b02d5a1c0ba28f92baf550dc"
+    },
+    {
+      "id": "map001_player_25d/up/idle",
+      "direction": "up",
+      "cell": 12,
+      "action": "idle",
+      "kind": "idle",
+      "file": "frames/up-idle.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        0,
+        1536,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "source_file": "drafts/up-idle-01.png",
+      "source_sha256": "307c140bfb685c3b4c810963e7472a09b0b138b067c36363df23c545f2f193cc",
+      "source_rect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "resolution_scale": 0.5,
+      "source_anchor": [
+        321.5,
+        589
+      ],
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          25,
+          26,
+          597,
+          607
+        ],
+        "output_bbox": [
+          195,
+          31,
+          448,
+          589
+        ],
+        "removed_low_alpha_pixels": 5508,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "head_width": 248,
+      "source_pose_cell": null,
+      "sheet_alpha_cleanup": null,
+      "anchor_reviewed": false,
+      "canonical_pose_sha256": "1b6145a16ac0d6d75e7313e3966355ed544061a54f6ed99d5aedece226b175c6",
+      "uniform_pose_scale": 0.7168458781362007,
+      "registration": "Whole-pose uniform scale to 36 world units, bbox-center ground anchor; no anatomical warp",
+      "display_scale": 0.09,
+      "sha256_rgba": "d7077eef776745c5f34b46aabdd211bcbf16fa35ce783b5d8ffdd9565f93e52a"
+    }
+  ],
+  "files": {
+    "atlases/down.png": {
+      "sha256": "93eae08a2e6b0dafc38f87908a1a712f4f63b063c49f2418fb3667511cb1bfd8",
+      "bytes": 1895004
+    },
+    "atlases/left.png": {
+      "sha256": "1625f96d89334bfad7f883ab60056c9b8485632faa6c7914791e61f08a95abb4",
+      "bytes": 1881449
+    },
+    "atlases/right.png": {
+      "sha256": "4604e0419d07750bc839357e712874a91f43e3672b86d63e8f405f89974a482f",
+      "bytes": 1791004
+    },
+    "atlases/up.png": {
+      "sha256": "8537558d5cf3220e567dbc9b3314545aabde4577d7d29b2997d7d5b9c7d7d58d",
+      "bytes": 1713331
+    },
+    "frames/down-idle.png": {
+      "sha256": "3627336f79e26066f0f096208c49b6138c655cc61497260bee1a8cc50bbc270b",
+      "bytes": 149581
+    },
+    "frames/down-walk-00.png": {
+      "sha256": "a028e1daf467651a7fb6be112b1d24df8fe95bbdd2e199b64e80d936a03c7080",
+      "bytes": 140339
+    },
+    "frames/down-walk-01.png": {
+      "sha256": "c8ccdd1a63322e698a6fa2e6186595895b41187167d79d97c0d379a928c8737e",
+      "bytes": 152488
+    },
+    "frames/down-walk-02.png": {
+      "sha256": "9cc3a0951a6395c43950b277611052d5106f1eec367df4ef3e8b7fa9701a6a89",
+      "bytes": 141235
+    },
+    "frames/down-walk-03.png": {
+      "sha256": "b72209add2b0ec0e8b5177332dbeae3ae4847d04465e132d13caa2ce26b05b7b",
+      "bytes": 137700
+    },
+    "frames/down-walk-04.png": {
+      "sha256": "3de6d3e4bdd49bb821b3305a8ecd4ff83f86cc8752623ec7e078bc1d6d703adf",
+      "bytes": 154165
+    },
+    "frames/down-walk-05.png": {
+      "sha256": "225298502af63b4f4e80630bf3f3c91d80a57bba3d38afb48e0975025550a7a4",
+      "bytes": 149875
+    },
+    "frames/down-walk-06.png": {
+      "sha256": "483941fa1099f55b9610a1b11cb1ee4740ab78571d4035e936b3e0fd0ea7beb1",
+      "bytes": 139717
+    },
+    "frames/down-walk-07.png": {
+      "sha256": "51496585d3063120e82d731887c7f1c7bce04906f78cd8a2769d76cac07f2646",
+      "bytes": 149081
+    },
+    "frames/down-walk-08.png": {
+      "sha256": "e559643423d4f7c38227a9eb614b1d8521bdcc9aafee8a1696075198fe4e6213",
+      "bytes": 150190
+    },
+    "frames/down-walk-09.png": {
+      "sha256": "8e713356f9da3e26715f543702489b013d677cef298017aee6040a3f33edc5b5",
+      "bytes": 137946
+    },
+    "frames/down-walk-10.png": {
+      "sha256": "e39565c385a95df4ccad7127c48ab7c6069446fa7f00e71645545be6702e5ba8",
+      "bytes": 153565
+    },
+    "frames/down-walk-11.png": {
+      "sha256": "1c97f1074f15aa7ad2f890e60080019a1f77b24b338d80b0b40cf71bb73c91aa",
+      "bytes": 144727
+    },
+    "frames/left-idle.png": {
+      "sha256": "bfd5039009eed498e9a106a71603547ceb312521a890bc0c9539565f429b1284",
+      "bytes": 116139
+    },
+    "frames/left-walk-00.png": {
+      "sha256": "af6e88d5120a566a19a90b9b0a0d3d7cab1e98342af60ec36d125ae721cc170c",
+      "bytes": 146996
+    },
+    "frames/left-walk-01.png": {
+      "sha256": "654ed67de88d91ef9d11f15a5c9416aecd44f8095d3d5cab76476cdbde5e3ac7",
+      "bytes": 155001
+    },
+    "frames/left-walk-02.png": {
+      "sha256": "7deaff67a55b7e02b8ad29ef2feb4a7d8ad3fe431c5f48520d8f16d2f07e3100",
+      "bytes": 148285
+    },
+    "frames/left-walk-03.png": {
+      "sha256": "4c4c54460778b5fb62e63ab9758b7e5a3d18c975e407989c16968d474d1cdb8c",
+      "bytes": 128156
+    },
+    "frames/left-walk-04.png": {
+      "sha256": "72929d176aa2c80306c4efbbc73d51e0f0cf3d37ccc2977257d50e85cac1b8b2",
+      "bytes": 148375
+    },
+    "frames/left-walk-05.png": {
+      "sha256": "c158769131cff6eefe9d21643256420997614f7aa5b1c7d18a8d4c65faae4b99",
+      "bytes": 155757
+    },
+    "frames/left-walk-06.png": {
+      "sha256": "ab8053b061cad1e4b4baa805992adb587861f2c90ecf03de1733ad88664aaf02",
+      "bytes": 145587
+    },
+    "frames/left-walk-07.png": {
+      "sha256": "7a066ddec4c8217062965216203b10271b93ad7de92ac74436bb3aa3fe21dee2",
+      "bytes": 161648
+    },
+    "frames/left-walk-08.png": {
+      "sha256": "c0f81a037e5a59fe7e7e513679a25ca734c23f773ffc6ee0ff9b776351acf5b1",
+      "bytes": 143608
+    },
+    "frames/left-walk-09.png": {
+      "sha256": "67d0badf9bbcefdcbb9c6dd19d79fdac4dec08ecae810f539b7065a72c40d2a9",
+      "bytes": 130527
+    },
+    "frames/left-walk-10.png": {
+      "sha256": "e5efd44b75ce50ed3c109457297e5c8416c1c953bb8b3a558abce8862296a800",
+      "bytes": 153204
+    },
+    "frames/left-walk-11.png": {
+      "sha256": "478d9b1027ecdba42f91d6b2cb4c5a0fd76cd5a72f1ca38d44e16b71618f6a2c",
+      "bytes": 152408
+    },
+    "frames/right-idle.png": {
+      "sha256": "b901c471db00035900988a5441042553611299e7d7945a894e4cd0cb9075603f",
+      "bytes": 115600
+    },
+    "frames/right-walk-00.png": {
+      "sha256": "a2ddfd3343bc39f4bfa9da42b63d23ca6db055f87db568b0ad95c3bbadd73730",
+      "bytes": 145315
+    },
+    "frames/right-walk-01.png": {
+      "sha256": "fe976a5f04e5edd51494bb311148d0a382a119f42c41449abb760214d51f87fc",
+      "bytes": 140744
+    },
+    "frames/right-walk-02.png": {
+      "sha256": "80c521bf4854a791efd81c1beba2e65c06567534829797216b510d09277c7522",
+      "bytes": 135551
+    },
+    "frames/right-walk-03.png": {
+      "sha256": "9d4b1550921e0d2d3d5fedb274a72663098c18272780a8cee5316043f1909067",
+      "bytes": 129148
+    },
+    "frames/right-walk-04.png": {
+      "sha256": "94b6711c07e67fc7b5dccffe8f1b984a10823de0656fad136742834a9b7ae568",
+      "bytes": 139931
+    },
+    "frames/right-walk-05.png": {
+      "sha256": "6cade75fcf68ff17fb615d7f3906b0c2e93eb2a34416a2f2b44b57b3e7505d22",
+      "bytes": 144813
+    },
+    "frames/right-walk-06.png": {
+      "sha256": "c67672e3c5cf86f7ce1ed10072cffd404f606b336d76763a97a12b16c24a758f",
+      "bytes": 141762
+    },
+    "frames/right-walk-07.png": {
+      "sha256": "23eac3eb74e4dccc4b506f9ed3017d1fe53e695a44a652ae0fbf3810d11f0b0e",
+      "bytes": 144896
+    },
+    "frames/right-walk-08.png": {
+      "sha256": "d4d3c500d676b04b1d154db99c9dd0b98b6d3276c5cbbfb8a03f1ee0d6be76ef",
+      "bytes": 143734
+    },
+    "frames/right-walk-09.png": {
+      "sha256": "c01ec0ef5ea4c62be494ba4707b555a6a2c3a4e8e729ec88e4478a48f85b929f",
+      "bytes": 130068
+    },
+    "frames/right-walk-10.png": {
+      "sha256": "b566ecf742703f8318cdbe038e30085b812069cd9fc91854c001fd09e7d4da92",
+      "bytes": 141427
+    },
+    "frames/right-walk-11.png": {
+      "sha256": "a266ffbe2d7d324f093f75d92652c128c53497c79655e185a52f67bdb08d3038",
+      "bytes": 146713
+    },
+    "frames/up-idle.png": {
+      "sha256": "e003492e7ac67b824b6c5413015119553601d352a90208f6cd8c8e695e43fbd6",
+      "bytes": 142631
+    },
+    "frames/up-walk-00.png": {
+      "sha256": "d77089aa974e14da76370757569b1e3b13e682ff835f6795e302a0ccb698a6d9",
+      "bytes": 127621
+    },
+    "frames/up-walk-01.png": {
+      "sha256": "ec444ebb28db92dde81d66f25722b9fc36197c4a8c5811d56a4b8e9f6e76acaf",
+      "bytes": 129821
+    },
+    "frames/up-walk-02.png": {
+      "sha256": "3be0b1d63210402c34d19d39e086f2fcec89ceb2cc18af55eb0bf2f71784c42a",
+      "bytes": 138031
+    },
+    "frames/up-walk-03.png": {
+      "sha256": "a7b34c24c101257365edbdc28d67190d8795fa1a6714d2e1d6d5b9f3d1237f17",
+      "bytes": 132107
+    },
+    "frames/up-walk-04.png": {
+      "sha256": "878140b7a0dc69fe1be02f0375c077ab04df8ef814d5374bc754a239476fb311",
+      "bytes": 135419
+    },
+    "frames/up-walk-05.png": {
+      "sha256": "f9e4882a552d9534c5877f7e2a8c9c63dc8e6f505a4577baa3d76c9dfb7fce62",
+      "bytes": 134596
+    },
+    "frames/up-walk-06.png": {
+      "sha256": "e52ec609cc0e006f77f9f5e11044ca1e72218ce807dda0c919969134f355bf1f",
+      "bytes": 125675
+    },
+    "frames/up-walk-07.png": {
+      "sha256": "66fc1d68237c3727f6a67968c00ed4f6b156d7c4900112f3334987aa07622f0a",
+      "bytes": 128596
+    },
+    "frames/up-walk-08.png": {
+      "sha256": "cda92586259236f96833b99bf292d60774fee68b170e93ec537aa5fdb0928396",
+      "bytes": 127825
+    },
+    "frames/up-walk-09.png": {
+      "sha256": "51ec991244abcdec578a42226b43be8ca914c9afea73107841eb8f26ffda59b0",
+      "bytes": 127865
+    },
+    "frames/up-walk-10.png": {
+      "sha256": "106114c935f6c77504e2006f6dc422fd99d24e20e96340cfe53ff757ab592643",
+      "bytes": 135613
+    },
+    "frames/up-walk-11.png": {
+      "sha256": "d4c4ee20f6ddce5c52da498d2b31bffd6d9793b2c4d9edc5bd8cf3d570fa26ba",
+      "bytes": 134578
+    },
+    "previews/down-contact.png": {
+      "sha256": "13d59f45753c4c32647ab5313b4fcc91471f7a0ddcfa437a24e80079984a4c5a",
+      "bytes": 515137
+    },
+    "previews/down-walk.gif": {
+      "sha256": "3621b4ea3ab68ba5926c5f61f344733ed12cdb9b5630074a09c36fdf26db28a1",
+      "bytes": 575869
+    },
+    "previews/left-contact.png": {
+      "sha256": "d572476d1923eb36bfdf3e4268ae35ad85e545804289e96202207182ab1eb075",
+      "bytes": 508908
+    },
+    "previews/left-walk.gif": {
+      "sha256": "fd868a4c1f0324f1ad799c6e1cb4ba5fe223d04ab4dcf68e367dcfd597888ae7",
+      "bytes": 566162
+    },
+    "previews/right-contact.png": {
+      "sha256": "d16dfb098280ed067b9b4b1abcbdc66a5e28a1403f4f5ed26f6f1e6fe3c72a8b",
+      "bytes": 487329
+    },
+    "previews/right-walk.gif": {
+      "sha256": "ec61cf492e94cb9dfad87c5957820c26dc9963bc29a956d23c60c77859e3f40f",
+      "bytes": 552231
+    },
+    "previews/up-contact.png": {
+      "sha256": "37527bda9d8a71447a2af6ab95a84ac12b4bc790ea332bf9f6dc33b1169515f6",
+      "bytes": 463053
+    },
+    "previews/up-walk.gif": {
+      "sha256": "f383a9a97035402f3e4ae997aab1e0956c68ee8fdd2418cc09337550b3bb94de",
+      "bytes": 509412
+    }
+  }
+}

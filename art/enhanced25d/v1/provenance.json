@@ -3,7 +3,7 @@
   "baseline_commit": "a7bb126f848a37f60dea3806142bb9156e3ce007",
   "reference_thread": "01a19176-d65b-76f3-afe9-a7b9f1ff8a01",
   "tool": "built-in imagegen",
-  "status": "V1 registration and V2 direction drafts; not runtime approved",
+  "status": "V2 user approval recorded; V3 52 poses prepared; V4 functional comparisons passed; V5 not delivered",
   "files": [
     {
       "file": "references/approved-character.png",
@@ -29,7 +29,7 @@
       "sha256": "fad12291864b8d09d19299f8aea6260d2e2783c9c246520d253223c9898f4546",
       "prompt_file": "drafts/down-idle-01.prompt.txt",
       "prompt_sha256": "6f60bc8dc089c9c9cdb0fda5868090508f3cd98a80a71ea729e63c54e50fa3d0",
-      "status": "draft_pending_review"
+      "status": "direction_identity_approved"
     },
     {
       "file": "drafts/bed-01.png",
@@ -53,7 +53,7 @@
       "sha256": "589b0c406598d401be484a80c9dac6cc8e2259a37fc361e8249515a125ee952c",
       "prompt_file": "drafts/left-idle-01.prompt.txt",
       "prompt_sha256": "37e36e1f41f67717e03817a0a4f827b3aa66f72defc3e6fa6b322b12a058ef42",
-      "status": "draft_pending_review"
+      "status": "direction_identity_approved"
     },
     {
       "file": "drafts/right-idle-01.png",
@@ -61,7 +61,7 @@
       "sha256": "9d46443b9eeb882460256831d0ee63e7df4e7ee07281a4fec95c8f9891552e08",
       "prompt_file": "drafts/right-idle-01.prompt.txt",
       "prompt_sha256": "3f81d8278fa9ee8b06ec4bed1e410b8dde54ecc7748221a4082e944734a6fea6",
-      "status": "draft_pending_review"
+      "status": "direction_identity_approved"
     },
     {
       "file": "drafts/room-shell-01.png",
@@ -101,10 +101,124 @@
       "sha256": "307c140bfb685c3b4c810963e7472a09b0b138b067c36363df23c545f2f193cc",
       "prompt_file": "drafts/up-idle-01.prompt.txt",
       "prompt_sha256": "10afc312e8a5cc2320f34432c517ad3f69440729bc7a532e8f2635a265b6ed26",
-      "status": "draft_pending_review"
+      "status": "direction_identity_approved"
+    },
+    {
+      "file": "animation-sources/down-keys.png",
+      "sha256": "b767cdff7d17c57114164c1ce4659b1c563e270ae061f9125eeb92ae97e0745c",
+      "prompt_file": "animation-sources/down-keys.prompt.txt",
+      "prompt_sha256": "16aa78dd6c373ef036e7ee6e1b4ae7481f4d3ff02e9d45ecd2e5cdb2bfa9057b",
+      "status": "generated_candidate"
+    },
+    {
+      "file": "animation-sources/down-t1.png",
+      "sha256": "95a8d9f679f29ca28c47413a045e418773b81ef07e57ffd9904728bd5f58922d",
+      "prompt_file": "animation-sources/down-t1.prompt.txt",
+      "prompt_sha256": "1781bbbc30baa62da61b14af287a6ff2d3fa8e16e85e01e412b4cc43eda73fec",
+      "status": "generated_candidate"
+    },
+    {
+      "file": "animation-sources/down-t2.png",
+      "sha256": "506809e92c219fc68583f001924da356620515e6851e9ebb382e52f2f988fa81",
+      "prompt_file": "animation-sources/down-t2.prompt.txt",
+      "prompt_sha256": "52ef2f7c8d0dcc52d7f46c7c76e2ef93c91f91f710ef74da502d3099f7c7b201",
+      "status": "generated_candidate"
+    },
+    {
+      "file": "animation-sources/left-keys.png",
+      "sha256": "a2b42c4fd214137a0249d01d0ad0576f815ba4098dd76469b85b13f8035ca013",
+      "prompt_file": "animation-sources/left-keys.prompt.txt",
+      "prompt_sha256": "f9e102e8d1bc3b0f1d203b7377961c7def6914ce805944939e3067d7ad0b3eb7",
+      "status": "generated_candidate"
+    },
+    {
+      "file": "animation-sources/left-t1.png",
+      "sha256": "dc2bb669b5cfa52e7513a1a9892457d3eabdaab4cc579c2be8c0beb0a98024d6",
+      "prompt_file": "animation-sources/left-t1.prompt.txt",
+      "prompt_sha256": "818284190a171fdec098c741f2dc128abdfac372362aefc71b82f8cd9197bb55",
+      "status": "generated_candidate"
+    },
+    {
+      "file": "animation-sources/left-t2.png",
+      "sha256": "59b365ffb125293667cae4b57c2e55c62dadeaa2538af67cd1116903a79c014f",
+      "prompt_file": "animation-sources/left-t2.prompt.txt",
+      "prompt_sha256": "99ec9c34978a76b950796c375703648e409644a0a667904c822bacb5535c438a",
+      "status": "generated_candidate"
+    },
+    {
+      "file": "animation-sources/right-keys.png",
+      "sha256": "623833c6ed989afc5ef455ef6f539a6c2245e56c4fa1c17145c6644b41f06702",
+      "prompt_file": "animation-sources/right-keys.prompt.txt",
+      "prompt_sha256": "fbd21fdab5085bcc59d99334622cc11c563c406982804de36215e5faa7188455",
+      "status": "generated_candidate"
+    },
+    {
+      "file": "animation-sources/right-t1.png",
+      "sha256": "5ebe2515908cfe9d75434de3274e77e54872b7d0ceed420dcb142553c7bcb55d",
+      "prompt_file": "animation-sources/right-t1.prompt.txt",
+      "prompt_sha256": "f337dc00fb4e01ed89e3c533a0d996393866040e4487c4cffbe72d5f477ef6a8",
+      "status": "generated_candidate"
+    },
+    {
+      "file": "animation-sources/right-t2.png",
+      "sha256": "1cd21779e975f3cfb0cb6b53dab773abe54c7696a168275346c74ad7844089a2",
+      "prompt_file": "animation-sources/right-t2.prompt.txt",
+      "prompt_sha256": "3586937b6d30ee5e3cc8709432a962c365e834b8adac357b6ea3acf03343b18b",
+      "status": "generated_candidate"
+    },
+    {
+      "file": "animation-sources/up-keys.png",
+      "sha256": "d5c53e886f8f1804e405358859ca2e9709caf29e2544ef68f40ae311be11bff5",
+      "prompt_file": "animation-sources/up-keys.prompt.txt",
+      "prompt_sha256": "fcff7c00bb3fc3fd9e75a5cc42c82b5db9272f36a078b3f9420461cec59e126e",
+      "status": "generated_candidate"
+    },
+    {
+      "file": "animation-sources/up-t1.png",
+      "sha256": "aa034394291c3029bcb315145f70af6c997b9262aeb40fbafd8d5f087dd5dfe5",
+      "prompt_file": "animation-sources/up-t1.prompt.txt",
+      "prompt_sha256": "392d566d8b32b371d142dba1f2350544b1f84e89fc4b670461effdd1d65f6fd7",
+      "status": "generated_candidate"
+    },
+    {
+      "file": "animation-sources/up-t2.png",
+      "sha256": "a523e6b9227843510d4d8ce068af7e90ce0608ac66411e38e5f11a1b6b2300f7",
+      "prompt_file": "animation-sources/up-t2.prompt.txt",
+      "prompt_sha256": "e5e6eacd16d859ee5bec2fa8047a01e1236be16ad9ae54831654b5152d14294c",
+      "status": "generated_candidate"
+    },
+    {
+      "file": "drafts/cirrus-46.png",
+      "sha256": "ad6e392ec97c8148aeb38b3182b52e899a5b14a5886395ed9285a9b8f47ff380",
+      "prompt_file": "drafts/cirrus-46.prompt.txt",
+      "prompt_sha256": "3fbfc7f6a5c82adeb25ff44ed159a34ed372f001aad5b434b65e7b6b3ea13ffe",
+      "status": "generated_candidate"
+    },
+    {
+      "file": "drafts/stool-01.png",
+      "sha256": "a097ff14e1465040b502fd6db551c3fc814fa595499e400a74cf94f5a56fd493",
+      "prompt_file": "drafts/stool-01.prompt.txt",
+      "prompt_sha256": "9acbaa74c20d41f55b7efe959c499c581b45806b7665ae5246b7ffc891474760",
+      "status": "generated_candidate"
+    },
+    {
+      "file": "drafts/table-prop-04.png",
+      "sha256": "bd555159362ebde7d24d65a27aa0691fbe3c05a277b8f52e67369902f3f33887",
+      "prompt_file": "drafts/table-prop-04.prompt.txt",
+      "prompt_sha256": "1c92db2bb7eb9fa8e5e37315c1b4b1fb3e0efb90d77225c616469468967e0baf",
+      "status": "generated_candidate"
+    },
+    {
+      "file": "drafts/table-prop-05.png",
+      "sha256": "b2e3d219b5e6bf4a0023fe239def54e92654ef3490233a890bffa2b2b69f2e6c",
+      "prompt_file": "drafts/table-prop-05.prompt.txt",
+      "prompt_sha256": "f7cfb71a93fd39f9c93b1d4509e02632030ab233f1225ee21aa8c141e41a4312",
+      "status": "generated_candidate"
     }
   ],
-  "four_direction_approval": "pending",
+  "four_direction_approval": "approved",
   "runtime_approved": false,
-  "performance_tested": false
+  "performance_tested": false,
+  "approval_record": "approval.json",
+  "animation_candidate": "animation-candidate-03/animation.json"
 }
