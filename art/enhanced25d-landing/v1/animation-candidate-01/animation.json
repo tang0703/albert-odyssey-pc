@@ -1,0 +1,3401 @@
+{
+  "schema": "ao_pc_landing25d_animation_v1",
+  "approved": false,
+  "runtime_ready": false,
+  "approval_sha256": "93c6a5059db2d1732027c91c72c809d939e0c57e06b052f220214065d9371aea",
+  "frame_count": 52,
+  "canvas": [
+    512,
+    512
+  ],
+  "phase": {
+    "cycle_updates": 48,
+    "source_pose_updates": 12,
+    "subpose_updates": 4,
+    "driver": "LAIA own selector/cursor/timer"
+  },
+  "sources": {
+    "animation-sources/down-keys.png": {
+      "sha256": "bcc42bd8b42627717b0c910ddacc05ceaa40d765dcb68b7fe2930b6437b6b89d"
+    },
+    "animation-sources/down-t2.png": {
+      "sha256": "cd0ca78ee7745c42d732bff283324161ffd0e14c2080d8a003ae0981eb67eedf"
+    },
+    "animation-sources/down-passing.png": {
+      "sha256": "3ea3b9b4112574459ecff42a7c61574b41a20d69a90a74d6b38b4d584d18be76"
+    },
+    "drafts/laia-down-01.png": {
+      "sha256": "ceb966907f4b538cd830584bc94e1c60e05e792d2b83e8721f7f7baf269c7eb8"
+    },
+    "animation-sources/left-keys.png": {
+      "sha256": "2e7cbd53758a41689f85d16bc55d23af6f3bafbacf697bf173d1ea3f030a977e"
+    },
+    "animation-sources/left-t2.png": {
+      "sha256": "273ac8c35ac06d9b6493535dc194b7f6fae0e08c72863c655226e4d8579d86e4"
+    },
+    "animation-sources/left-passing.png": {
+      "sha256": "08e4852d1f323bdd60e425d1627aeff5ce1bfda69d27165c66448c919afd5032"
+    },
+    "drafts/laia-left-01.png": {
+      "sha256": "040e729d9b1ad374254449db9e8181fb7abfd1f1cffe3cc7b97cccd97bf7f5ee"
+    },
+    "animation-sources/right-keys.png": {
+      "sha256": "eab8767bc459d48493cf3ab12b545f731b8dd0ddc146823b2b0346dd7f4ce4b5"
+    },
+    "animation-sources/right-t2.png": {
+      "sha256": "50829794c661cb7cb21eca18f759b847a370377d5d837560d36317205880bc59"
+    },
+    "animation-sources/right-passing.png": {
+      "sha256": "bbfbb31162c52f11f62a3cb294620f9f43051406408806c2ab47ab8e3476e3c4"
+    },
+    "drafts/laia-right-01.png": {
+      "sha256": "37330f2054d3f1a954033cb36054309ed62693d99852463c37abc334302530c1"
+    },
+    "animation-sources/up-keys.png": {
+      "sha256": "578b756eda45c7d7f4bfe317f57678fc90ad630b9a8a288ac0763c4ea2c7676e"
+    },
+    "animation-sources/up-t2.png": {
+      "sha256": "785f3af46e9a4e0202ddcb02583970e728e22917fe6c0e4b076448de438d2cdd"
+    },
+    "animation-sources/up-passing.png": {
+      "sha256": "c21388353594e96ece7020f462c0df930b249bbf8073fff5d1dff9ad505378bd"
+    },
+    "drafts/laia-up-01.png": {
+      "sha256": "4352384557d1049ca27913c9b2b3e216a51f0aa90c369658a8f31bc63f0a9dc0"
+    }
+  },
+  "frames": [
+    {
+      "id": "laia_25d/down/walk-00",
+      "direction": "down",
+      "cell": 0,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/down-walk-00.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/down-keys.png",
+      "source_sha256": "bcc42bd8b42627717b0c910ddacc05ceaa40d765dcb68b7fe2930b6437b6b89d",
+      "source_rect": [
+        58,
+        40,
+        513,
+        631
+      ],
+      "source_pose_cell": 0,
+      "source_anchor": [
+        260.47094926350246,
+        631
+      ],
+      "uniform_pose_scale": 0.6339144215530903,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          15,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          56,
+          40,
+          1108,
+          1329
+        ],
+        "removed_low_alpha_pixels": 132336,
+        "removed_small_component_pixels": 14,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "1946aee9be985fd7be8efcf2719bb5da4e24c43ef8f46176cbbfd85b033dd3e4",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/down/walk-01",
+      "direction": "down",
+      "cell": 1,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/down-walk-01.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/down-keys.png",
+      "source_sha256": "bcc42bd8b42627717b0c910ddacc05ceaa40d765dcb68b7fe2930b6437b6b89d",
+      "source_rect": [
+        590,
+        42,
+        508,
+        645
+      ],
+      "source_pose_cell": 1,
+      "source_anchor": [
+        257.12561374795416,
+        645
+      ],
+      "uniform_pose_scale": 0.6201550387596899,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          15,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          56,
+          40,
+          1108,
+          1329
+        ],
+        "removed_low_alpha_pixels": 132336,
+        "removed_small_component_pixels": 14,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "198b31dabb5b8fccbed6c5552378a1f52b857258c727dfc2d165357eccda4e45",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/down/walk-02",
+      "direction": "down",
+      "cell": 2,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/down-walk-02.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/down-t2.png",
+      "source_sha256": "cd0ca78ee7745c42d732bff283324161ffd0e14c2080d8a003ae0981eb67eedf",
+      "source_rect": [
+        44,
+        33,
+        533,
+        669
+      ],
+      "source_pose_cell": 0,
+      "source_anchor": [
+        269.3907528641571,
+        669
+      ],
+      "uniform_pose_scale": 0.5979073243647235,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          27,
+          1133,
+          1374
+        ],
+        "output_bbox": [
+          37,
+          33,
+          1124,
+          1357
+        ],
+        "removed_low_alpha_pixels": 74587,
+        "removed_small_component_pixels": 10,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "0c81be4622c09c36f2c72e40db7451862d7fea971b7a6803c0f11116d83065fd",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/down/walk-03",
+      "direction": "down",
+      "cell": 3,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/down-walk-03.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        1536,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/down-passing.png",
+      "source_sha256": "3ea3b9b4112574459ecff42a7c61574b41a20d69a90a74d6b38b4d584d18be76",
+      "source_rect": [
+        52,
+        697,
+        522,
+        632
+      ],
+      "source_pose_cell": 2,
+      "source_anchor": [
+        273.98199672667755,
+        632
+      ],
+      "uniform_pose_scale": 0.6329113924050633,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          21,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          51,
+          34,
+          1100,
+          1329
+        ],
+        "removed_low_alpha_pixels": 80145,
+        "removed_small_component_pixels": 12,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "0b34f436a439340f42d689391f4c1e9f4468b44fa14165b2796840017c8e1c05",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/down/walk-04",
+      "direction": "down",
+      "cell": 4,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/down-walk-04.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/down-passing.png",
+      "source_sha256": "3ea3b9b4112574459ecff42a7c61574b41a20d69a90a74d6b38b4d584d18be76",
+      "source_rect": [
+        590,
+        701,
+        510,
+        623
+      ],
+      "source_pose_cell": 3,
+      "source_anchor": [
+        253.88256955810147,
+        623
+      ],
+      "uniform_pose_scale": 0.6420545746388443,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          21,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          51,
+          34,
+          1100,
+          1329
+        ],
+        "removed_low_alpha_pixels": 80145,
+        "removed_small_component_pixels": 12,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "02bf08406f27c67eb7d1456210f4d1adeb462c47f8c0350f6c57a1aecbe97f15",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/down/walk-05",
+      "direction": "down",
+      "cell": 5,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/down-walk-05.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/down-t2.png",
+      "source_sha256": "cd0ca78ee7745c42d732bff283324161ffd0e14c2080d8a003ae0981eb67eedf",
+      "source_rect": [
+        589,
+        708,
+        535,
+        648
+      ],
+      "source_pose_cell": 3,
+      "source_anchor": [
+        264.15875613747954,
+        648
+      ],
+      "uniform_pose_scale": 0.6172839506172839,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          27,
+          1133,
+          1374
+        ],
+        "output_bbox": [
+          37,
+          33,
+          1124,
+          1357
+        ],
+        "removed_low_alpha_pixels": 74587,
+        "removed_small_component_pixels": 10,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "170e922486ea9871b07b7f21edb0932f6450d1ceded52c6e026d6bd5d0541192",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/down/walk-06",
+      "direction": "down",
+      "cell": 6,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/down-walk-06.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/down-keys.png",
+      "source_sha256": "bcc42bd8b42627717b0c910ddacc05ceaa40d765dcb68b7fe2930b6437b6b89d",
+      "source_rect": [
+        56,
+        692,
+        512,
+        630
+      ],
+      "source_pose_cell": 2,
+      "source_anchor": [
+        262.4599018003273,
+        630
+      ],
+      "uniform_pose_scale": 0.6349206349206349,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          15,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          56,
+          40,
+          1108,
+          1329
+        ],
+        "removed_low_alpha_pixels": 132336,
+        "removed_small_component_pixels": 14,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "09a5dd80ebebb247a5437595cc9bfbc6a0f416da2be2d99bddfaf7a9696b3d67",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/down/walk-07",
+      "direction": "down",
+      "cell": 7,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/down-walk-07.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        1536,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/down-keys.png",
+      "source_sha256": "bcc42bd8b42627717b0c910ddacc05ceaa40d765dcb68b7fe2930b6437b6b89d",
+      "source_rect": [
+        590,
+        693,
+        518,
+        636
+      ],
+      "source_pose_cell": 3,
+      "source_anchor": [
+        261.0261865793781,
+        636
+      ],
+      "uniform_pose_scale": 0.6289308176100629,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          15,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          56,
+          40,
+          1108,
+          1329
+        ],
+        "removed_low_alpha_pixels": 132336,
+        "removed_small_component_pixels": 14,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "0250746c66fcb8f778e6e62919d3dedb8f8f09cdecb74d756bc945a7201f39a9",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/down/walk-08",
+      "direction": "down",
+      "cell": 8,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/down-walk-08.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        0,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/down-t2.png",
+      "source_sha256": "cd0ca78ee7745c42d732bff283324161ffd0e14c2080d8a003ae0981eb67eedf",
+      "source_rect": [
+        37,
+        708,
+        540,
+        649
+      ],
+      "source_pose_cell": 2,
+      "source_anchor": [
+        280.6698036006547,
+        649
+      ],
+      "uniform_pose_scale": 0.6163328197226502,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          27,
+          1133,
+          1374
+        ],
+        "output_bbox": [
+          37,
+          33,
+          1124,
+          1357
+        ],
+        "removed_low_alpha_pixels": 74587,
+        "removed_small_component_pixels": 10,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "0b5a659449b518a07fd89d75e4067a4d0d19e0ee5de5368402ff24fc1d4126c6",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/down/walk-09",
+      "direction": "down",
+      "cell": 9,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/down-walk-09.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        512,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/down-passing.png",
+      "source_sha256": "3ea3b9b4112574459ecff42a7c61574b41a20d69a90a74d6b38b4d584d18be76",
+      "source_rect": [
+        51,
+        34,
+        517,
+        638
+      ],
+      "source_pose_cell": 0,
+      "source_anchor": [
+        267.0482815057283,
+        638
+      ],
+      "uniform_pose_scale": 0.6269592476489029,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          21,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          51,
+          34,
+          1100,
+          1329
+        ],
+        "removed_low_alpha_pixels": 80145,
+        "removed_small_component_pixels": 12,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "2348b65692d9c0d1a8f734246147efcf884d0cf542da52095ce53e0f81c8828b",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/down/walk-10",
+      "direction": "down",
+      "cell": 10,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/down-walk-10.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        1024,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/down-passing.png",
+      "source_sha256": "3ea3b9b4112574459ecff42a7c61574b41a20d69a90a74d6b38b4d584d18be76",
+      "source_rect": [
+        579,
+        34,
+        518,
+        636
+      ],
+      "source_pose_cell": 1,
+      "source_anchor": [
+        261.0261865793781,
+        636
+      ],
+      "uniform_pose_scale": 0.6289308176100629,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          21,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          51,
+          34,
+          1100,
+          1329
+        ],
+        "removed_low_alpha_pixels": 80145,
+        "removed_small_component_pixels": 12,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "03538cb1917c806f34fb2073ec55ad6411a8b890c2d4303da89bc8a171855b27",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/down/walk-11",
+      "direction": "down",
+      "cell": 11,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/down-walk-11.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        1536,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/down-t2.png",
+      "source_sha256": "cd0ca78ee7745c42d732bff283324161ffd0e14c2080d8a003ae0981eb67eedf",
+      "source_rect": [
+        592,
+        36,
+        530,
+        650
+      ],
+      "source_pose_cell": 1,
+      "source_anchor": [
+        259.1808510638298,
+        650
+      ],
+      "uniform_pose_scale": 0.6153846153846154,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          27,
+          1133,
+          1374
+        ],
+        "output_bbox": [
+          37,
+          33,
+          1124,
+          1357
+        ],
+        "removed_low_alpha_pixels": 74587,
+        "removed_small_component_pixels": 10,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "02670565379ebc523996718f67542ef598ac43b9d0dc484b7bdcc0197ac8adfe",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/down/idle",
+      "direction": "down",
+      "cell": 12,
+      "action": "idle",
+      "kind": "idle",
+      "file": "frames/down-idle.png",
+      "atlas": "atlases/down.png",
+      "rect": [
+        0,
+        1536,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "drafts/laia-down-01.png",
+      "source_sha256": "ceb966907f4b538cd830584bc94e1c60e05e792d2b83e8721f7f7baf269c7eb8",
+      "source_rect": [
+        0,
+        0,
+        1145,
+        1374
+      ],
+      "source_pose_cell": null,
+      "source_anchor": [
+        583.5,
+        1305
+      ],
+      "uniform_pose_scale": 0.32733224222585927,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          17,
+          1123,
+          1374
+        ],
+        "output_bbox": [
+          89,
+          83,
+          1060,
+          1305
+        ],
+        "removed_low_alpha_pixels": 33591,
+        "removed_small_component_pixels": 1,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "058090cc7a5644c9a403f0b39bb404a524becdad048436ff6a3cb8fc22b7089b",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/left/walk-00",
+      "direction": "left",
+      "cell": 0,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/left-walk-00.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/left-keys.png",
+      "source_sha256": "2e7cbd53758a41689f85d16bc55d23af6f3bafbacf697bf173d1ea3f030a977e",
+      "source_rect": [
+        111,
+        31,
+        459,
+        628
+      ],
+      "source_pose_cell": 0,
+      "source_anchor": [
+        172.0,
+        628
+      ],
+      "uniform_pose_scale": 0.6369426751592356,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          21,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          111,
+          31,
+          1125,
+          1330
+        ],
+        "removed_low_alpha_pixels": 105222,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "0fe5eef63cc467588dbc4f7423fc784800a5f0d4e005c524309814389921da68",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/left/walk-01",
+      "direction": "left",
+      "cell": 1,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/left-walk-01.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/left-t2.png",
+      "source_sha256": "273ac8c35ac06d9b6493535dc194b7f6fae0e08c72863c655226e4d8579d86e4",
+      "source_rect": [
+        104,
+        31,
+        501,
+        637
+      ],
+      "source_pose_cell": 0,
+      "source_anchor": [
+        207.0,
+        637
+      ],
+      "uniform_pose_scale": 0.6279434850863422,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          47,
+          19,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          100,
+          31,
+          1141,
+          1336
+        ],
+        "removed_low_alpha_pixels": 70113,
+        "removed_small_component_pixels": 8,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "0ca4f1cf42cabeb1089660804e29ccad7f4263d3ca2afd60d04910a97beb66fa",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/left/walk-02",
+      "direction": "left",
+      "cell": 2,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/left-walk-02.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/left-keys.png",
+      "source_sha256": "2e7cbd53758a41689f85d16bc55d23af6f3bafbacf697bf173d1ea3f030a977e",
+      "source_rect": [
+        652,
+        34,
+        454,
+        633
+      ],
+      "source_pose_cell": 1,
+      "source_anchor": [
+        167.5,
+        633
+      ],
+      "uniform_pose_scale": 0.631911532385466,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          21,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          111,
+          31,
+          1125,
+          1330
+        ],
+        "removed_low_alpha_pixels": 105222,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "352f62ccec89c40926615110b7d5a3b86e44668409452ca27ff7394d3d23b7ae",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/left/walk-03",
+      "direction": "left",
+      "cell": 3,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/left-walk-03.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        1536,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/left-t2.png",
+      "source_sha256": "273ac8c35ac06d9b6493535dc194b7f6fae0e08c72863c655226e4d8579d86e4",
+      "source_rect": [
+        695,
+        33,
+        445,
+        643
+      ],
+      "source_pose_cell": 1,
+      "source_anchor": [
+        152.0,
+        643
+      ],
+      "uniform_pose_scale": 0.6220839813374806,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          47,
+          19,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          100,
+          31,
+          1141,
+          1336
+        ],
+        "removed_low_alpha_pixels": 70113,
+        "removed_small_component_pixels": 8,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "0977c402c684fd21abf1ad90fed34f4f53ea42da0c2576170a5ba31a1e9d4912",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/left/walk-04",
+      "direction": "left",
+      "cell": 4,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/left-walk-04.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/left-passing.png",
+      "source_sha256": "08e4852d1f323bdd60e425d1627aeff5ce1bfda69d27165c66448c919afd5032",
+      "source_rect": [
+        161,
+        25,
+        429,
+        636
+      ],
+      "source_pose_cell": 0,
+      "source_anchor": [
+        130.0,
+        636
+      ],
+      "uniform_pose_scale": 0.6289308176100629,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          31,
+          15,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          161,
+          18,
+          1104,
+          1342
+        ],
+        "removed_low_alpha_pixels": 61893,
+        "removed_small_component_pixels": 3,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "18e1c54e8942bffd0188807c27d4f5ffc5b055f012316b8c134a2afdf01b64c6",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/left/walk-05",
+      "direction": "left",
+      "cell": 5,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/left-walk-05.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/left-passing.png",
+      "source_sha256": "08e4852d1f323bdd60e425d1627aeff5ce1bfda69d27165c66448c919afd5032",
+      "source_rect": [
+        665,
+        18,
+        428,
+        637
+      ],
+      "source_pose_cell": 1,
+      "source_anchor": [
+        129.5,
+        637
+      ],
+      "uniform_pose_scale": 0.6279434850863422,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          31,
+          15,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          161,
+          18,
+          1104,
+          1342
+        ],
+        "removed_low_alpha_pixels": 61893,
+        "removed_small_component_pixels": 3,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "3638d2a58596583bdcca6f4e889b5c6e0bdaa245495545bb00ba24e0bcfa3032",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/left/walk-06",
+      "direction": "left",
+      "cell": 6,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/left-walk-06.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/left-keys.png",
+      "source_sha256": "2e7cbd53758a41689f85d16bc55d23af6f3bafbacf697bf173d1ea3f030a977e",
+      "source_rect": [
+        130,
+        701,
+        453,
+        617
+      ],
+      "source_pose_cell": 2,
+      "source_anchor": [
+        165.0,
+        617
+      ],
+      "uniform_pose_scale": 0.6482982171799028,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          21,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          111,
+          31,
+          1125,
+          1330
+        ],
+        "removed_low_alpha_pixels": 105222,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "3b51b71a3db10cf42de7946538f477103f9f9e794f4b05f002d63e5a09288477",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/left/walk-07",
+      "direction": "left",
+      "cell": 7,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/left-walk-07.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        1536,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/left-t2.png",
+      "source_sha256": "273ac8c35ac06d9b6493535dc194b7f6fae0e08c72863c655226e4d8579d86e4",
+      "source_rect": [
+        100,
+        700,
+        504,
+        625
+      ],
+      "source_pose_cell": 2,
+      "source_anchor": [
+        211.0,
+        625
+      ],
+      "uniform_pose_scale": 0.64,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          47,
+          19,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          100,
+          31,
+          1141,
+          1336
+        ],
+        "removed_low_alpha_pixels": 70113,
+        "removed_small_component_pixels": 8,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "295d2f127879fdf82e2dd6da20716e2c618ce29afad71282bc36c94a76523d42",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/left/walk-08",
+      "direction": "left",
+      "cell": 8,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/left-walk-08.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        0,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/left-keys.png",
+      "source_sha256": "2e7cbd53758a41689f85d16bc55d23af6f3bafbacf697bf173d1ea3f030a977e",
+      "source_rect": [
+        681,
+        701,
+        444,
+        629
+      ],
+      "source_pose_cell": 3,
+      "source_anchor": [
+        158.5,
+        629
+      ],
+      "uniform_pose_scale": 0.6359300476947536,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          21,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          111,
+          31,
+          1125,
+          1330
+        ],
+        "removed_low_alpha_pixels": 105222,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "08d4bbe157ca579de50945846f171e3d74f95bc27595467d51c56b5a8f4a26c4",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/left/walk-09",
+      "direction": "left",
+      "cell": 9,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/left-walk-09.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        512,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/left-t2.png",
+      "source_sha256": "273ac8c35ac06d9b6493535dc194b7f6fae0e08c72863c655226e4d8579d86e4",
+      "source_rect": [
+        702,
+        699,
+        439,
+        637
+      ],
+      "source_pose_cell": 3,
+      "source_anchor": [
+        146.0,
+        637
+      ],
+      "uniform_pose_scale": 0.6279434850863422,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          47,
+          19,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          100,
+          31,
+          1141,
+          1336
+        ],
+        "removed_low_alpha_pixels": 70113,
+        "removed_small_component_pixels": 8,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "27baa7ec23616d87ebd54a913bd92f4a167812e82d0b405817cbca04f5232a33",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/left/walk-10",
+      "direction": "left",
+      "cell": 10,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/left-walk-10.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        1024,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/left-passing.png",
+      "source_sha256": "08e4852d1f323bdd60e425d1627aeff5ce1bfda69d27165c66448c919afd5032",
+      "source_rect": [
+        171,
+        702,
+        427,
+        630
+      ],
+      "source_pose_cell": 2,
+      "source_anchor": [
+        132.0,
+        630
+      ],
+      "uniform_pose_scale": 0.6349206349206349,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          31,
+          15,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          161,
+          18,
+          1104,
+          1342
+        ],
+        "removed_low_alpha_pixels": 61893,
+        "removed_small_component_pixels": 3,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "5226ac6b96d9cac21e882cbabb5ea20bf3f28c72ccd673209f128c64145c85e1",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/left/walk-11",
+      "direction": "left",
+      "cell": 11,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/left-walk-11.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        1536,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/left-passing.png",
+      "source_sha256": "08e4852d1f323bdd60e425d1627aeff5ce1bfda69d27165c66448c919afd5032",
+      "source_rect": [
+        670,
+        697,
+        434,
+        645
+      ],
+      "source_pose_cell": 3,
+      "source_anchor": [
+        132.0,
+        645
+      ],
+      "uniform_pose_scale": 0.6201550387596899,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          31,
+          15,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          161,
+          18,
+          1104,
+          1342
+        ],
+        "removed_low_alpha_pixels": 61893,
+        "removed_small_component_pixels": 3,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "2086e9f119be5feb699864a010e6aafbaf6d7a350095367c21358be0da42092c",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/left/idle",
+      "direction": "left",
+      "cell": 12,
+      "action": "idle",
+      "kind": "idle",
+      "file": "frames/left-idle.png",
+      "atlas": "atlases/left.png",
+      "rect": [
+        0,
+        1536,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "drafts/laia-left-01.png",
+      "source_sha256": "040e729d9b1ad374254449db9e8181fb7abfd1f1cffe3cc7b97cccd97bf7f5ee",
+      "source_rect": [
+        0,
+        0,
+        1145,
+        1374
+      ],
+      "source_pose_cell": null,
+      "source_anchor": [
+        522.0,
+        1334
+      ],
+      "uniform_pose_scale": 0.3167062549485352,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          21,
+          1131,
+          1342
+        ],
+        "output_bbox": [
+          272,
+          71,
+          1052,
+          1334
+        ],
+        "removed_low_alpha_pixels": 19167,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "3f2ce40d9ae8c1ecc1d4f3d84923e2a2d7e0df02dcda2a37bdf8f361920687e4",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/right/walk-00",
+      "direction": "right",
+      "cell": 0,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/right-walk-00.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/right-keys.png",
+      "source_sha256": "eab8767bc459d48493cf3ab12b545f731b8dd0ddc146823b2b0346dd7f4ce4b5",
+      "source_rect": [
+        67,
+        19,
+        466,
+        656
+      ],
+      "source_pose_cell": 0,
+      "source_anchor": [
+        264.37509944311853,
+        656
+      ],
+      "uniform_pose_scale": 0.6097560975609756,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          15,
+          1131,
+          1374
+        ],
+        "output_bbox": [
+          67,
+          19,
+          1049,
+          1344
+        ],
+        "removed_low_alpha_pixels": 146145,
+        "removed_small_component_pixels": 1,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "0979774c6f27714afded723f70f7104c50022fda39223f8ce87d694316e7f4a2",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/right/walk-01",
+      "direction": "right",
+      "cell": 1,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/right-walk-01.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/right-t2.png",
+      "source_sha256": "50829794c661cb7cb21eca18f759b847a370377d5d837560d36317205880bc59",
+      "source_rect": [
+        45,
+        13,
+        513,
+        654
+      ],
+      "source_pose_cell": 0,
+      "source_anchor": [
+        292.3114558472554,
+        654
+      ],
+      "uniform_pose_scale": 0.6116207951070336,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          8,
+          1142,
+          1374
+        ],
+        "output_bbox": [
+          45,
+          13,
+          1095,
+          1346
+        ],
+        "removed_low_alpha_pixels": 96280,
+        "removed_small_component_pixels": 2,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "01ed07e3f9aec1b06792e2409dcb978d616f2f000ff0eae6ba22d40c4af58760",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/right/walk-02",
+      "direction": "right",
+      "cell": 2,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/right-walk-02.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/right-keys.png",
+      "source_sha256": "eab8767bc459d48493cf3ab12b545f731b8dd0ddc146823b2b0346dd7f4ce4b5",
+      "source_rect": [
+        620,
+        20,
+        425,
+        657
+      ],
+      "source_pose_cell": 1,
+      "source_anchor": [
+        262.4069212410501,
+        657
+      ],
+      "uniform_pose_scale": 0.60882800608828,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          15,
+          1131,
+          1374
+        ],
+        "output_bbox": [
+          67,
+          19,
+          1049,
+          1344
+        ],
+        "removed_low_alpha_pixels": 146145,
+        "removed_small_component_pixels": 1,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "0141485da0212f771bb067510c07f5b92cc2011ddabcac86963e55179284c52d",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/right/walk-03",
+      "direction": "right",
+      "cell": 3,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/right-walk-03.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        1536,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/right-t2.png",
+      "source_sha256": "50829794c661cb7cb21eca18f759b847a370377d5d837560d36317205880bc59",
+      "source_rect": [
+        611,
+        14,
+        472,
+        662
+      ],
+      "source_pose_cell": 1,
+      "source_anchor": [
+        290.56603023070807,
+        662
+      ],
+      "uniform_pose_scale": 0.6042296072507553,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          8,
+          1142,
+          1374
+        ],
+        "output_bbox": [
+          45,
+          13,
+          1095,
+          1346
+        ],
+        "removed_low_alpha_pixels": 96280,
+        "removed_small_component_pixels": 2,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "004dd4e188d96f61a4150b9a2fe952c0798ae5518aeb0689dec5f7e044baa57d",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/right/walk-04",
+      "direction": "right",
+      "cell": 4,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/right-walk-04.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/right-passing.png",
+      "source_sha256": "bbfbb31162c52f11f62a3cb294620f9f43051406408806c2ab47ab8e3476e3c4",
+      "source_rect": [
+        78,
+        29,
+        395,
+        640
+      ],
+      "source_pose_cell": 0,
+      "source_anchor": [
+        254.3659506762132,
+        640
+      ],
+      "uniform_pose_scale": 0.625,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          23,
+          1117,
+          1360
+        ],
+        "output_bbox": [
+          78,
+          29,
+          975,
+          1341
+        ],
+        "removed_low_alpha_pixels": 92759,
+        "removed_small_component_pixels": 4,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "24b7eb162f38e35498d95be33db4f9ff1226e16a81c34b6ba7db3599a3127cf2",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/right/walk-05",
+      "direction": "right",
+      "cell": 5,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/right-walk-05.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/right-passing.png",
+      "source_sha256": "bbfbb31162c52f11f62a3cb294620f9f43051406408806c2ab47ab8e3476e3c4",
+      "source_rect": [
+        612,
+        30,
+        360,
+        632
+      ],
+      "source_pose_cell": 1,
+      "source_anchor": [
+        239.11137629276055,
+        632
+      ],
+      "uniform_pose_scale": 0.6329113924050633,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          23,
+          1117,
+          1360
+        ],
+        "output_bbox": [
+          78,
+          29,
+          975,
+          1341
+        ],
+        "removed_low_alpha_pixels": 92759,
+        "removed_small_component_pixels": 4,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "3f49e77cfab55d793d1ef485f158c18dc4b6a1ede7b77c13132bb92c04d91eb7",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/right/walk-06",
+      "direction": "right",
+      "cell": 6,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/right-walk-06.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/right-keys.png",
+      "source_sha256": "eab8767bc459d48493cf3ab12b545f731b8dd0ddc146823b2b0346dd7f4ce4b5",
+      "source_rect": [
+        77,
+        692,
+        464,
+        645
+      ],
+      "source_pose_cell": 2,
+      "source_anchor": [
+        271.52505966587114,
+        645
+      ],
+      "uniform_pose_scale": 0.6201550387596899,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          15,
+          1131,
+          1374
+        ],
+        "output_bbox": [
+          67,
+          19,
+          1049,
+          1344
+        ],
+        "removed_low_alpha_pixels": 146145,
+        "removed_small_component_pixels": 1,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "1402a0962ac8a20788107ca40ac65aa8da26d5b49f22ae433c50f400fe0deb7c",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/right/walk-07",
+      "direction": "right",
+      "cell": 7,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/right-walk-07.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        1536,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/right-t2.png",
+      "source_sha256": "50829794c661cb7cb21eca18f759b847a370377d5d837560d36317205880bc59",
+      "source_rect": [
+        66,
+        694,
+        519,
+        647
+      ],
+      "source_pose_cell": 2,
+      "source_anchor": [
+        286.5887032617343,
+        647
+      ],
+      "uniform_pose_scale": 0.6182380216383307,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          8,
+          1142,
+          1374
+        ],
+        "output_bbox": [
+          45,
+          13,
+          1095,
+          1346
+        ],
+        "removed_low_alpha_pixels": 96280,
+        "removed_small_component_pixels": 2,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "0be9afccd79b767e826cb7f58d10b0bcb7d801a000e927877141ed77a9f1c298",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/right/walk-08",
+      "direction": "right",
+      "cell": 8,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/right-walk-08.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        0,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/right-keys.png",
+      "source_sha256": "eab8767bc459d48493cf3ab12b545f731b8dd0ddc146823b2b0346dd7f4ce4b5",
+      "source_rect": [
+        623,
+        694,
+        426,
+        650
+      ],
+      "source_pose_cell": 3,
+      "source_anchor": [
+        267.18416865552905,
+        650
+      ],
+      "uniform_pose_scale": 0.6153846153846154,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          15,
+          1131,
+          1374
+        ],
+        "output_bbox": [
+          67,
+          19,
+          1049,
+          1344
+        ],
+        "removed_low_alpha_pixels": 146145,
+        "removed_small_component_pixels": 1,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "2dfe947c5f020e3384c09a682b6ccfdc09b6a50e76d589baa4a9b0bbbafb5c86",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/right/walk-09",
+      "direction": "right",
+      "cell": 9,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/right-walk-09.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        512,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/right-t2.png",
+      "source_sha256": "50829794c661cb7cb21eca18f759b847a370377d5d837560d36317205880bc59",
+      "source_rect": [
+        621,
+        694,
+        474,
+        652
+      ],
+      "source_pose_cell": 3,
+      "source_anchor": [
+        285.7478122513922,
+        652
+      ],
+      "uniform_pose_scale": 0.6134969325153374,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          8,
+          1142,
+          1374
+        ],
+        "output_bbox": [
+          45,
+          13,
+          1095,
+          1346
+        ],
+        "removed_low_alpha_pixels": 96280,
+        "removed_small_component_pixels": 2,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "0259688ae3afec0439210f2cbda6e3505d48c5778b42569acc1789158ecc5e92",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/right/walk-10",
+      "direction": "right",
+      "cell": 10,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/right-walk-10.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        1024,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/right-passing.png",
+      "source_sha256": "bbfbb31162c52f11f62a3cb294620f9f43051406408806c2ab47ab8e3476e3c4",
+      "source_rect": [
+        92,
+        703,
+        395,
+        638
+      ],
+      "source_pose_cell": 2,
+      "source_anchor": [
+        250.80230708035003,
+        638
+      ],
+      "uniform_pose_scale": 0.6269592476489029,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          23,
+          1117,
+          1360
+        ],
+        "output_bbox": [
+          78,
+          29,
+          975,
+          1341
+        ],
+        "removed_low_alpha_pixels": 92759,
+        "removed_small_component_pixels": 4,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "0cc8edf277bfe2128bec72356604e491e277426b9e9432595acb48a98474f72b",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/right/walk-11",
+      "direction": "right",
+      "cell": 11,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/right-walk-11.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        1536,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/right-passing.png",
+      "source_sha256": "bbfbb31162c52f11f62a3cb294620f9f43051406408806c2ab47ab8e3476e3c4",
+      "source_rect": [
+        615,
+        702,
+        360,
+        639
+      ],
+      "source_pose_cell": 3,
+      "source_anchor": [
+        245.33412887828163,
+        639
+      ],
+      "uniform_pose_scale": 0.6259780907668232,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          23,
+          1117,
+          1360
+        ],
+        "output_bbox": [
+          78,
+          29,
+          975,
+          1341
+        ],
+        "removed_low_alpha_pixels": 92759,
+        "removed_small_component_pixels": 4,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "049551ed3cabe6ff2fb52576a0a686f6af0ea9a7dc9ceb8b6981f83705b99ede",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/right/idle",
+      "direction": "right",
+      "cell": 12,
+      "action": "idle",
+      "kind": "idle",
+      "file": "frames/right-idle.png",
+      "atlas": "atlases/right.png",
+      "rect": [
+        0,
+        1536,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "drafts/laia-right-01.png",
+      "source_sha256": "37330f2054d3f1a954033cb36054309ed62693d99852463c37abc334302530c1",
+      "source_rect": [
+        0,
+        0,
+        1145,
+        1374
+      ],
+      "source_pose_cell": null,
+      "source_anchor": [
+        642.0,
+        1329
+      ],
+      "uniform_pose_scale": 0.31821797931583135,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          51,
+          1124,
+          1354
+        ],
+        "output_bbox": [
+          149,
+          72,
+          842,
+          1329
+        ],
+        "removed_low_alpha_pixels": 19204,
+        "removed_small_component_pixels": 1,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "3a85345e036f64bdc1dbf6d1067126ba522180050a272b3c5197edb74854f289",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/up/walk-00",
+      "direction": "up",
+      "cell": 0,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/up-walk-00.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/up-keys.png",
+      "source_sha256": "578b756eda45c7d7f4bfe317f57678fc90ad630b9a8a288ac0763c4ea2c7676e",
+      "source_rect": [
+        78,
+        30,
+        483,
+        619
+      ],
+      "source_pose_cell": 0,
+      "source_anchor": [
+        251.50525464834277,
+        619
+      ],
+      "uniform_pose_scale": 0.6462035541195477,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          15,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          77,
+          30,
+          1090,
+          1329
+        ],
+        "removed_low_alpha_pixels": 149628,
+        "removed_small_component_pixels": 17,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "8bf62c1211144af182d8f657d94e873c4854d5ad6524cc1cd63516c70bb7cb61",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/up/walk-01",
+      "direction": "up",
+      "cell": 1,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/up-walk-01.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/up-keys.png",
+      "source_sha256": "578b756eda45c7d7f4bfe317f57678fc90ad630b9a8a288ac0763c4ea2c7676e",
+      "source_rect": [
+        604,
+        693,
+        486,
+        636
+      ],
+      "source_pose_cell": 3,
+      "source_anchor": [
+        242.18391269199677,
+        636
+      ],
+      "uniform_pose_scale": 0.6289308176100629,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          15,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          77,
+          30,
+          1090,
+          1329
+        ],
+        "removed_low_alpha_pixels": 149628,
+        "removed_small_component_pixels": 17,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "1822e86eac185b1304d32dbd73205b73d0db9398a8b9cc6bf6996abe497054ac",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/up/walk-02",
+      "direction": "up",
+      "cell": 2,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/up-walk-02.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/up-t2.png",
+      "source_sha256": "785f3af46e9a4e0202ddcb02583970e728e22917fe6c0e4b076448de438d2cdd",
+      "source_rect": [
+        66,
+        31,
+        505,
+        631
+      ],
+      "source_pose_cell": 0,
+      "source_anchor": [
+        259.13136620856915,
+        631
+      ],
+      "uniform_pose_scale": 0.6339144215530903,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          29,
+          1135,
+          1374
+        ],
+        "output_bbox": [
+          60,
+          31,
+          1104,
+          1318
+        ],
+        "removed_low_alpha_pixels": 81201,
+        "removed_small_component_pixels": 5,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "0bfe2981318a301bdd7620c2f39886cbc99cdfa0da9baa0c32f3f44c7d5472f9",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/up/walk-03",
+      "direction": "up",
+      "cell": 3,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/up-walk-03.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        1536,
+        0,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/up-passing.png",
+      "source_sha256": "c21388353594e96ece7020f462c0df930b249bbf8073fff5d1dff9ad505378bd",
+      "source_rect": [
+        53,
+        701,
+        505,
+        627
+      ],
+      "source_pose_cell": 2,
+      "source_anchor": [
+        261.089329021827,
+        627
+      ],
+      "uniform_pose_scale": 0.6379585326953748,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          18,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          53,
+          22,
+          1094,
+          1328
+        ],
+        "removed_low_alpha_pixels": 185370,
+        "removed_small_component_pixels": 3,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "2959d288089edca1ead10d5540dc8a5b910f89d8d267b06f1d16d51e9e9ffeb2",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/up/walk-04",
+      "direction": "up",
+      "cell": 4,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/up-walk-04.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/up-passing.png",
+      "source_sha256": "c21388353594e96ece7020f462c0df930b249bbf8073fff5d1dff9ad505378bd",
+      "source_rect": [
+        589,
+        703,
+        505,
+        616
+      ],
+      "source_pose_cell": 3,
+      "source_anchor": [
+        259.9737267582862,
+        616
+      ],
+      "uniform_pose_scale": 0.6493506493506493,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          18,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          53,
+          22,
+          1094,
+          1328
+        ],
+        "removed_low_alpha_pixels": 185370,
+        "removed_small_component_pixels": 3,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "164920a99a45d29a341df100c6e3c36e2561a338d846c2523657aad9476ef595",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/up/walk-05",
+      "direction": "up",
+      "cell": 5,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/up-walk-05.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/up-t2.png",
+      "source_sha256": "785f3af46e9a4e0202ddcb02583970e728e22917fe6c0e4b076448de438d2cdd",
+      "source_rect": [
+        596,
+        698,
+        508,
+        607
+      ],
+      "source_pose_cell": 3,
+      "source_anchor": [
+        256.8791430881164,
+        607
+      ],
+      "uniform_pose_scale": 0.6589785831960461,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          29,
+          1135,
+          1374
+        ],
+        "output_bbox": [
+          60,
+          31,
+          1104,
+          1318
+        ],
+        "removed_low_alpha_pixels": 81201,
+        "removed_small_component_pixels": 5,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "1f09c79d4f8b35c6fe62e9ee4ae249c40c96a1010d4df36dbf5eaf32fa7e4902",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/up/walk-06",
+      "direction": "up",
+      "cell": 6,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/up-walk-06.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/up-keys.png",
+      "source_sha256": "578b756eda45c7d7f4bfe317f57678fc90ad630b9a8a288ac0763c4ea2c7676e",
+      "source_rect": [
+        77,
+        691,
+        500,
+        628
+      ],
+      "source_pose_cell": 2,
+      "source_anchor": [
+        252.09983831851252,
+        628
+      ],
+      "uniform_pose_scale": 0.6369426751592356,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          15,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          77,
+          30,
+          1090,
+          1329
+        ],
+        "removed_low_alpha_pixels": 149628,
+        "removed_small_component_pixels": 17,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "0a0884726d58289d915f1653e877292c5acf08a6a72d16c5f8f0c0ebe2dc6314",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/up/walk-07",
+      "direction": "up",
+      "cell": 7,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/up-walk-07.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        1536,
+        512,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/up-keys.png",
+      "source_sha256": "578b756eda45c7d7f4bfe317f57678fc90ad630b9a8a288ac0763c4ea2c7676e",
+      "source_rect": [
+        602,
+        32,
+        479,
+        625
+      ],
+      "source_pose_cell": 1,
+      "source_anchor": [
+        242.56831042845593,
+        625
+      ],
+      "uniform_pose_scale": 0.64,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          15,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          77,
+          30,
+          1090,
+          1329
+        ],
+        "removed_low_alpha_pixels": 149628,
+        "removed_small_component_pixels": 17,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "171a34a239cb4afcaaa12d557d3fcdc5c95d338e2a8d8e80e1114262fcfc680b",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/up/walk-08",
+      "direction": "up",
+      "cell": 8,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/up-walk-08.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        0,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/up-t2.png",
+      "source_sha256": "785f3af46e9a4e0202ddcb02583970e728e22917fe6c0e4b076448de438d2cdd",
+      "source_rect": [
+        597,
+        31,
+        506,
+        621
+      ],
+      "source_pose_cell": 1,
+      "source_anchor": [
+        250.52627324171382,
+        621
+      ],
+      "uniform_pose_scale": 0.644122383252818,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          29,
+          1135,
+          1374
+        ],
+        "output_bbox": [
+          60,
+          31,
+          1104,
+          1318
+        ],
+        "removed_low_alpha_pixels": 81201,
+        "removed_small_component_pixels": 5,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "10ff74787e422763485078eb7bd5d726d56db69df89e8b4dd5e34c05a37e2f1f",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/up/walk-09",
+      "direction": "up",
+      "cell": 9,
+      "action": "walk",
+      "kind": "primary",
+      "file": "frames/up-walk-09.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        512,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/up-passing.png",
+      "source_sha256": "c21388353594e96ece7020f462c0df930b249bbf8073fff5d1dff9ad505378bd",
+      "source_rect": [
+        54,
+        22,
+        498,
+        635
+      ],
+      "source_pose_cell": 0,
+      "source_anchor": [
+        260.17340339531125,
+        635
+      ],
+      "uniform_pose_scale": 0.6299212598425197,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          18,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          53,
+          22,
+          1094,
+          1328
+        ],
+        "removed_low_alpha_pixels": 185370,
+        "removed_small_component_pixels": 3,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "30c33e9bc231840ca8293c34be241d8ad4c60a2b4d3304a14216cb743949558c",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/up/walk-10",
+      "direction": "up",
+      "cell": 10,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/up-walk-10.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        1024,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/up-passing.png",
+      "source_sha256": "c21388353594e96ece7020f462c0df930b249bbf8073fff5d1dff9ad505378bd",
+      "source_rect": [
+        593,
+        22,
+        497,
+        637
+      ],
+      "source_pose_cell": 1,
+      "source_anchor": [
+        250.6944219886823,
+        637
+      ],
+      "uniform_pose_scale": 0.6279434850863422,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          18,
+          1145,
+          1374
+        ],
+        "output_bbox": [
+          53,
+          22,
+          1094,
+          1328
+        ],
+        "removed_low_alpha_pixels": 185370,
+        "removed_small_component_pixels": 3,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "05c2b6d197f66f1dba33fe3bad5efef01f5448b01d9049d8b98a0a2f21da63c6",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/up/walk-11",
+      "direction": "up",
+      "cell": 11,
+      "action": "walk",
+      "kind": "transition",
+      "file": "frames/up-walk-11.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        1536,
+        1024,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "animation-sources/up-t2.png",
+      "source_sha256": "785f3af46e9a4e0202ddcb02583970e728e22917fe6c0e4b076448de438d2cdd",
+      "source_rect": [
+        60,
+        696,
+        509,
+        622
+      ],
+      "source_pose_cell": 2,
+      "source_anchor": [
+        266.53678253839934,
+        622
+      ],
+      "uniform_pose_scale": 0.6430868167202572,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          0,
+          29,
+          1135,
+          1374
+        ],
+        "output_bbox": [
+          60,
+          31,
+          1104,
+          1318
+        ],
+        "removed_low_alpha_pixels": 81201,
+        "removed_small_component_pixels": 5,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "152ef33b80af406853a4cae8ca724a29bfbd73145c5dfebfea91645356034b9d",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    },
+    {
+      "id": "laia_25d/up/idle",
+      "direction": "up",
+      "cell": 12,
+      "action": "idle",
+      "kind": "idle",
+      "file": "frames/up-idle.png",
+      "atlas": "atlases/up.png",
+      "rect": [
+        0,
+        1536,
+        512,
+        512
+      ],
+      "ground_anchor": [
+        256,
+        448
+      ],
+      "display_scale": 0.09,
+      "source_file": "drafts/laia-up-01.png",
+      "source_sha256": "4352384557d1049ca27913c9b2b3e216a51f0aa90c369658a8f31bc63f0a9dc0",
+      "source_rect": [
+        0,
+        0,
+        1145,
+        1374
+      ],
+      "source_pose_cell": null,
+      "source_anchor": [
+        583.0,
+        1298
+      ],
+      "uniform_pose_scale": 0.32336297493936944,
+      "alpha_cleanup": {
+        "enabled": true,
+        "parameters": {
+          "min_alpha": 16,
+          "min_component_pixels": 16
+        },
+        "input_bbox": [
+          21,
+          15,
+          1129,
+          1301
+        ],
+        "output_bbox": [
+          59,
+          61,
+          1087,
+          1298
+        ],
+        "removed_low_alpha_pixels": 29716,
+        "removed_small_component_pixels": 0,
+        "rgb_unchanged": true
+      },
+      "canonical_pose_sha256": "3ab41b22cfeba279c990b7ce7f04fb76321274cdf46dba46bb705d368bce7f9e",
+      "anchor_reviewed": false,
+      "registration": "Whole-pose uniform scaling; head registration with approved idle head-to-ground offset; no limb deformation"
+    }
+  ],
+  "files": {
+    "atlases/down.png": {
+      "sha256": "f9bce67b9c8412fbfce85785ade211bdca9ac68e66597292f70ef58daa605584",
+      "bytes": 2451179
+    },
+    "atlases/left.png": {
+      "sha256": "38d88fb1cb4b551a2cfd129a8b6c98e424fbc4e284f166442489d26e0e2ec35e",
+      "bytes": 2282301
+    },
+    "atlases/right.png": {
+      "sha256": "42b8edcb90485b35e652bab66b3874a786db31f283652d56ec0ddf7b4fc979e0",
+      "bytes": 2160960
+    },
+    "atlases/up.png": {
+      "sha256": "424331fd40b9400e4e04174cc8d4b1346c34818ae8e1941874a65008c4fb0710",
+      "bytes": 2426250
+    },
+    "frames/down-idle.png": {
+      "sha256": "18a7fe2cf0ccaa0f65fbee06aaab394d18a0a43f3b3eba256d9b19047f6c96aa",
+      "bytes": 189282
+    },
+    "frames/down-walk-00.png": {
+      "sha256": "3320d784e32846d34cea30f93b354c2955849c6052bf762b3e0be7d051ad9f90",
+      "bytes": 191348
+    },
+    "frames/down-walk-01.png": {
+      "sha256": "6434b38015f26fb4c668a95a07f3b3259bbba750d69dff7b5ff5c2ce07b7a4fd",
+      "bytes": 183381
+    },
+    "frames/down-walk-02.png": {
+      "sha256": "1b24e7e0bb617a5ac41aee6174d881e8e066cb8486041816d10246c83f358ee0",
+      "bytes": 186058
+    },
+    "frames/down-walk-03.png": {
+      "sha256": "5aff410b0cfb771c06f650e6da4ad4b45134ca969f32b8573f64d6c58417936a",
+      "bytes": 188827
+    },
+    "frames/down-walk-04.png": {
+      "sha256": "1b3faa1aed1fc4440ee7ac4ecb53efe476ba849ba90ab18b1db2f1f6acae9e5f",
+      "bytes": 195269
+    },
+    "frames/down-walk-05.png": {
+      "sha256": "57e1dba3c2a85836c6575dc0f49f36c6b77732882d2e2d71e16505960b84716f",
+      "bytes": 190563
+    },
+    "frames/down-walk-06.png": {
+      "sha256": "5ea46eb3d2e99156207218c30866ec10acbaf8da6753422a346a0296f4e7393b",
+      "bytes": 186941
+    },
+    "frames/down-walk-07.png": {
+      "sha256": "d9d6a40f83b4cd58f825d432b4b6f09360567254fb0691106b7a79017c69ea3f",
+      "bytes": 185792
+    },
+    "frames/down-walk-08.png": {
+      "sha256": "630c39b6a88382b980773d53d4a61852ae6de349676f1ef4444604608ff349a3",
+      "bytes": 189357
+    },
+    "frames/down-walk-09.png": {
+      "sha256": "8114bfed20480253522ba25b87621c9275889d2471e8ef691a9f4c5021ae26ec",
+      "bytes": 185839
+    },
+    "frames/down-walk-10.png": {
+      "sha256": "976cccec0dde928074146fd1b7b1e03d4a2c6c8efe2fb148755881aed1e53d2f",
+      "bytes": 189402
+    },
+    "frames/down-walk-11.png": {
+      "sha256": "edb14fec8a7ff8f31337ca67aaf07e94f4e32e5cadfecdefe5177a9153272e66",
+      "bytes": 192520
+    },
+    "frames/left-idle.png": {
+      "sha256": "aa7809f1422335f94c3c3dae386a54c6a9dfc822b785cbe9cf80e2ea0309a3d0",
+      "bytes": 157180
+    },
+    "frames/left-walk-00.png": {
+      "sha256": "e187efce5e71d3c98eba80d3ad2ed025b5c8ba75bb5efcf196bf88a494ba643a",
+      "bytes": 180151
+    },
+    "frames/left-walk-01.png": {
+      "sha256": "7d418831fd7a7d238876b02be16c49b4fb92093af8956906cb4fb322746f3e4d",
+      "bytes": 184559
+    },
+    "frames/left-walk-02.png": {
+      "sha256": "5e59a9bef30bfb1f4a38829647cb5d250a6a57216b74815293edb2441d7b109a",
+      "bytes": 178658
+    },
+    "frames/left-walk-03.png": {
+      "sha256": "5452516749a8ed1a94da77991027661d38f5a26f817c71e023dbbae1a9af6a68",
+      "bytes": 181600
+    },
+    "frames/left-walk-04.png": {
+      "sha256": "ae159f875c252dfc0c0c4977c5414a6e7b0954c29d7344175342fffd08c54173",
+      "bytes": 166882
+    },
+    "frames/left-walk-05.png": {
+      "sha256": "befec6774df1c64b262d19a91a0e29e589936294b4368e313d94c2b08ad80fe3",
+      "bytes": 167298
+    },
+    "frames/left-walk-06.png": {
+      "sha256": "8276335e68fd4e038e79e8ac12b6da2fc45979ceed12e320cfbbb820b7c75a39",
+      "bytes": 185559
+    },
+    "frames/left-walk-07.png": {
+      "sha256": "0e2a92e4d88fa2066984bf4f39afed3d084d521676c1a9cc6377e5f1a65cd2eb",
+      "bytes": 186732
+    },
+    "frames/left-walk-08.png": {
+      "sha256": "97e13fd14d69c06b864a3d451d583f47b060830985a8d1be6303f1af3b7b6a93",
+      "bytes": 180062
+    },
+    "frames/left-walk-09.png": {
+      "sha256": "6e6d20f187d07c3a3442e9fcc6bdb6fd700b3157df94e4a73274bca1ff1fc8aa",
+      "bytes": 179688
+    },
+    "frames/left-walk-10.png": {
+      "sha256": "80b633053b0ae4a94bca5c3a8411c865eb49b88c7f22cadd3b60506675e18bde",
+      "bytes": 170880
+    },
+    "frames/left-walk-11.png": {
+      "sha256": "cd78d17319fce4940cd1b1d71ceecd5d237e813d561d008c90ed98122bdf8035",
+      "bytes": 165469
+    },
+    "frames/right-idle.png": {
+      "sha256": "3e01e3b306ea73dbf887df9d459e50a3253300d153e410b689c7124fac1a3aaa",
+      "bytes": 148665
+    },
+    "frames/right-walk-00.png": {
+      "sha256": "8b711d60147c616613b12b77ff31ff101bcf4c43ae7c185efa0e7a6ae6580004",
+      "bytes": 167058
+    },
+    "frames/right-walk-01.png": {
+      "sha256": "4e066b663e59ebf2860f1eacf7da12a509954132d8c7277009dbfdb4c960063b",
+      "bytes": 181711
+    },
+    "frames/right-walk-02.png": {
+      "sha256": "2fb44f3cd41aeef40a727ca5153ce58fd34697a4e3ddb2ef3d062579add05fa7",
+      "bytes": 167327
+    },
+    "frames/right-walk-03.png": {
+      "sha256": "d052b663be63dab37deed81b0494d80b2ab638c37acaa0f1b98a510aa942db19",
+      "bytes": 170741
+    },
+    "frames/right-walk-04.png": {
+      "sha256": "ae46aa2615f62509943b270484163af61f398ab141deddab9c657531d385a199",
+      "bytes": 158202
+    },
+    "frames/right-walk-05.png": {
+      "sha256": "561ed19952543a93cf01c90783cbf5dc77206b718981658e18fad0eca2335e8c",
+      "bytes": 153755
+    },
+    "frames/right-walk-06.png": {
+      "sha256": "3a496cd2b6cb2f06418e44e68a2093883c45e168104f01fc42676da9f1038e3c",
+      "bytes": 172782
+    },
+    "frames/right-walk-07.png": {
+      "sha256": "ddd69645d2e077880f8c131c18395e501fabf51ecd1998b09ca8ad305ad15924",
+      "bytes": 181764
+    },
+    "frames/right-walk-08.png": {
+      "sha256": "68ff844d4a95fafca8f63ee4bff186a0a9b51e405ffdc852199b39a4c6d2c698",
+      "bytes": 169453
+    },
+    "frames/right-walk-09.png": {
+      "sha256": "3291f95313b3068607b7da2e28750e11562c53ff54f2ebb05f5b660b08887c1b",
+      "bytes": 177251
+    },
+    "frames/right-walk-10.png": {
+      "sha256": "ebefbf872b0eeb1643d6a84777d16956dd0cd777596932213f9dcaf9208331b2",
+      "bytes": 160861
+    },
+    "frames/right-walk-11.png": {
+      "sha256": "f7cf23251adfdc153561fa5fb7c5aaf3418efa8d845c9abe31d2c49f044ae891",
+      "bytes": 153952
+    },
+    "frames/up-idle.png": {
+      "sha256": "9c7896125ae9704b65cdfe63850b589857a69cd072fe828527babf1d8ff2e9f6",
+      "bytes": 193003
+    },
+    "frames/up-walk-00.png": {
+      "sha256": "4754b08d606563033c3a68d2e103d7f192e64736c34812a66fb43cd3ff26746d",
+      "bytes": 184965
+    },
+    "frames/up-walk-01.png": {
+      "sha256": "1a66c5379194fefae61f19f6786eefbdf3c48d7c123c631336a7db74b90e89cf",
+      "bytes": 177947
+    },
+    "frames/up-walk-02.png": {
+      "sha256": "f1a476d6035b35db4c258d419092640ec9fac238559355ae2c8eadad5a73f55a",
+      "bytes": 183747
+    },
+    "frames/up-walk-03.png": {
+      "sha256": "a6ef73ddb1cc1d12d6ffaf137d7014735385d95cfe7e55a90656ee4277c3e564",
+      "bytes": 187710
+    },
+    "frames/up-walk-04.png": {
+      "sha256": "78e7646a43ef08e884e70491f7aec703b77285215c046f3ab5714853d4849551",
+      "bytes": 197872
+    },
+    "frames/up-walk-05.png": {
+      "sha256": "fa5d502b6df3a9bbe88a1ef7b734641dbcff1ec17bbe7f0f957bf2d4597906b4",
+      "bytes": 198408
+    },
+    "frames/up-walk-06.png": {
+      "sha256": "788726ce429bbbef498045615ca13ea3afe0558b215d2b414c1c2acaa0b17985",
+      "bytes": 183450
+    },
+    "frames/up-walk-07.png": {
+      "sha256": "3aaeae3752ed083175ae7351914825405f1cb96da653d47853d96be07a821f74",
+      "bytes": 178842
+    },
+    "frames/up-walk-08.png": {
+      "sha256": "6aab4e3a315c2f2bf91c91ff215c555828dfd4a5483f603039dccf22fcb19321",
+      "bytes": 189441
+    },
+    "frames/up-walk-09.png": {
+      "sha256": "ef6a3b354ffa3133b86d6e4fbeb7e9bc317a7f7e7577264bdcbe2616210cdacf",
+      "bytes": 183568
+    },
+    "frames/up-walk-10.png": {
+      "sha256": "d47c4f8267668488f23826db7c37f14e65b1a11ba0d6485f487257cb69a76aac",
+      "bytes": 181146
+    },
+    "frames/up-walk-11.png": {
+      "sha256": "af87c661e6d729731da610d94c8bf437f7066fa768721c630a5b765cdddc950b",
+      "bytes": 186512
+    },
+    "previews/down-contact.png": {
+      "sha256": "b05688bafb2e794a3b9a1ad083c67677c400878dfed86ea2e1d42db908b45db4",
+      "bytes": 679656
+    },
+    "previews/down-walk.gif": {
+      "sha256": "6009c06a68a0764a160dcfa075f94b360cd98be967749995d96bb70e17bb7c2f",
+      "bytes": 779614
+    },
+    "previews/left-contact.png": {
+      "sha256": "0a7065fe4853bc47d01c68a3134d172d47c45ea574b4db9f85d7ea0c4d334b59",
+      "bytes": 630499
+    },
+    "previews/left-walk.gif": {
+      "sha256": "2ed1156a7d538e8d785c70d404aeeb45476c616981fd7477910b8851547a8cc8",
+      "bytes": 692548
+    },
+    "previews/right-contact.png": {
+      "sha256": "fd29aa7a11b19ee2eb2f12deefa1c3e84a4402a67f2f4ba1bce7b3859586eaf1",
+      "bytes": 596618
+    },
+    "previews/right-walk.gif": {
+      "sha256": "b17a7adbf767c7e9c58b27963a463abd2e1db92383c677b91fcd74370edd7ae6",
+      "bytes": 665881
+    },
+    "previews/up-contact.png": {
+      "sha256": "9ae2c32cce682f9ee35467279bff0e4d816bac822aa3733c01e93bc85ecac435",
+      "bytes": 670155
+    },
+    "previews/up-walk.gif": {
+      "sha256": "91add865cb3b879b13c050d2455374de286a62d08206763c7c59551a273e9f15",
+      "bytes": 748730
+    }
+  },
+  "pending": [
+    "visual loop review",
+    "runtime integration"
+  ],
+  "down_direction": "art preview only; not observed in this event",
+  "performance_tested": false
+}

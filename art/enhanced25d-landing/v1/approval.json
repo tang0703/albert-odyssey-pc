@@ -1,0 +1,32 @@
+{
+  "schema": "ao_pc_landing25d_design_approval_v1",
+  "approved": true,
+  "question_id": "call_70da73adc8fe4838b5a88114f526eb9d",
+  "answer": "採用目前構圖、造型與比例，繼續製作 52 幀",
+  "review_commit": "fb0d359e8fcf6fa4ba2908e12345424059172c98",
+  "height_world": 36,
+  "layout_sha256": "ab5675853b875d3a3d34dd3d8f4bdb4236f16a81f8ff0cda4d688d85d244a9b4",
+  "references": {
+    "down": {
+      "file": "drafts/laia-down-01.png",
+      "sha256": "ceb966907f4b538cd830584bc94e1c60e05e792d2b83e8721f7f7baf269c7eb8"
+    },
+    "left": {
+      "file": "drafts/laia-left-01.png",
+      "sha256": "040e729d9b1ad374254449db9e8181fb7abfd1f1cffe3cc7b97cccd97bf7f5ee"
+    },
+    "right": {
+      "file": "drafts/laia-right-01.png",
+      "sha256": "37330f2054d3f1a954033cb36054309ed62693d99852463c37abc334302530c1"
+    },
+    "up": {
+      "file": "drafts/laia-up-01.png",
+      "sha256": "4352384557d1049ca27913c9b2b3e216a51f0aa90c369658a8f31bc63f0a9dc0"
+    }
+  },
+  "limitations": [
+    "Steam and chair rear refinement remain W3 tasks",
+    "Unobserved front design is approved artistic interpretation",
+    "No performance testing"
+  ]
+}
