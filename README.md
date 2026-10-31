@@ -3,6 +3,8 @@
 目前包含 **Godot 資源驗證台、MAP001 指定區域行走驗證台與可重跑的逆向／匯入工具**。
 MAP001 的玩家、四方向移動、室內碰撞與鏡頭已在限定範圍核對；完整地圖及原作戰鬥仍未完成，Stage B 整體未通過。
 
+**首次單向轉場進行中**：T1 已確認目的地、39 次初始化指令、控制恢復與三種裝備歷程，各三次重播一致。另有三次逐幀淡出入／持續壓方向證據。見 [T1 來源報告](docs/TRANSITION_STAGE_T1.md)。跨場景 PC 核心、落點覆蓋、整合與候選交付尚未通過；不執行效能測試。舊裝備入口仍停於轉場提交前。
+
 **MAP001 最小裝備流程候選版** 已完成拿起 Cirrus → 精簡高清武器面板 → 裝備／卸下 → 樓梯後續 → 轉場提交前停止。原作允許卸下，並保留「曾裝備」旗標。功能、三外觀、來源像素、三解析度與封裝啟動驗證通過；**本輪未執行負載或效能基準，效能驗收暫緩**。完整解壓本地 `build/MAP001-Equipment-Candidate-Windows-x64.zip` 後執行 `MAP001-Equipment.exe`。見 [操作說明](docs/EQUIPMENT_README.md)、[來源與操作對照](docs/EQUIPMENT_SOURCE.md)、[交付報告](docs/EQUIPMENT_DELIVERY.md)、[候選身份與 SHA256](docs/EQUIPMENT_CANDIDATE_RELEASE.json)。`tools/equipment.ps1 run` 啟動，`tools/equipment.ps1 test` 重跑功能；需要七份本地資料包，來源素材及 ZIP 不上傳 GitHub。
 
 **房內 Cirrus 主動互動候選版** 已完成來源、核心、操作與三解析度驗證；可探索、拿起 Cirrus、閱讀繁中對話，再接近樓梯觀看未裝備提醒與退回演出。P5 最終效能驗收依使用者指示暫緩，尚非正式通過版本。完整解壓本地 `build/MAP001-Interaction-Candidate-Windows-x64.zip` 即可執行。見 [操作說明](docs/INTERACTION_README.md)、[交付及測試報告](docs/INTERACTION_DELIVERY.md)、[候選套件身份](docs/INTERACTION_CANDIDATE_RELEASE.json)。`tools/interaction.ps1 run` 啟動，`tools/interaction.ps1 test` 驗證；需要六份本地來源資料包，原作素材及 ZIP 不上傳 GitHub。

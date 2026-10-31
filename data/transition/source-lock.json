@@ -1,0 +1,98 @@
+{
+  "schema": "ao_pc_transition_t1_source_lock_v1",
+  "baseline_commit": "8649f33de29d72979be59173796aab8dc53df42d",
+  "gate_report": "reports/transition/t1-acceptance.json",
+  "gate_report_sha256": "63bae4a6381508ff3f0d0f5a21d8855895c91f713ff82b499d74e4730512c1e1",
+  "source_inventory_sha256": "f76d9d120c5d1d9181a2c7fa66b5712f38274a7d09f856f33857b0f412497b9d",
+  "named_precommit_seed": {
+    "path": "reports/transition/probes/precommit/frame-001090/state.savestate",
+    "sha256": "e5083a0fce124e0f2af8eeb95e4c1f0b977a282cc1d2db274481fdd5db0e2c31",
+    "capture_manifest_sha256": "c1af20b80f567e439138cea454dbbb60f884e6d077fb3d8e41169b0e604c8758",
+    "parent_state_sha256": "72d9fa56fbf525dbb71ae3a21d8e3aaa45f23b7711bfdce2b95d6c6472776b54"
+  },
+  "replays": [
+    {
+      "route": "equip-stairs",
+      "repeat": 1,
+      "manifest_sha256": "656e57400e83e1b04bae9254f956dbab08b2e59c560c1df8f96f58633524e2f2"
+    },
+    {
+      "route": "equip-stairs",
+      "repeat": 2,
+      "manifest_sha256": "7a0e4a1ae5130ddb79f238e23024c7be4f52514bb65a6024cb1639be32158ef4"
+    },
+    {
+      "route": "equip-stairs",
+      "repeat": 3,
+      "manifest_sha256": "64887af03a25842f8dca8fd42dfcf24c03d4a2fcf97d16d91fcb0b5218c458f7"
+    },
+    {
+      "route": "remove-stairs",
+      "repeat": 1,
+      "manifest_sha256": "ff44fa7fc3696edddeef9c039dd248a4770dff50eec3112585c2a9ef4ee40d45"
+    },
+    {
+      "route": "remove-stairs",
+      "repeat": 2,
+      "manifest_sha256": "cdecb880cebe5676c7607d7272647eab1dc4f8f7206d9a8d44ff17b9e9dfd592"
+    },
+    {
+      "route": "remove-stairs",
+      "repeat": 3,
+      "manifest_sha256": "ba368774ad5b9458984accc6097215e8b8784cfd6c74d43192303ecec2734800"
+    },
+    {
+      "route": "reequip-stairs",
+      "repeat": 1,
+      "manifest_sha256": "45a05c39dbdf8b52d136ddcd743fc8d75f7b9f53a528747e83d372044c410f8d"
+    },
+    {
+      "route": "reequip-stairs",
+      "repeat": 2,
+      "manifest_sha256": "ed6af18783a89ac829b7c5141c00299fba23820852171036546703cbfdeaf486"
+    },
+    {
+      "route": "reequip-stairs",
+      "repeat": 3,
+      "manifest_sha256": "6751d457dd9c0105cebfc517420f71d124228165ee9b3a2c46972f153bed19a4"
+    }
+  ],
+  "detailed_replays": [
+    {
+      "capture": "reports/transition/probes/hold-through",
+      "capture_manifest_sha256": "c05872daac1b172f94d55ea05c7bfcc8ec435bf07b6255b7c840427511f23a5b",
+      "checks": 8830,
+      "actor_camera_updates": 61,
+      "fade_out_begin_frame": 8,
+      "initialization_frame": 48,
+      "fade_in_begin_frame": 53,
+      "first_visible_destination_frame": 55,
+      "first_accepted_movement_frame": 86
+    },
+    {
+      "capture": "reports/transition/t1-hold-through-2",
+      "capture_manifest_sha256": "be0ba32498977e1a92ce03b3dd7cc9591e1fac7ce6e3d99fdc260aae152a5d79",
+      "checks": 8830,
+      "actor_camera_updates": 61,
+      "fade_out_begin_frame": 8,
+      "initialization_frame": 48,
+      "fade_in_begin_frame": 53,
+      "first_visible_destination_frame": 55,
+      "first_accepted_movement_frame": 86
+    },
+    {
+      "capture": "reports/transition/t1-hold-through-3",
+      "capture_manifest_sha256": "46e0aaaba7cbf523b9e0475a097dc00afd1b53444441e85e8167f4f46df2f5f4",
+      "checks": 8830,
+      "actor_camera_updates": 61,
+      "fade_out_begin_frame": 8,
+      "initialization_frame": 48,
+      "fade_in_begin_frame": 53,
+      "first_visible_destination_frame": 55,
+      "first_accepted_movement_frame": 86
+    }
+  ],
+  "t1_complete": true,
+  "runtime_approved": false,
+  "performance_tested": false
+}
