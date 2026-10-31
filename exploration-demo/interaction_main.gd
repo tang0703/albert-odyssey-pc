@@ -6,7 +6,7 @@ const EventVisual = preload("res://event_visual.gd")
 const Dialogue = preload("res://interaction_dialogue.gd")
 var event_bundle: Dictionary = {}
 var event_core: RefCounted
-var dialogue := Dialogue.new()
+var dialogue: RefCounted = Dialogue.new()
 var audio_player: AudioStreamPlayer
 var audio_loaded: bool = false
 var audio_started: bool = false
