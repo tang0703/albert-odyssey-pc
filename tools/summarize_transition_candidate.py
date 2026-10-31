@@ -44,6 +44,10 @@ def summarize(folder,screens):
     raw=(base/'t5-python.json').read_bytes();python=json.loads(raw)
     if not python['available_tests_passed'] or python['unexpected'] or len(python['unavailable_old_snapshot'])!=9 or len(python['skipped'])!=7:raise ValueError('Unexpected Python test gaps')
     evidence['reports/transition/t5-python.json']=sha(raw)
+    startup_raw=(base/'startup-limitations.json').read_bytes()
+    startup=json.loads(startup_raw.decode('utf-8-sig'))
+    if startup['cause_confirmed'] is not True or startup['resolved'] is not True or startup['performance_tested'] is not False:raise ValueError('Screenshot timeout must be diagnosed and fixed')
+    evidence['reports/transition/startup-limitations.json']=sha(startup_raw)
     screenshots=gate(screens/'screenshots.json');seen=set();images=[]
     pin=json.loads((ROOT/'exploration-demo/transition-pin.json').read_bytes())['manifest_sha256']
     for case in screenshots['cases']:
@@ -63,7 +67,7 @@ def summarize(folder,screens):
     return {'schema':'ao_pc_transition_acceptance_v1','passed':False,'functional_passed':True,'performance_tested':False,
             'status':'performance_validation_deferred_by_user','binary_source_commit':info['source_commit'],
             'binary_files':[f for f in inspected['files'] if f['path'].endswith(('.exe','.pck'))],
-            'evidence':evidence,'screenshots':images,'legacy_source_updates':{'movement':1680,'character':6156,**regressions},
+            'evidence':evidence,'screenshots':images,'screenshot_timeout_diagnosis':startup,'legacy_source_updates':{'movement':1680,'character':6156,**regressions},
             'python':{'full_run':python['tests'],'full_run_passed':python['passed'],'additional_package_tests':7,'total_passed':python['passed']+7,
                       'unavailable_old_snapshot':python['unavailable_old_snapshot'],'skipped_performance_evidence':python['skipped']},
             'limits':['No load, long-loop, performance benchmark or actual GPU FPS test executed.',

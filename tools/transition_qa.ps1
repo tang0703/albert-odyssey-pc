@@ -18,15 +18,20 @@ try {
             New-Item -ItemType Directory -Path $Folder | Out-Null
             $Report=Join-Path $Folder 'report.json'; $Image=Join-Path $Folder 'screen.png'; $Log=Join-Path $Folder 'engine.log'
             $Launch=$Executable
-            $Arguments=@('--log-file',('"'+$Log+'"'))
+            $Arguments=@('--verbose','--log-file',('"'+$Log+'"'))
             if (-not $Launch) {
                 $Launch=Join-Path (Split-Path -Parent $PcRoot) 'tools/pc-remake/godot-4.7.2/Godot_v4.7.2-stable_win64_console.exe'
                 $Arguments+=@('--path',('"'+(Join-Path $PcRoot 'exploration-demo')+'"'),'res://transition_main.tscn')
             }
             $Arguments+=@('--',('--qa-size='+$Size),('--transition-state='+$State),('"--qa-output='+$Image+'"'),('"--qa-report='+$Report+'"'))
-            $Process=Start-Process -FilePath $Launch -ArgumentList $Arguments -WindowStyle Hidden -PassThru
+            # Keep GUI child streams independent of the calling terminal. Also
+            # retain startup diagnostics if the engine log has not flushed yet.
+            $Process=Start-Process -FilePath $Launch -ArgumentList $Arguments -WindowStyle Hidden -RedirectStandardOutput (Join-Path $Folder 'stdout.log') -RedirectStandardError (Join-Path $Folder 'stderr.log') -PassThru
             try {
-                if (-not $Process.WaitForExit(45000)) { throw 'Short screenshot launch timed out.' }
+                if (-not $Process.WaitForExit(45000)) {
+                    $Process.Threads | Select-Object Id,ThreadState,WaitReason,StartAddress | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $Folder 'startup-threads.json') -Encoding UTF8
+                    throw 'Short screenshot launch timed out.'
+                }
                 if ($Process.ExitCode -ne 0) { throw 'Screenshot process failed.' }
                 if ((Get-Content -LiteralPath $Log -Raw) -match 'SCRIPT ERROR:|ERROR:|Parse Error:') { throw 'Engine error; inspect screenshot log.' }
                 $Data=Get-Content -LiteralPath $Report -Raw -Encoding UTF8 | ConvertFrom-Json

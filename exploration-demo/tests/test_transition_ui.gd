@@ -90,6 +90,13 @@ func run() -> void:
 		check(ui.event_core.stage == "landing" and ui.event_core.weapon == 27,"Natural one-way flow reaches landing at synthetic "+str(fps))
 		partitions.append(ui.event_core.transition_snapshot())
 	check(partitions[0] == partitions[1] and partitions[1] == partitions[2],"Synthetic 30/60/120 time partitions agree")
+	ui.transfer_capture = "landing"; ui.qa_capture_ready = false; ui.qa_pc_mode = true; ui.paused = false
+	ui.clear_held_keys()
+	check(not ui.paused,"Explicit unattended screenshot keeps running after OS focus loss")
+	ui.paused = true; ui.clear_held_keys()
+	check(ui.paused,"Screenshot policy preserves explicit pause")
+	ui.transfer_capture = ""; ui.paused = false; ui.clear_held_keys()
+	check(ui.paused,"Interactive focus loss still pauses")
 	check(ui.startup_error.is_empty(),"No runtime errors: "+ui.startup_error)
 	ui.queue_free(); await process_frame; finish()
 func finish() -> void:

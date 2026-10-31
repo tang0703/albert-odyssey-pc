@@ -14,6 +14,7 @@ var landing_age: int = 0
 var fade_rect: ColorRect
 var fade_material: ShaderMaterial
 var transfer_footer: Control
+var capture_focus_events: int = 0
 
 func build_ui() -> void:
 	super.build_ui()
@@ -97,8 +98,17 @@ func _input(event: InputEvent) -> void:
 	super._input(event)
 
 func clear_held_keys() -> void:
+	var was_paused: bool = paused
+	var was_audio_paused: bool = audio_player.stream_paused if audio_player != null else false
 	input_barrier()
 	super.clear_held_keys()
+	# Explicit CLI screenshot automation must not depend on desktop focus. Keep
+	# explicit pauses and all normal interactive focus-loss behavior unchanged.
+	if not transfer_capture.is_empty() and qa_pc_mode and not qa_capture_ready and startup_error.is_empty():
+		paused = was_paused
+		if audio_player != null: audio_player.stream_paused = was_audio_paused
+		capture_focus_events += 1
+		refresh()
 
 func _visual_sample() -> Dictionary:
 	var sample: Dictionary = event_core.snapshot()
@@ -310,6 +320,7 @@ func qa_identity() -> Dictionary:
 	result.content_bounds_valid = get_viewport_rect().encloses(transfer_footer.get_global_rect())
 	result.footer_bottom = transfer_footer.get_global_rect().end.y
 	result.viewport_bottom = get_viewport_rect().end.y
+	result.screenshot_focus_events = capture_focus_events
 	if transfer_ready:
 		result.scene_id = event_core.scene_id; result.stage = event_core.stage; result.rgb = event_core.rgb.duplicate()
 		result.old_scene_hidden = true
