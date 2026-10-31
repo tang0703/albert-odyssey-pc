@@ -1,0 +1,35 @@
+{
+  "schema": "ao_pc_25d_layout_draft_v1",
+  "runtime_approved": false,
+  "origin": [512, 1536],
+  "dimensions": [448, 256],
+  "presentation": "fixed_full_room_16_9_letterbox",
+  "character_height_world": 36,
+  "character_review_anchor_world": [718, 1680],
+  "shell": {
+    "file": "room-shell-01.png",
+    "source_x": [0, 46, 126, 338, 352, 400, 448],
+    "art_x": [0, 48, 128, 323, 333, 401, 448],
+    "source_y": [0, 10, 58, 114, 144, 194, 228, 256],
+    "art_y": [0, 8, 50, 103, 120, 190, 226, 256],
+    "note": "Art-only measured registration grid; never applied to actor/collision coordinates. Visual registration is still under review."
+  },
+  "layers": [
+    {"id":"north_rug","file":"rug-blue-01.png","rect":[144,73,144,86],"plane":"floor","depth":0},
+    {"id":"south_rug","file":"rug-green-01.png","rect":[144,176,144,49],"plane":"floor","depth":0},
+    {"id":"west_bed","file":"bed-01.png","rect":[57,110,55,67],"plane":"furniture","depth":177},
+    {"id":"north_west_bed","file":"bed-01.png","rect":[144,60,48,68],"plane":"furniture","depth":112},
+    {"id":"north_east_bed","file":"bed-01.png","rect":[224,60,48,68],"plane":"furniture","depth":128},
+    {"id":"chair_left","file":"chair-01.png","rect":[182,139,29,21],"plane":"furniture","depth":160},
+    {"id":"chair_right","file":"chair-01.png","rect":[220,139,29,21],"plane":"furniture","depth":160},
+    {"id":"table","file":"table-01.png","rect":[176,160,96,63],"plane":"furniture","depth":210}
+  ],
+  "source_sprite_slots_in_review": [0,4,5],
+  "review_only_limits": [
+    "Furniture rectangles are visual source landmarks, not inferred collision masks.",
+    "This art review is not a runnable gameplay acceptance or final occlusion acceptance.",
+    "Stool and removable Cirrus source sprites remain local review references pending separate styling.",
+    "Dynamic decorations, special poses and final foreground priority are not replaced by this preview.",
+    "Four direction drafts require user review before the 52-frame animation production."
+  ]
+}

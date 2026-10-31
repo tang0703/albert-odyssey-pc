@@ -1,0 +1,110 @@
+{
+  "schema": "ao_pc_25d_art_provenance_v1",
+  "baseline_commit": "a7bb126f848a37f60dea3806142bb9156e3ce007",
+  "reference_thread": "01a19176-d65b-76f3-afe9-a7b9f1ff8a01",
+  "tool": "built-in imagegen",
+  "status": "V1 registration and V2 direction drafts; not runtime approved",
+  "files": [
+    {
+      "file": "references/approved-character.png",
+      "source_generated_image": "C:\\Users\\tang0\\.codex\\generated_images\\01a19176-d65b-76f3-afe9-a7b9f1ff8a01\\exec-d24cae11-6ea6-4c43-bb90-e85865b8c94e.png",
+      "sha256": "a7a5771b31642a17e636ae10bd0caee8ea073ce93d0be512a278f7982f3da108"
+    },
+    {
+      "file": "references/approved-room.png",
+      "source_generated_image": "C:\\Users\\tang0\\.codex\\generated_images\\01a19176-d65b-76f3-afe9-a7b9f1ff8a01\\exec-5d6b345d-81bf-4a2b-98f7-f888b7a6b555.png",
+      "sha256": "dde6d99c640e257eeeb346a026845cf621886e2ea48815a849ff2e9aca0d9831"
+    },
+    {
+      "file": "drafts/room-registration-01.png",
+      "source_generated_image": "C:\\Users\\tang0\\.codex\\generated_images\\01a07c87-93f6-7982-9841-a09c0892ddec\\exec-c7a862f6-0cad-48f2-9f3b-cd305c984a49.png",
+      "sha256": "0edd5bbbe3aa55e69502174ecbafa06191b2ff4dcb6ba8ad361a45e2179e3e7d",
+      "prompt_file": "drafts/room-registration-01.prompt.txt",
+      "prompt_sha256": "9394997930ec6328ac4d6c7329e0381a1f2ebb7aa04ac0cd59173c4d4fd94fd2",
+      "status": "draft_pending_review"
+    },
+    {
+      "file": "drafts/down-idle-01.png",
+      "source_generated_image": "C:\\Users\\tang0\\.codex\\generated_images\\01a07c87-93f6-7982-9841-a09c0892ddec\\exec-263a1de1-b330-40fd-9f19-966ee0752fc1.png",
+      "sha256": "fad12291864b8d09d19299f8aea6260d2e2783c9c246520d253223c9898f4546",
+      "prompt_file": "drafts/down-idle-01.prompt.txt",
+      "prompt_sha256": "6f60bc8dc089c9c9cdb0fda5868090508f3cd98a80a71ea729e63c54e50fa3d0",
+      "status": "draft_pending_review"
+    },
+    {
+      "file": "drafts/bed-01.png",
+      "source_generated_image": "C:\\Users\\tang0\\.codex\\generated_images\\01a07c87-93f6-7982-9841-a09c0892ddec\\exec-e9f7bc65-57d7-4a93-b774-ddac80b525c8.png",
+      "sha256": "cddf27ed608d8173167011472f1fbc98c1a34bf6a2329c2abe2ea4e07a07b568",
+      "prompt_file": "drafts/bed-01.prompt.txt",
+      "prompt_sha256": "e0f8eff3ebb740170be1186859bcd75aa8f4998507d651b62b7219ffcc9f5ccf",
+      "status": "draft_pending_review"
+    },
+    {
+      "file": "drafts/chair-01.png",
+      "source_generated_image": "C:\\Users\\tang0\\.codex\\generated_images\\01a07c87-93f6-7982-9841-a09c0892ddec\\exec-b9b1a04c-139e-4a5d-873d-99562d4a62c2.png",
+      "sha256": "c1c0f34d6f3243bf174ff031d22f39e8dac8720573e5c27180727646839a2e08",
+      "prompt_file": "drafts/chair-01.prompt.txt",
+      "prompt_sha256": "7f676748112d554cdc72318db9ead25db9dc04117e99d9af871951b66e259bda",
+      "status": "draft_pending_review"
+    },
+    {
+      "file": "drafts/left-idle-01.png",
+      "source_generated_image": "C:\\Users\\tang0\\.codex\\generated_images\\01a07c87-93f6-7982-9841-a09c0892ddec\\exec-9a2f84fe-1816-4380-aa8c-68c4fe2bb286.png",
+      "sha256": "589b0c406598d401be484a80c9dac6cc8e2259a37fc361e8249515a125ee952c",
+      "prompt_file": "drafts/left-idle-01.prompt.txt",
+      "prompt_sha256": "37e36e1f41f67717e03817a0a4f827b3aa66f72defc3e6fa6b322b12a058ef42",
+      "status": "draft_pending_review"
+    },
+    {
+      "file": "drafts/right-idle-01.png",
+      "source_generated_image": "C:\\Users\\tang0\\.codex\\generated_images\\01a07c87-93f6-7982-9841-a09c0892ddec\\exec-451154b6-a736-4810-926a-3a852a3a8d37.png",
+      "sha256": "9d46443b9eeb882460256831d0ee63e7df4e7ee07281a4fec95c8f9891552e08",
+      "prompt_file": "drafts/right-idle-01.prompt.txt",
+      "prompt_sha256": "3f81d8278fa9ee8b06ec4bed1e410b8dde54ecc7748221a4082e944734a6fea6",
+      "status": "draft_pending_review"
+    },
+    {
+      "file": "drafts/room-shell-01.png",
+      "source_generated_image": "C:\\Users\\tang0\\.codex\\generated_images\\01a07c87-93f6-7982-9841-a09c0892ddec\\exec-8e2b67ea-be02-45fc-80fb-98a7c096defb.png",
+      "sha256": "36b7cd0a9f8ae143894933254a23a580cd25cfbb31591b55a8eee42529dfefe4",
+      "prompt_file": "drafts/room-shell-01.prompt.txt",
+      "prompt_sha256": "a8db5fb4b993783ecab27b183f29c61d1cfa3752746a044c98f5cfde29937e6c",
+      "status": "draft_pending_review"
+    },
+    {
+      "file": "drafts/rug-blue-01.png",
+      "source_generated_image": "C:\\Users\\tang0\\.codex\\generated_images\\01a07c87-93f6-7982-9841-a09c0892ddec\\exec-d41ba185-e633-46b5-b27e-0f90567ae9eb.png",
+      "sha256": "580c2b64d890c4feaf6d5ff9942e87b6dd6de1a811e963237f035b8971a70a38",
+      "prompt_file": "drafts/rug-blue-01.prompt.txt",
+      "prompt_sha256": "3ab665a9489216410a9fc71683a9685e26614b2f8441c31e44d88b1df3e21d64",
+      "status": "draft_pending_review"
+    },
+    {
+      "file": "drafts/rug-green-01.png",
+      "source_generated_image": "C:\\Users\\tang0\\.codex\\generated_images\\01a07c87-93f6-7982-9841-a09c0892ddec\\exec-45567062-83e8-4ece-b53d-aa88ae0541c9.png",
+      "sha256": "2a07a00800d496cba0609d52f6809663084df4d94f1e5eed452a32810bb9330e",
+      "prompt_file": "drafts/rug-green-01.prompt.txt",
+      "prompt_sha256": "07ea5825eecd98ab86efcd993fa80db2b548666abd8745b79d8323b6f3d1d5f4",
+      "status": "draft_pending_review"
+    },
+    {
+      "file": "drafts/table-01.png",
+      "source_generated_image": "C:\\Users\\tang0\\.codex\\generated_images\\01a07c87-93f6-7982-9841-a09c0892ddec\\exec-3898b5f5-6fd0-4a19-86e9-675f4f710f5a.png",
+      "sha256": "bed7b8ced6ba62db162bf77a34b4b9715635816a4a926fd55e4a9c297cba87db",
+      "prompt_file": "drafts/table-01.prompt.txt",
+      "prompt_sha256": "aecf49612a01641b3ddecfc073e19fee5d491f417cebf10413dbea96b0e3f34f",
+      "status": "draft_pending_review"
+    },
+    {
+      "file": "drafts/up-idle-01.png",
+      "source_generated_image": "C:\\Users\\tang0\\.codex\\generated_images\\01a07c87-93f6-7982-9841-a09c0892ddec\\exec-3a9b3820-0b07-4a81-8d7d-9cdfac7da36a.png",
+      "sha256": "307c140bfb685c3b4c810963e7472a09b0b138b067c36363df23c545f2f193cc",
+      "prompt_file": "drafts/up-idle-01.prompt.txt",
+      "prompt_sha256": "10afc312e8a5cc2320f34432c517ad3f69440729bc7a532e8f2635a265b6ed26",
+      "status": "draft_pending_review"
+    }
+  ],
+  "four_direction_approval": "pending",
+  "runtime_approved": false,
+  "performance_tested": false
+}
