@@ -1,0 +1,11 @@
+{
+  "schema": "ao_pc_landing25d_editable_layers_v1",
+  "ora_sha256": "ac7c47839df56bb722c64ebdf89126c545fb97541f48e6012605f351b3888dd4",
+  "layers": 13,
+  "size": [
+    1792,
+    1024
+  ],
+  "layout_sha256": "be9398acdabb76ee090ca77a43874b29f32f924a9ca0fdf6816a021e7fd0260b",
+  "note": "Static room assembly; animated steam and LAIA/player remain separate PNG/atlas assets. No source images included."
+}

@@ -1,0 +1,226 @@
+{
+  "schema": "ao_pc_landing25d_layout_v1",
+  "runtime_approved": false,
+  "origin": [
+    512,
+    1792
+  ],
+  "dimensions": [
+    448,
+    256
+  ],
+  "laia_height_world": 36,
+  "player_height_world": 36,
+  "shell": {
+    "file": "room-shell-01.png",
+    "source_x": [
+      0,
+      30,
+      132,
+      192,
+      208,
+      352,
+      368,
+      418,
+      448
+    ],
+    "art_x": [
+      0,
+      25,
+      130,
+      187,
+      203,
+      353,
+      367,
+      423,
+      448
+    ],
+    "source_y": [
+      0,
+      10,
+      42,
+      80,
+      112,
+      125,
+      176,
+      208,
+      228,
+      256
+    ],
+    "art_y": [
+      0,
+      9,
+      37,
+      76,
+      107,
+      119,
+      180,
+      214,
+      227,
+      256
+    ]
+  },
+  "layers": [
+    {
+      "id": "west_chair_1",
+      "file": "chair-front-01.png",
+      "rect": [
+        32,
+        120,
+        32,
+        40
+      ],
+      "depth": 160,
+      "preserve": true,
+      "source": "background"
+    },
+    {
+      "id": "west_chair_2",
+      "file": "chair-front-01.png",
+      "rect": [
+        64,
+        120,
+        32,
+        40
+      ],
+      "depth": 160,
+      "preserve": true,
+      "source": "background"
+    },
+    {
+      "id": "west_chair_3",
+      "file": "chair-front-01.png",
+      "rect": [
+        96,
+        120,
+        32,
+        40
+      ],
+      "depth": 160,
+      "preserve": true,
+      "source": "background"
+    },
+    {
+      "id": "table_body",
+      "file": "table-01.png",
+      "rect": [
+        216,
+        112,
+        96,
+        64
+      ],
+      "depth": 176,
+      "preserve": false,
+      "source": "background"
+    }
+  ],
+  "pending": [],
+  "interpretations": [
+    "Eye colour",
+    "Gold trim and dress construction",
+    "Boot details",
+    "Rear hair and scarf construction",
+    "Unobserved down-facing design"
+  ],
+  "foreground_rects": [
+    [
+      0,
+      228,
+      448,
+      28
+    ]
+  ],
+  "dynamic_props": {
+    "object_3": {
+      "file": "chair-front-01.png",
+      "offset": [
+        -21,
+        -24
+      ],
+      "size": [
+        32,
+        24
+      ],
+      "preserve": true,
+      "image_index": 0
+    },
+    "object_4": {
+      "file": "chair-front-01.png",
+      "offset": [
+        -21,
+        -24
+      ],
+      "size": [
+        32,
+        24
+      ],
+      "preserve": true,
+      "image_index": 0
+    },
+    "object_0": {
+      "file": "meal-01.png",
+      "offset": [
+        -40,
+        -45
+      ],
+      "size": [
+        76,
+        31
+      ],
+      "preserve": false,
+      "image_index": 0
+    },
+    "object_2": {
+      "file": "chair-back-03.png",
+      "offset": [
+        -22,
+        -24
+      ],
+      "size": [
+        32,
+        24
+      ],
+      "preserve": true,
+      "image_index": 1
+    },
+    "object_5": {
+      "file": "chair-back-03.png",
+      "offset": [
+        -22,
+        -24
+      ],
+      "size": [
+        32,
+        24
+      ],
+      "preserve": true,
+      "image_index": 1
+    },
+    "object_6": {
+      "file": "stool-01.png",
+      "offset": [
+        -14,
+        -19
+      ],
+      "size": [
+        24,
+        24
+      ],
+      "preserve": true,
+      "image_index": 2
+    },
+    "object_7": {
+      "file": "stool-01.png",
+      "offset": [
+        -14,
+        -19
+      ],
+      "size": [
+        24,
+        24
+      ],
+      "preserve": true,
+      "image_index": 2
+    }
+  }
+}
