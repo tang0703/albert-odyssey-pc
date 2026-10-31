@@ -1,0 +1,3 @@
+down 12
+left 12
+none 5

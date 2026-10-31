@@ -16,9 +16,9 @@ class TransitionBundleTests(unittest.TestCase):
         for name in bundle.DEPENDENCIES:
             (self.root/name).mkdir();shutil.copy2(bundle.DEFAULT.parent/name/'package.json',self.root/name/'package.json')
     def tearDown(self):self.temp.cleanup()
-    def test_valid_core_only_not_runtime(self):
+    def test_valid_source_bundle_performance_deferred(self):
         result=bundle.verify(self.folder)
-        self.assertEqual(result['stage'],'core_only');self.assertFalse(result['runtime_approved'])
+        self.assertEqual(result['stage'],'source_verified');self.assertTrue(result['runtime_approved']);self.assertFalse(result['performance_tested'])
     def test_missing(self):
         (self.folder/'core.json').unlink()
         with self.assertRaises(ValueError):bundle.verify(self.folder)

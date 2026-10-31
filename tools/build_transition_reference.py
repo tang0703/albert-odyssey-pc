@@ -36,7 +36,7 @@ def build_all():
         for index,expected in enumerate(result['predictions']):
             inp=result['inputs'][index]
             rows.append({'input':inp,'initialize':inp['stage']=='fade_in' and (not rows or rows[-1]['input']['stage']=='fade_out'),
-                         'expected':{k:v for k,v in expected.items() if k!='frame'}})
+                         'expected':{k:v for k,v in expected.items() if k not in ('frame','event_index','update')}})
         (base/'reference'/f'{route}.json').write_bytes(encoded({'schema':'ao_pc_transition_reference_v1',
             'prefix':old,'post_commit':rows,'capture_manifest_sha256':result['capture_manifest_sha256']}))
         reports.append({k:result[k] for k in ('passed','checks','prefix_updates','transfer_and_landing_updates','landing_updates','capture_manifest_sha256')})

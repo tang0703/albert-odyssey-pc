@@ -30,7 +30,7 @@ def validate(folder,collect=False):
     model.step(prefix['transition']['pad'],{'resource_loaded':0,'resource_playing':0,'text_active':False})
     if model.stage!='fade_out':raise ValueError('Predicted room flow did not request transfer')
     active=False;first=True;pending=False;initialized=False;errors=[];checks=prefix['checks'];updates=0;states=[];inputs=[]
-    observed_commands=[];begin=False
+    observed_commands=[];begin=False;initialization_state=None
     for line in (folder/'hooks.jsonl').open(encoding='utf-8'):
         row=json.loads(line);pc=row['pc']
         if pc==0x060ac458:
@@ -55,6 +55,11 @@ def validate(folder,collect=False):
             if expected!=observed_commands:raise ValueError('Predicted initializer command stream differs')
             initialized=True;begin=False
             checks+=len(expected)*2
+            initialization_state={'frame':row['frame'],'event_index':row['event_index'],'update':updates,
+                'scene':7,'stage':'arrival_first_update','fade':model.fade,'rgb':list(model.rgb),
+                'player':model.player.hex(),'cameras':[dict(c) for c in model.cameras],
+                'objects':[o.hex() for o in model.objects],'arrival_actor':model.arrival_actor.hex(),
+                'initial_submission_empty':True}
         if pc==0x06091594:
             if pending:raise ValueError('Overlapping logical update')
             pad=int.from_bytes(watched(row,0x06036642,2),'big')
@@ -85,13 +90,13 @@ def validate(folder,collect=False):
             predicted=(model.room.weapon,model.room.item_count,model.room.attack,model.room.story,model.room.disabled)
             if values!=predicted:errors.append({'frame':row['frame'],'persistent_or_control':'mismatch'})
             checks+=6;updates+=1;pending=False
-            if collect:states.append({'frame':row['frame'],'scene':model.scene,'stage':model.stage,'fade':model.fade,'rgb':list(model.rgb),
+            if collect:states.append({'frame':row['frame'],'event_index':row['event_index'],'update':updates,'scene':model.scene,'stage':model.stage,'fade':model.fade,'rgb':list(model.rgb),
                 'player':model.player.hex(),'cameras':[dict(c) for c in model.cameras],
                 'objects':[o.hex() for o in model.objects],'arrival_actor':model.arrival_actor.hex() if model.arrival_actor else None})
     if not initialized or model.stage!='landing' or not model.landing_updates:raise ValueError('Incomplete continuous landing replay')
     return {'schema':'ao_pc_transition_continuous_reference_v1','passed':not errors,'checks':checks,
             'prefix_updates':prefix['updates'],'transfer_and_landing_updates':updates,'landing_updates':model.landing_updates,
-            'query_indices':sorted(model.landing_queries),'errors':errors,'inputs':inputs,'predictions':states,
+            'query_indices':sorted(model.landing_queries),'errors':errors,'inputs':inputs,'predictions':states,'initialization_state':initialization_state,
             'initialization_commands':len(observed_commands),'godot_passed':False,'graphics_passed':False,
             'performance_tested':False,'capture_manifest_sha256':prefix['capture_manifest_sha256'],
             'scope':'Continuous predicted state from original named room seed; no later source state backfill. Source device completion timing is an explicit input.'}

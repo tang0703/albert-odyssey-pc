@@ -2,7 +2,8 @@ param(
     [Parameter(Mandatory)][string]$Sequence,
     [Parameter(Mandatory)][string]$Output,
     [ValidateRange(1,1000000)][int]$SampleEvery=30,
-    [string]$SeedOverride
+    [string]$SeedOverride,
+    [switch]$RenderEvidence
 )
 $ErrorActionPreference='Stop'
 $Project=Split-Path -Parent $PSScriptRoot
@@ -41,6 +42,10 @@ $Parameters=@{
         '0x06074080:32','0x06037D68:64','0x060C1F0C:16','0x060CB55A:128',
         '0x060CC55A:32','0x060C6236:4','0x060367B4:256','0x060741C0:128','0x06037C40:32',
         '0x060C41FC:96','0x0603666C:328','0x060CB258:2','0x06036600:1536','0x060C27F0:48','0x060B5E50:32','0x060C6210:48','0x060C3DDC:4','0x060C6670:32','0x060CE15C:56')
+}
+if ($RenderEvidence) {
+    $Parameters.HookPC += @('0x06086FCA','0x06087050')
+    $Parameters.WatchRange += @('0x06074208:4')
 }
 & (Join-Path $PSScriptRoot 'ymir_character_capture/capture.ps1') @Parameters
 foreach ($Path in $Inputs.Keys) {

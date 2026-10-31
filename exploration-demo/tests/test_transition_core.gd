@@ -13,7 +13,7 @@ func run() -> void:
 	var character: Dictionary = {"profile":Common.read_json("res://generated/character/profile.json"),"animation_bank":FileAccess.get_file_as_bytes("res://generated/character/animation-bank.bin"),"image_table":FileAccess.get_file_as_bytes("res://generated/character/image-table.bin")}
 	var flags: PackedByteArray = FileAccess.get_file_as_bytes("res://generated/scene/flags.bin")
 	var routes: Array = []
-	for route: String in ["equip-stairs","remove-stairs","reequip-stairs"]:
+	for route: String in ["equip-stairs","remove-stairs","reequip-stairs","landing-corridor"]:
 		var fixture: Dictionary = Common.read_json(base.path_join("reference/"+route+".json"))
 		var core := Core.new()
 		var configured: Dictionary = core.configure_transition(data,old_data,room.movement_profile,flags,character,room)
@@ -60,5 +60,5 @@ func run() -> void:
 		checks += 8
 		routes.append({"route":route,"prefix_updates":fixture.prefix.updates.size(),"transfer_updates":index})
 	var report: Dictionary = {"passed":true,"checks":checks,"routes":routes,"performance_tested":false,"scope":"Independent GDScript continuous original-room and landing states plus generation/duplicate/reset guards. No UI or package acceptance."}
-	var file := FileAccess.open(base.path_join("../../reports/transition/t2-godot.json"),FileAccess.WRITE)
+	var file := FileAccess.open(base.path_join("../../reports/transition/t3-godot.json"),FileAccess.WRITE)
 	file.store_string(JSON.stringify(report,"\t")); file.close(); print(JSON.stringify(report)); quit(0)

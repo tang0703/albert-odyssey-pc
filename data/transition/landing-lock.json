@@ -1,0 +1,7 @@
+{
+  "schema": "ao_pc_transition_landing_lock_v1",
+  "report_sha256": "39a545c60ced7b4e74d1c813baf785c4e1093d46255f6b749bee991277237959",
+  "core_sha256": "c8036f8ff0d0c1a20a1459c1718c4681ff3e1244583fb679a254ddde90fdd4fa",
+  "visuals_sha256": "231cfe8362429ef833ff132db897b5d8913e17456a264f177b5e6aecbae1c913",
+  "performance_tested": false
+}

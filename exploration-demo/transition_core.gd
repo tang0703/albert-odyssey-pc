@@ -1,6 +1,6 @@
 extends "res://equipment_core.gd"
 ## New bounded transfer controller. The old equipment entry remains unchanged.
-const TRANSITION_SHA: String = "11b0ded372f5becfa78d75abc9904c30366865fa5009f77d42144c6e4224ce69"
+const TRANSITION_SHA: String = "c8036f8ff0d0c1a20a1459c1718c4681ff3e1244583fb679a254ddde90fdd4fa"
 var transition_data: Dictionary = {}
 var original_verified: Dictionary = {}
 var stage: String = "original_room"
