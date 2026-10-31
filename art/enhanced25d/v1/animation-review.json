@@ -1,0 +1,24 @@
+{
+  "schema": "ao_pc_25d_animation_review_v1",
+  "candidate": "animation-candidate-03",
+  "design_approval": "approval.json",
+  "review_scope": "52 full silhouettes, ordered contact sheets, transparent edges, stable canvas registration and runtime display at approved size",
+  "contact_sheets_inspected": ["down", "left", "right", "up"],
+  "frames": 52,
+  "atlases": 4,
+  "whole_pose_registration": "Uniform scale to 400 visible pixels, ground at [256,448], displayed at 36 world units",
+  "cropped_limbs_observed": false,
+  "duplicate_frames": 0,
+  "ready_for_functional_candidate": true,
+  "limitations": [
+    "Generated drawings can retain slight material and silhouette variation between frames.",
+    "This is a new visual interpretation, not original frame reconstruction or a rigged 3D walk.",
+    "Special pickup poses and effects continue to use verified source pixels."
+  ],
+  "rejected_candidates": {
+    "animation-candidate-01": "Inconsistent generated size and transition ordering",
+    "animation-candidate-02": "Head-width calibration introduced visible size differences",
+    "rejected-down-12": "Wrong figure count and irregular layout"
+  },
+  "performance_tested": false
+}

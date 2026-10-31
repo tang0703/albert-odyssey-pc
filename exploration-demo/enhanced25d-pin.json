@@ -1,0 +1,33 @@
+{
+  "schema": "ao_pc_enhanced25d_pin_v1",
+  "manifest_sha256": "56c68dc52db2c0c030386cc308ffc192c03db5efc71ca1cb57ea5a8cb428f883",
+  "dependencies": {
+    "scene": "bf837ef145c4ac413f6cb383c70d6a1d7e1e6d2544300719e3add645830e7fbc",
+    "character": "ccc35c6e98a0a95cf517a555f338b3147dd307c1e60d3a284ffdded76f2bfd21",
+    "character-hd": "00f009e7eded1ab6a3a5fb8b4c621ab03c705b43b701822eb62fb601718e511c",
+    "room": "4f5871775e4ff5de364cb78ed6aab695bcca5e60b57be4977d01270c7ed3e8d2",
+    "event": "4c830604e9eaeadb0542df39f37355f7d37509f24940ed7cc8a210c012f04510",
+    "interaction": "365489c2f1c59410f26babb2e461c3dd2d25fb597d65306c4788aca01ff6a71e",
+    "equipment": "485cd1339805f5c9e288529cb65c3b4a405dd61a953cdfba91ef43a0590eafae",
+    "transition": "9e817699364aca759cdb4d8fe87ccab34bc5afc4a6fbd9cf5cdb50d1c9277aa8",
+    "landing-event": "fba7297f0d1e9f88098dfd81aed4167ad63798386a6b72e3826da0904aef7cb5"
+  },
+  "files": [
+    "appearance.json",
+    "bed-01.png",
+    "chair-01.png",
+    "cirrus-46.png",
+    "player-down.png",
+    "player-left.png",
+    "player-right.png",
+    "player-up.png",
+    "room-shell-01.png",
+    "rug-blue-01.png",
+    "rug-green-01.png",
+    "stool-01.png",
+    "table-01.png",
+    "table-prop-04.png",
+    "table-prop-05.png"
+  ],
+  "candidate": true
+}
