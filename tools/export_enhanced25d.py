@@ -9,6 +9,7 @@ import shutil
 import subprocess
 import uuid
 import zipfile
+from PIL import Image
 import audit_landing_event_package as old
 from audit_battle_package import unpack
 from audit_exploration_package import remap_target
@@ -19,6 +20,10 @@ REPORTS=ROOT/'reports/enhanced25d'
 SCRIPTS=old.SCRIPTS|{'enhanced25d_main','enhanced25d_loader','enhanced25d_renderer'}
 PINS=old.PINS|{'enhanced25d-pin.json'}
 DOCS={'README.md':'ENHANCED25D_README.md','ART-NOTICE.md':'ENHANCED25D_ART.md'}
+STATES=['walk-down','walk-left','walk-right','walk-up','interaction-before','interaction-pickup','equipment-equipped','before','dialogue-first','after']
+SIZES=['1920x1080','2560x1440','3840x2160']
+ANIMATION=ROOT/'art/enhanced25d/v1/animation-candidate-03'
+ATTACHED={'FUNCTIONAL.json':'functional.json','LOADER.json':'loader.json','CHARACTER-REGRESSION.json':'character-regression.json','VALIDATION-FAILURES.json':'functional-first-assertion-failure.json'}
 
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 def read(p): return json.loads(p.read_bytes())
@@ -55,6 +60,65 @@ def external_files():
         if sha(folder/name)!=manifest['files'][name]['sha256']: raise ValueError('Art content changed: '+name)
     for name in [*pin['files'],'package.json']: files['enhanced25d/'+name]=folder/name
     return files
+
+def attach(folder):
+    info=read(folder/'BUILD-INFO.json')
+    for name,row in info['files'].items():
+        if sha(folder/name)!=row['sha256']: raise ValueError('Changed export before attachment')
+    functional=read(REPORTS/'functional.json');loader=read(REPORTS/'loader.json')
+    if not functional['passed'] or functional['source_updates']!=57188 or not loader['passed']: raise ValueError('Functional gates incomplete')
+    python=read(ROOT/'reports/landing-event/l5-python.json')
+    if python['unexpected'] or len(python['unavailable_old_snapshot'])!=9 or len(python['skipped'])!=7: raise ValueError('Python regression differs')
+    character=read(REPORTS/'character-regression.json')
+    if not character['passed'] or character['source_updates']!=6156: raise ValueError('Character source regression missing')
+    counts={'character':6156,'enhanced25d':57188}
+    evidence={}
+    for name,count in [('room',15183),('event',20037),('interaction',23910),('equipment',11064),('landing_event',42891)]:
+        path=ROOT/'reports/exploration'/f'test_{name}_ui.log'
+        text=path.read_text(encoding='utf-8-sig');rows=[json.loads(s) for s in text.splitlines() if s.startswith('{')]
+        if len(rows)!=1 or not rows[0]['passed'] or rows[0]['source_updates']!=count: raise ValueError('Incomplete regression '+name)
+        counts[name]=count;evidence[path.relative_to(ROOT).as_posix()]=sha(path)
+    for name,path,count,key in [('movement',ROOT/'reports/exploration/godot-movement-validation.json',1680,'updates'),('transition',ROOT/'reports/transition/t4-ui.json',10965,'source_updates')]:
+        data=read(path)
+        if not data['passed'] or data[key]!=count: raise ValueError('Incomplete regression '+name)
+        counts[name]=count;evidence[path.relative_to(ROOT).as_posix()]=sha(path)
+    for leaf,marker in [('battle-regression.log','Battle core, UI, presentation, timing and package checks passed.'),('exploration-regression.log','Exploration Godot, bundle, package and QA acceptance tests passed.'),('runtime-regression.log','"checks":14,"failures":[]'),('workbench-regression.log','"real_textures_loaded":true'),('art-tests.log','Ran 4 tests')]:
+        path=REPORTS/leaf;text=path.read_text(encoding='utf-8-sig')
+        if marker not in text or any(s in text for s in ['SCRIPT ERROR:','Parse Error:','Assertion failed','FAILED (']): raise ValueError('Missing regression '+leaf)
+        evidence[path.relative_to(ROOT).as_posix()]=sha(path)
+    matrix=json.loads((REPORTS/'capture-matrix.json').read_text(encoding='utf-8-sig'))
+    if len(matrix)!=30 or {(r['size'],r['state']) for r in matrix}!={(s,t) for s in SIZES for t in STATES}: raise ValueError('Incomplete screenshot matrix')
+    (folder/'SCREENSHOTS').mkdir();(folder/'REPORTS').mkdir()
+    screens=[]
+    for row in matrix:
+        origin=Path(row['folder']); report=read(origin/'result.json')
+        size=list(map(int,row['size'].split('x')))
+        if not report['passed'] or not report['content_bounds_valid'] or report['actual_viewport']!=size or report['mode']!='screenshot' or report['measured_seconds']!=0 or report['frame_intervals_ms'] or report['performance_tested']: raise ValueError('Invalid functional screenshot')
+        if report['effective_appearance']!=('hd' if row['state'] in ['before','dialogue-first','after'] else 'enhanced25d'): raise ValueError('Wrong scene appearance policy')
+        if row['state']=='after' and not report['landing_event_completed']: raise ValueError('LAIA did not finish')
+        with Image.open(origin/'screen.png') as image:
+            if list(image.size)!=size: raise ValueError('Screenshot size differs')
+        name=row['size']+'-'+row['state']
+        shutil.copyfile(origin/'screen.png',folder/'SCREENSHOTS'/(name+'.png'))
+        shutil.copyfile(origin/'result.json',folder/'REPORTS'/(name+'.json'))
+        screens.append({'size':size,'state':row['state'],'sha256':sha(origin/'screen.png')})
+    for target,source in ATTACHED.items(): shutil.copyfile(REPORTS/source,folder/target)
+    write(folder/'PYTHON.json',python)
+    write(folder/'REGRESSION.json',{'passed':True,'source_updates':counts,'evidence':evidence,'performance_tested':False})
+    write(folder/'VALIDATION.json',{'schema':'ao_pc_enhanced25d_acceptance_v1','functional_passed':True,'performance_tested':False,'performance_status':'deferred_by_user','source_commit':info['source_commit'],'source_updates':counts,'screenshots':screens,'old_missing_snapshot_tests':9,'performance_dependent_skips':7,'new_art_python_tests':4,'first_assertion_failure_preserved':True,'package_and_extracted_launch':'recorded_separately_after_archive_creation'})
+    art=read(ANIMATION/'animation.json')
+    for name,row in art['files'].items():
+        if sha(ANIMATION/name)!=row['sha256']: raise ValueError('Changed animation attachment')
+        target=folder/'ANIMATION'/name;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ANIMATION/name,target)
+    shutil.copyfile(ANIMATION/'animation.json',folder/'ANIMATION/animation.json')
+    info['files']={p.relative_to(folder).as_posix():{'sha256':sha(p),'bytes':p.stat().st_size} for p in sorted(folder.rglob('*')) if p.is_file() and p.name!='BUILD-INFO.json'}
+    write(folder/'BUILD-INFO.json',info)
+    write(REPORTS/'acceptance.json',read(folder/'VALIDATION.json'))
+    print(json.dumps({'attachments':len(info['files']),'screenshots':30,'performance_tested':False}))
+
+def approved_delivery_names():
+    art=read(ANIMATION/'animation.json')
+    return set(external_files())|{'MAP001-25D.exe','MAP001-25D.pck','BUILD-INFO.json','GODOT-LICENSE.txt','GODOT-COPYRIGHT.txt','PYTHON.json','REGRESSION.json','VALIDATION.json'}|set(DOCS)|set(ATTACHED)|{'ANIMATION/'+n for n in art['files']}|{'ANIMATION/animation.json'}|{'SCREENSHOTS/'+s+'-'+t+'.png' for s in SIZES for t in STATES}|{'REPORTS/'+s+'-'+t+'.json' for s in SIZES for t in STATES}
 
 def export(output):
     if git('status','--porcelain'): raise ValueError('Commit source before export')
@@ -113,6 +177,11 @@ def package(folder,archive,extracted):
     if archive.exists() or extracted.exists(): raise ValueError('Preserve earlier archives and extracted runs')
     info=read(folder/'BUILD-INFO.json');expected=set(info['files'])|{'BUILD-INFO.json'}
     actual={p.relative_to(folder).as_posix() for p in folder.rglob('*') if p.is_file()}
+    if actual!=approved_delivery_names(): raise ValueError('Unapproved delivery resources: '+str(actual^approved_delivery_names()))
+    expected_dirs={str(Path(n).parent).replace('\\','/') for n in actual if '/' in n}
+    expected_dirs|={str(Path(n).parent).replace('\\','/') for n in list(expected_dirs) if '/' in n}
+    if {p.relative_to(folder).as_posix() for p in folder.rglob('*') if p.is_dir()}!=expected_dirs: raise ValueError('Unapproved delivery directories')
+    for path in folder.rglob('*'): old.room.no_redirect(path)
     if actual!=expected: raise ValueError('Delivery file closure differs')
     for name,row in info['files'].items():
         if sha(folder/name)!=row['sha256']: raise ValueError('Delivery file changed')
@@ -130,7 +199,9 @@ def package(folder,archive,extracted):
 if __name__=='__main__':
     p=argparse.ArgumentParser();s=p.add_subparsers(dest='command',required=True)
     e=s.add_parser('export');e.add_argument('--output',type=Path,required=True)
+    e=s.add_parser('attach');e.add_argument('--folder',type=Path,required=True)
     e=s.add_parser('package');e.add_argument('--folder',type=Path,required=True);e.add_argument('--archive',type=Path,required=True);e.add_argument('--extracted',type=Path,required=True)
     a=p.parse_args()
     if a.command=='export': export(a.output)
+    elif a.command=='attach': attach(a.folder)
     else: package(a.folder,a.archive,a.extracted)
