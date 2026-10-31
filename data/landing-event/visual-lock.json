@@ -1,0 +1,6 @@
+{
+  "schema": "ao_pc_landing_event_visual_lock_v1",
+  "report_sha256": "7194296a12e9c20159aa8820527e15a22c9d26e81d05415a18aca861dc85ba9b",
+  "visuals_sha256": "0fcf7cbbd32a95cfade69696b9b4a37a2fe89e429c275239c5136d1ffd48cc43",
+  "performance_tested": false
+}
