@@ -26,6 +26,7 @@ ANIMATION=ROOT/'art/enhanced25d-landing/v1/animation-candidate-01'
 ATTACHED={'FUNCTIONAL.json':'functional.json','LOADER.json':'loader.json','INPUT.json':'input.json','ANIMATION-TEST.json':'animation-test.json','CHARACTER-REGRESSION.json':'character-regression.json'}
 LAYERS=ROOT/'art/enhanced25d-landing/v1'
 LAYER_FILES=['landing-layers.ora','production-layout.json','layers-manifest.json','approval.json']
+PHASES=['fade-out','fade-in','laia-return','laia-up-action','control-restored']
 
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 def read(p): return json.loads(p.read_bytes())
@@ -89,7 +90,7 @@ def attach(folder):
         evidence[path.relative_to(ROOT).as_posix()]=sha(path)
     matrix=json.loads((REPORTS/'capture-matrix.json').read_text(encoding='utf-8-sig'))
     if len(matrix)!=len(STATES)*len(SIZES) or {(r['size'],r['state']) for r in matrix}!={(s,t) for s in SIZES for t in STATES}: raise ValueError('Incomplete screenshot matrix')
-    (folder/'SCREENSHOTS').mkdir();(folder/'REPORTS').mkdir()
+    (folder/'SCREENSHOTS').mkdir(exist_ok=True);(folder/'REPORTS').mkdir(exist_ok=True)
     screens=[]
     for row in matrix:
         origin=Path(row['folder']); report=read(origin/'result.json')
@@ -97,18 +98,34 @@ def attach(folder):
         if not report['passed'] or not report['content_bounds_valid'] or report['actual_viewport']!=size or report['mode']!='screenshot' or report['measured_seconds']!=0 or report['frame_intervals_ms'] or report['performance_tested']: raise ValueError('Invalid functional screenshot')
         if report['effective_appearance']!='enhanced25d': raise ValueError('Wrong scene appearance policy')
         if row['state']=='after' and not report['landing_event_completed']: raise ValueError('LAIA did not finish')
+        if row['state'].startswith('page-'):
+            index=int(row['state'][5:])-1
+            texts=read(SOURCE/'generated/landing-event/dialogue.json')['records']
+            pages=texts['map001_00b141']['pages']+texts['map001_00b2e2']['pages']
+            if report['dialogue_text']!=pages[index]['zh_tw'] or report['dialogue_capture_page']!=index+1: raise ValueError('Dialogue content/page differs from locked corpus')
         with Image.open(origin/'screen.png') as image:
             if list(image.size)!=size: raise ValueError('Screenshot size differs')
         name=row['size']+'-'+row['state']
         shutil.copyfile(origin/'screen.png',folder/'SCREENSHOTS'/(name+'.png'))
         shutil.copyfile(origin/'result.json',folder/'REPORTS'/(name+'.json'))
         screens.append({'size':size,'state':row['state'],'sha256':sha(origin/'screen.png')})
+    phase_matrix=read(REPORTS/'phase-matrix.json')
+    if len(phase_matrix)!=3 or {r['size'] for r in phase_matrix}!=set(SIZES): raise ValueError('Missing short presentation captures')
+    (folder/'PHASES').mkdir(exist_ok=True)
+    for row in phase_matrix:
+        origin=Path(row['folder']);report=read(origin/'phases.json')
+        if not report['passed'] or report['performance_tested'] or not report['natural_inputs'] or set(report['captures'])!=set(PHASES): raise ValueError('Invalid presentation evidence')
+        shutil.copyfile(origin/'phases.json',folder/'PHASES'/(row['size']+'.json'))
+        for state in PHASES:
+            with Image.open(origin/(state+'.png')) as im:
+                if list(im.size)!=list(map(int,row['size'].split('x'))): raise ValueError('Phase screenshot dimensions differ')
+            shutil.copyfile(origin/(state+'.png'),folder/'PHASES'/(row['size']+'-'+state+'.png'))
     for name in ['input.json','animation-test.json']:
         if not read(REPORTS/name)['passed']: raise ValueError('New input/animation check failed')
     for target,source in ATTACHED.items(): shutil.copyfile(REPORTS/source,folder/target)
     write(folder/'PYTHON.json',python)
     write(folder/'REGRESSION.json',{'passed':True,'source_updates':counts,'evidence':evidence,'performance_tested':False})
-    write(folder/'VALIDATION.json',{'schema':'ao_pc_landing25d_acceptance_v1','functional_passed':True,'performance_tested':False,'performance_status':'deferred_by_user','source_commit':info['source_commit'],'source_updates':counts,'screenshots':screens,'old_missing_snapshot_tests':9,'performance_dependent_skips':7,'new_art_python_tests':4,'initial_appdata_log_warning_preserved':True,'package_and_extracted_launch':'recorded_separately_after_archive_creation'})
+    write(folder/'VALIDATION.json',{'schema':'ao_pc_landing25d_acceptance_v1','functional_passed':True,'performance_tested':False,'performance_status':'deferred_by_user','source_commit':info['source_commit'],'source_updates':counts,'screenshots':screens,'phase_screenshots':15,'phase_states':PHASES,'old_missing_snapshot_tests':9,'performance_dependent_skips':7,'new_art_python_tests':4,'initial_appdata_log_warning_preserved':True,'package_and_extracted_launch':'recorded_separately_after_archive_creation'})
     for name in LAYER_FILES:
         target=folder/'ART-LAYERS'/name;target.parent.mkdir(exist_ok=True);shutil.copyfile(LAYERS/name,target)
     art=read(ANIMATION/'animation.json')
@@ -123,7 +140,7 @@ def attach(folder):
 
 def approved_delivery_names():
     art=read(ANIMATION/'animation.json')
-    return set(external_files())|{'MAP001-25D-Landing.exe','MAP001-25D-Landing.pck','BUILD-INFO.json','GODOT-LICENSE.txt','GODOT-COPYRIGHT.txt','PYTHON.json','REGRESSION.json','VALIDATION.json'}|set(DOCS)|set(ATTACHED)|{'ANIMATION/'+n for n in art['files']}|{'ANIMATION/animation.json'}|{'ART-LAYERS/'+n for n in LAYER_FILES}|{'SCREENSHOTS/'+s+'-'+t+'.png' for s in SIZES for t in STATES}|{'REPORTS/'+s+'-'+t+'.json' for s in SIZES for t in STATES}
+    return set(external_files())|{'MAP001-25D-Landing.exe','MAP001-25D-Landing.pck','BUILD-INFO.json','GODOT-LICENSE.txt','GODOT-COPYRIGHT.txt','PYTHON.json','REGRESSION.json','VALIDATION.json'}|set(DOCS)|set(ATTACHED)|{'ANIMATION/'+n for n in art['files']}|{'ANIMATION/animation.json'}|{'ART-LAYERS/'+n for n in LAYER_FILES}|{'SCREENSHOTS/'+s+'-'+t+'.png' for s in SIZES for t in STATES}|{'REPORTS/'+s+'-'+t+'.json' for s in SIZES for t in STATES}|{'PHASES/'+s+'-'+t+'.png' for s in SIZES for t in PHASES}|{'PHASES/'+s+'.json' for s in SIZES}
 
 def export(output):
     if git('status','--porcelain'): raise ValueError('Commit source before export')
