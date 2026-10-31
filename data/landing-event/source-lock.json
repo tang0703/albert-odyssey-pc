@@ -1,0 +1,23 @@
+{
+  "schema": "ao_pc_landing_event_source_lock_v1",
+  "baseline_commit": "70f836a7fbcc04fc46380437b7aaea23984ddc73",
+  "gate_report_sha256": "675dc0df05ab45d910a25254fc9e83cdbf7a3eddcde4f2b0371e7a6f67cc273a",
+  "programs_sha256": "6b8b6f9a8ebb0825509c18e7d71532f1fc10125ea19b358d3dff52040bc6e904",
+  "dialogues_sha256": "9062085848feb8c0a90fe6a211eafcbfcabd6c1e15c456618fa47060a84f5668",
+  "dependencies": {
+    "scene": "bf837ef145c4ac413f6cb383c70d6a1d7e1e6d2544300719e3add645830e7fbc",
+    "character": "ccc35c6e98a0a95cf517a555f338b3147dd307c1e60d3a284ffdded76f2bfd21",
+    "character-hd": "00f009e7eded1ab6a3a5fb8b4c621ab03c705b43b701822eb62fb601718e511c",
+    "room": "4f5871775e4ff5de364cb78ed6aab695bcca5e60b57be4977d01270c7ed3e8d2",
+    "event": "4c830604e9eaeadb0542df39f37355f7d37509f24940ed7cc8a210c012f04510",
+    "interaction": "365489c2f1c59410f26babb2e461c3dd2d25fb597d65306c4788aca01ff6a71e",
+    "equipment": "485cd1339805f5c9e288529cb65c3b4a405dd61a953cdfba91ef43a0590eafae",
+    "transition": "9e817699364aca759cdb4d8fe87ccab34bc5afc4a6fbd9cf5cdb50d1c9277aa8"
+  },
+  "l1_complete": true,
+  "runtime_approved": false,
+  "performance_tested": false,
+  "endpoint": "same_scene_control_restored",
+  "formal_replay_count": 12,
+  "post_event_equipment_replay_count": 3
+}
