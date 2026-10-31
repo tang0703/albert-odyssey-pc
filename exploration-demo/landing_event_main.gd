@@ -196,7 +196,11 @@ func _present(result: Dictionary) -> void:
 	if event_core.stage == "landing": landing_age += 1
 	if event_core.event_completed: landing_end_age += 1
 	if not landing_capture.is_empty():
-		var ready: bool = (landing_capture == "approach" and event_core.event_runs == 1 and event_core.fixed_camera and landing_age > 40 and not dialogue.active) or (landing_capture == "after" and landing_end_age >= 8)
+		var npc_visible: bool = false
+		if int(shown_event.get("scene",8)) == 7:
+			var npc: PackedByteArray = str(shown_event.arrival_actor).hex_decode()
+			npc_visible = TransferCore.word(npc,0)/16.0 >= source_camera().x+48.0
+		var ready: bool = (landing_capture == "approach" and event_core.event_runs == 1 and event_core.fixed_camera and npc_visible and not dialogue.active) or (landing_capture == "after" and landing_end_age >= 8)
 		if ready: qa_capture_ready = true; paused = true
 	update_completed.emit(result); sync_source_layers(); refresh()
 
@@ -332,6 +336,7 @@ func refresh() -> void:
 	if int(shown_event.get("scene",8)) == 7:
 		animation_label.text = "F2 切換 · 圖像 %d / 顯示 %d\n原作演出延遲 %d 次更新" % [int(animation_state.image_index),int(displayed_actor.image_index),landing_display_delay]
 	if event_core.scene_id == 7:
+		comparison_label.text = "更新 %d · 左側事件 %d 次 · 對照差異 %d" % [update_count,event_core.event_runs,mismatch_count]
 		interaction_button.disabled = true
 		note = "左側事件已完成；可在核准範圍行走。其他出口與事件維持測試邊界。" if event_core.event_completed else "沿通道向左接近觸發區。事件中按 Enter 確認對話。"
 		if event_core.disabled != 0: note = "LAIA 原作事件演出中；確認對話後等待角色與鏡頭動作完成。"
