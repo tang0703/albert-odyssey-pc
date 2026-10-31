@@ -105,6 +105,7 @@ func _landing_tick(pad: int) -> void:
 func scene_resources_ready(response_generation: int, request_id: String) -> Dictionary:
 	if response_generation != generation or stage != "loading" or pending_load != {"generation":response_generation,"id":request_id}:
 		return {"ok":true,"accepted":false}
+	if not legal_equipment_state(): return {"ok":false,"accepted":false,"error":"Illegal persistent state before scene initialization"}
 	player = str(transition_data.player_initializer).hex_decode()
 	cameras = [transition_data.camera_initializer.duplicate(true),transition_data.camera_initializer.duplicate(true)]
 	landing_objects.clear()
@@ -122,6 +123,7 @@ func scene_resources_ready(response_generation: int, request_id: String) -> Dict
 
 func step(pad: int, signals: Dictionary, pressed: int = 0) -> Dictionary:
 	if transition_data.is_empty() or not error.is_empty(): return {"ok":false,"error":"Transition core not configured: "+error}
+	if not legal_equipment_state(): return {"ok":false,"error":"Illegal persistent state during transfer"}
 	if not [0,0x1000,0x2000,0x4000,0x8000,0x0200,0x0400].has(pad): return {"ok":false,"error":"Invalid transfer input"}
 	if stage == "original_room":
 		var result: Dictionary = super.step(pad,signals,pressed)

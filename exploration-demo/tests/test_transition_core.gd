@@ -51,6 +51,11 @@ func run() -> void:
 			if preserved != [core.weapon,core.item_count,core.attack,core.story]: fail("Persistent state changed on transfer"); return
 			if core.stage != "landing" and core.equipment("remove").ok: fail("Transfer allowed equipment"); return
 			checks += actual.size()+5; index += 1
+		var saved_count: int = core.item_count
+		core.item_count = 99
+		var invalid: Dictionary = core.snapshot()
+		if core.step(0,{}).ok or core.equipment("equip").ok or core.snapshot() != invalid: fail("Illegal persistent state accepted or mutated"); return
+		core.item_count = saved_count; checks += 3
 		var old_generation: int = core.generation
 		core.reset()
 		if core.scene_resources_ready(old_generation,"map001_scene7_resources").accepted or core.stage != "original_room" or core.scene_id != 8 or core.snapshot() != old_data.initial_state or not core.landing_objects.is_empty() or not core.arrival_actor.is_empty(): fail("Reset retained transition state"); return
@@ -60,5 +65,5 @@ func run() -> void:
 		checks += 8
 		routes.append({"route":route,"prefix_updates":fixture.prefix.updates.size(),"transfer_updates":index})
 	var report: Dictionary = {"passed":true,"checks":checks,"routes":routes,"performance_tested":false,"scope":"Independent GDScript continuous original-room and landing states plus generation/duplicate/reset guards. No UI or package acceptance."}
-	var file := FileAccess.open(base.path_join("../../reports/transition/t3-godot.json"),FileAccess.WRITE)
+	var file := FileAccess.open(base.path_join("../../reports/transition/t4-core.json"),FileAccess.WRITE)
 	file.store_string(JSON.stringify(report,"\t")); file.close(); print(JSON.stringify(report)); quit(0)
