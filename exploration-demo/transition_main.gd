@@ -2,6 +2,7 @@ extends "res://equipment_main.gd"
 const TransferCore = preload("res://transition_core.gd")
 const TransferBundle = preload("res://transition_loader.gd")
 const FadeShader = preload("res://transition_fade.gdshader")
+const LANDING_DISPLAY_DELAY: int = 2
 var transfer_bundle: Dictionary = {}
 var transfer_ready: bool = false
 var load_responses: Array[Dictionary] = []
@@ -109,7 +110,7 @@ func _install_scene() -> void:
 	input_barrier(); event_queue.clear(); dialogue.reset(); dialogue_closing = false; dialogue_id = ""
 	equipment_panel.visible = false
 	var initial: Dictionary = _visual_sample(); initial.world_visible = false
-	for i: int in 2: event_queue.append(initial.duplicate(true))
+	for i: int in LANDING_DISPLAY_DELAY: event_queue.append(initial.duplicate(true))
 	_show_sample(initial)
 	trail.clear()
 
@@ -288,6 +289,8 @@ func refresh() -> void:
 	super.refresh()
 	if not transfer_ready: return
 	domain_label.text = "單向下樓 · 落點 95 格來源查表範圍 · 效能未驗收"
+	if int(shown_event.get("scene",8)) == 7:
+		animation_label.text = "F2 切換 · 圖像 %d / 顯示 %d\n原作演出延遲 %d 次更新" % [int(animation_state.image_index),int(displayed_actor.image_index),LANDING_DISPLAY_DELAY]
 	if event_core.scene_id == 7:
 		interaction_button.disabled = true
 		note = "落點右側通道；回程、後續劇情及未驗證區域為測試邊界。R 回到原房起點。"

@@ -24,6 +24,7 @@ func run() -> void:
 				if ui.source_replay_completed or not ui.startup_error.is_empty(): break
 			check(ui.source_replay_completed and ui.mismatch_count == 0 and ui.startup_error.is_empty(),"Complete source route %s/%d: %s" % [mode,route,ui.startup_error])
 			check(ui.event_core.stage == "landing" and ui.event_core.scene_id == 7 and ui.qa_identity().old_scene_hidden,"Only destination remains after transfer")
+			check("延遲 2 次更新" in ui.animation_label.text,"Destination diagnostic reports its source display delay")
 			if mode == "hd": endings.append(ui.event_core.transition_snapshot())
 			else: check(ui.event_core.transition_snapshot() == endings[route],"Appearance preserves transfer and destination state")
 			if not failures.is_empty(): break
@@ -65,6 +66,7 @@ func run() -> void:
 	tap(ui,KEY_PERIOD); check(ui.event_core.transition_snapshot() != before,"Paused single step advances complete destination update")
 	tap(ui,KEY_R)
 	check(ui.event_core.stage == "original_room" and ui.event_core.story == "01" and ui.event_core.weapon == 255 and ui.event_core.item_count == 0 and not ui.audio_player.playing and ui.load_responses.is_empty(),"Reset restores complete original start")
+	check("延遲 3 次更新" in ui.animation_label.text,"Reset restores original-room display delay diagnostic")
 	check(not ui.accept_load({"generation":transition_generation,"id":"map001_scene7_resources"}) and ui.event_core.scene_id == 8,"Late prior-generation response cannot contaminate reset")
 	key(ui,KEY_DOWN); tap(ui,KEY_R); before_xy = ui.event_core.player.slice(0,4)
 	ui.paused = false; ui.qa_pc_mode = false; key(ui,KEY_DOWN,true,true); ui.advance_update()
