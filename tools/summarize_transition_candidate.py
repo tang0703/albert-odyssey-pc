@@ -53,7 +53,7 @@ def summarize(folder,screens):
         if sha(image.read_bytes())!=case['sha256'] or sha(report.read_bytes())!=case['report_sha256']:raise ValueError('Screenshot evidence changed')
         data=gate(report);size=tuple(map(int,case['size'].split('x')))
         if data['performance_tested'] is not False or data['mode']!='screenshot' or data['frame_intervals_ms'] or data['samples'] or data['measured_seconds']!=0:raise ValueError('Unexpected performance measurement')
-        if data['transition_manifest_sha256']!=pin or not all(data[k] for k in ('panel_layout_valid','toolbar_layout_valid','surface_verified','old_scene_hidden')):raise ValueError('Wrong screenshot bundle or layout')
+        if data['transition_manifest_sha256']!=pin or not all(data[k] for k in ('panel_layout_valid','toolbar_layout_valid','content_bounds_valid','surface_verified','old_scene_hidden')):raise ValueError('Wrong screenshot bundle or layout')
         if tuple(data['actual_viewport'])!=size or Image.open(image).size!=size:raise ValueError('Wrong actual screenshot resolution')
         if (data['weapon'],data['story_item_count'],data['story'],data['attack'])!=(27,0,'07',15):raise ValueError('Persistent state changed')
         if data['scene_id']!=(8 if case['state']=='before' else 7):raise ValueError('Wrong screenshot scene')

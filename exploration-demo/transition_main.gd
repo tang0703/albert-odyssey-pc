@@ -12,6 +12,16 @@ var transfer_capture: String = ""
 var landing_age: int = 0
 var fade_rect: ColorRect
 var fade_material: ShaderMaterial
+var transfer_footer: Control
+
+func build_ui() -> void:
+	super.build_ui()
+	# Reserve space for wrapped transition messages without pushing the footer
+	# beyond the viewport. These spacings apply only to the new entry.
+	status_label.get_parent().add_theme_constant_override("separation",6)
+	var grid: GridContainer = field_values.values()[0].get_parent()
+	grid.add_theme_constant_override("v_separation",0)
+	transfer_footer = stage.get_parent().get_parent().get_parent().get_child(-1)
 
 func _ready() -> void:
 	for arg: String in OS.get_cmdline_user_args():
@@ -294,6 +304,9 @@ func qa_identity() -> Dictionary:
 	var result: Dictionary = super.qa_identity()
 	result.schema = "ao_pc_transition_ui_qa_v1"; result.performance_tested = false
 	result.transition_state = transfer_capture; result.transition_manifest_sha256 = transfer_bundle.get("manifest_sha256","")
+	result.content_bounds_valid = get_viewport_rect().encloses(transfer_footer.get_global_rect())
+	result.footer_bottom = transfer_footer.get_global_rect().end.y
+	result.viewport_bottom = get_viewport_rect().end.y
 	if transfer_ready:
 		result.scene_id = event_core.scene_id; result.stage = event_core.stage; result.rgb = event_core.rgb.duplicate()
 		result.old_scene_hidden = true

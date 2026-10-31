@@ -30,7 +30,7 @@ try {
                 if ($Process.ExitCode -ne 0) { throw 'Screenshot process failed.' }
                 if ((Get-Content -LiteralPath $Log -Raw) -match 'SCRIPT ERROR:|ERROR:|Parse Error:') { throw 'Engine error; inspect screenshot log.' }
                 $Data=Get-Content -LiteralPath $Report -Raw -Encoding UTF8 | ConvertFrom-Json
-                if (-not $Data.passed -or -not $Data.surface_verified -or -not $Data.panel_layout_valid -or -not $Data.toolbar_layout_valid -or $Data.performance_tested -ne $false -or $Data.mode -ne 'screenshot' -or ($Data.actual_viewport -join 'x') -ne $Size -or $Data.transition_state -ne $State) { throw 'Screenshot evidence rejected.' }
+                if (-not $Data.passed -or -not $Data.surface_verified -or -not $Data.panel_layout_valid -or -not $Data.toolbar_layout_valid -or -not $Data.content_bounds_valid -or $Data.performance_tested -ne $false -or $Data.mode -ne 'screenshot' -or ($Data.actual_viewport -join 'x') -ne $Size -or $Data.transition_state -ne $State) { throw 'Screenshot evidence rejected.' }
                 $ExpectedScene=if ($State -eq 'before') {8} else {7}
                 if ($Data.weapon -ne 27 -or $Data.story -ne '07' -or $Data.scene_id -ne $ExpectedScene -or -not $Data.old_scene_hidden) { throw 'Incorrect transfer screenshot state.' }
                 if (@($Data.frame_intervals_ms).Count -or @($Data.samples).Count -or $Data.measured_seconds -ne 0) { throw 'Unexpected performance measurement.' }
