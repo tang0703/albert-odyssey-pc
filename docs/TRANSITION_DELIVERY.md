@@ -17,3 +17,11 @@ T5 畫面檢查修正了長訊息擠出底部提示，以及落點診斷仍顯�
 既有舊快照缺失的九項測試仍未能重跑；未更改舊 `savestate-lock.json`。影子、雙向往返、目的地完整探索、前版效能與尖峰確認、實際 GPU 120 FPS 及 Stage B 整體仍未完成。
 
 候選套件名稱：`MAP001-Transition-Candidate-Windows-x64.zip`。原作素材、RAM、快照與含來源套件留在本地；GitHub 同步程式、測試及核准摘要。
+
+## T5 最終交付
+
+完成標記：**MAP001 首次單向轉場與落點行走功能驗證通過；效能驗收暫緩**。
+
+最終二進位由乾淨提交 `2ce639dba387222ba3a36d2383af4a0a699d327c` 建置。1080p／1440p／4K 各四張短程畫面全部通過；修正後完整矩陣無逾時。ZIP 228 個檔案逐檔核對及解壓後審核通過；從解壓目錄啟動落點與邊界兩次，均正常完成，套件內容未被執行改寫。
+
+候選 ZIP 共 61,418,983 bytes。SHA256：`fa8c9a3429d4ea3925227e1c218020f8bdeeec29a986eedbe1b4405403bf9779`。最終身份及各證據雜湊見 [TRANSITION_CANDIDATE_RELEASE.json](TRANSITION_CANDIDATE_RELEASE.json)。本節是封裝後交付摘要，二進位來源提交與摘要提交分開記錄；套件內 BUILD-INFO 鎖定當時所有內容。

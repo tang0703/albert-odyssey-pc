@@ -1,0 +1,50 @@
+{
+  "schema": "ao_pc_transition_candidate_release_v1",
+  "date": "2026-10-31",
+  "completion": "MAP001 首次單向轉場與落點行走功能驗證通過；效能驗收暫緩",
+  "functional_passed": true,
+  "performance_tested": false,
+  "full_runtime_acceptance": false,
+  "binary_source_commit": "2ce639dba387222ba3a36d2383af4a0a699d327c",
+  "binary_source_dirty": false,
+  "zip": {
+    "path": "build/MAP001-Transition-Candidate-Windows-x64.zip",
+    "bytes": 61418983,
+    "sha256": "fa8c9a3429d4ea3925227e1c218020f8bdeeec29a986eedbe1b4405403bf9779",
+    "files": 228
+  },
+  "package_manifest_sha256": "5ed7e082ec38bc267f0796d0534dbfe2f4330ba03031a0dfc6835a5e87c1d78d",
+  "functional_report": {
+    "path": "reports/transition/t5-functional.json",
+    "sha256": "ff1b09027250d087773f6eeaf5dcb0a25b75e70d191d53a24a45185340e129aa"
+  },
+  "screenshots": "reports/transition/t5-screens-verified/screenshots.json",
+  "screenshot_cases": 12,
+  "extracted_launches": [
+    {
+      "state": "landing",
+      "report": "reports/transition/t5-extracted/1920x1080-landing/report.json",
+      "report_sha256": "e7a2ee125b5610bc43bedb54aa86e9d9ed582657c0a4a51b7a34c397607ba509",
+      "image_sha256": "7e9003ae88e96e9a2af42072e88577a86ccb5900cdb742303cbabb99ee020965"
+    },
+    {
+      "state": "boundary",
+      "report": "reports/transition/t5-extracted/1920x1080-boundary/report.json",
+      "report_sha256": "a9c258e1f1a4d3f6de628158e2e5b1bfcbe86f0aca48411ea446f6c2328992f5",
+      "image_sha256": "9b4a35f4cd8ff266d5f3441b67b7655171d427308a900ca5a12a255f59d2c3e7"
+    }
+  ],
+  "extracted_package_unchanged": true,
+  "source_local_only": true,
+  "landing_query_cells": 95,
+  "transition_source_updates": 10965,
+  "source_pixel_comparisons": 31629202,
+  "python_passed": 432,
+  "unavailable_old_snapshot_tests": 9,
+  "skipped_performance_evidence_tests": 7,
+  "limits": [
+    "單向下樓，僅首次可控視窗內已驗證走廊；其他出口／事件為測試邊界。",
+    "未執行負載、長循環、效能基準或實際 GPU FPS 測試。",
+    "雙向往返、目的地完整探索、影子、前版效能驗收與 Stage B 整體未完成。"
+  ]
+}
