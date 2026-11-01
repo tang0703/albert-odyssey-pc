@@ -1,11 +1,11 @@
 {
   "schema": "ao_character_review_delivery_v1",
-  "approval_status": "pending_user_approval",
+  "approval_status": "changes_requested",
   "approved": false,
   "source_lock_sha256": "b4d1bf711b5fd15a8042242d47bedb2d6fe853fa87987d167392540a398831c2",
   "review_html": {
-    "bytes": 26111697,
-    "sha256": "b60345e2a2b8d997e753ba0b2be06d1ee80891d34c735f7efb78eedbba003329"
+    "bytes": 26111721,
+    "sha256": "103064e5aec3c32dd8d3ef6d4f16eb7676207e4c347ee7fff0b61bbc4559756b"
   },
   "images": {
     "review/old-neutral-front.png": {

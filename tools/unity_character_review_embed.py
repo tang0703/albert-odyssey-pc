@@ -40,6 +40,11 @@ def main():
         records[name] = {'bytes': len(raw), 'sha256': digest(raw)}
 
     page = (SOURCE / 'review.html').read_text(encoding='utf-8')
+    decision_path = DEST / 'review-decision.json'
+    decision = json.loads(decision_path.read_text(encoding='utf-8')) if decision_path.exists() else None
+    if decision and decision['status'] == 'changes_requested':
+        page = page.replace('等待造型核准，再進入最終蒙皮與動畫。',
+                            '此版造型未通過審閱：與概念圖差距過大，返回造型重做。')
     page = page.replace('<h1>人物精修造型審閱</h1>',
                         '<h1>人物精修造型審閱</h1><p>圖片內嵌版：無須同目錄圖片檔。若切換按鈕無效，請展開下方「全部角度」。</p>')
     # The unchanged primary images also work when a viewer disables JavaScript.
@@ -74,7 +79,8 @@ def main():
     (DEST / 'review.html').write_bytes(output)
     manifest = {
         'schema': 'ao_character_review_delivery_v1',
-        'approval_status': lock['status'], 'approved': lock['approved'],
+        'approval_status': decision['status'] if decision else lock['status'],
+        'approved': decision['approved'] if decision else lock['approved'],
         'source_lock_sha256': digest(lock_bytes),
         'review_html': {'bytes': len(output), 'sha256': digest(output)},
         'images': records, 'verified_source_files': len(lock['files']),

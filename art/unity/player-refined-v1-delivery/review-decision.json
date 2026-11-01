@@ -1,0 +1,12 @@
+{
+  "schema": "ao_character_review_decision_v1",
+  "date": "2026-11-01",
+  "reviewed_art": "art/unity/player-refined-v1",
+  "status": "changes_requested",
+  "approved": false,
+  "user_feedback": "與概念圖差太多了",
+  "next_stage": "C1 silhouette and structure rework, then C2 Unity review",
+  "c3_authorized": false,
+  "original_frozen_review_preserved": true,
+  "performance_tested": false
+}
