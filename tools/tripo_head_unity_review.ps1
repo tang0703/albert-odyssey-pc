@@ -1,6 +1,6 @@
 param([ValidateSet('build','capture')][string]$Action='build',[string]$ArtVersion='prepared-01')
 $ErrorActionPreference='Stop'
-if($ArtVersion -notmatch '^prepared-[0-9]{2}$'){throw 'Invalid review version'}
+if($ArtVersion -notmatch '^(prepared|refined)-[0-9]{2}$'){throw 'Invalid review version'}
 $root=Split-Path $PSScriptRoot -Parent
 $run=[guid]::NewGuid().ToString('N')
 $log=Join-Path $root "reports/unity/tripo-head-$Action-$run.log"

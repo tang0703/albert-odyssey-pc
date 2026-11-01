@@ -9,6 +9,7 @@ p=argparse.ArgumentParser()
 p.add_argument('--capture',required=True)
 p.add_argument('--prepared',default='prepared-01')
 p.add_argument('--out',default='review-01')
+p.add_argument('--local-refine',action='store_true')
 a=p.parse_args()
 capture=Path(a.capture).resolve()
 out=BASE/a.out
@@ -55,10 +56,28 @@ function group(id,items,value,set){const box=document.getElementById(id);box.inn
 function render(){group('directions',[['front','正面'],['left','面向左'],['back','背面'],['right','面向右'],['threequarter','斜側面']],direction,v=>direction=v);group('lights',[['neutral','中性光'],['warm','暖光']],light,v=>light=v);group('crops',[[false,'完整頭部'],[true,'頭臉近景']],close,v=>close=v);
 const suffix=close&&direction!=='back'?'-face':'';document.getElementById('concept').src=images['concept-'+(direction==='threequarter'?'front':direction)];for(const v of ['previous','tripo'])document.getElementById(v).src=images[v+'-clay-'+light+'-'+direction+suffix];document.getElementById('angle').textContent=direction==='back'&&close?'背面保留完整頭部；近景用於臉部。':direction==='threequarter'?'沒有同角度斜側概念，左欄保留正面參考。':'概念維持完整裁圖；Unity 新舊模型使用同一鏡頭。';}
 for(let n=1;n<=6;n++){const f=document.createElement('figure');f.className='card';const im=document.createElement('img');im.src=images['wire-'+n];im.alt='使用者形體參考 '+n;f.appendChild(im);document.getElementById('wires').appendChild(f)}document.querySelectorAll('img').forEach(im=>im.onerror=()=>document.getElementById('error').textContent='圖片載入失敗，請保留這項錯誤。');render();</script></html>'''
+if a.local_refine:
+    replacements={
+        'Tripo 頭部樣本 01｜Unity 實際對照':'Tripo 頭臉局部精修｜Unity 前後對照',
+        'SINGLE TRIPO GENERATION':'LOCAL FACE REFINEMENT / NO NEW API TASK',
+        '頭臉與髮型：Tripo 首次樣本':'保留核准方向，局部修整頭臉',
+        '靜態造型樣本，尚未核准。':'大輪廓方向已確認；局部精修待審閱。',
+        '僅調整匯入方向、展示比例與平滑著色，沒有後製修改模型輪廓。':'以可關閉的形變層小幅修整鼻翼與嘴角；保留來源自訂法線，圖片沒有後製修形。眼球刻線清理未通過，本版保留原眼部造型。',
+        '無貼圖，因此眼睛虹膜與服裝顏色尚不存在。':'仍為無貼圖灰模，虹膜配色及角色材質尚未完成。',
+        '前次 Hunyuan refined-02｜Unity':'核准方向的 Tripo 原始樣本｜Unity',
+        '本次 Tripo 原始形體｜Unity':f'本地頭臉精修 {a.prepared}｜Unity',
+        '前次 Hunyuan 頭部 Unity 畫面':'核准方向的 Tripo 原始樣本 Unity 畫面',
+        '只生成一個 H3.1 高精細無貼圖模型（v3.1-20260211）；原始 GLB、任務紀錄、可編輯 Blender 與 FBX 均留在本地。沒有自動重抽、貼圖、綁骨或額外付費轉檔。新造型未核准前不接入正式玩家。':f'本輪無 Tripo API 呼叫，新增費用 0 點。鼻翼略收窄並降低前凸，嘴角局部柔化；髮型、羽飾和臉部外輪廓的頂點保持不變。原始樣本完整保留，形變層可設為 0 還原幾何。refined-01～06 的眼部嘗試未採用：刻線仍有裂痕，局部鬆弛又造成眼部破面；refined-07 的全域法線重算也未採用，因為加重了眼部表面紋理。審閱採 {a.prepared}，眼球刻線仍是待修項。尚未製作最終拓樸、貼圖或動畫，也未接入正式玩家。',
+        '詳細費用、來源雜湊與檢查結果另存同目錄 report.json。':'修改範圍、來源雜湊與檢查結果另存同目錄 report.json。'
+    }
+    for old,new in replacements.items():
+        assert old in page,old
+        page=page.replace(old,new)
 (out/'review.html').write_text(page.replace('IMAGES',json.dumps(images,separators=(',',':'))),encoding='utf-8')
 shutil.copytree(capture,out/'unity')
 manifest={'schema':'ao_tripo_head_static_review_v1','capture':str(capture),'prepared':a.prepared,
     'unity_images':36,'embedded_images':len(images),'art_approved':False,
+    'local_refine':a.local_refine,'direction_approved':a.local_refine,
     'animation_tested':False,'performance_tested':False,'gameplay_changed':False,
     'html_sha256':hashlib.sha256((out/'review.html').read_bytes()).hexdigest(),'images':hashes}
 (out/'review-lock.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
