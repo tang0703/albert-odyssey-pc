@@ -1,7 +1,8 @@
 param([ValidateSet('build','capture')][string]$Action='build',[string]$ArtVersion='prepared-01')
 $ErrorActionPreference='Stop'
-if($ArtVersion -notmatch '^(prepared|refined|eye-color)-[0-9]{2}$'){throw 'Invalid review version'}
-$eyeColor=$ArtVersion.StartsWith('eye-color-')
+if($ArtVersion -notmatch '^(prepared|refined|eye-color|cloud-ready)-[0-9]{2}$'){throw 'Invalid review version'}
+$cloudTexture=$ArtVersion.StartsWith('cloud-ready-')
+$eyeColor=$ArtVersion.StartsWith('eye-color-') -or $cloudTexture
 $root=Split-Path $PSScriptRoot -Parent
 $run=[guid]::NewGuid().ToString('N')
 $log=Join-Path $root "reports/unity/tripo-head-$Action-$run.log"
@@ -13,6 +14,7 @@ try {
         $output=Join-Path $root "build/unity-tripo-head-$run"
         $arguments=@('-batchmode','-nographics','-quit','-projectPath',('"'+(Join-Path $root 'unity-remake')+'"'),'-executeMethod','Ao.UnityMigration.Editor.HeadPilotReviewBuild.Run','-tripoReview','-headArt',('"'+$art+'"'),'-reviewOutput',('"'+$output+'"'),'-logFile',('"'+$log+'"'))
         if($eyeColor){$arguments+='-eyeColorReview'}
+        if($cloudTexture){$arguments+='-cloudTextureReview'}
         $unity=Join-Path (Split-Path $root -Parent) 'tools/pc-remake/unity-6000.3.27f2/Editor/Unity.exe'
         $process=Start-Process $unity -ArgumentList $arguments -WindowStyle Hidden -PassThru
         $process.WaitForExit()
@@ -24,6 +26,7 @@ try {
         $expected=(Get-FileHash -LiteralPath (Join-Path $art 'unity-inputs.json') -Algorithm SHA256).Hash.ToLowerInvariant()
         if(-not $manifest.tripo_review -or $manifest.inputs_sha256 -ne $expected){throw 'Wrong Tripo head build'}
         if($eyeColor -and -not $manifest.eye_color_review){throw 'Wrong eye color build'}
+        if($cloudTexture -and -not $manifest.cloud_texture_review){throw 'Wrong cloud texture build'}
         $output=Join-Path $root "reports/unity/tripo-head-capture-$run"
         $process=Start-Process (Join-Path $build 'Head-Pilot-Review.exe') -ArgumentList @('--review-output',('"'+$output+'"'),'-logFile',('"'+$log+'"')) -WindowStyle Hidden -PassThru
         if(-not $process.WaitForExit(90000)){Stop-Process -Id $process.Id;throw "Capture timeout; retained $log"}
