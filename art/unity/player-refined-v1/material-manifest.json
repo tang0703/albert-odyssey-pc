@@ -1,0 +1,56 @@
+{
+  "schema": "ao_character_static_review_v1",
+  "status": "pending_user_review",
+  "height": 1.125,
+  "camera_pitch": 45,
+  "files": {
+    "player-refined.blend": {
+      "bytes": 6033405,
+      "sha256": "dc6ee3a43fcf94ea86fc46c3c5320502f9a9303f7b39e5ec2391801fa934c5a3"
+    },
+    "player-static.fbx": {
+      "bytes": 5306364,
+      "sha256": "a069d2faed6d2589cb38b4751b8f5061c7dbf5579937621e7cae4b3d472a7c2c"
+    },
+    "player-textured.blend": {
+      "bytes": 12998391,
+      "sha256": "e788c8f55af368e087e9406e3b4aa857c5667ad2a6ac9a107ed5cbd53a167537"
+    },
+    "textures/character-albedo.png": {
+      "bytes": 3018494,
+      "sha256": "f485042d0a5d205eb3ab261e12590deb9edefa6202ad2dc908f527fad2d59964"
+    },
+    "textures/character-mask.png": {
+      "bytes": 2432715,
+      "sha256": "68a40c2970c4ec960e20751ebcf150b6a17103747eba1af6e84fbb237ef47948"
+    },
+    "textures/character-normal.png": {
+      "bytes": 1519877,
+      "sha256": "43d5b8c26356a800cc3bef5d6adea2cfea7e728b0935f2f6bd1beaf67b5af55a"
+    },
+    "textures/character-occlusion.png": {
+      "bytes": 1961359,
+      "sha256": "33f1332803a892c1596f4362215857f9420916df4277644141decb204f5aaac0"
+    },
+    "textures/character-parameters.png": {
+      "bytes": 786541,
+      "sha256": "176a6b878488cdb8e41e2feb310a628bc0256abba1d3acff059d81da9ba2e373"
+    }
+  },
+  "textures": {
+    "albedo": "textures/character-albedo.png",
+    "normal": "textures/character-normal.png",
+    "mask": "textures/character-mask.png"
+  },
+  "mask_channels": {
+    "r": "metallic",
+    "g": "ambient_occlusion",
+    "b": "roughness",
+    "a": "smoothness"
+  },
+  "normal_space": "tangent OpenGL",
+  "albedo_lighting_baked": false,
+  "rig_finalized": false,
+  "animation_finalized": false,
+  "performance_tested": false
+}

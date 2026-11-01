@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "scope": "C2 static Unity URP review, no gameplay or animation acceptance",
+  "captures": 22,
+  "diagnostic_captures": 2,
+  "height": 1.125,
+  "room_camera_pitch": 45,
+  "lighting": "Identical old/new portrait rig: neutral or warm key plus 0.28 fill. Room uses original warm key, no fill.",
+  "portrait_shadow_distance": 6,
+  "portrait_shadow_normal_bias": 0.15,
+  "portrait_shadow_depth_bias": 2,
+  "room_shadow_distance": 25,
+  "room_shadow_bias": 1,
+  "performance_tested": false
+}

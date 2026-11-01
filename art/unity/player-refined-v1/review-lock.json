@@ -1,0 +1,169 @@
+{
+  "schema": "ao_character_refinement_review_v1",
+  "status": "pending_user_approval",
+  "approved": false,
+  "source_baseline": {
+    "bytes": 40341,
+    "sha256": "3774ad216c6f191bfd2d83c0e8bc2ed0aba7a88a6c9e714e46427fd1a03f047b"
+  },
+  "old_art_lock": {
+    "bytes": 2602,
+    "sha256": "31ac881d4a72e3ecad3e09b78f8ab7d798e5e6bdd225acc8ae797cc964912025"
+  },
+  "concept_reference": {
+    "bytes": 1217766,
+    "sha256": "6a1fd1a9746a3f9ecdbfa580d98038b56e0dc341e946b794157bccd77b022b28"
+  },
+  "height": 1.125,
+  "room_camera_pitch": 45,
+  "rig_complete": false,
+  "animations_complete": false,
+  "performance_tested": false,
+  "capture_source": "reports/unity/character-c2-capture-b57fb3166dba4b979cd398a4529878e5",
+  "files": {
+    "geometry.json": {
+      "bytes": 274,
+      "sha256": "a27365cdadfe50b238fddaddf86520ff9d3b6e20b4f1375bb3a3e13a5f9cc4f4"
+    },
+    "material-manifest.json": {
+      "bytes": 1834,
+      "sha256": "9f0bef24deacdc20379d8c0aa60972cf49a50f8af4b80c23254957d2ed407d7a"
+    },
+    "player-refined.blend": {
+      "bytes": 6033405,
+      "sha256": "dc6ee3a43fcf94ea86fc46c3c5320502f9a9303f7b39e5ec2391801fa934c5a3"
+    },
+    "player-static.fbx": {
+      "bytes": 5306364,
+      "sha256": "a069d2faed6d2589cb38b4751b8f5061c7dbf5579937621e7cae4b3d472a7c2c"
+    },
+    "player-textured.blend": {
+      "bytes": 12998391,
+      "sha256": "e788c8f55af368e087e9406e3b4aa857c5667ad2a6ac9a107ed5cbd53a167537"
+    },
+    "review.html": {
+      "bytes": 5567,
+      "sha256": "009f57b44a922d44680d55627ea8b14a46177bc84398a4e5204851a536904781"
+    },
+    "review/diagnostic-no-shadow-no-normal.png": {
+      "bytes": 553002,
+      "sha256": "d94db281dda69c7decd9beeb38b2adf353c42a322d277ec65e2ad240c54cfbbe"
+    },
+    "review/diagnostic-no-shadow.png": {
+      "bytes": 559575,
+      "sha256": "1e01f48c71dc7acbac216a5043ee609aa00345a709e6d9c9658a6c49691ecece"
+    },
+    "review/old-neutral-back.png": {
+      "bytes": 262717,
+      "sha256": "e89ece4c68d512b5935046cd93a7e139d908994bce1a6775b69ec706d4b9856b"
+    },
+    "review/old-neutral-face.png": {
+      "bytes": 544969,
+      "sha256": "41dcfac921dd6b77c01cc7b82f32dd1d1f659e3fa5a737fffe97246044670dae"
+    },
+    "review/old-neutral-front.png": {
+      "bytes": 290865,
+      "sha256": "3c57bd2c2de153daa329d09334255bb5b33c6fda5514f9e9f7430f2fa4218246"
+    },
+    "review/old-neutral-left.png": {
+      "bytes": 188661,
+      "sha256": "f0f1e73871aaaec5664c113de7d16221d69844b09d8f324b7aeb5697c7e68bb5"
+    },
+    "review/old-neutral-right.png": {
+      "bytes": 189290,
+      "sha256": "b81f0e3925f42e2d4bd2753c327c575163c82298b1388c81dfb4af01639d599c"
+    },
+    "review/old-room.png": {
+      "bytes": 722607,
+      "sha256": "6984ed568fb0781e8f40e52bc5c7bb4ae337e5947fd4e4fb1df6e10ac0eb513f"
+    },
+    "review/old-warm-back.png": {
+      "bytes": 260457,
+      "sha256": "7e472dbe0dcb64b806cb9324baf849b12ae8ad1e949a377aef95a664171a15d5"
+    },
+    "review/old-warm-face.png": {
+      "bytes": 540932,
+      "sha256": "d57fc5059ac06a74192359dc18c4a457e961d4de89118d65c49b4ee918eb0bec"
+    },
+    "review/old-warm-front.png": {
+      "bytes": 288395,
+      "sha256": "7d7315b38012a68aa9155e21961a3ba0d6aeae87125bde444bfd01914a7bc1f0"
+    },
+    "review/old-warm-left.png": {
+      "bytes": 187598,
+      "sha256": "2c98b8bf418b7c1daaa85e3387090f885c5e23602f466284216c2e79464070e9"
+    },
+    "review/old-warm-right.png": {
+      "bytes": 188074,
+      "sha256": "74d26d3b070701e6e40dc32b15837990496008b35e9f82f2ab69f0596c56cd54"
+    },
+    "review/refined-neutral-back.png": {
+      "bytes": 286791,
+      "sha256": "e17bb50eec54d03fff2f397846cc1f5a023b026710cbda6469c12eacf9156dbc"
+    },
+    "review/refined-neutral-face.png": {
+      "bytes": 574629,
+      "sha256": "76b7e601e4ecffe21604138fee3c1d2ccb205c84e6651a14a661f32a210de76c"
+    },
+    "review/refined-neutral-front.png": {
+      "bytes": 305143,
+      "sha256": "738bfdcb3397f019285d0ebe813dfeca08285ea1d30fe7ce3433f86d5ad20a08"
+    },
+    "review/refined-neutral-left.png": {
+      "bytes": 209174,
+      "sha256": "df7a00f417d92832af3b3a6ecb785ef8834a339c8f8296784b155f7f4d7ce2c8"
+    },
+    "review/refined-neutral-right.png": {
+      "bytes": 207014,
+      "sha256": "5e8f2b3237b49074d77c481f2d81b1fa9ff4c56e78c4c6d017ae8df45d83db34"
+    },
+    "review/refined-room.png": {
+      "bytes": 723413,
+      "sha256": "1848a0f94c12eca4f22042fec5ee46230a6dc968160a74076ba31d9ae4a7f309"
+    },
+    "review/refined-warm-back.png": {
+      "bytes": 285744,
+      "sha256": "0c4ef44ce7c4c86175ae97c9627727d6c2ec13dc79d4a3c8b46edd60cb6b2146"
+    },
+    "review/refined-warm-face.png": {
+      "bytes": 572848,
+      "sha256": "33d2d8be4961c6408d14ef62e31653578c0253b508b53bef685f14d057c58422"
+    },
+    "review/refined-warm-front.png": {
+      "bytes": 304763,
+      "sha256": "a5226c0af2b6b8663c9ce76424434119260b6e7c13876656b86178031710b0e6"
+    },
+    "review/refined-warm-left.png": {
+      "bytes": 208386,
+      "sha256": "84ae546b1f6938f619d9247b9c90b349ad624948f1090512475899d21694576d"
+    },
+    "review/refined-warm-right.png": {
+      "bytes": 206711,
+      "sha256": "87c2f68b44adda9a0f019b9a71ed5eff14eb7f4c34e7bfe2986925a8c62abbd8"
+    },
+    "review/review.json": {
+      "bytes": 520,
+      "sha256": "aceb4c867b61921d7601f730540042dd1c3e91d5b5b430c2ae8cb254466c0012"
+    },
+    "textures/character-albedo.png": {
+      "bytes": 3018494,
+      "sha256": "f485042d0a5d205eb3ab261e12590deb9edefa6202ad2dc908f527fad2d59964"
+    },
+    "textures/character-mask.png": {
+      "bytes": 2432715,
+      "sha256": "68a40c2970c4ec960e20751ebcf150b6a17103747eba1af6e84fbb237ef47948"
+    },
+    "textures/character-normal.png": {
+      "bytes": 1519877,
+      "sha256": "43d5b8c26356a800cc3bef5d6adea2cfea7e728b0935f2f6bd1beaf67b5af55a"
+    },
+    "textures/character-occlusion.png": {
+      "bytes": 1961359,
+      "sha256": "33f1332803a892c1596f4362215857f9420916df4277644141decb204f5aaac0"
+    },
+    "textures/character-parameters.png": {
+      "bytes": 786541,
+      "sha256": "176a6b878488cdb8e41e2feb310a628bc0256abba1d3acff059d81da9ba2e373"
+    }
+  }
+}
