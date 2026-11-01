@@ -1,0 +1,86 @@
+{
+  "schema": "ao_unity_u3_review_v1",
+  "art_version": "startroom-v2",
+  "status": "approved_direction",
+  "approved": true,
+  "rig_complete": false,
+  "animation_complete": false,
+  "performance_tested": false,
+  "unity_height": 1.125,
+  "camera_pitch": 45,
+  "supersedes_for_review": "startroom-v1",
+  "user_feedback_on_v1": "先調整人物造型，更接近原概念圖",
+  "notes": [
+    "Actual Unity URP previews are separate from Blender previews.",
+    "Room generator unchanged; no gameplay changes.",
+    "Remaining topology, shading and final material work is not accepted."
+  ],
+  "files": {
+    "draft-manifest.json": {
+      "bytes": 1940,
+      "sha256": "8daef46b2f0a7ffebc1f585fe5a84f7f229e04376f5f0f51eb043ff5b1b5e77a"
+    },
+    "player-back.png": {
+      "bytes": 905186,
+      "sha256": "3b831993f59939b226e5bbf8df46434c513f9547d1c15d61d5b1b81d768ec024"
+    },
+    "player-draft.fbx": {
+      "bytes": 12998668,
+      "sha256": "c58db66322dc1b3408403aedba7c1000a9c421634f3c14c1b5b11ae268122d8a"
+    },
+    "player-front.png": {
+      "bytes": 942601,
+      "sha256": "46ccbdbebc04881a03b4e5c77d8262cd1420eea94a8f57f127fbec7f8bdc58a8"
+    },
+    "player-left.png": {
+      "bytes": 893035,
+      "sha256": "f3ec64826a5038e5c76a4857c3d0e222e841a405a04c41fbcb412211265a5199"
+    },
+    "player-right.png": {
+      "bytes": 887880,
+      "sha256": "42164acef0826c7153a58fefffcf0211c95970371539a317b249bd927b295b6e"
+    },
+    "review.html": {
+      "bytes": 3426,
+      "sha256": "ae26f2c087ccf8044d852a6a0691b050f249269d313c27cacee69b7e25d5739e"
+    },
+    "room-draft.fbx": {
+      "bytes": 3527404,
+      "sha256": "d6a21ad6653c4375e5c654e0f9a2bde226f376190d1262e01aea181a2c66fe16"
+    },
+    "room-warm-review.png": {
+      "bytes": 1577392,
+      "sha256": "15df87aa595b1eba82c734bc441e70e3fc8ede29f6a2cbf2bb0b3e6f3cf2fda0"
+    },
+    "startroom-draft.blend": {
+      "bytes": 4656036,
+      "sha256": "d15d1c2e896b6f76a8a751b6dd0f83bf7421bc583c87e053a80f8525662e03af"
+    },
+    "unity-review/review.json": {
+      "bytes": 394,
+      "sha256": "0a7c12990a703d12bee9efac5b7f2e85780d673edac33ce1da8fad717dc80f5c"
+    },
+    "unity-review/unity-back.png": {
+      "bytes": 192535,
+      "sha256": "a584940e6572c578ceb63ce14c81c3fe9702999c5c788545fcdfa467d68dd926"
+    },
+    "unity-review/unity-front.png": {
+      "bytes": 228615,
+      "sha256": "cdb43adea7463ba68bc4ea6bdbf4738bd152a92e8cb706265bc5fba33af1c162"
+    },
+    "unity-review/unity-left.png": {
+      "bytes": 152996,
+      "sha256": "8a88e108520d4ad597a948723680a3a80e391643a24deb420eca16bc43373c5f"
+    },
+    "unity-review/unity-right.png": {
+      "bytes": 153154,
+      "sha256": "1e16d1d55a8da9d9630a621698cdd6f7f918b9adcb5c93b9f5fe03c1dca67861"
+    },
+    "unity-review/unity-room.png": {
+      "bytes": 204380,
+      "sha256": "5711a920211b477816918b2f95553d4cb61a5db9aae52f8900a5b7c5e766534f"
+    }
+  },
+  "user_approval": "採用第二版造型方向，繼續骨架與材質精修",
+  "approval_scope": "Character direction, existing proportions and camera; rig, animation and final materials remain U4 work."
+}

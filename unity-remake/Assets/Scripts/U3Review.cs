@@ -13,6 +13,7 @@ namespace Ao.UnityMigration
     {
         public GameObject Room,Player;
         public Material Lit;
+        public string ArtVersion;
         Camera view;
         string output;
         GameObject room,player;
@@ -42,7 +43,7 @@ namespace Ao.UnityMigration
             {
                 player.transform.rotation=Quaternion.Euler(0,new[]{180f,90f,270f,0f}[i++],0);yield return new WaitForEndOfFrame();Capture("unity-"+direction,800,1000);
             }
-            File.WriteAllText(Path.Combine(output,"review.json"),new JObject{["stage"]="U3 draft, pending approval",["editor"]=Application.unityVersion,["renderer"]="URP Universal Renderer",["room_axis_sign_x"]=sx,["room_axis_sign_z"]=sz,["player_bounds_height"]=BoundsOf(player).size.y,["source_gameplay_test"]=false,["performance_tested"]=false,["note"]="Static geometric appearance preview. No rig or animation acceptance."}.ToString());
+            File.WriteAllText(Path.Combine(output,"review.json"),new JObject{["stage"]="U3 draft, pending approval",["art_version"]=ArtVersion,["editor"]=Application.unityVersion,["renderer"]="URP Universal Renderer",["room_axis_sign_x"]=sx,["room_axis_sign_z"]=sz,["player_bounds_height"]=BoundsOf(player).size.y,["source_gameplay_test"]=false,["performance_tested"]=false,["note"]="Static geometric appearance preview. No rig or animation acceptance."}.ToString());
             Application.Quit(0);
         }
         void ConvertMaterials(GameObject root)

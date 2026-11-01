@@ -14,13 +14,16 @@ namespace Ao.UnityMigration.Editor
         public static void Run()
         {
             string root=Path.GetFullPath(Path.Combine(Application.dataPath,"../.."));string[] args=Environment.GetCommandLineArgs();string output=args[Array.IndexOf(args,"-u3Build")+1];
+            int artArgument=Array.IndexOf(args,"-u3ArtVersion");string artVersion=artArgument<0?"startroom-v1":args[artArgument+1];
+            if(artVersion!="startroom-v1"&&artVersion!="startroom-v2")throw new ArgumentException("Unknown art review version");
             if(Directory.Exists(output))throw new IOException("Existing review build");
             Directory.CreateDirectory("Assets/U3Generated");
             foreach(string file in new[]{"room-draft.fbx","player-draft.fbx"})
-                File.Copy(Path.Combine(root,"art/unity/startroom-v1",file),"Assets/U3Generated/"+file,true);
+                File.Copy(Path.Combine(root,"art/unity",artVersion,file),"Assets/U3Generated/"+file,true);
             AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
             var scene=EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Single);
             var preview=new GameObject("U3 static art review").AddComponent<U3Review>();
+            preview.ArtVersion=artVersion;
             preview.Room=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/U3Generated/room-draft.fbx");preview.Player=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/U3Generated/player-draft.fbx");
             preview.Lit=AssetDatabase.LoadAssetAtPath<Material>("Assets/U2Generated/Graybox.mat");
             if(preview.Room==null||preview.Player==null||preview.Lit==null)throw new Exception("Missing draft geometry/material");

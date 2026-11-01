@@ -1,4 +1,4 @@
-param([ValidateSet('models','build','review')][string]$Action='review',[string]$ReviewDirectory='')
+param([ValidateSet('models','build','review')][string]$Action='review',[string]$ReviewDirectory='', [ValidateSet('startroom-v1','startroom-v2')][string]$ArtVersion='startroom-v2')
 $ErrorActionPreference='Stop'
 $root=Split-Path $PSScriptRoot -Parent
 $toolRoot=Join-Path (Split-Path $root -Parent) 'tools/pc-remake'
@@ -8,13 +8,14 @@ Push-Location $root
 try {
     $log=Join-Path $reports "u3-$Action-$run.log"
     if($Action -eq 'models'){
-        & (Join-Path $toolRoot 'blender-5.2.3/blender-5.2.3-windows-x64/blender.exe') --background --factory-startup --python tools/unity_draft_models.py *> $log
+        $modelScript=if($ArtVersion -eq 'startroom-v2'){'tools/unity_draft_models_v2.py'}else{'tools/unity_draft_models.py'}
+        & (Join-Path $toolRoot 'blender-5.2.3/blender-5.2.3-windows-x64/blender.exe') --background --factory-startup --python $modelScript *> $log
         if($LASTEXITCODE -ne 0){throw "Blender draft failed: $log"}
         exit
     }
     if($Action -eq 'build'){
         $output=Join-Path $root "build/unity-u3-$run"
-        $arguments=@('-batchmode','-nographics','-quit','-projectPath',('"'+(Join-Path $root 'unity-remake')+'"'),'-executeMethod','Ao.UnityMigration.Editor.U3Build.Run','-u3Build',('"'+$output+'"'),'-logFile',('"'+$log+'"'))
+        $arguments=@('-batchmode','-nographics','-quit','-projectPath',('"'+(Join-Path $root 'unity-remake')+'"'),'-executeMethod','Ao.UnityMigration.Editor.U3Build.Run','-u3Build',('"'+$output+'"'),'-u3ArtVersion',$ArtVersion,'-logFile',('"'+$log+'"'))
         $p=Start-Process -FilePath (Join-Path $toolRoot 'unity-6000.3.27f2/Editor/Unity.exe') -ArgumentList $arguments -WindowStyle Hidden -PassThru
         $p.WaitForExit()
         if($p.ExitCode -ne 0 -or -not (Test-Path (Join-Path $output 'review-build.txt'))){throw "U3 build failed: $log"}

@@ -35,3 +35,5 @@ unity-remake/**/*.asset whitespace=-blank-at-eol
 *.ttf filter=lfs diff=lfs merge=lfs -text
 "unity-remake/Assets/TextMesh Pro/Resources/Fonts & Materials/*.asset" filter=lfs diff=lfs merge=lfs -text
 "unity-remake/Assets/TextMesh Pro/**" whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+art/unity/**/*.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
+art/unity/**/*.html -text whitespace=trailing-space,space-before-tab,cr-at-eol
