@@ -1,0 +1,32 @@
+{
+  "source_repository": "https://github.com/Tencent-Hunyuan/Hunyuan3D-2",
+  "source_commit": "f8db63096c8282cb27354314d896feba5ba6ff8a",
+  "model": {
+    "repository": "tencent/Hunyuan3D-2mv",
+    "revision": "3a761b539b29fe4ff64714813aa9560fd66f5de0",
+    "files": {
+      "LICENSE": {
+        "bytes": 17828,
+        "sha256": "e5e6e2041e18326d82cd105a1b9404e36db55263dd9d42d4989f917c2501b67b",
+        "upstream_lfs_sha256": null
+      },
+      "hunyuan3d-dit-v2-mv/config.yaml": {
+        "bytes": 1608,
+        "sha256": "315fd5bf601d1d103130b9fda202f1bd28eda495e68ed1621bc823d5519c5e5b",
+        "upstream_lfs_sha256": null
+      },
+      "hunyuan3d-dit-v2-mv/model.fp16.safetensors": {
+        "bytes": 4928151562,
+        "sha256": "d36f5881bcdc56726b73e517cd444c13c60732431622da7268145355c8d38e9c",
+        "upstream_lfs_sha256": "d36f5881bcdc56726b73e517cd444c13c60732431622da7268145355c8d38e9c"
+      }
+    }
+  },
+  "python": "3.11.9 embedded",
+  "python_zip_sha256": "009d6bf7e3b2ddca3d784fa09f90fe54336d5b60f0e0f305c37f400bf83cfd3b",
+  "pip_bootstrap_sha256": "f4448a01e3ab2914c65f4ca59d4cacba6b2dbde19a483fbac46587f8bbaff424",
+  "requirements_lock_sha256": "e48c5be1f8f818855681677b8630efe84bd178ce80780fbea0de644591f979d5",
+  "references_uploaded": false,
+  "global_path_changed": false,
+  "system_pagefile_changed": false
+}
