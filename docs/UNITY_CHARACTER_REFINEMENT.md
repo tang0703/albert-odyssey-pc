@@ -18,6 +18,8 @@ Blender 源檔包含可編輯網格、UV 與程序材質；另提供套用烘焙
 
 審閱頁：`art/unity/player-refined-v1/review.html`。核准狀態與素材雜湊：同目錄 `review-lock.json`。
 
+圖片內嵌審閱頁：`art/unity/player-refined-v1-delivery/review.html`。使用者回報原審閱頁在預覽中出現破圖；原版使用相對圖片路徑。新版將全部 23 張圖片內嵌，並提供不依賴 JavaScript 切換的全部角度展開區。由 `tools/unity_character_review_embed.py` 產生，先核對封存素材雜湊，再驗證 PNG 解碼與內嵌位元組相同。原審閱鎖定檔與圖片完全保留；交付修正不代表造型核准或 C3 完成。結構檢查不等同 Codex 預覽實際渲染驗收。
+
 ## 驗證與保留證據
 
 - 重新開啟 Blender 源檔檢查模型／UV，核對色彩與材質輸入雜湊；報告位於本地 `reports/unity/character-c1-validation.json`。

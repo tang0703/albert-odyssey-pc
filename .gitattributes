@@ -39,3 +39,4 @@ art/unity/**/*.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
 art/unity/**/*.html -text whitespace=trailing-space,space-before-tab,cr-at-eol
 
 *.otf filter=lfs diff=lfs merge=lfs -text
+art/unity/player-refined-v1-delivery/review.html filter=lfs diff=lfs merge=lfs -text
