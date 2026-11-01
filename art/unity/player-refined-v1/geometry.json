@@ -1,0 +1,11 @@
+{
+  "stage": "C1 static mesh, C2 review pending",
+  "height": 1.125,
+  "vertices": 80233,
+  "triangles": 159110,
+  "uv": "CharacterAtlasUV",
+  "skinning_complete": false,
+  "animation_complete": false,
+  "performance_tested": false,
+  "old_art_unchanged": true
+}
