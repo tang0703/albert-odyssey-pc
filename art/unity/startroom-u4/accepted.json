@@ -1,0 +1,11 @@
+{
+  "schema": "ao_unity_u4_acceptance_v1",
+  "approved_direction": "../startroom-v2/review-lock.json",
+  "user_approved_final_art": false,
+  "implementation_visual_checked": true,
+  "asset_lock_sha256": "31ac881d4a72e3ecad3e09b78f8ab7d798e5e6bdd225acc8ae797cc964912025",
+  "rig_check": "reports/unity/u4-rig-validation.json",
+  "source_samples": 7370,
+  "performance_tested": false,
+  "scope": "Starting room candidate; final aesthetic preference remains user reviewable"
+}

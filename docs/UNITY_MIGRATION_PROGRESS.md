@@ -50,13 +50,9 @@ Git U1：`7edff06`；U2：`077a866`。U2 保留全部舊來源，沒有加入物
 
 待審閱頁：`art/unity/startroom-v2/review.html`；詳細紀錄見 `UNITY_U3_REVIEW.md`。第二版 `review-lock.json` 狀態為 approved_direction、approved=true；使用者已核准「採用第二版造型方向，繼續骨架與材質精修」。Blender 材質預覽與 Unity 實際渲染分開，拓樸、局部陰影與最終材質仍需精修。
 
-## 尚未通過的關卡
+## U4 與 U5
 
-1. U3 造型方向已核准；最終材質與家具對位仍需 U4 驗證。
-2. U4：骨架、待機／行走／取得等必要動作與精修；全流程正式模型整合。
-3. U5：正式美術版三解析度、封裝逐檔雜湊、解壓啟動及最終候選 ZIP。
-
-U2 的方塊與膠囊不作正式美術。最終候選檔名保留 `MAP001-Unity-StartRoom-Candidate-Windows-x64.zip`，未達關卡不以該名稱交付。
+U4 骨架、材質及正式模型流程已完成，見 `UNITY_U4_PROGRESS.md`。U5 功能／畫面基準見 `UNITY_U5_ACCEPTANCE.md`；最終 ZIP、來源提交與解壓啟動另見 `UNITY_U5_DELIVERY.md`。效能驗收暫緩。
 
 ## 重跑入口
 

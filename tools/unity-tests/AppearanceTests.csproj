@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework><EnableDefaultCompileItems>false</EnableDefaultCompileItems></PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../unity-remake/Assets/Scripts/Core/*.cs" />
+    <Compile Include="AppearanceTests.cs" />
+    <Reference Include="Newtonsoft.Json"><HintPath>../../../tools/pc-remake/dotnet-8.0.427/sdk/8.0.427/Newtonsoft.Json.dll</HintPath></Reference>
+  </ItemGroup>
+</Project>

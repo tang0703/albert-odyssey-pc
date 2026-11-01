@@ -14,11 +14,11 @@ KNOWN={
     'test_real_palette_samples_remain_diagnostic',
 }
 
-def run():
+def run(stage='u2'):
     base=ROOT/'reports/unity';temp=base/'temp';temp.mkdir(parents=True,exist_ok=True)
     os.environ['TEMP']=os.environ['TMP']=str(temp)
     suite=unittest.defaultTestLoader.discover(str(ROOT/'tests'))
-    with (base/'u2-python-regression.log').open('w',encoding='utf-8') as stream:
+    with (base/f'{stage}-python-regression.log').open('w',encoding='utf-8') as stream:
         result=unittest.TextTestRunner(stream=stream,verbosity=2).run(suite)
     known=[];unexpected=[]
     for case,error in result.errors:
@@ -32,9 +32,12 @@ def run():
             'passed':result.testsRun-len(result.errors)-len(result.failures)-len(result.skipped),
             'unavailable_old_snapshot':known,'skipped':[{'test':case.id(),'reason':why} for case,why in result.skipped],
             'unexpected':unexpected,'performance_tested':False}
-    (base/'u2-python-regression.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+    (base/f'{stage}-python-regression.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({k:v for k,v in report.items() if k not in ('skipped','unexpected','unavailable_old_snapshot')}))
     print('Known unavailable:',len(known),'Skipped:',len(result.skipped),'Unexpected:',len(unexpected))
     raise SystemExit(0 if not unexpected else 1)
 
-if __name__=='__main__':run()
+if __name__=='__main__':
+    import argparse
+    parser=argparse.ArgumentParser();parser.add_argument('--stage',choices=['u2','u4'],default='u2')
+    run(parser.parse_args().stage)

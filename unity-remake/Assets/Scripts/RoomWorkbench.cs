@@ -18,7 +18,10 @@ namespace Ao.UnityMigration
     public sealed class RoomWorkbench : MonoBehaviour
     {
         public Material BaseMaterial;
+        public RoomArt Art;
+        public Font BundledFont;
         RoomSession session;
+        SourceEffects3D effects;
         Camera view;
         Transform player,cirrus,spark,heading;
         GameObject marker,actor,dialoguePanel,equipmentPanel,diagnosticPanel;
@@ -31,16 +34,19 @@ namespace Ao.UnityMigration
         readonly HashSet<KeyCode> blocked=new HashSet<KeyCode>();
         readonly LogicClock clock=new LogicClock();
         int inputEpoch,autoUpdate,pageAge,stairs,frames;
-        bool autoEquipped,qa,screenshotBusy,finished;
+        bool autoEquipped,qa,screenshotBusy,finished,uiVerified,reminderQA,audioStartedObserved;
+        readonly HashSet<string> presentationChecks=new HashSet<string>();
         string reportPath,shotDir,failure="",loadedId="";
         readonly HashSet<string> shots=new HashSet<string>();
         static readonly KeyCode[] Directions={KeyCode.UpArrow,KeyCode.W,KeyCode.DownArrow,KeyCode.S,KeyCode.LeftArrow,KeyCode.A,KeyCode.RightArrow,KeyCode.D};
         static string Arg(string name){var args=Environment.GetCommandLineArgs();for(int i=0;i<args.Length-1;i++)if(args[i]==name)return args[i+1];return "";}
         void Start()
         {
+            if(Art!=null&&Arg("--u4-preview")!="")
+            {var preview=gameObject.AddComponent<U4Preview>();preview.Art=Art;preview.Output=Arg("--u4-preview");enabled=false;return;}
             try
             {
-                reportPath=Arg("--u2-report");shotDir=Arg("--u2-shots");qa=reportPath!="";
+                reportPath=Arg("--u2-report");shotDir=Arg("--u2-shots");qa=reportPath!="";reminderQA=Arg("--u4-route")=="reminder";
                 Application.runInBackground=qa;Application.targetFrameRate=60;
                 if(qa&&shotDir!="")Directory.CreateDirectory(shotDir);
                 session=new RoomSession(new EquipmentCore(Path.Combine(Application.streamingAssetsPath,"SourceLocal"),Application.isEditor));
@@ -49,7 +55,7 @@ namespace Ao.UnityMigration
                 clips.Add("IVENT176.AIF",ReadWave(audio["pickup.wav"],"Cirrus pickup"));
                 voice=gameObject.AddComponent<AudioSource>();voice.playOnAwake=false;voice.spatialBlend=0;
                 session.DeviceRequest=Device;
-                font=TMP_FontAsset.CreateFontAsset("Microsoft JhengHei","Regular",64);
+                font=BundledFont!=null?TMP_FontAsset.CreateFontAsset(BundledFont):TMP_FontAsset.CreateFontAsset("Microsoft JhengHei","Regular",64);
                 if(font==null)font=TMP_FontAsset.CreateFontAsset("Microsoft JhengHei UI","Regular",64);
                 if(font==null)throw new InvalidDataException("U2 requires installed Microsoft JhengHei; bundled font pending U4");
                 BuildScene();BuildUI();Draw();
@@ -82,7 +88,7 @@ namespace Ao.UnityMigration
             if(type=="load_original_resource")
             {if(!clips.ContainsKey(id))throw new InvalidDataException("Unknown audio resource "+id);voice.Stop();loadedId=id;voice.clip=clips[id];session.SetDeviceResponse(generation,true,false);}
             else if(type=="play_original_resource")
-            {if(loadedId=="")throw new InvalidOperationException("Audio play before load");voice.Play();if(!voice.isPlaying)throw new InvalidOperationException("Audio failed to start");session.SetDeviceResponse(generation,true,true);if(session.Paused)voice.Pause();}
+            {if(loadedId=="")throw new InvalidOperationException("Audio play before load");voice.Play();if(!voice.isPlaying)throw new InvalidOperationException("Audio failed to start");audioStartedObserved=true;session.SetDeviceResponse(generation,true,true);if(session.Paused)voice.Pause();}
             else throw new InvalidDataException("Unknown device request");
         }
         Material Material(Color color){var m=new Material(BaseMaterial);m.color=color;return m;}
@@ -98,16 +104,21 @@ namespace Ao.UnityMigration
             view.orthographic=true;view.orthographicSize=5.7f;view.clearFlags=CameraClearFlags.SolidColor;view.backgroundColor=new Color(.025f,.04f,.05f);
             var key=new GameObject("Warm key light").AddComponent<Light>();key.type=LightType.Directional;key.color=new Color(1,.83f,.65f);key.intensity=1.8f;key.shadows=LightShadows.Soft;key.transform.rotation=Quaternion.Euler(50,-30,0);
             RenderSettings.ambientLight=new Color(.35f,.38f,.43f);
+            if(Art!=null){key.color=new Color(1,.91f,.8f);key.intensity=1.15f;RenderSettings.ambientLight=new Color(.29f,.30f,.32f);}
+            if(Art==null)
+            {
             Primitive("Graybox floor — not collision geometry",PrimitiveType.Cube,new Vector3(7,-.12f,-4),new Vector3(14,.2f,8),new Color(.20f,.24f,.25f));
             // Only visual masses. Authoritative contacts come exclusively from sealed source lookup data.
             Box("West bed",57,110,55,67,.65f);Box("North west bed",144,60,48,68,.65f);Box("North east bed",224,60,48,68,.65f);
             Box("Table",176,160,96,63,.8f);Box("Left chair",182,139,29,21,.5f);Box("Right chair",220,139,29,21,.5f);
+            }
             player=new GameObject("Player source anchor").transform;
-            actor=Primitive("U2 capsule; final model pending review",PrimitiveType.Capsule,Vector3.zero,new Vector3(.45f,.5625f,.45f),new Color(.4f,.63f,.37f));actor.transform.SetParent(player,false);actor.transform.localPosition=new Vector3(0,.5625f,0);
+            if(Art==null)actor=Primitive("U2 capsule; final model pending review",PrimitiveType.Capsule,Vector3.zero,new Vector3(.45f,.5625f,.45f),new Color(.4f,.63f,.37f));if(Art==null){actor.transform.SetParent(player,false);actor.transform.localPosition=new Vector3(0,.5625f,0);}else{Art.Initialize(player);view.orthographicSize=5.7f;}
             marker=Primitive("Diagnostic marker",PrimitiveType.Cube,Vector3.zero,new Vector3(.4f,.08f,.4f),Color.cyan);marker.transform.SetParent(player,false);marker.transform.localPosition=Vector3.up*.06f;
             heading=Primitive("Facing",PrimitiveType.Cube,Vector3.zero,new Vector3(.10f,.08f,.35f),new Color(1,.75f,.3f)).transform;heading.SetParent(player,false);heading.localPosition=new Vector3(0,.1f,.32f);
-            cirrus=Primitive("Cirrus source object placeholder",PrimitiveType.Cylinder,Vector3.zero,new Vector3(.25f,.3f,.25f),new Color(.85f,.65f,.25f)).transform;
-            spark=Primitive("Source story spark diagnostic",PrimitiveType.Sphere,Vector3.zero,Vector3.one*.23f,Color.white).transform;
+            if(Art==null)cirrus=Primitive("Cirrus source object placeholder",PrimitiveType.Cylinder,Vector3.zero,new Vector3(.25f,.3f,.25f),new Color(.85f,.65f,.25f)).transform;
+            if(Art==null)spark=Primitive("Source story spark diagnostic",PrimitiveType.Sphere,Vector3.zero,Vector3.one*.23f,Color.white).transform;
+            if(Art!=null){effects=gameObject.AddComponent<SourceEffects3D>();effects.Initialize(font,BaseMaterial);}
         }
         void Box(string name,float x,float y,float w,float h,float height)
         {Primitive(name+" visual mass only",PrimitiveType.Cube,new Vector3((x+w/2)/32,height/2,-(y+h/2)/32),new Vector3(w/32,height,h/32),new Color(.31f,.35f,.36f));}
@@ -130,8 +141,8 @@ namespace Ao.UnityMigration
             var scaler=canvas.GetComponent<CanvasScaler>();scaler.uiScaleMode=CanvasScaler.ScaleMode.ScaleWithScreenSize;scaler.referenceResolution=new Vector2(1920,1080);scaler.matchWidthOrHeight=.5f;
             new GameObject("UI events",typeof(EventSystem),typeof(StandaloneInputModule)).GetComponent<EventSystem>().sendNavigationEvents=false;
             var top=Panel("Title",canvas.transform,new Vector2(0,1),Vector2.one,new Vector2(0,-78),Vector2.zero);
-            Text("MAP001  /  UNITY 3D 灰模驗證",top.transform,30,Vector2.zero,Vector2.one,new Vector2(34,18),new Vector2(-700,-12));
-            Text("U2 功能移植 · 美術未定稿 · 效能未驗收",top.transform,23,Vector2.zero,Vector2.one,new Vector2(1120,19),new Vector2(-24,-14));
+            Text(Art==null?"MAP001  /  UNITY 3D 灰模驗證":"MAP001  /  UNITY 3D 起始房間",top.transform,30,Vector2.zero,Vector2.one,new Vector2(34,18),new Vector2(-700,-12));
+            Text(Art==null?"U2 功能移植 · 美術未定稿 · 效能未驗收":"起始房間候選版 · 效能未驗收",top.transform,23,Vector2.zero,Vector2.one,new Vector2(1120,19),new Vector2(-24,-14));
             var bottom=Panel("Controls",canvas.transform,Vector2.zero,new Vector2(1,0),Vector2.zero,new Vector2(0,150));
             status=Text("",bottom.transform,25,Vector2.zero,Vector2.one,new Vector2(30,85),new Vector2(-30,-12));
             Text("方向鍵 / WASD 移動    Space 暫停    . 單步    R 重設    F1 診斷    F2 外觀",bottom.transform,21,Vector2.zero,Vector2.one,new Vector2(30,22),new Vector2(-650,-85));
@@ -169,7 +180,7 @@ namespace Ao.UnityMigration
                     if(Down(KeyCode.Return)||Down(KeyCode.KeypadEnter))session.ConfirmEdge();
                 }
                 if(inputEpoch!=session.InputEpoch){inputEpoch=session.InputEpoch;Barrier();}
-                if(qa&&session.Panel&&!screenshotBusy&&shots.Contains("equipped"))session.TogglePanel();
+                if(qa&&session.Panel&&!screenshotBusy&&shots.Contains("equipped")){if(Art!=null&&!uiVerified)VerifyUI();else session.TogglePanel();}
                 int pad=0,count=0;
                 if(!qa&&!session.Panel){if(Held(KeyCode.UpArrow)||Held(KeyCode.W)){pad=0x1000;count++;}if(Held(KeyCode.DownArrow)||Held(KeyCode.S)){pad=0x2000;count++;}if(Held(KeyCode.LeftArrow)||Held(KeyCode.A)){pad=0x4000;count++;}if(Held(KeyCode.RightArrow)||Held(KeyCode.D)){pad=0x8000;count++;}}
                 if(Down(KeyCode.Period)&&session.Paused)session.Tick(pad,count>1,true);
@@ -190,9 +201,12 @@ namespace Ao.UnityMigration
             if(!autoEquipped)
             {
                 autoUpdate++;
-                if(autoUpdate<=4)return 0;if(autoUpdate<=34)return 0x2000;if(autoUpdate<=53)return 0x8000;if(autoUpdate<=63)return 0x2000;
-                if(autoUpdate==69)session.ConfirmEdge();
-                if(session.CanAct&&(int)session.Core.Snapshot()["item_count"]==1){session.TogglePanel();session.SelectOption(0);autoEquipped=true;}
+                if(reminderQA)return autoUpdate<=6?0:autoUpdate<=36?0x2000:autoUpdate<=103?0x8000:0;
+                if(Art!=null&&autoUpdate<=8)return autoUpdate<=2?0x4000:autoUpdate<=4?0x8000:autoUpdate<=6?0x1000:0x2000;
+                int routeStep=autoUpdate-(Art!=null?8:0);
+                if(routeStep<=4)return 0;if(routeStep<=34)return 0x2000;if(routeStep<=53)return 0x8000;if(routeStep<=63)return 0x2000;
+                if(routeStep==69)session.ConfirmEdge();
+                if(session.CanAct&&(int)session.Core.Snapshot()["item_count"]==1){equipmentButton.onClick.Invoke();equipButton.onClick.Invoke();autoEquipped=true;}
                 return 0;
             }
             if(!session.CanAct)return 0;
@@ -203,16 +217,16 @@ namespace Ao.UnityMigration
         void Draw()
         {
             var s=session.Shown;var raw=Raw(s["player"]);player.position=SourcePosition(raw);player.rotation=Quaternion.Euler(0,90+45*SourceInteger.Word(raw,38),0);
-            actor.SetActive(!session.Marker);marker.SetActive(session.Marker);
-            var decoration=Raw(s["decor"]);cirrus.gameObject.SetActive((SourceInteger.Word(decoration,10)&0x8000)!=0);cirrus.position=SourcePosition(decoration,.3f);
-            spark.gameObject.SetActive(s["spark"].Type!=JTokenType.Null);if(spark.gameObject.activeSelf)spark.position=SourcePosition(Raw(s["spark"]),1.3f);
+            if(Art==null)actor.SetActive(!session.Marker);marker.SetActive(session.Marker);heading.gameObject.SetActive(Art==null||session.Marker);
+            var decoration=Raw(s["decor"]);if(Art!=null)Art.Present(s,raw,decoration,session.Marker);else{cirrus.gameObject.SetActive((SourceInteger.Word(decoration,10)&0x8000)!=0);cirrus.position=SourcePosition(decoration,.3f);}
+            if(Art!=null)effects.Present(s,s["spark"].Type==JTokenType.Null?null:Raw(s["spark"]));else{spark.gameObject.SetActive(s["spark"].Type!=JTokenType.Null);if(spark.gameObject.activeSelf)spark.position=SourcePosition(Raw(s["spark"]),1.3f);}
             dialoguePanel.SetActive(session.DialogueActive);if(session.DialogueActive){dialogueText.text=(string)session.Pages[session.Page]["zh_tw"];pageText.text=$"CIRRUS  /  {session.Page+1} · {session.Pages.Count}    Enter 繼續";}
             equipmentPanel.SetActive(session.Panel);weaponText.text="派克 / 武器\n"+((int)s["weapon"]==27?"Cirrus · 已裝備":(int)s["item_count"]==1?"持有 Cirrus · 未裝備":"尚未取得 Cirrus");
             equipButton.interactable=session.CanAct&&session.OptionAllowed(0);removeButton.interactable=session.CanAct&&session.OptionAllowed(1);
             var buttons=new[]{equipButton,removeButton,backButton};for(int i=0;i<3;i++)buttons[i].GetComponent<Image>().color=i==session.Selection?new Color(.35f,.31f,.18f):new Color(.14f,.24f,.28f);
             interactButton.interactable=!session.Paused&&!session.Panel&&(session.CanAct||session.DialogueActive);equipmentButton.interactable=session.CanAct||session.Panel;
             status.text=session.Notice!=""?session.Notice:session.Paused?"已暫停 · Space 繼續 / . 單步":session.Panel?"裝備面板 · 房內更新暫停":session.DialogueActive?"正在對話":(int)s["disabled"]!=0?"原作事件演出中":"自由探索 · 接近 Cirrus 並按 Enter";
-            diagnosticPanel.SetActive(session.Diagnostic);diagnosticText.text=$"來源座標 {SourceInteger.Word(raw,0)}, {SourceInteger.Word(raw,2)}\n更新 {s["update"]} / 動畫 {SourceInteger.Word(raw,54)}\n故事 {s["story"]} / 武器 {s["weapon"]} / 持有 {s["item_count"]}\n核心獨立於模型、鏡頭、物理與渲染 FPS\n灰模特殊動作尚未製作";
+            diagnosticPanel.SetActive(session.Diagnostic);diagnosticText.text=$"來源座標 {SourceInteger.Word(raw,0)}, {SourceInteger.Word(raw,2)}\n更新 {s["update"]} / 動畫 {SourceInteger.Word(raw,54)}\n故事 {s["story"]} / 武器 {s["weapon"]} / 持有 {s["item_count"]}\n核心獨立於模型、鏡頭、物理與渲染 FPS\n"+(Art==null?"灰模特殊動作尚未製作":"骨架姿勢："+Art.CurrentClip);
             float aspect=16f/9f,current=(float)Screen.width/Screen.height;view.rect=current>aspect?new Rect((1-aspect/current)/2,0,aspect/current,1):new Rect(0,(1-current/aspect)/2,1,current/aspect);
         }
         void ObserveQA()
@@ -220,8 +234,30 @@ namespace Ao.UnityMigration
             if(autoUpdate+stairs>2500)throw new InvalidOperationException("U2 functional flow did not finish; log retained");
             string stage=session.Boundary?"boundary":session.DialogueActive?"dialogue":autoEquipped?"equipped":"initial";
             if(!shots.Contains(stage)&&!screenshotBusy){shots.Add(stage);if(shotDir!="")StartCoroutine(Capture(stage));}
+            if(Art!=null&&presentationChecks.Add(Art.CurrentClip))
+            {
+                var before=session.Core.Snapshot();session.TogglePause();session.Tick(0);Draw();
+                session.ToggleMarker();Draw();session.ToggleMarker();Draw();session.TogglePause();Draw();
+                if(!JToken.DeepEquals(before,session.Core.Snapshot()))throw new InvalidDataException("Pause/mode changed core state");
+            }
+            if(Art!=null&&!screenshotBusy&&Art.CurrentClip.StartsWith("pickup_",StringComparison.Ordinal)&&!shots.Contains(Art.CurrentClip)){shots.Add(Art.CurrentClip);if(shotDir!="")StartCoroutine(Capture(Art.CurrentClip));}
+            if(Art!=null&&!screenshotBusy)
+            {
+                var shown=session.Shown;var actorBytes=Raw(shown["player"]);string extra="";
+                if(session.DialogueActive)extra="dialogue-page-"+session.Page;
+                else if((SourceInteger.Word(actorBytes,6)&2)!=0)extra="walk-direction-"+SourceInteger.Word(actorBytes,38);
+                if(reminderQA&&shown["effect"].Type!=JTokenType.Null&&!(bool)shown["effect"]["ended"])extra="expression-"+shown["effect"]["image"];
+                if(extra!=""&&!shots.Contains(extra)){shots.Add(extra);if(shotDir!="")StartCoroutine(Capture(extra));}
+            }
+            if(reminderQA&&autoUpdate>103&&session.Confirmations>=2&&session.CanAct&&!screenshotBusy)
+            {
+                var state=session.Core.Snapshot();if((string)state["story"]!="01"||(int)state["weapon"]!=255||(int)state["item_count"]!=0)throw new InvalidDataException("Reminder changed item state");
+                foreach(string required in new[]{"expression-0","expression-1","expression-2","expression-14","expression-15","dialogue-page-0","dialogue-page-1"})if(!shots.Contains(required))throw new InvalidDataException("Missing reminder view "+required);
+                session.Reset();Draw();WriteReport(true,"");finished=true;Application.Quit(0);return;
+            }
             if(session.Boundary&&!screenshotBusy)
             {
+                if(Art!=null&&new[]{"pickup_35","pickup_36","pickup_37","pickup_38"}.Any(x=>!Art.Seen.Contains(x)))throw new InvalidDataException("Required skeletal pickup pose was missed");
                 if(!shots.Contains("dialogue"))throw new InvalidDataException("Required dialogue capture was missed");
                 var s=session.Core.Snapshot();if((int)s["weapon"]!=27||(string)s["story"]!="07")throw new InvalidDataException("Boundary equipment differs");
                 int oldGeneration=session.Generation;session.Reset();session.SetDeviceResponse(oldGeneration,true,true);
@@ -248,10 +284,20 @@ namespace Ao.UnityMigration
             finally
             {RenderTexture.active=active;ui.renderMode=RenderMode.ScreenSpaceOverlay;if(texture!=null)Destroy(texture);if(target!=null){target.Release();Destroy(target);}screenshotBusy=false;}
         }
+        void VerifyUI()
+        {
+            removeButton.onClick.Invoke();
+            if((int)session.Core.Snapshot()["weapon"]!=255||(int)session.Core.Snapshot()["item_count"]!=1)throw new InvalidDataException("UI remove failed");
+            equipButton.onClick.Invoke();var equipped=session.Core.Snapshot();equipButton.onClick.Invoke();
+            if((int)equipped["weapon"]!=27||(int)equipped["item_count"]!=0||!JToken.DeepEquals(equipped,session.Core.Snapshot()))throw new InvalidDataException("Repeated equip changed resources");
+            backButton.onClick.Invoke();if(session.Panel)throw new InvalidDataException("UI cancel failed");
+            session.FocusLost();var paused=session.Core.Snapshot();session.Tick(0x2000);Draw();
+            if(!JToken.DeepEquals(paused,session.Core.Snapshot()))throw new InvalidDataException("Focus pause advanced core");session.TogglePause();uiVerified=true;
+        }
         void WriteReport(bool passed,string error)
         {
             if(reportPath=="")return;
-            var report=new JObject{["passed"]=passed,["error"]=error,["editor"]=Application.unityVersion,["scope"]="one PC-input pickup/equip/staircase graybox run and reset",["real_audio_start"]=autoEquipped,["shots"]=new JArray(shots),["performance_tested"]=false,["final_art"]=false};
+            var report=new JObject{["passed"]=passed,["error"]=error,["editor"]=Application.unityVersion,["scope"]=Art==null?"one PC-input pickup/equip/staircase graybox run and reset":"one source-driven skeletal pickup/equip/staircase run and reset",["real_audio_start"]=audioStartedObserved,["qa_route"]=reminderQA?"unowned-staircase-reminder":"pickup-equipment-stairs",["shots"]=new JArray(shots),["performance_tested"]=false,["final_art"]=false,["skeletal_art"]=Art!=null,["ui_semantic_checks"]=uiVerified,["pause_mode_clip_checks"]=new JArray(presentationChecks),["sampled_clips"]=Art==null?new JArray():new JArray(Art.Seen)};
             Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(reportPath)));File.WriteAllText(reportPath,report.ToString());
         }
         void Fail(string message){failure=message;Debug.LogError(message);WriteReport(false,message);if(qa)Application.Quit(1);}

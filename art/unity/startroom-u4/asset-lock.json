@@ -1,0 +1,72 @@
+{
+  "schema": "ao_unity_u4_art_v1",
+  "approval": "../startroom-v2/review-lock.json",
+  "source_baseline_sha256": "3774ad216c6f191bfd2d83c0e8bc2ed0aba7a88a6c9e714e46427fd1a03f047b",
+  "performance_tested": false,
+  "files": {
+    "cirrus.fbx": {
+      "bytes": 27340,
+      "sha256": "6c088e9bcd32d285ad31acc032193232fe507a2ef9d4f00df7a12a97ad2ade1f"
+    },
+    "materials.json": {
+      "bytes": 8903,
+      "sha256": "2f0758b78d4c65f7e8919feb48ceb49a356da294a48163f02d26a232fba1329b"
+    },
+    "player-rig.fbx": {
+      "bytes": 16741692,
+      "sha256": "d185a35f2f8b425d0ed490107e3597b820f6b14ea694c77c22555d3b4dfa3555"
+    },
+    "rig.json": {
+      "bytes": 2171,
+      "sha256": "52619e1da383194ec32a3cf699b813136ad0123ec57d87dc7d6551a1ab4986b9"
+    },
+    "room.fbx": {
+      "bytes": 3265260,
+      "sha256": "ae041e1fc5f75f3ec3f11f87e7b091d9407a24b123cecc165cd1664a473dcfa8"
+    },
+    "startroom-rig.blend": {
+      "bytes": 12488380,
+      "sha256": "0d49b04412885fdebe572455d5d9b7c7b410249559339381567079b4ed007ee6"
+    },
+    "textures/dark-check.png": {
+      "bytes": 261858,
+      "sha256": "a642bfa46d911bcb01b3fe43076c8ed52cb8833ba9688137bb27ea932ed50fcd"
+    },
+    "textures/dark-walnut.png": {
+      "bytes": 198486,
+      "sha256": "a7fb7be7c4a671d2a170e160c468f8e2243c3d21e3ef545b952e1968242c23e5"
+    },
+    "textures/forest-carpet.png": {
+      "bytes": 299706,
+      "sha256": "d8ca4b53812c649d7340d5c3a74a37b40200343c26448fc378b1d5a551c61d99"
+    },
+    "textures/honey-oak.png": {
+      "bytes": 218484,
+      "sha256": "ebf3af9e3af88b6677a4fabab6355fda505f5edec8ee40f936ebcd82af7d7508"
+    },
+    "textures/ivory-linen.png": {
+      "bytes": 359267,
+      "sha256": "81df74ea092ca4a1b339a6527252b6165a9785c83b51c6a163661724a7fa9241"
+    },
+    "textures/ochre-olive-trousers.png": {
+      "bytes": 282445,
+      "sha256": "f829717109a03ef89fee44238271892b524e63be640ba44e4958ba8908d2a9c6"
+    },
+    "textures/olive-tunic.png": {
+      "bytes": 327758,
+      "sha256": "59b102c9b639e78779437cdee4c6820e7a1e08dc1753f6f75bcd81e8e4563fa5"
+    },
+    "textures/sapphire-carpet.png": {
+      "bytes": 315088,
+      "sha256": "59049d6803247d02e349ee070eb303413e53d744391a4317cfe3726e35f93f05"
+    },
+    "textures/warm-floorboards.png": {
+      "bytes": 219367,
+      "sha256": "fce8b26d6cd3b3fc8f91161afc7c41a953c3b305e3721fd59b03eaf82f50c1dd"
+    },
+    "textures/wool-crimson.png": {
+      "bytes": 310138,
+      "sha256": "eb5edd19f1a093936daf46bfe374ba657d598678394b3d4d3f266560001fb3d2"
+    }
+  }
+}

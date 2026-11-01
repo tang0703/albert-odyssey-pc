@@ -1,0 +1,360 @@
+{
+  "schema": "ao_unity_lit_materials_v1",
+  "materials": [
+    {
+      "name": "Book paper",
+      "base_color": [
+        0.7300000190734863,
+        0.6000000238418579,
+        0.36000001430511475,
+        1.0
+      ],
+      "roughness": 0.800000011920929,
+      "metallic": 0.0
+    },
+    {
+      "name": "Boot leather",
+      "base_color": [
+        0.10499999672174454,
+        0.03700000047683716,
+        0.014999999664723873,
+        1.0
+      ],
+      "roughness": 0.7200000286102295,
+      "metallic": 0.0
+    },
+    {
+      "name": "Brass fittings",
+      "base_color": [
+        0.6499999761581421,
+        0.36000001430511475,
+        0.08500000089406967,
+        1.0
+      ],
+      "roughness": 0.30000001192092896,
+      "metallic": 0.699999988079071
+    },
+    {
+      "name": "Brown eyes",
+      "base_color": [
+        0.11999999731779099,
+        0.03700000047683716,
+        0.008999999612569809,
+        1.0
+      ],
+      "roughness": 0.25,
+      "metallic": 0.0
+    },
+    {
+      "name": "Chestnut hair",
+      "base_color": [
+        0.1899999976158142,
+        0.06499999761581421,
+        0.01600000075995922,
+        1.0
+      ],
+      "roughness": 0.7200000286102295,
+      "metallic": 0.0
+    },
+    {
+      "name": "Cirrus blue steel",
+      "base_color": [
+        0.27000001072883606,
+        0.47999998927116394,
+        0.6600000262260437,
+        1.0
+      ],
+      "roughness": 0.23999999463558197,
+      "metallic": 0.800000011920929
+    },
+    {
+      "name": "Cirrus cool metal",
+      "base_color": [
+        0.20000000298023224,
+        0.25,
+        0.30000001192092896,
+        1.0
+      ],
+      "roughness": 0.23000000417232513,
+      "metallic": 0.75
+    },
+    {
+      "name": "Dark check",
+      "base_color": [
+        0.03500000014901161,
+        0.02199999988079071,
+        0.017999999225139618,
+        1.0
+      ],
+      "roughness": 0.75,
+      "metallic": 0.0,
+      "albedo": "textures/dark-check.png",
+      "sha256": "a642bfa46d911bcb01b3fe43076c8ed52cb8833ba9688137bb27ea932ed50fcd"
+    },
+    {
+      "name": "Dark walnut",
+      "base_color": [
+        0.11500000208616257,
+        0.03700000047683716,
+        0.012000000104308128,
+        1.0
+      ],
+      "roughness": 0.44999998807907104,
+      "metallic": 0.0,
+      "albedo": "textures/dark-walnut.png",
+      "sha256": "a7fb7be7c4a671d2a170e160c468f8e2243c3d21e3ef545b952e1968242c23e5"
+    },
+    {
+      "name": "Eye ivory",
+      "base_color": [
+        0.9300000071525574,
+        0.8999999761581421,
+        0.800000011920929,
+        1.0
+      ],
+      "roughness": 0.30000001192092896,
+      "metallic": 0.0
+    },
+    {
+      "name": "Forest carpet",
+      "base_color": [
+        0.02500000037252903,
+        0.10999999940395355,
+        0.06700000166893005,
+        1.0
+      ],
+      "roughness": 0.8500000238418579,
+      "metallic": 0.0,
+      "albedo": "textures/forest-carpet.png",
+      "sha256": "d8ca4b53812c649d7340d5c3a74a37b40200343c26448fc378b1d5a551c61d99"
+    },
+    {
+      "name": "Green ceramic",
+      "base_color": [
+        0.03500000014901161,
+        0.17000000178813934,
+        0.12999999523162842,
+        1.0
+      ],
+      "roughness": 0.25,
+      "metallic": 0.0
+    },
+    {
+      "name": "Hair carved strand",
+      "base_color": [
+        0.10499999672174454,
+        0.028999999165534973,
+        0.006000000052154064,
+        1.0
+      ],
+      "roughness": 0.7200000286102295,
+      "metallic": 0.0
+    },
+    {
+      "name": "Hair fine strand light",
+      "base_color": [
+        0.3400000035762787,
+        0.12999999523162842,
+        0.029999999329447746,
+        1.0
+      ],
+      "roughness": 0.7200000286102295,
+      "metallic": 0.0
+    },
+    {
+      "name": "Hair warm highlights",
+      "base_color": [
+        0.28999999165534973,
+        0.11500000208616257,
+        0.027000000700354576,
+        1.0
+      ],
+      "roughness": 0.7200000286102295,
+      "metallic": 0.0
+    },
+    {
+      "name": "Honey oak",
+      "base_color": [
+        0.28999999165534973,
+        0.10499999672174454,
+        0.03200000151991844,
+        1.0
+      ],
+      "roughness": 0.3799999952316284,
+      "metallic": 0.0,
+      "albedo": "textures/honey-oak.png",
+      "sha256": "ebf3af9e3af88b6677a4fabab6355fda505f5edec8ee40f936ebcd82af7d7508"
+    },
+    {
+      "name": "Inner ear",
+      "base_color": [
+        0.49000000953674316,
+        0.20999999344348907,
+        0.10499999672174454,
+        1.0
+      ],
+      "roughness": 0.6499999761581421,
+      "metallic": 0.0
+    },
+    {
+      "name": "Ivory feather",
+      "base_color": [
+        0.8899999856948853,
+        0.7799999713897705,
+        0.5699999928474426,
+        1.0
+      ],
+      "roughness": 0.5799999833106995,
+      "metallic": 0.0
+    },
+    {
+      "name": "Ivory linen",
+      "base_color": [
+        0.7900000214576721,
+        0.699999988079071,
+        0.5,
+        1.0
+      ],
+      "roughness": 0.8199999928474426,
+      "metallic": 0.0,
+      "albedo": "textures/ivory-linen.png",
+      "sha256": "81df74ea092ca4a1b339a6527252b6165a9785c83b51c6a163661724a7fa9241"
+    },
+    {
+      "name": "Linen stitching",
+      "base_color": [
+        0.5299999713897705,
+        0.3700000047683716,
+        0.17000000178813934,
+        1.0
+      ],
+      "roughness": 0.8500000238418579,
+      "metallic": 0.0
+    },
+    {
+      "name": "Ochre olive trousers",
+      "base_color": [
+        0.27000001072883606,
+        0.27000001072883606,
+        0.07000000029802322,
+        1.0
+      ],
+      "roughness": 0.7799999713897705,
+      "metallic": 0.0,
+      "albedo": "textures/ochre-olive-trousers.png",
+      "sha256": "f829717109a03ef89fee44238271892b524e63be640ba44e4958ba8908d2a9c6"
+    },
+    {
+      "name": "Olive tunic",
+      "base_color": [
+        0.1899999976158142,
+        0.28999999165534973,
+        0.054999999701976776,
+        1.0
+      ],
+      "roughness": 0.7799999713897705,
+      "metallic": 0.0,
+      "albedo": "textures/olive-tunic.png",
+      "sha256": "59b102c9b639e78779437cdee4c6820e7a1e08dc1753f6f75bcd81e8e4563fa5"
+    },
+    {
+      "name": "Pupil",
+      "base_color": [
+        0.00800000037997961,
+        0.004999999888241291,
+        0.003000000026077032,
+        1.0
+      ],
+      "roughness": 0.25,
+      "metallic": 0.0
+    },
+    {
+      "name": "Sapphire carpet",
+      "base_color": [
+        0.02500000037252903,
+        0.07500000298023224,
+        0.23999999463558197,
+        1.0
+      ],
+      "roughness": 0.8500000238418579,
+      "metallic": 0.0,
+      "albedo": "textures/sapphire-carpet.png",
+      "sha256": "59049d6803247d02e349ee070eb303413e53d744391a4317cfe3726e35f93f05"
+    },
+    {
+      "name": "Soft lip",
+      "base_color": [
+        0.3100000023841858,
+        0.10999999940395355,
+        0.06499999761581421,
+        1.0
+      ],
+      "roughness": 0.699999988079071,
+      "metallic": 0.0
+    },
+    {
+      "name": "Warm floorboards",
+      "base_color": [
+        0.2800000011920929,
+        0.11999999731779099,
+        0.04500000178813934,
+        1.0
+      ],
+      "roughness": 0.5199999809265137,
+      "metallic": 0.0,
+      "albedo": "textures/warm-floorboards.png",
+      "sha256": "fce8b26d6cd3b3fc8f91161afc7c41a953c3b305e3721fd59b03eaf82f50c1dd"
+    },
+    {
+      "name": "Warm folded leather",
+      "base_color": [
+        0.25999999046325684,
+        0.10499999672174454,
+        0.026000000536441803,
+        1.0
+      ],
+      "roughness": 0.7200000286102295,
+      "metallic": 0.0
+    },
+    {
+      "name": "Warm skin",
+      "base_color": [
+        0.7200000286102295,
+        0.4000000059604645,
+        0.23499999940395355,
+        1.0
+      ],
+      "roughness": 0.7200000286102295,
+      "metallic": 0.0
+    },
+    {
+      "name": "Window amber",
+      "base_color": [
+        0.8500000238418579,
+        0.47999998927116394,
+        0.12999999523162842,
+        1.0
+      ],
+      "roughness": 0.25,
+      "metallic": 0.0
+    },
+    {
+      "name": "Wool crimson",
+      "base_color": [
+        0.38999998569488525,
+        0.027000000700354576,
+        0.02800000086426735,
+        1.0
+      ],
+      "roughness": 0.75,
+      "metallic": 0.0,
+      "albedo": "textures/wool-crimson.png",
+      "sha256": "eb5edd19f1a093936daf46bfe374ba657d598678394b3d4d3f266560001fb3d2"
+    }
+  ],
+  "performance_tested": false,
+  "notes": [
+    "512px diffuse color swatches baked from editable Blender procedural materials.",
+    "Unity applies metallic/roughness separately; lighting is not baked into albedo."
+  ]
+}

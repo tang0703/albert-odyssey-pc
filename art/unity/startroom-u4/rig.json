@@ -1,0 +1,104 @@
+{
+  "schema": "ao_unity_u4_rig_v1",
+  "approval_sha256": "bf4a160af53d83ed2dabab07da5481c6fcee6a312704178ee70b47b880e9330d",
+  "bones": [
+    "root",
+    "hips",
+    "chest",
+    "head",
+    "upperarm.L",
+    "forearm.L",
+    "hand.L",
+    "upperarm.R",
+    "forearm.R",
+    "hand.R",
+    "finger0.R",
+    "finger1.R",
+    "finger2.R",
+    "finger3.R",
+    "thumb.R",
+    "scarf",
+    "thigh.L",
+    "shin.L",
+    "foot.L",
+    "thigh.R",
+    "shin.R",
+    "foot.R"
+  ],
+  "weighted_vertices": 315106,
+  "clips": {
+    "idle": {
+      "frames": [
+        0.0,
+        40.0
+      ],
+      "source_driven": true
+    },
+    "walk": {
+      "frames": [
+        0.0,
+        40.0
+      ],
+      "source_driven": true
+    },
+    "pickup_35": {
+      "frames": [
+        0.0,
+        1.0
+      ],
+      "source_driven": true
+    },
+    "pickup_36": {
+      "frames": [
+        0.0,
+        1.0
+      ],
+      "source_driven": true
+    },
+    "pickup_37": {
+      "frames": [
+        0.0,
+        1.0
+      ],
+      "source_driven": true
+    },
+    "pickup_38": {
+      "frames": [
+        0.0,
+        1.0
+      ],
+      "source_driven": true
+    }
+  },
+  "root_motion": false,
+  "performance_tested": false,
+  "source_pose_images": [
+    35,
+    36,
+    37,
+    38
+  ],
+  "notes": [
+    "New interpolated 3D poses preserve source image selection and timing, not source pixels.",
+    "Cirrus source silhouette replaces the provisional U3 lamp mass.",
+    "UVs are editable; material refinement follows."
+  ],
+  "files": {
+    "cirrus.fbx": {
+      "bytes": 27340,
+      "sha256": "6c088e9bcd32d285ad31acc032193232fe507a2ef9d4f00df7a12a97ad2ade1f"
+    },
+    "player-rig.fbx": {
+      "bytes": 16741692,
+      "sha256": "d185a35f2f8b425d0ed490107e3597b820f6b14ea694c77c22555d3b4dfa3555"
+    },
+    "room.fbx": {
+      "bytes": 3265260,
+      "sha256": "ae041e1fc5f75f3ec3f11f87e7b091d9407a24b123cecc165cd1664a473dcfa8"
+    },
+    "startroom-rig.blend": {
+      "bytes": 12488380,
+      "sha256": "0d49b04412885fdebe572455d5d9b7c7b410249559339381567079b4ed007ee6"
+    }
+  }
+}
