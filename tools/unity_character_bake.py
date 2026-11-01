@@ -1,7 +1,10 @@
 """Bake the character's own UV atlas, without light/shadow in its albedo."""
 from pathlib import Path
-import bpy,json,hashlib,numpy as np
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'art/unity/player-refined-v1';TEX=OUT/'textures'
+import bpy,json,hashlib,sys,numpy as np
+ROOT=Path(__file__).resolve().parents[1]
+version=sys.argv[sys.argv.index('--art-version')+1] if '--art-version' in sys.argv else 'player-refined-v1'
+if version not in ('player-refined-v1','player-refined-v2'):raise ValueError('Unknown static art version')
+OUT=ROOT/'art/unity'/version;TEX=OUT/'textures'
 if (OUT/'review-lock.json').exists():raise RuntimeError('Frozen review')
 TEX.mkdir(exist_ok=True)
 bpy.ops.wm.open_mainfile(filepath=str(OUT/'player-refined.blend'))
@@ -44,6 +47,8 @@ for poly in model.data.polygons:poly.material_index=0
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'player-textured.blend'))
 bpy.ops.export_scene.fbx(filepath=str(OUT/'player-static.fbx'),use_selection=True,object_types={'MESH'},bake_anim=False,axis_forward='-Z',axis_up='Y',apply_scale_options='FBX_SCALE_ALL')
 files={p.relative_to(OUT).as_posix():{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in OUT.rglob('*') if p.is_file() and p.suffix in ('.png','.fbx','.blend')}
+if (OUT/'surface-materials.json').exists():
+    p=OUT/'surface-materials.json';files[p.name]={'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}
 record={'schema':'ao_character_static_review_v1','status':'pending_user_review','height':1.125,'camera_pitch':45,'files':files,'textures':{'albedo':'textures/character-albedo.png','normal':'textures/character-normal.png','mask':'textures/character-mask.png'},'mask_channels':{'r':'metallic','g':'ambient_occlusion','b':'roughness','a':'smoothness'},'normal_space':'tangent OpenGL','albedo_lighting_baked':False,'rig_finalized':False,'animation_finalized':False,'performance_tested':False}
 (OUT/'material-manifest.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
 print('CHARACTER_BAKE_DONE')

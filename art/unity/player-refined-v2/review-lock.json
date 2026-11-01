@@ -1,0 +1,294 @@
+{
+  "schema": "ao_character_rebuild_review_v2",
+  "status": "pending_user_approval",
+  "approved": false,
+  "concept_reference": {
+    "bytes": 1217766,
+    "sha256": "6a1fd1a9746a3f9ecdbfa580d98038b56e0dc341e946b794157bccd77b022b28"
+  },
+  "previous_review_lock": {
+    "bytes": 6278,
+    "sha256": "b4d1bf711b5fd15a8042242d47bedb2d6fe853fa87987d167392540a398831c2"
+  },
+  "source_baseline": {
+    "bytes": 40341,
+    "sha256": "3774ad216c6f191bfd2d83c0e8bc2ed0aba7a88a6c9e714e46427fd1a03f047b"
+  },
+  "capture_source": "reports/unity/character-c2-capture-e4e751e2ed3e4244b01c7f78e5c23d93",
+  "build_source": "build/unity-character-review-e44c122f4f024a64a904cb2832aa9d17",
+  "build_record": {
+    "passed": true,
+    "art_version": "player-refined-v2",
+    "material_mode": "surface_palette_no_bake",
+    "scope": "C2 static review, no gameplay integration",
+    "manifest_sha256": "c3b8cf5f3f4c8e6571f4599f8226cf6552aa29735632056a0012e6735b3b1134",
+    "performance_tested": false
+  },
+  "review_executable": {
+    "bytes": 667136,
+    "sha256": "d91dbfa5c7d67cdf2c521d83112df029079f358519a1282d531baad4e1cd80c9"
+  },
+  "review_sources": {
+    "tools/unity_character_rebuild.py": {
+      "bytes": 24824,
+      "sha256": "5f36b660b2c0b472346af24d0573f4dbcabcafa20c37526be4a1c7d0eed11d66"
+    },
+    "tools/unity_character_bake.py": {
+      "bytes": 5188,
+      "sha256": "3de85224fbb3ba754a496c5dee0be77b8fcc5497173ffe4a6708ac75adaf2ece"
+    },
+    "unity-remake/Assets/Editor/CharacterReviewBuild.cs": {
+      "bytes": 7883,
+      "sha256": "66c93dbec2bdb20acbe1ff75f644c6c4e352252121ac51fbd458b18e45a39835"
+    },
+    "unity-remake/Assets/Scripts/CharacterReview.cs": {
+      "bytes": 7102,
+      "sha256": "c2586b65d2a9d227a86d1a00f85cf0d18f67faf4bdc55b4b2f28a20526f96f09"
+    }
+  },
+  "geometry_validation": {
+    "passed": true,
+    "vertices": 215806,
+    "triangles": 430228,
+    "height": 1.125,
+    "foot_anchor_z": 0,
+    "finite_coordinates": true,
+    "uv_in_unit_square": true,
+    "skin_smooth": true,
+    "intentional_flat_materials": [],
+    "bake_export_same_triangles": true,
+    "textures": [
+      2048,
+      2048
+    ],
+    "old_u4_files_unchanged": 16,
+    "skinning_tested": false,
+    "animation_tested": false,
+    "performance_tested": false
+  },
+  "embedded_images": {
+    "art/enhanced25d/v1/review/directions-review.png": {
+      "bytes": 1217766,
+      "sha256": "6a1fd1a9746a3f9ecdbfa580d98038b56e0dc341e946b794157bccd77b022b28"
+    },
+    "art/unity/player-refined-v2/review/refined-neutral-front.png": {
+      "bytes": 287828,
+      "sha256": "c0a2635e405b82ea9581e718913f32f5c29200cc0f391bb5953e5f58630f7ca5"
+    },
+    "art/unity/player-refined-v1/review/refined-neutral-front.png": {
+      "bytes": 305143,
+      "sha256": "738bfdcb3397f019285d0ebe813dfeca08285ea1d30fe7ce3433f86d5ad20a08"
+    },
+    "art/unity/player-refined-v2/review/refined-neutral-right.png": {
+      "bytes": 200473,
+      "sha256": "5b4c66876e556da32e256bad6189d1e9798e8866b07e031f609e1d8e405211c5"
+    },
+    "art/unity/player-refined-v2/review/refined-neutral-back.png": {
+      "bytes": 259165,
+      "sha256": "59cc25b569d47ff18621f89817a4c6d2a779d32143000d24fc7354db45dfc876"
+    },
+    "art/unity/player-refined-v2/review/refined-neutral-left.png": {
+      "bytes": 205426,
+      "sha256": "ac052a7c10375b3acf43b89e70f9d15c828e13fbeee58a8d0e92fb45b870d5c3"
+    },
+    "art/unity/player-refined-v1/review/refined-neutral-face.png": {
+      "bytes": 574629,
+      "sha256": "76b7e601e4ecffe21604138fee3c1d2ccb205c84e6651a14a661f32a210de76c"
+    },
+    "art/unity/player-refined-v2/review/refined-neutral-face.png": {
+      "bytes": 532274,
+      "sha256": "fa2af02cb40d0823e676655b6a385495053878fc684e6249837bbea269946ee4"
+    },
+    "art/unity/player-refined-v2/review/refined-warm-front.png": {
+      "bytes": 285540,
+      "sha256": "04844c6767e325266b77431b386cfa7f36a6166b05c323647c7c44bcc5c3b9ee"
+    },
+    "art/unity/player-refined-v2/review/refined-warm-right.png": {
+      "bytes": 199960,
+      "sha256": "7891b2541484773d79526f5e7a0e7cc66e1d611a4ff0b4d33de4e586d15c43b8"
+    },
+    "art/unity/player-refined-v2/review/refined-warm-back.png": {
+      "bytes": 257939,
+      "sha256": "310a0f72d0cf44aae27a2e02dc1e2ad9f4ffe8ee9139f71fc4d849c5195e9143"
+    },
+    "art/unity/player-refined-v2/review/refined-warm-left.png": {
+      "bytes": 204986,
+      "sha256": "1eaf2aab60b9decc9905fe70a7496efd0f56fc7c142a3bc2360580dd4af00acb"
+    },
+    "art/unity/player-refined-v1/review/refined-warm-face.png": {
+      "bytes": 572848,
+      "sha256": "33d2d8be4961c6408d14ef62e31653578c0253b508b53bef685f14d057c58422"
+    },
+    "art/unity/player-refined-v2/review/refined-warm-face.png": {
+      "bytes": 530761,
+      "sha256": "f7176fa8acf4d2c1d61b49aeb323e94d44bf4d5ef44dc4bf8a94637aad9e3e74"
+    },
+    "art/unity/player-refined-v2/review/refined-room.png": {
+      "bytes": 723792,
+      "sha256": "c41638d47d075023627e4eafd475a3a2ff2ed4ac669ba57a76c030b56620e416"
+    }
+  },
+  "height": 1.125,
+  "room_camera_pitch": 45,
+  "rig_complete": false,
+  "animations_complete": false,
+  "performance_tested": false,
+  "files": {
+    "geometry.json": {
+      "bytes": 312,
+      "sha256": "d9a71191644d68244a15e6da5bc69a3fae4fe9d80d79aa5f0aa8fc69617b8066"
+    },
+    "material-manifest.json": {
+      "bytes": 2130,
+      "sha256": "c3b8cf5f3f4c8e6571f4599f8226cf6552aa29735632056a0012e6735b3b1134"
+    },
+    "player-refined.blend": {
+      "bytes": 18279870,
+      "sha256": "db9a0a18e6b5c9c323d64bc789f50e3ff1b19ab2787098913d115fee802a0120"
+    },
+    "player-static.fbx": {
+      "bytes": 12389324,
+      "sha256": "317b043f52846f9ae2cc4b7a263c1f0867586117c0d9717033de7cb849ef8e99"
+    },
+    "player-surface.fbx": {
+      "bytes": 12413660,
+      "sha256": "7c6dbb9853570c3e547df26747b212eb1529f557911a5b16b2ff773889294b19"
+    },
+    "player-textured.blend": {
+      "bytes": 24088899,
+      "sha256": "3656c5fdadedc08b28dc84ad5eb1e89e590e43fe2887ddbf22ff049132ab34f1"
+    },
+    "README.md": {
+      "bytes": 2079,
+      "sha256": "f4dcc6a42d0a65bcd753f6c8daee70e4a41c16497a8e4446d5ca2a4b1ed9664b"
+    },
+    "review.html": {
+      "bytes": 10875009,
+      "sha256": "7fa948e356638137d67edb403c28dcd4eb815b364fe692477e4e8213f7ecb773"
+    },
+    "surface-materials.json": {
+      "bytes": 3921,
+      "sha256": "c160493deb5bed4b457fbed6639522406a4a48783aa654bbb627da904a041bb0"
+    },
+    "review/diagnostic-no-shadow-no-normal.png": {
+      "bytes": 529269,
+      "sha256": "4b8cc30fdfc08c14e24cf8b354609dd761ea874ca55e4e0cf4687493e852b163"
+    },
+    "review/diagnostic-no-shadow.png": {
+      "bytes": 529269,
+      "sha256": "4b8cc30fdfc08c14e24cf8b354609dd761ea874ca55e4e0cf4687493e852b163"
+    },
+    "review/old-neutral-back.png": {
+      "bytes": 262717,
+      "sha256": "e89ece4c68d512b5935046cd93a7e139d908994bce1a6775b69ec706d4b9856b"
+    },
+    "review/old-neutral-face.png": {
+      "bytes": 544969,
+      "sha256": "41dcfac921dd6b77c01cc7b82f32dd1d1f659e3fa5a737fffe97246044670dae"
+    },
+    "review/old-neutral-front.png": {
+      "bytes": 290865,
+      "sha256": "3c57bd2c2de153daa329d09334255bb5b33c6fda5514f9e9f7430f2fa4218246"
+    },
+    "review/old-neutral-left.png": {
+      "bytes": 188661,
+      "sha256": "f0f1e73871aaaec5664c113de7d16221d69844b09d8f324b7aeb5697c7e68bb5"
+    },
+    "review/old-neutral-right.png": {
+      "bytes": 189290,
+      "sha256": "b81f0e3925f42e2d4bd2753c327c575163c82298b1388c81dfb4af01639d599c"
+    },
+    "review/old-room.png": {
+      "bytes": 722607,
+      "sha256": "6984ed568fb0781e8f40e52bc5c7bb4ae337e5947fd4e4fb1df6e10ac0eb513f"
+    },
+    "review/old-warm-back.png": {
+      "bytes": 260457,
+      "sha256": "7e472dbe0dcb64b806cb9324baf849b12ae8ad1e949a377aef95a664171a15d5"
+    },
+    "review/old-warm-face.png": {
+      "bytes": 540932,
+      "sha256": "d57fc5059ac06a74192359dc18c4a457e961d4de89118d65c49b4ee918eb0bec"
+    },
+    "review/old-warm-front.png": {
+      "bytes": 288395,
+      "sha256": "7d7315b38012a68aa9155e21961a3ba0d6aeae87125bde444bfd01914a7bc1f0"
+    },
+    "review/old-warm-left.png": {
+      "bytes": 187598,
+      "sha256": "2c98b8bf418b7c1daaa85e3387090f885c5e23602f466284216c2e79464070e9"
+    },
+    "review/old-warm-right.png": {
+      "bytes": 188074,
+      "sha256": "74d26d3b070701e6e40dc32b15837990496008b35e9f82f2ab69f0596c56cd54"
+    },
+    "review/refined-neutral-back.png": {
+      "bytes": 259165,
+      "sha256": "59cc25b569d47ff18621f89817a4c6d2a779d32143000d24fc7354db45dfc876"
+    },
+    "review/refined-neutral-face.png": {
+      "bytes": 532274,
+      "sha256": "fa2af02cb40d0823e676655b6a385495053878fc684e6249837bbea269946ee4"
+    },
+    "review/refined-neutral-front.png": {
+      "bytes": 287828,
+      "sha256": "c0a2635e405b82ea9581e718913f32f5c29200cc0f391bb5953e5f58630f7ca5"
+    },
+    "review/refined-neutral-left.png": {
+      "bytes": 205426,
+      "sha256": "ac052a7c10375b3acf43b89e70f9d15c828e13fbeee58a8d0e92fb45b870d5c3"
+    },
+    "review/refined-neutral-right.png": {
+      "bytes": 200473,
+      "sha256": "5b4c66876e556da32e256bad6189d1e9798e8866b07e031f609e1d8e405211c5"
+    },
+    "review/refined-room.png": {
+      "bytes": 723792,
+      "sha256": "c41638d47d075023627e4eafd475a3a2ff2ed4ac669ba57a76c030b56620e416"
+    },
+    "review/refined-warm-back.png": {
+      "bytes": 257939,
+      "sha256": "310a0f72d0cf44aae27a2e02dc1e2ad9f4ffe8ee9139f71fc4d849c5195e9143"
+    },
+    "review/refined-warm-face.png": {
+      "bytes": 530761,
+      "sha256": "f7176fa8acf4d2c1d61b49aeb323e94d44bf4d5ef44dc4bf8a94637aad9e3e74"
+    },
+    "review/refined-warm-front.png": {
+      "bytes": 285540,
+      "sha256": "04844c6767e325266b77431b386cfa7f36a6166b05c323647c7c44bcc5c3b9ee"
+    },
+    "review/refined-warm-left.png": {
+      "bytes": 204986,
+      "sha256": "1eaf2aab60b9decc9905fe70a7496efd0f56fc7c142a3bc2360580dd4af00acb"
+    },
+    "review/refined-warm-right.png": {
+      "bytes": 199960,
+      "sha256": "7891b2541484773d79526f5e7a0e7cc66e1d611a4ff0b4d33de4e586d15c43b8"
+    },
+    "review/review.json": {
+      "bytes": 520,
+      "sha256": "aceb4c867b61921d7601f730540042dd1c3e91d5b5b430c2ae8cb254466c0012"
+    },
+    "textures/character-albedo.png": {
+      "bytes": 1389395,
+      "sha256": "f5d4d91275a8e43fb06c0a413e4fc3dc6336b6311c9352c0825bd8c820d100a1"
+    },
+    "textures/character-mask.png": {
+      "bytes": 2489737,
+      "sha256": "ccec8c9ad7e25416ee20196479ba2b840b2c46a8ea3adb5c32ad0c3cb013fe51"
+    },
+    "textures/character-normal.png": {
+      "bytes": 1929772,
+      "sha256": "325b7f729c4ee41b725b44b8d7d1024209df94a8c4fe1055ea05adf36f902d14"
+    },
+    "textures/character-occlusion.png": {
+      "bytes": 1819454,
+      "sha256": "0b0cd94ce3ed6474e3a718feb69aa25676ab8bd02986bd47e32977178d6666f3"
+    },
+    "textures/character-parameters.png": {
+      "bytes": 967248,
+      "sha256": "0d97c8d70ca24bb8bca123282b4765fa26b0afafd2a1d1ec04fbd51819c62305"
+    }
+  }
+}

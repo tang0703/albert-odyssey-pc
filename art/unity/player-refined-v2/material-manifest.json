@@ -1,0 +1,64 @@
+{
+  "schema": "ao_character_static_review_v1",
+  "status": "pending_user_review",
+  "height": 1.125,
+  "camera_pitch": 45,
+  "files": {
+    "player-refined.blend": {
+      "bytes": 18279870,
+      "sha256": "db9a0a18e6b5c9c323d64bc789f50e3ff1b19ab2787098913d115fee802a0120"
+    },
+    "player-static.fbx": {
+      "bytes": 12389324,
+      "sha256": "317b043f52846f9ae2cc4b7a263c1f0867586117c0d9717033de7cb849ef8e99"
+    },
+    "player-surface.fbx": {
+      "bytes": 12413660,
+      "sha256": "7c6dbb9853570c3e547df26747b212eb1529f557911a5b16b2ff773889294b19"
+    },
+    "player-textured.blend": {
+      "bytes": 24088899,
+      "sha256": "3656c5fdadedc08b28dc84ad5eb1e89e590e43fe2887ddbf22ff049132ab34f1"
+    },
+    "textures/character-albedo.png": {
+      "bytes": 1389395,
+      "sha256": "f5d4d91275a8e43fb06c0a413e4fc3dc6336b6311c9352c0825bd8c820d100a1"
+    },
+    "textures/character-mask.png": {
+      "bytes": 2489737,
+      "sha256": "ccec8c9ad7e25416ee20196479ba2b840b2c46a8ea3adb5c32ad0c3cb013fe51"
+    },
+    "textures/character-normal.png": {
+      "bytes": 1929772,
+      "sha256": "325b7f729c4ee41b725b44b8d7d1024209df94a8c4fe1055ea05adf36f902d14"
+    },
+    "textures/character-occlusion.png": {
+      "bytes": 1819454,
+      "sha256": "0b0cd94ce3ed6474e3a718feb69aa25676ab8bd02986bd47e32977178d6666f3"
+    },
+    "textures/character-parameters.png": {
+      "bytes": 967248,
+      "sha256": "0d97c8d70ca24bb8bca123282b4765fa26b0afafd2a1d1ec04fbd51819c62305"
+    },
+    "surface-materials.json": {
+      "bytes": 3921,
+      "sha256": "c160493deb5bed4b457fbed6639522406a4a48783aa654bbb627da904a041bb0"
+    }
+  },
+  "textures": {
+    "albedo": "textures/character-albedo.png",
+    "normal": "textures/character-normal.png",
+    "mask": "textures/character-mask.png"
+  },
+  "mask_channels": {
+    "r": "metallic",
+    "g": "ambient_occlusion",
+    "b": "roughness",
+    "a": "smoothness"
+  },
+  "normal_space": "tangent OpenGL",
+  "albedo_lighting_baked": false,
+  "rig_finalized": false,
+  "animation_finalized": false,
+  "performance_tested": false
+}

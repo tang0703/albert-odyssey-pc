@@ -1,0 +1,11 @@
+{
+  "stage": "C1 reference-led rebuild, static C2 review pending",
+  "height": 1.125,
+  "vertices": 215806,
+  "triangles": 430228,
+  "editable_surface_count": 155,
+  "previous_player_geometry_reused": false,
+  "skinning_complete": false,
+  "animation_complete": false,
+  "performance_tested": false
+}

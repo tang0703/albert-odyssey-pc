@@ -1,7 +1,10 @@
 """Read-only C1/C2 source validation; deliberately no skinning/animation claim."""
 from pathlib import Path
-import bpy,json,hashlib,math
-ROOT=Path(__file__).resolve().parents[1];ART=ROOT/'art/unity/player-refined-v1'
+import bpy,json,hashlib,math,sys
+ROOT=Path(__file__).resolve().parents[1]
+version=sys.argv[sys.argv.index('--art-version')+1] if '--art-version' in sys.argv else 'player-refined-v1'
+if version not in ('player-refined-v1','player-refined-v2'):raise ValueError('Unknown static art version')
+ART=ROOT/'art/unity'/version
 manifest=json.loads((ART/'material-manifest.json').read_bytes())
 for name,row in manifest['files'].items():
     p=(ART/name).resolve();assert p.is_relative_to(ART.resolve())
@@ -23,5 +26,6 @@ for name in manifest['textures'].values():
 old=json.loads((ROOT/'art/unity/startroom-u4/asset-lock.json').read_bytes())
 for name,row in old['files'].items():assert hashlib.sha256((ROOT/'art/unity/startroom-u4'/name).read_bytes()).hexdigest()==row['sha256'],name
 report={'passed':True,'vertices':len(mesh.vertices),'triangles':len(mesh.polygons),'height':1.125,'foot_anchor_z':0,'finite_coordinates':True,'uv_in_unit_square':True,'skin_smooth':True,'intentional_flat_materials':flat_materials,'bake_export_same_triangles':True,'textures':[2048,2048],'old_u4_files_unchanged':len(old['files']),'skinning_tested':False,'animation_tested':False,'performance_tested':False}
-(ROOT/'reports/unity/character-c1-validation.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+report_name='character-c1-validation.json' if version=='player-refined-v1' else version+'-c1-validation.json'
+(ROOT/'reports/unity'/report_name).write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(report))
