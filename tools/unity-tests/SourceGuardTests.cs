@@ -53,5 +53,6 @@ internal static class Program
         Console.WriteLine(File.ReadAllText(report));
         MovementTests.Run(root);
         EquipmentTests.Run(root);
+        SessionTests.Run(root);
     }
 }

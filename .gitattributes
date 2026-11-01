@@ -32,3 +32,6 @@ unity-remake/SourceContracts/*.json -text whitespace=trailing-space,space-before
 # Unity serializes empty YAML scalars with a trailing space.
 unity-remake/**/*.meta whitespace=-blank-at-eol
 unity-remake/**/*.asset whitespace=-blank-at-eol
+*.ttf filter=lfs diff=lfs merge=lfs -text
+"unity-remake/Assets/TextMesh Pro/Resources/Fonts & Materials/*.asset" filter=lfs diff=lfs merge=lfs -text
+"unity-remake/Assets/TextMesh Pro/**" whitespace=-blank-at-eol,-blank-at-eof

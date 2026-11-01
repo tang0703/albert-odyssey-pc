@@ -77,6 +77,12 @@ namespace Ao.SourceContracts
             initial=(JObject)data["initial_state"].DeepClone();Reset();
         }
         public void Reset(){Restore(initial);Error="";outside=false;}
+        public JArray DialoguePages(string id)
+        {
+            var pages=data["contract"]["dialogues"][id]?["pages"] as JArray;
+            if(pages==null || pages.Count<1 || pages.Count>2)throw new InvalidDataException("Unknown dialogue: "+id);
+            return (JArray)pages.DeepClone();
+        }
         void Restore(JObject state)
         {
             s=(JObject)state.DeepClone();player=Hex((string)s["player"]);decor=Hex((string)s["decor"]);ambient=Hex((string)s["ambient"]);

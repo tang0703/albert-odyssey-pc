@@ -14,6 +14,12 @@ unity-remake/[Ll]ogs/
 unity-remake/[Uu]ser[Ss]ettings/
 unity-remake/Assets/StreamingAssets/SourceLocal/
 unity-remake/Assets/StreamingAssets/SourceLocal.meta
+unity-remake/Assets/StreamingAssets/PresentationLocal/
+unity-remake/Assets/StreamingAssets/PresentationLocal.meta
+unity-remake/Assets/U2Generated/
+unity-remake/Assets/U2Generated.meta
+unity-remake/Assets/U3Generated/
+unity-remake/Assets/U3Generated.meta
 unity-remake/Assets/U1Generated/
 unity-remake/Assets/U1Generated.meta
 unity-remake/Builds/

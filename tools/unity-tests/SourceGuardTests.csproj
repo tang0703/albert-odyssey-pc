@@ -10,7 +10,8 @@
       <HintPath>../../../tools/pc-remake/dotnet-8.0.427/sdk/8.0.427/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Compile Include="SourceGuardTests.cs" />
+    <Compile Include="SessionTests.cs" />
     <Compile Include="MovementTests.cs" />
-    <Compile Include="EquipmentTests.cs" />
+    <Compile Include="../../unity-remake/Assets/Editor/Validation/EquipmentTests.cs" />
   </ItemGroup>
 </Project>

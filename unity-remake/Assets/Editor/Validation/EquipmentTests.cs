@@ -15,7 +15,7 @@ internal static class EquipmentTests
             Check(JToken.DeepEquals(actual[property.Name],property.Value),route+" "+property.Name+"\nActual: "+actual[property.Name]+"\nExpected: "+property.Value);
         Check(actual.Properties().Count()==expected.Properties().Count(),"Unexpected state fields");
     }
-    public static void Run(string root)
+    public static void Run(string root, bool unity = false)
     {
         string folder=Path.Combine(root,"exploration-demo/generated/equipment");
         string runtime=Path.Combine(root,"unity-remake/Assets/StreamingAssets/SourceLocal");
@@ -53,8 +53,8 @@ internal static class EquipmentTests
         }
         Check(updates==3685,"Equipment coverage changed");
         var report=new JObject{["passed"]=true,["updates"]=updates,["checks"]=checks,["routes"]=routes,
-            ["continuous_from_initial"]=true,["post_initial_state_injection"]=false,["unity_runtime_tested"]=false,["performance_tested"]=false};
-        File.WriteAllText(Path.Combine(root,"reports/unity/u2-equipment-csharp.json"),report.ToString(Formatting.Indented));
+            ["continuous_from_initial"]=true,["post_initial_state_injection"]=false,["unity_runtime_tested"]=unity,["performance_tested"]=false};
+        File.WriteAllText(Path.Combine(root,unity ? "reports/unity/u2-equipment-unity.json" : "reports/unity/u2-equipment-csharp.json"),report.ToString(Formatting.Indented));
         Console.WriteLine(report.ToString(Formatting.Indented));
     }
 }
