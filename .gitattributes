@@ -7,6 +7,13 @@
 *.png filter=lfs diff=lfs merge=lfs -text
 *.gif filter=lfs diff=lfs merge=lfs -text
 *.ora filter=lfs diff=lfs merge=lfs -text
+*.blend filter=lfs diff=lfs merge=lfs -text
+*.fbx filter=lfs diff=lfs merge=lfs -text
+*.glb filter=lfs diff=lfs merge=lfs -text
+*.cs text eol=lf
+*.unity text eol=lf
+*.prefab text eol=lf
+*.meta text eol=lf
 *.wav filter=lfs diff=lfs merge=lfs -text
 * text=auto eol=lf
 # These exact bytes are sealed in the v2 local capture provenance. Do not let
@@ -20,3 +27,8 @@ character-reference-lock.json -text whitespace=trailing-space,space-before-tab,c
 # Keep content-addressed generation/approval records byte-identical on checkout.
 art/enhanced25d-landing/v1/**/*.json -text
 art/enhanced25d-landing/v1/**/*.prompt.txt -text
+# The Unity baseline is content-addressed by the generated runtime manifest.
+unity-remake/SourceContracts/*.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
+# Unity serializes empty YAML scalars with a trailing space.
+unity-remake/**/*.meta whitespace=-blank-at-eol
+unity-remake/**/*.asset whitespace=-blank-at-eol

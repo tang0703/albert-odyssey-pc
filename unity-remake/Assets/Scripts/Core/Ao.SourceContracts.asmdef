@@ -1,0 +1,7 @@
+{
+  "name": "Ao.SourceContracts",
+  "rootNamespace": "Ao.SourceContracts",
+  "references": ["Unity.Newtonsoft.Json"],
+  "noEngineReferences": true,
+  "autoReferenced": true
+}

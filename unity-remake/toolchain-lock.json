@@ -1,0 +1,38 @@
+{
+  "schema": "ao_unity_toolchain_v1",
+  "recorded_utc": "2026-11-01T04:43:24.739591+00:00",
+  "editor": {
+    "version": "6000.3.27f2",
+    "revision": "22188f149405",
+    "url": "https://download.unity3d.com/download_unity/22188f149405/Windows64EditorInstaller/UnitySetup64-6000.3.27f2.exe",
+    "official_integrity": "md5-dEvEQDTebuIwZWIy4Yb7bg==",
+    "signature_status": "Valid",
+    "signer": "Unity Technologies SF",
+    "sha256": "ee89d93435d342834926b4d47c7b1f2863e3ffd0e2cbd8676f4c1e8ced33aaa7"
+  },
+  "urp": "17.3.0",
+  "ugui": "2.0.0",
+  "personal_eligibility": "confirmed_by_user",
+  "personal_activation": "editor_entitlement_and_windows_build_passed",
+  "registry_install_exception": "explicitly_approved_by_user",
+  "global_path_changed_by_project": false,
+  "performance_tested": false,
+  "blender": {
+    "version": "5.2.3 LTS",
+    "url": "https://download.blender.org/release/Blender5.2/blender-5.2.3-windows-x64.zip",
+    "bytes": 405839452,
+    "sha256": "723f08a4401502561eb763cdeacf8745b31e5f3f154d287d3830d97cf75dc2fb"
+  },
+  "dotnet": {
+    "version": "8.0.427",
+    "url": "https://builds.dotnet.microsoft.com/dotnet/Sdk/8.0.427/dotnet-sdk-8.0.427-win-x64.zip",
+    "bytes": 285280040,
+    "sha256": "ab9d4e4275db9683a6b51640122d184c5c6ae5da680d0c0ed82e994662353cc8"
+  },
+  "hub": {
+    "version": "3.22.5",
+    "url": "https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup-x64.exe",
+    "bytes": 193082648,
+    "sha256": "c0c2040c09da024e19cfe1713b8154c624ab1ff77f21c871c95e3a09eb2c8ccd"
+  }
+}
