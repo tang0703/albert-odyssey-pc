@@ -32,6 +32,8 @@ Blender 源檔包含可編輯網格、UV 與程序材質；另提供套用烘焙
 
 ## 下一關卡
 
+最新審閱：v2 仍需精修，使用者要求評估其他建模工具。v2 封存時的 pending 狀態不覆寫；後續決定保存於 `docs/character-v2-review-decision.json`。目前仍未通過 C2。替代工具與小樣範圍見 `docs/CHARACTER_MODELING_TOOL_EVALUATION.md`；尚未安裝新工具、付費或上傳參考圖，動畫及負載測試維持不進行。
+
 ### 2026-11-01 v2 輪廓重做
 
 已依後續指示另建 `art/unity/player-refined-v2`，先做頭臉、髮型與服裝輪廓，提供 Unity 靜態審閱，不做動畫或負載測試。新生成器 `tools/unity_character_rebuild.py` 從新曲面建立人物，不呼叫或修改原 `build_player`。審閱頁 `art/unity/player-refined-v2/review.html` 內嵌原概念、v1 與 v2 畫面，保留兩種光線、四方向、臉部與房間比例。
