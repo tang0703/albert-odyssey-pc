@@ -14,6 +14,7 @@ namespace Ao.UnityMigration
         public string PreviousLabel="v2", PilotLabel="pilot";
         public bool FaceCloseups;
         public bool ClayOnly;
+        public bool EyeColorReview;
         Camera view; string output;
         IEnumerator Start()
         {
@@ -36,10 +37,10 @@ namespace Ao.UnityMigration
                 var b=BoundsOf(model);model.transform.localScale*=1/b.size.y;b=BoundsOf(model);model.transform.position-=new Vector3(b.center.x,b.min.y,b.center.z);
                 var renderers=model.GetComponentsInChildren<Renderer>();var original=new Material[renderers.Length][];
                 for(int r=0;r<renderers.Length;r++)original[r]=renderers[r].sharedMaterials;
-                foreach(bool untextured in ClayOnly?new[]{true}:new[]{true,false})
+                foreach(bool untextured in ClayOnly||(EyeColorReview&&old)?new[]{true}:new[]{true,false})
                 {
                     for(int r=0;r<renderers.Length;r++)
-                    {var materials=(Material[])original[r].Clone();if(untextured)for(int m=0;m<materials.Length;m++)materials[m]=clay;renderers[r].sharedMaterials=materials;}
+                    {var materials=(Material[])original[r].Clone();if(untextured)for(int m=0;m<materials.Length;m++)if(!IsHiddenSourceEye(materials[m]))materials[m]=clay;renderers[r].sharedMaterials=materials;}
                     foreach(bool warm in new[]{false,true})
                     {
                         key.color=warm?new Color(1,.9f,.76f):Color.white;
@@ -56,12 +57,19 @@ namespace Ao.UnityMigration
                                 view.orthographicSize=.64f;view.transform.position=new Vector3(0,.55f,-3);view.transform.LookAt(new Vector3(0,.5f,0));
                             }
                         }
+                        if(EyeColorReview)
+                        {
+                            pivot.transform.rotation=Quaternion.Euler(0,180,0);view.orthographicSize=.64f;view.transform.position=new Vector3(0,2.62f,-2.12f);view.transform.LookAt(new Vector3(0,.5f,0));
+                            yield return new WaitForEndOfFrame();Capture((old?PreviousLabel:PilotLabel)+"-"+(untextured?"clay":"palette")+"-"+(warm?"warm":"neutral")+"-top45");count++;
+                            view.transform.position=new Vector3(0,.55f,-3);view.transform.LookAt(new Vector3(0,.5f,0));
+                        }
                     }
                 }
                 Destroy(pivot);yield return null;
             }
-            File.WriteAllText(Path.Combine(output,"review.json"),new JObject{["captures"]=count,["engine"]="Unity URP",["scope"]="head-only static art study; equal normalized bounding-box height, including any neck/scarf",["previous_label"]=PreviousLabel,["pilot_label"]=PilotLabel,["face_closeups"]=FaceCloseups,["clay_only"]=ClayOnly,["animation_tested"]=false,["performance_tested"]=false,["gameplay_changed"]=false}.ToString());Application.Quit(0);
+            File.WriteAllText(Path.Combine(output,"review.json"),new JObject{["captures"]=count,["engine"]="Unity URP",["scope"]="head-only static art study; equal normalized bounding-box height, including any neck/scarf",["previous_label"]=PreviousLabel,["pilot_label"]=PilotLabel,["face_closeups"]=FaceCloseups,["clay_only"]=ClayOnly,["eye_color_review"]=EyeColorReview,["animation_tested"]=false,["performance_tested"]=false,["gameplay_changed"]=false}.ToString());Application.Quit(0);
         }
+        static bool IsHiddenSourceEye(Material material){return material.HasProperty("_AlphaClip")&&material.GetFloat("_AlphaClip")>.5f&&material.color.a==0;}
         static Bounds BoundsOf(GameObject obj){var rs=obj.GetComponentsInChildren<Renderer>();if(rs.Length==0)throw new InvalidDataException("Empty head");var b=rs[0].bounds;foreach(var r in rs)b.Encapsulate(r.bounds);return b;}
         void Capture(string name)
         {
