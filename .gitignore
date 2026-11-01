@@ -20,6 +20,9 @@ unity-remake/Assets/U2Generated/
 unity-remake/Assets/U2Generated.meta
 unity-remake/Assets/U3Generated/
 unity-remake/Assets/U3Generated.meta
+# Rejected U3 import diagnostics remain local; final review is versioned separately.
+art/unity/startroom-v1/unity-review/
+art/unity/startroom-v1/unity-review-v2/
 unity-remake/Assets/U1Generated/
 unity-remake/Assets/U1Generated.meta
 unity-remake/Builds/

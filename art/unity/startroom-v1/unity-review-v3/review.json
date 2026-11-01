@@ -1,0 +1,11 @@
+{
+  "stage": "U3 draft, pending approval",
+  "editor": "6000.3.27f2",
+  "renderer": "URP Universal Renderer",
+  "room_axis_sign_x": -1.0,
+  "room_axis_sign_z": -1.0,
+  "player_bounds_height": 1.12499988,
+  "source_gameplay_test": false,
+  "performance_tested": false,
+  "note": "Static geometric appearance preview. No rig or animation acceptance."
+}

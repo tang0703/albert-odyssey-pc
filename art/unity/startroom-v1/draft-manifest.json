@@ -1,0 +1,62 @@
+{
+  "stage": "U3 draft pending user review",
+  "units": "32 source world units per Unity/Blender metre",
+  "room_origin": [
+    512,
+    1536
+  ],
+  "source_size": [
+    448,
+    256
+  ],
+  "camera_pitch_degrees": 45,
+  "player_height_target": 1.125,
+  "rig_complete": false,
+  "animations_complete": false,
+  "runtime_art_accepted": false,
+  "performance_tested": false,
+  "references": [
+    "art/enhanced25d/v1/review/directions-review.png",
+    "art/enhanced25d/v1/layout.json"
+  ],
+  "notes": [
+    "Procedural Blender meshes are editable.",
+    "Furniture draft volumes derive from visual registration, not new collision shapes.",
+    "Cirrus appearance and material detail remain draft interpretations.",
+    "Blender procedural material preview is not a claim of Unity material parity."
+  ],
+  "files": {
+    "player-back.png": {
+      "bytes": 916753,
+      "sha256": "58e7ec088b805a336e5e78e9072205e5d7991b7dc856a0809308d3838a29e1a7"
+    },
+    "player-draft.fbx": {
+      "bytes": 1387820,
+      "sha256": "bb9658ee9492ae67855bc2fba926012b6d665bb319a5778f85c201417771c4c7"
+    },
+    "player-front.png": {
+      "bytes": 934205,
+      "sha256": "d83d6e0a443dd9deed97952a2b8b2ac47fa6d984e4032292c9c94c23a17d1a48"
+    },
+    "player-left.png": {
+      "bytes": 893514,
+      "sha256": "372bf92712d83dd4d33c5611a6f484b184e6e59367f2e9ee2bcf74e38f22620c"
+    },
+    "player-right.png": {
+      "bytes": 887827,
+      "sha256": "8ae7bb074bbd2f6fbf65e818f6b0939ff937c3448b1a14c55e4864f9a6bac202"
+    },
+    "room-draft.fbx": {
+      "bytes": 3527372,
+      "sha256": "245184cda6c7b27ec45e90b1273613033b16a383b55e35cfc3b5681e25679900"
+    },
+    "room-warm-review.png": {
+      "bytes": 1577890,
+      "sha256": "24c679226f38592cc9e5399937a8f738574e0e393b82ddf6f4935fe00662a91e"
+    },
+    "startroom-draft.blend": {
+      "bytes": 555118,
+      "sha256": "d363fb4138ffaf94a39ae27c4c4f9d4827ad474f8cdedce933100252e08b1195"
+    }
+  }
+}

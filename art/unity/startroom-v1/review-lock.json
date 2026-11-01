@@ -1,0 +1,78 @@
+{
+  "schema": "ao_unity_u3_review_v1",
+  "status": "revision_requested",
+  "approved": false,
+  "rig_complete": false,
+  "animation_complete": false,
+  "performance_tested": false,
+  "unity_height": 1.125,
+  "camera_pitch": 45,
+  "notes": [
+    "Side-view filenames identify inspected side; HTML labels use image-facing direction.",
+    "Rejected axis-import images remain local in unity-review and unity-review-v2.",
+    "Blender thumbnail cache outside workspace was denied; blend save and renders succeeded."
+  ],
+  "files": {
+    "startroom-draft.blend": {
+      "bytes": 555118,
+      "sha256": "d363fb4138ffaf94a39ae27c4c4f9d4827ad474f8cdedce933100252e08b1195"
+    },
+    "player-draft.fbx": {
+      "bytes": 1387820,
+      "sha256": "bb9658ee9492ae67855bc2fba926012b6d665bb319a5778f85c201417771c4c7"
+    },
+    "room-draft.fbx": {
+      "bytes": 3527372,
+      "sha256": "245184cda6c7b27ec45e90b1273613033b16a383b55e35cfc3b5681e25679900"
+    },
+    "player-back.png": {
+      "bytes": 916753,
+      "sha256": "58e7ec088b805a336e5e78e9072205e5d7991b7dc856a0809308d3838a29e1a7"
+    },
+    "player-front.png": {
+      "bytes": 934205,
+      "sha256": "d83d6e0a443dd9deed97952a2b8b2ac47fa6d984e4032292c9c94c23a17d1a48"
+    },
+    "player-left.png": {
+      "bytes": 893514,
+      "sha256": "372bf92712d83dd4d33c5611a6f484b184e6e59367f2e9ee2bcf74e38f22620c"
+    },
+    "player-right.png": {
+      "bytes": 887827,
+      "sha256": "8ae7bb074bbd2f6fbf65e818f6b0939ff937c3448b1a14c55e4864f9a6bac202"
+    },
+    "room-warm-review.png": {
+      "bytes": 1577890,
+      "sha256": "24c679226f38592cc9e5399937a8f738574e0e393b82ddf6f4935fe00662a91e"
+    },
+    "unity-review-v3/review.json": {
+      "bytes": 360,
+      "sha256": "0413eaf001ab523ceb7e7b5ab0fb1c04b72c322a8f0a7e7866e2f20e849a67cf"
+    },
+    "unity-review-v3/unity-back.png": {
+      "bytes": 223781,
+      "sha256": "f67c99c4efef62ea0c9d14396c07a269b08bd49bae7098188c016cffb5b405e7"
+    },
+    "unity-review-v3/unity-front.png": {
+      "bytes": 243818,
+      "sha256": "c36574cdef3dcd1f8e1aacbe524bb2f9f3a4a0bf4ccafddb9b83a3db329b6311"
+    },
+    "unity-review-v3/unity-left.png": {
+      "bytes": 162078,
+      "sha256": "ba025b6d4231f7f35a3fd68299d809750c88a64b5e22ae09955bcd78eef4ce1d"
+    },
+    "unity-review-v3/unity-right.png": {
+      "bytes": 162963,
+      "sha256": "4b62c471114a6b7c0cede060b200f4abf5a995406c05e01021f10610aa6917f6"
+    },
+    "unity-review-v3/unity-room.png": {
+      "bytes": 206706,
+      "sha256": "fdf99587eb0ffc79524732f97ce9f133bcd5a610f4e2dfd08603f273e0656eff"
+    },
+    "review.html": {
+      "bytes": 2743,
+      "sha256": "3d9161d4e61ed2fa1f0cd26c261ed1de0298b5268c4be4285e5aa0cbb551d505"
+    }
+  },
+  "user_feedback": "先調整人物造型，更接近原概念圖"
+}
