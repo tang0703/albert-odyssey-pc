@@ -11,6 +11,9 @@ namespace Ao.UnityMigration
     public sealed class HeadPilotReview:MonoBehaviour
     {
         public GameObject Previous, Pilot;
+        public string PreviousLabel="v2", PilotLabel="pilot";
+        public bool FaceCloseups;
+        public bool ClayOnly;
         Camera view; string output;
         IEnumerator Start()
         {
@@ -33,7 +36,7 @@ namespace Ao.UnityMigration
                 var b=BoundsOf(model);model.transform.localScale*=1/b.size.y;b=BoundsOf(model);model.transform.position-=new Vector3(b.center.x,b.min.y,b.center.z);
                 var renderers=model.GetComponentsInChildren<Renderer>();var original=new Material[renderers.Length][];
                 for(int r=0;r<renderers.Length;r++)original[r]=renderers[r].sharedMaterials;
-                foreach(bool untextured in new[]{true,false})
+                foreach(bool untextured in ClayOnly?new[]{true}:new[]{true,false})
                 {
                     for(int r=0;r<renderers.Length;r++)
                     {var materials=(Material[])original[r].Clone();if(untextured)for(int m=0;m<materials.Length;m++)materials[m]=clay;renderers[r].sharedMaterials=materials;}
@@ -44,13 +47,20 @@ namespace Ao.UnityMigration
                         {
                             pivot.transform.rotation=Quaternion.Euler(0,new[]{180,270,0,90,215}[d++],0);
                             yield return new WaitForEndOfFrame();
-                            Capture((old?"v2":"pilot")+"-"+(untextured?"clay":"palette")+"-"+(warm?"warm":"neutral")+"-"+direction);count++;
+                            string prefix=(old?PreviousLabel:PilotLabel)+"-"+(untextured?"clay":"palette")+"-"+(warm?"warm":"neutral")+"-"+direction;
+                            Capture(prefix);count++;
+                            if(FaceCloseups&&direction!="back")
+                            {
+                                view.orthographicSize=.31f;view.transform.position=new Vector3(0,.245f,-3);view.transform.LookAt(new Vector3(0,.245f,0));
+                                yield return new WaitForEndOfFrame();Capture(prefix+"-face");count++;
+                                view.orthographicSize=.64f;view.transform.position=new Vector3(0,.55f,-3);view.transform.LookAt(new Vector3(0,.5f,0));
+                            }
                         }
                     }
                 }
                 Destroy(pivot);yield return null;
             }
-            File.WriteAllText(Path.Combine(output,"review.json"),new JObject{["captures"]=count,["engine"]="Unity URP",["scope"]="head-only static art study; equal normalized head height",["animation_tested"]=false,["performance_tested"]=false,["gameplay_changed"]=false}.ToString());Application.Quit(0);
+            File.WriteAllText(Path.Combine(output,"review.json"),new JObject{["captures"]=count,["engine"]="Unity URP",["scope"]="head-only static art study; equal normalized bounding-box height, including any neck/scarf",["previous_label"]=PreviousLabel,["pilot_label"]=PilotLabel,["face_closeups"]=FaceCloseups,["clay_only"]=ClayOnly,["animation_tested"]=false,["performance_tested"]=false,["gameplay_changed"]=false}.ToString());Application.Quit(0);
         }
         static Bounds BoundsOf(GameObject obj){var rs=obj.GetComponentsInChildren<Renderer>();if(rs.Length==0)throw new InvalidDataException("Empty head");var b=rs[0].bounds;foreach(var r in rs)b.Encapsulate(r.bounds);return b;}
         void Capture(string name)

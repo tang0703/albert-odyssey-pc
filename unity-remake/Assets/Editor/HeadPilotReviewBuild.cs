@@ -36,6 +36,8 @@ namespace Ao.UnityMigration.Editor
                 prefabs[n++]=PrefabUtility.SaveAsPrefabAsset(instance,Folder+"/"+name+".prefab");UnityEngine.Object.DestroyImmediate(instance);
             }
             var scene=EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Single);var review=new GameObject("Static head pilot").AddComponent<HeadPilotReview>();review.Previous=prefabs[0];review.Pilot=prefabs[1];
+            if(Array.IndexOf(args,"-faceReview")>=0){review.PreviousLabel="previous";review.PilotLabel="face";review.FaceCloseups=true;}
+            if(Array.IndexOf(args,"-tripoReview")>=0){review.PreviousLabel="previous";review.PilotLabel="tripo";review.FaceCloseups=true;review.ClayOnly=true;}
             var original=AssetDatabase.LoadAssetAtPath<UniversalRenderPipelineAsset>("Assets/Settings/Pipeline.asset");var pipeline=UnityEngine.Object.Instantiate(original);pipeline.msaaSampleCount=4;
             var settings=new SerializedObject(pipeline);settings.FindProperty("m_SoftShadowsSupported").boolValue=true;settings.ApplyModifiedPropertiesWithoutUndo();
             AssetDatabase.CreateAsset(pipeline,Folder+"/Pipeline-"+Guid.NewGuid().ToString("N")+".asset");GraphicsSettings.defaultRenderPipeline=pipeline;QualitySettings.renderPipeline=pipeline;
@@ -44,7 +46,7 @@ namespace Ao.UnityMigration.Editor
             try{result=BuildPipeline.BuildPlayer(new BuildPlayerOptions{scenes=new[]{scenePath},locationPathName=Path.Combine(output,"Head-Pilot-Review.exe"),target=BuildTarget.StandaloneWindows64,options=BuildOptions.None});}
             finally{GraphicsSettings.defaultRenderPipeline=original;QualitySettings.renderPipeline=original;AssetDatabase.SaveAssets();}
             if(result.summary.result!=BuildResult.Succeeded)throw new Exception("Head review build failed");
-            File.WriteAllText(Path.Combine(output,"review-build.json"),new JObject{["passed"]=true,["scope"]="local head-only static art review",["inputs_sha256"]=SourceGuard.Hash(File.ReadAllBytes(Path.Combine(art,"unity-inputs.json"))),["performance_tested"]=false}.ToString());
+            File.WriteAllText(Path.Combine(output,"review-build.json"),new JObject{["passed"]=true,["scope"]="local head-only static art review",["face_review"]=Array.IndexOf(args,"-faceReview")>=0,["tripo_review"]=Array.IndexOf(args,"-tripoReview")>=0,["inputs_sha256"]=SourceGuard.Hash(File.ReadAllBytes(Path.Combine(art,"unity-inputs.json"))),["performance_tested"]=false}.ToString());
         }
     }
 }
